@@ -1,0 +1,9 @@
+name: ${bukkit.plugin.name}
+version: ${project.version}-${git.branch}-${git.commit.id.abbrev}
+author: ${bukkit.plugin.authors}
+description: ${project.description}
+
+main: ${bukkit.plugin.main}
+website: ${project.url}
+
+softdepend: [ProtocolLib]

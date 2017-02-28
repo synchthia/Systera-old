@@ -1,0 +1,5 @@
+name: ${bungee.plugin.name}
+version: ${project.version}-${git.branch}-${git.commit.id.abbrev}
+author: ${bungee.plugin.authors}
+
+main: ${bungee.plugin.main}

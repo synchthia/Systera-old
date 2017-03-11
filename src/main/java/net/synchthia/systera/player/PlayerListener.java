@@ -7,6 +7,7 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
@@ -41,5 +42,10 @@ public class PlayerListener implements Listener {
             plugin.getLogger().log(Level.SEVERE, "Exception threw executing onPlayerPreLogin", ex);
             event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, ChatColor.RED + "Currently not Available");
         }
+    }
+
+    @EventHandler
+    public void onPlayerQuit(PlayerQuitEvent event) {
+        plugin.playerAPI.clearPlayerProfile(event.getPlayer().getUniqueId());
     }
 }

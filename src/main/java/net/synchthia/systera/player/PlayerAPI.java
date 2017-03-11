@@ -51,4 +51,8 @@ public class PlayerAPI {
             localPlayerProfile.put(playerUUID, playerData);
         });
     }
+
+    public void clearPlayerProfile(UUID playerUUID) {
+        localPlayerProfile.remove(playerUUID);
+    }
 }

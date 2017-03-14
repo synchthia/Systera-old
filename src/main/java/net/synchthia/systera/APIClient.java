@@ -48,7 +48,7 @@ public class APIClient {
 
             @Override
             public void onError(Throwable t) {
-
+                actionStream(name);
             }
 
             @Override

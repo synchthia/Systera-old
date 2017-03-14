@@ -17,7 +17,7 @@ import org.bukkit.command.CommandSender;
 public class SysteraCommand {
 
     @Command(aliases = "systera", desc = "Systera Command")
-    @CommandPermissions("systera.command.punishment")
+    @CommandPermissions("systera.command.systera")
     public static void systera(final CommandContext args, CommandSender sender, SysteraPlugin plugin) throws CommandException {
         if (args.argsLength() == 1 && args.getString(0).equals("reload")) {
             Bukkit.getPluginManager().disablePlugin(plugin);

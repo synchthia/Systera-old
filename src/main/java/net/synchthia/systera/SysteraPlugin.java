@@ -8,7 +8,9 @@ import lombok.Getter;
 import lombok.SneakyThrows;
 import net.synchthia.systera.command.AnnounceCommand;
 import net.synchthia.systera.command.DispatchCommand;
+import net.synchthia.systera.command.SpawnCommand;
 import net.synchthia.systera.command.SysteraCommand;
+import net.synchthia.systera.config.ConfigManager;
 import net.synchthia.systera.i18n.I18n;
 import net.synchthia.systera.i18n.I18nManager;
 import net.synchthia.systera.player.PlayerAPI;
@@ -31,6 +33,9 @@ public class SysteraPlugin extends JavaPlugin {
     private static SysteraPlugin instance;
 
     @Getter
+    private ConfigManager configManager;
+
+    @Getter
     public APIClient apiClient;
     private String apiServerAddress = "192.168.100.53:17300";
 
@@ -44,9 +49,11 @@ public class SysteraPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         try {
-            this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
-
             instance = this;
+
+            this.configManager = new ConfigManager(this);
+            this.configManager.load();
+
             protocolManager = ProtocolLibrary.getProtocolManager();
             I18n.setI18nManager(new I18nManager(this));
 
@@ -54,6 +61,7 @@ public class SysteraPlugin extends JavaPlugin {
             registerEvents();
             registerCommands();
 
+            this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
             getLogger().info(this.getName() + "Enabled");
         } catch (Exception e) {
             getLogger().log(Level.SEVERE, "Exception threw while onEnable.", e);
@@ -66,6 +74,7 @@ public class SysteraPlugin extends JavaPlugin {
     @SneakyThrows
     public void onDisable() {
         apiClient.shutdown();
+        this.configManager.save();
         getLogger().info(this.getName() + "Disabled");
     }
 
@@ -92,6 +101,7 @@ public class SysteraPlugin extends JavaPlugin {
         cmdRegister.register(SysteraCommand.class);
         cmdRegister.register(DispatchCommand.class);
         cmdRegister.register(AnnounceCommand.class);
+        cmdRegister.register(SpawnCommand.class);
     }
 
     @Override

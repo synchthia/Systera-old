@@ -58,4 +58,9 @@ public class Position implements Cloneable {
     public Position clone() {
         return new Position(this);
     }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }

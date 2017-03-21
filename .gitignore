@@ -1,7 +1,9 @@
 # for Debug
-server/
+server1/
+server2/
 bungee/
-spigot.bat
+server1.bat
+server2.bat
 bungee.bat
 
 # Created by https://www.gitignore.io

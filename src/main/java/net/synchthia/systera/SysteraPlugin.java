@@ -4,12 +4,7 @@ import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
 import com.sk89q.bukkit.util.CommandsManagerRegistration;
 import com.sk89q.minecraft.util.commands.*;
-import lombok.Getter;
-import lombok.SneakyThrows;
-import net.synchthia.systera.command.AnnounceCommand;
-import net.synchthia.systera.command.DispatchCommand;
-import net.synchthia.systera.command.SpawnCommand;
-import net.synchthia.systera.command.SysteraCommand;
+import net.synchthia.systera.command.*;
 import net.synchthia.systera.config.ConfigManager;
 import net.synchthia.systera.i18n.I18n;
 import net.synchthia.systera.i18n.I18nManager;
@@ -104,6 +99,7 @@ public class SysteraPlugin extends JavaPlugin {
         cmdRegister.register(DispatchCommand.class);
         cmdRegister.register(AnnounceCommand.class);
         cmdRegister.register(SpawnCommand.class);
+        cmdRegister.register(APICommand.class);
     }
 
     @Override

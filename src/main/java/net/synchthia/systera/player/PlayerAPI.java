@@ -29,6 +29,10 @@ public class PlayerAPI {
         public ProtocolStringList groups;
         public HashMap<String, Boolean> settings = new HashMap<String, Boolean>();
     }
+    
+    public Integer localProfileSize() {
+        return localPlayerProfile.size();
+    }
 
     public CompletableFuture<Boolean> initPlayerProfile(UUID playerUUID, String playerName, String playerAddress) {
         return plugin.apiClient.initPlayerProfile(playerUUID, playerName, playerAddress).whenComplete((response, throwable) -> {
@@ -54,5 +58,12 @@ public class PlayerAPI {
 
     public void clearPlayerProfile(UUID playerUUID) {
         localPlayerProfile.remove(playerUUID);
+    }
+
+    public PlayerData getPlayerProfile(UUID playerUUID) {
+        if (!localPlayerProfile.containsKey(playerUUID)) {
+            return playerData;
+        }
+        return localPlayerProfile.get(playerUUID);
     }
 }

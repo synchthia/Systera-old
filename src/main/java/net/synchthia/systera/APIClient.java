@@ -133,6 +133,30 @@ public class APIClient {
         return future;
     }
 
+    public CompletableFuture<SysteraProtos.Empty> setPlayerServer(@NonNull UUID uuid, String serverName) {
+        SysteraProtos.SetPlayerServerRequest request = SysteraProtos.SetPlayerServerRequest.newBuilder()
+                .setPlayerUUID(toString(uuid))
+                .setServerName(serverName)
+                .build();
+
+        CompletableFuture<SysteraProtos.Empty> future = new CompletableFuture<>();
+        stub.setPlayerServer(request, new CompletableFutureObserver<>(future));
+
+        return future;
+    }
+
+    public CompletableFuture<SysteraProtos.Empty> quitServer(@NonNull UUID uuid, String serverName) {
+        SysteraProtos.RemovePlayerServerRequest request = SysteraProtos.RemovePlayerServerRequest.newBuilder()
+                .setPlayerUUID(toString(uuid))
+                .setServerName(serverName)
+                .build();
+
+        CompletableFuture<SysteraProtos.Empty> future = new CompletableFuture<>();
+        stub.removePlayerServer(request, new CompletableFutureObserver<>(future));
+
+        return future;
+    }
+
     @RequiredArgsConstructor
     private static class CompletableFutureObserver<V> implements StreamObserver<V> {
         private final CompletableFuture<V> future;

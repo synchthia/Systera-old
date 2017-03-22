@@ -84,6 +84,24 @@ public class SysteraGrpc {
               "apipb.Systera", "SetPlayerSettings"),
           io.grpc.protobuf.ProtoUtils.marshaller(net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest.getDefaultInstance()),
           io.grpc.protobuf.ProtoUtils.marshaller(net.synchthia.api.systera.SysteraProtos.Empty.getDefaultInstance()));
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  public static final io.grpc.MethodDescriptor<net.synchthia.api.systera.SysteraProtos.SetPlayerServerRequest,
+      net.synchthia.api.systera.SysteraProtos.Empty> METHOD_SET_PLAYER_SERVER =
+      io.grpc.MethodDescriptor.create(
+          io.grpc.MethodDescriptor.MethodType.UNARY,
+          generateFullMethodName(
+              "apipb.Systera", "SetPlayerServer"),
+          io.grpc.protobuf.ProtoUtils.marshaller(net.synchthia.api.systera.SysteraProtos.SetPlayerServerRequest.getDefaultInstance()),
+          io.grpc.protobuf.ProtoUtils.marshaller(net.synchthia.api.systera.SysteraProtos.Empty.getDefaultInstance()));
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  public static final io.grpc.MethodDescriptor<net.synchthia.api.systera.SysteraProtos.RemovePlayerServerRequest,
+      net.synchthia.api.systera.SysteraProtos.Empty> METHOD_REMOVE_PLAYER_SERVER =
+      io.grpc.MethodDescriptor.create(
+          io.grpc.MethodDescriptor.MethodType.UNARY,
+          generateFullMethodName(
+              "apipb.Systera", "RemovePlayerServer"),
+          io.grpc.protobuf.ProtoUtils.marshaller(net.synchthia.api.systera.SysteraProtos.RemovePlayerServerRequest.getDefaultInstance()),
+          io.grpc.protobuf.ProtoUtils.marshaller(net.synchthia.api.systera.SysteraProtos.Empty.getDefaultInstance()));
 
   /**
    * Creates a new async stub that supports all call types for the service
@@ -157,6 +175,20 @@ public class SysteraGrpc {
       asyncUnimplementedUnaryCall(METHOD_SET_PLAYER_SETTINGS, responseObserver);
     }
 
+    /**
+     */
+    public void setPlayerServer(net.synchthia.api.systera.SysteraProtos.SetPlayerServerRequest request,
+        io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.Empty> responseObserver) {
+      asyncUnimplementedUnaryCall(METHOD_SET_PLAYER_SERVER, responseObserver);
+    }
+
+    /**
+     */
+    public void removePlayerServer(net.synchthia.api.systera.SysteraProtos.RemovePlayerServerRequest request,
+        io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.Empty> responseObserver) {
+      asyncUnimplementedUnaryCall(METHOD_REMOVE_PLAYER_SERVER, responseObserver);
+    }
+
     @java.lang.Override public io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -201,6 +233,20 @@ public class SysteraGrpc {
                 net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest,
                 net.synchthia.api.systera.SysteraProtos.Empty>(
                   this, METHODID_SET_PLAYER_SETTINGS)))
+          .addMethod(
+            METHOD_SET_PLAYER_SERVER,
+            asyncUnaryCall(
+              new MethodHandlers<
+                net.synchthia.api.systera.SysteraProtos.SetPlayerServerRequest,
+                net.synchthia.api.systera.SysteraProtos.Empty>(
+                  this, METHODID_SET_PLAYER_SERVER)))
+          .addMethod(
+            METHOD_REMOVE_PLAYER_SERVER,
+            asyncUnaryCall(
+              new MethodHandlers<
+                net.synchthia.api.systera.SysteraProtos.RemovePlayerServerRequest,
+                net.synchthia.api.systera.SysteraProtos.Empty>(
+                  this, METHODID_REMOVE_PLAYER_SERVER)))
           .build();
     }
   }
@@ -273,6 +319,22 @@ public class SysteraGrpc {
       asyncUnaryCall(
           getChannel().newCall(METHOD_SET_PLAYER_SETTINGS, getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void setPlayerServer(net.synchthia.api.systera.SysteraProtos.SetPlayerServerRequest request,
+        io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.Empty> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(METHOD_SET_PLAYER_SERVER, getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void removePlayerServer(net.synchthia.api.systera.SysteraProtos.RemovePlayerServerRequest request,
+        io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.Empty> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(METHOD_REMOVE_PLAYER_SERVER, getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -338,6 +400,20 @@ public class SysteraGrpc {
       return blockingUnaryCall(
           getChannel(), METHOD_SET_PLAYER_SETTINGS, getCallOptions(), request);
     }
+
+    /**
+     */
+    public net.synchthia.api.systera.SysteraProtos.Empty setPlayerServer(net.synchthia.api.systera.SysteraProtos.SetPlayerServerRequest request) {
+      return blockingUnaryCall(
+          getChannel(), METHOD_SET_PLAYER_SERVER, getCallOptions(), request);
+    }
+
+    /**
+     */
+    public net.synchthia.api.systera.SysteraProtos.Empty removePlayerServer(net.synchthia.api.systera.SysteraProtos.RemovePlayerServerRequest request) {
+      return blockingUnaryCall(
+          getChannel(), METHOD_REMOVE_PLAYER_SERVER, getCallOptions(), request);
+    }
   }
 
   /**
@@ -400,6 +476,22 @@ public class SysteraGrpc {
       return futureUnaryCall(
           getChannel().newCall(METHOD_SET_PLAYER_SETTINGS, getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<net.synchthia.api.systera.SysteraProtos.Empty> setPlayerServer(
+        net.synchthia.api.systera.SysteraProtos.SetPlayerServerRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(METHOD_SET_PLAYER_SERVER, getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<net.synchthia.api.systera.SysteraProtos.Empty> removePlayerServer(
+        net.synchthia.api.systera.SysteraProtos.RemovePlayerServerRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(METHOD_REMOVE_PLAYER_SERVER, getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_ACTION_STREAM = 0;
@@ -408,6 +500,8 @@ public class SysteraGrpc {
   private static final int METHODID_INIT_PLAYER_PROFILE = 3;
   private static final int METHODID_FETCH_PLAYER_PROFILE = 4;
   private static final int METHODID_SET_PLAYER_SETTINGS = 5;
+  private static final int METHODID_SET_PLAYER_SERVER = 6;
+  private static final int METHODID_REMOVE_PLAYER_SERVER = 7;
 
   private static class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -450,6 +544,14 @@ public class SysteraGrpc {
           serviceImpl.setPlayerSettings((net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest) request,
               (io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.Empty>) responseObserver);
           break;
+        case METHODID_SET_PLAYER_SERVER:
+          serviceImpl.setPlayerServer((net.synchthia.api.systera.SysteraProtos.SetPlayerServerRequest) request,
+              (io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.Empty>) responseObserver);
+          break;
+        case METHODID_REMOVE_PLAYER_SERVER:
+          serviceImpl.removePlayerServer((net.synchthia.api.systera.SysteraProtos.RemovePlayerServerRequest) request,
+              (io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.Empty>) responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -473,7 +575,9 @@ public class SysteraGrpc {
         METHOD_QUIT_STREAM,
         METHOD_INIT_PLAYER_PROFILE,
         METHOD_FETCH_PLAYER_PROFILE,
-        METHOD_SET_PLAYER_SETTINGS);
+        METHOD_SET_PLAYER_SETTINGS,
+        METHOD_SET_PLAYER_SERVER,
+        METHOD_REMOVE_PLAYER_SERVER);
   }
 
 }

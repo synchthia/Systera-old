@@ -4,9 +4,11 @@ import net.synchthia.systera.SysteraPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.Set;
@@ -19,7 +21,7 @@ import java.util.logging.Level;
  * @author Laica-Lunasys
  */
 public class PlayerListener implements Listener {
-    SysteraPlugin plugin;
+    private final SysteraPlugin plugin;
 
     public PlayerListener(SysteraPlugin plugin) {
         this.plugin = plugin;
@@ -45,7 +47,26 @@ public class PlayerListener implements Listener {
     }
 
     @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        Player player = event.getPlayer();
+
+        plugin.apiClient.setPlayerServer(player.getUniqueId(), player.getServer().getServerName()).whenComplete(((empty, throwable) -> {
+            if (throwable != null) {
+                throwable.printStackTrace();
+            }
+        }));
+    }
+
+    @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
+        Player player = event.getPlayer();
+
+        plugin.apiClient.quitServer(player.getUniqueId(), player.getServer().getServerName()).whenComplete(((empty, throwable) -> {
+            if (throwable != null) {
+                throwable.printStackTrace();
+            }
+        }));
+
         plugin.playerAPI.clearPlayerProfile(event.getPlayer().getUniqueId());
     }
 }

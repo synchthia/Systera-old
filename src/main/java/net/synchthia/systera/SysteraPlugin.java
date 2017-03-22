@@ -73,14 +73,16 @@ public class SysteraPlugin extends JavaPlugin {
     @Override
     @SneakyThrows
     public void onDisable() {
+        apiClient.quitStream(Bukkit.getServerName());
         apiClient.shutdown();
+
         this.configManager.save();
         getLogger().info(this.getName() + "Disabled");
     }
 
     private void registerAPI() {
         apiClient = new APIClient(apiServerAddress);
-        apiClient.actionStream(Bukkit.getServer().getName());
+        apiClient.actionStream(Bukkit.getServerName());
 
         playerAPI = new PlayerAPI(this);
     }

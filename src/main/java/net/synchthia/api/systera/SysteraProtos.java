@@ -14,1650 +14,106 @@ public final class SysteraProtos {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface StreamRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:apipb.StreamRequest)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>optional string name = 1;</code>
-     */
-    java.lang.String getName();
-    /**
-     * <code>optional string name = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getNameBytes();
-  }
   /**
-   * Protobuf type {@code apipb.StreamRequest}
+   * <pre>
+   * Stream API
+   * </pre>
+   *
+   * Protobuf enum {@code apipb.StreamType}
    */
-  public  static final class StreamRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:apipb.StreamRequest)
-      StreamRequestOrBuilder {
-    // Use StreamRequest.newBuilder() to construct.
-    private StreamRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private StreamRequest() {
-      name_ = "";
+  public enum StreamType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>QUIT = 0;</code>
+     */
+    QUIT(0),
+    /**
+     * <code>DISPATCH = 1;</code>
+     */
+    DISPATCH(1),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>QUIT = 0;</code>
+     */
+    public static final int QUIT_VALUE = 0;
+    /**
+     * <code>DISPATCH = 1;</code>
+     */
+    public static final int DISPATCH_VALUE = 1;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static StreamType valueOf(int value) {
+      return forNumber(value);
     }
-    private StreamRequest(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      int mutable_bitField0_ = 0;
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!input.skipField(tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
 
-              name_ = s;
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        makeExtensionsImmutable();
+    public static StreamType forNumber(int value) {
+      switch (value) {
+        case 0: return QUIT;
+        case 1: return DISPATCH;
+        default: return null;
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+
+    public static com.google.protobuf.Internal.EnumLiteMap<StreamType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        StreamType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<StreamType>() {
+            public StreamType findValueByNumber(int number) {
+              return StreamType.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_StreamRequest_descriptor;
+      return net.synchthia.api.systera.SysteraProtos.getDescriptor().getEnumTypes().get(0);
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_StreamRequest_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              net.synchthia.api.systera.SysteraProtos.StreamRequest.class, net.synchthia.api.systera.SysteraProtos.StreamRequest.Builder.class);
-    }
-
-    public static final int NAME_FIELD_NUMBER = 1;
-    private volatile java.lang.Object name_;
-    /**
-     * <code>optional string name = 1;</code>
-     */
-    public java.lang.String getName() {
-      java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        name_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string name = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getNameBytes() {
-      java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        name_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!getNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
-      }
-    }
-
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!getNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
-      }
-      memoizedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof net.synchthia.api.systera.SysteraProtos.StreamRequest)) {
-        return super.equals(obj);
-      }
-      net.synchthia.api.systera.SysteraProtos.StreamRequest other = (net.synchthia.api.systera.SysteraProtos.StreamRequest) obj;
-
-      boolean result = true;
-      result = result && getName()
-          .equals(other.getName());
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
-      hash = (37 * hash) + NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getName().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static net.synchthia.api.systera.SysteraProtos.StreamRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.StreamRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.StreamRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.StreamRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.StreamRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.StreamRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.StreamRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.StreamRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.StreamRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.StreamRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(net.synchthia.api.systera.SysteraProtos.StreamRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code apipb.StreamRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:apipb.StreamRequest)
-        net.synchthia.api.systera.SysteraProtos.StreamRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_StreamRequest_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_StreamRequest_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                net.synchthia.api.systera.SysteraProtos.StreamRequest.class, net.synchthia.api.systera.SysteraProtos.StreamRequest.Builder.class);
-      }
-
-      // Construct using net.synchthia.api.systera.SysteraProtos.StreamRequest.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      public Builder clear() {
-        super.clear();
-        name_ = "";
-
-        return this;
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_StreamRequest_descriptor;
-      }
-
-      public net.synchthia.api.systera.SysteraProtos.StreamRequest getDefaultInstanceForType() {
-        return net.synchthia.api.systera.SysteraProtos.StreamRequest.getDefaultInstance();
-      }
-
-      public net.synchthia.api.systera.SysteraProtos.StreamRequest build() {
-        net.synchthia.api.systera.SysteraProtos.StreamRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public net.synchthia.api.systera.SysteraProtos.StreamRequest buildPartial() {
-        net.synchthia.api.systera.SysteraProtos.StreamRequest result = new net.synchthia.api.systera.SysteraProtos.StreamRequest(this);
-        result.name_ = name_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof net.synchthia.api.systera.SysteraProtos.StreamRequest) {
-          return mergeFrom((net.synchthia.api.systera.SysteraProtos.StreamRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(net.synchthia.api.systera.SysteraProtos.StreamRequest other) {
-        if (other == net.synchthia.api.systera.SysteraProtos.StreamRequest.getDefaultInstance()) return this;
-        if (!other.getName().isEmpty()) {
-          name_ = other.name_;
-          onChanged();
-        }
-        onChanged();
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        net.synchthia.api.systera.SysteraProtos.StreamRequest parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (net.synchthia.api.systera.SysteraProtos.StreamRequest) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private java.lang.Object name_ = "";
-      /**
-       * <code>optional string name = 1;</code>
-       */
-      public java.lang.String getName() {
-        java.lang.Object ref = name_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          name_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string name = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getNameBytes() {
-        java.lang.Object ref = name_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          name_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string name = 1;</code>
-       */
-      public Builder setName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        name_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string name = 1;</code>
-       */
-      public Builder clearName() {
-        
-        name_ = getDefaultInstance().getName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string name = 1;</code>
-       */
-      public Builder setNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        name_ = value;
-        onChanged();
-        return this;
-      }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:apipb.StreamRequest)
-    }
-
-    // @@protoc_insertion_point(class_scope:apipb.StreamRequest)
-    private static final net.synchthia.api.systera.SysteraProtos.StreamRequest DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new net.synchthia.api.systera.SysteraProtos.StreamRequest();
-    }
-
-    public static net.synchthia.api.systera.SysteraProtos.StreamRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<StreamRequest>
-        PARSER = new com.google.protobuf.AbstractParser<StreamRequest>() {
-      public StreamRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-          return new StreamRequest(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<StreamRequest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<StreamRequest> getParserForType() {
-      return PARSER;
-    }
-
-    public net.synchthia.api.systera.SysteraProtos.StreamRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface ActionStreamResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:apipb.ActionStreamResponse)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>optional string type = 1;</code>
-     */
-    java.lang.String getType();
-    /**
-     * <code>optional string type = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getTypeBytes();
-
-    /**
-     * <code>optional string cmd = 2;</code>
-     */
-    java.lang.String getCmd();
-    /**
-     * <code>optional string cmd = 2;</code>
-     */
-    com.google.protobuf.ByteString
-        getCmdBytes();
-  }
-  /**
-   * Protobuf type {@code apipb.ActionStreamResponse}
-   */
-  public  static final class ActionStreamResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:apipb.ActionStreamResponse)
-      ActionStreamResponseOrBuilder {
-    // Use ActionStreamResponse.newBuilder() to construct.
-    private ActionStreamResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private ActionStreamResponse() {
-      type_ = "";
-      cmd_ = "";
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
-    }
-    private ActionStreamResponse(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      int mutable_bitField0_ = 0;
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!input.skipField(tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              type_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              cmd_ = s;
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_ActionStreamResponse_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_ActionStreamResponse_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              net.synchthia.api.systera.SysteraProtos.ActionStreamResponse.class, net.synchthia.api.systera.SysteraProtos.ActionStreamResponse.Builder.class);
-    }
-
-    public static final int TYPE_FIELD_NUMBER = 1;
-    private volatile java.lang.Object type_;
-    /**
-     * <code>optional string type = 1;</code>
-     */
-    public java.lang.String getType() {
-      java.lang.Object ref = type_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        type_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string type = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getTypeBytes() {
-      java.lang.Object ref = type_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        type_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int CMD_FIELD_NUMBER = 2;
-    private volatile java.lang.Object cmd_;
-    /**
-     * <code>optional string cmd = 2;</code>
-     */
-    public java.lang.String getCmd() {
-      java.lang.Object ref = cmd_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        cmd_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string cmd = 2;</code>
-     */
-    public com.google.protobuf.ByteString
-        getCmdBytes() {
-      java.lang.Object ref = cmd_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        cmd_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!getTypeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, type_);
-      }
-      if (!getCmdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, cmd_);
-      }
-    }
-
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!getTypeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, type_);
-      }
-      if (!getCmdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, cmd_);
-      }
-      memoizedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof net.synchthia.api.systera.SysteraProtos.ActionStreamResponse)) {
-        return super.equals(obj);
-      }
-      net.synchthia.api.systera.SysteraProtos.ActionStreamResponse other = (net.synchthia.api.systera.SysteraProtos.ActionStreamResponse) obj;
-
-      boolean result = true;
-      result = result && getType()
-          .equals(other.getType());
-      result = result && getCmd()
-          .equals(other.getCmd());
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
-      hash = (37 * hash) + TYPE_FIELD_NUMBER;
-      hash = (53 * hash) + getType().hashCode();
-      hash = (37 * hash) + CMD_FIELD_NUMBER;
-      hash = (53 * hash) + getCmd().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static net.synchthia.api.systera.SysteraProtos.ActionStreamResponse parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.ActionStreamResponse parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.ActionStreamResponse parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.ActionStreamResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.ActionStreamResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.ActionStreamResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.ActionStreamResponse parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.ActionStreamResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.ActionStreamResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.ActionStreamResponse parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(net.synchthia.api.systera.SysteraProtos.ActionStreamResponse prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code apipb.ActionStreamResponse}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:apipb.ActionStreamResponse)
-        net.synchthia.api.systera.SysteraProtos.ActionStreamResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_ActionStreamResponse_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_ActionStreamResponse_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                net.synchthia.api.systera.SysteraProtos.ActionStreamResponse.class, net.synchthia.api.systera.SysteraProtos.ActionStreamResponse.Builder.class);
-      }
+    private static final StreamType[] VALUES = values();
 
-      // Construct using net.synchthia.api.systera.SysteraProtos.ActionStreamResponse.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
+    public static StreamType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
       }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      public Builder clear() {
-        super.clear();
-        type_ = "";
-
-        cmd_ = "";
-
-        return this;
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_ActionStreamResponse_descriptor;
-      }
-
-      public net.synchthia.api.systera.SysteraProtos.ActionStreamResponse getDefaultInstanceForType() {
-        return net.synchthia.api.systera.SysteraProtos.ActionStreamResponse.getDefaultInstance();
-      }
-
-      public net.synchthia.api.systera.SysteraProtos.ActionStreamResponse build() {
-        net.synchthia.api.systera.SysteraProtos.ActionStreamResponse result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public net.synchthia.api.systera.SysteraProtos.ActionStreamResponse buildPartial() {
-        net.synchthia.api.systera.SysteraProtos.ActionStreamResponse result = new net.synchthia.api.systera.SysteraProtos.ActionStreamResponse(this);
-        result.type_ = type_;
-        result.cmd_ = cmd_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof net.synchthia.api.systera.SysteraProtos.ActionStreamResponse) {
-          return mergeFrom((net.synchthia.api.systera.SysteraProtos.ActionStreamResponse)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(net.synchthia.api.systera.SysteraProtos.ActionStreamResponse other) {
-        if (other == net.synchthia.api.systera.SysteraProtos.ActionStreamResponse.getDefaultInstance()) return this;
-        if (!other.getType().isEmpty()) {
-          type_ = other.type_;
-          onChanged();
-        }
-        if (!other.getCmd().isEmpty()) {
-          cmd_ = other.cmd_;
-          onChanged();
-        }
-        onChanged();
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        net.synchthia.api.systera.SysteraProtos.ActionStreamResponse parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (net.synchthia.api.systera.SysteraProtos.ActionStreamResponse) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private java.lang.Object type_ = "";
-      /**
-       * <code>optional string type = 1;</code>
-       */
-      public java.lang.String getType() {
-        java.lang.Object ref = type_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          type_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string type = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getTypeBytes() {
-        java.lang.Object ref = type_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          type_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string type = 1;</code>
-       */
-      public Builder setType(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        type_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string type = 1;</code>
-       */
-      public Builder clearType() {
-        
-        type_ = getDefaultInstance().getType();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string type = 1;</code>
-       */
-      public Builder setTypeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        type_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object cmd_ = "";
-      /**
-       * <code>optional string cmd = 2;</code>
-       */
-      public java.lang.String getCmd() {
-        java.lang.Object ref = cmd_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          cmd_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string cmd = 2;</code>
-       */
-      public com.google.protobuf.ByteString
-          getCmdBytes() {
-        java.lang.Object ref = cmd_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          cmd_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string cmd = 2;</code>
-       */
-      public Builder setCmd(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        cmd_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string cmd = 2;</code>
-       */
-      public Builder clearCmd() {
-        
-        cmd_ = getDefaultInstance().getCmd();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string cmd = 2;</code>
-       */
-      public Builder setCmdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        cmd_ = value;
-        onChanged();
-        return this;
-      }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:apipb.ActionStreamResponse)
-    }
-
-    // @@protoc_insertion_point(class_scope:apipb.ActionStreamResponse)
-    private static final net.synchthia.api.systera.SysteraProtos.ActionStreamResponse DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new net.synchthia.api.systera.SysteraProtos.ActionStreamResponse();
-    }
-
-    public static net.synchthia.api.systera.SysteraProtos.ActionStreamResponse getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<ActionStreamResponse>
-        PARSER = new com.google.protobuf.AbstractParser<ActionStreamResponse>() {
-      public ActionStreamResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-          return new ActionStreamResponse(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<ActionStreamResponse> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ActionStreamResponse> getParserForType() {
-      return PARSER;
-    }
-
-    public net.synchthia.api.systera.SysteraProtos.ActionStreamResponse getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface AnnounceRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:apipb.AnnounceRequest)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>optional string message = 1;</code>
-     */
-    java.lang.String getMessage();
-    /**
-     * <code>optional string message = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getMessageBytes();
-  }
-  /**
-   * Protobuf type {@code apipb.AnnounceRequest}
-   */
-  public  static final class AnnounceRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:apipb.AnnounceRequest)
-      AnnounceRequestOrBuilder {
-    // Use AnnounceRequest.newBuilder() to construct.
-    private AnnounceRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private AnnounceRequest() {
-      message_ = "";
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
-    }
-    private AnnounceRequest(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      int mutable_bitField0_ = 0;
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!input.skipField(tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              message_ = s;
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_AnnounceRequest_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_AnnounceRequest_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              net.synchthia.api.systera.SysteraProtos.AnnounceRequest.class, net.synchthia.api.systera.SysteraProtos.AnnounceRequest.Builder.class);
-    }
-
-    public static final int MESSAGE_FIELD_NUMBER = 1;
-    private volatile java.lang.Object message_;
-    /**
-     * <code>optional string message = 1;</code>
-     */
-    public java.lang.String getMessage() {
-      java.lang.Object ref = message_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        message_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string message = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getMessageBytes() {
-      java.lang.Object ref = message_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        message_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!getMessageBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, message_);
-      }
-    }
-
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!getMessageBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, message_);
-      }
-      memoizedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof net.synchthia.api.systera.SysteraProtos.AnnounceRequest)) {
-        return super.equals(obj);
-      }
-      net.synchthia.api.systera.SysteraProtos.AnnounceRequest other = (net.synchthia.api.systera.SysteraProtos.AnnounceRequest) obj;
-
-      boolean result = true;
-      result = result && getMessage()
-          .equals(other.getMessage());
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
-      hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
-      hash = (53 * hash) + getMessage().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static net.synchthia.api.systera.SysteraProtos.AnnounceRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.AnnounceRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.AnnounceRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.AnnounceRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.AnnounceRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.AnnounceRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.AnnounceRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.AnnounceRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.AnnounceRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.AnnounceRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(net.synchthia.api.systera.SysteraProtos.AnnounceRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code apipb.AnnounceRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:apipb.AnnounceRequest)
-        net.synchthia.api.systera.SysteraProtos.AnnounceRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_AnnounceRequest_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_AnnounceRequest_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                net.synchthia.api.systera.SysteraProtos.AnnounceRequest.class, net.synchthia.api.systera.SysteraProtos.AnnounceRequest.Builder.class);
-      }
-
-      // Construct using net.synchthia.api.systera.SysteraProtos.AnnounceRequest.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      public Builder clear() {
-        super.clear();
-        message_ = "";
-
-        return this;
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_AnnounceRequest_descriptor;
-      }
-
-      public net.synchthia.api.systera.SysteraProtos.AnnounceRequest getDefaultInstanceForType() {
-        return net.synchthia.api.systera.SysteraProtos.AnnounceRequest.getDefaultInstance();
-      }
-
-      public net.synchthia.api.systera.SysteraProtos.AnnounceRequest build() {
-        net.synchthia.api.systera.SysteraProtos.AnnounceRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public net.synchthia.api.systera.SysteraProtos.AnnounceRequest buildPartial() {
-        net.synchthia.api.systera.SysteraProtos.AnnounceRequest result = new net.synchthia.api.systera.SysteraProtos.AnnounceRequest(this);
-        result.message_ = message_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof net.synchthia.api.systera.SysteraProtos.AnnounceRequest) {
-          return mergeFrom((net.synchthia.api.systera.SysteraProtos.AnnounceRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(net.synchthia.api.systera.SysteraProtos.AnnounceRequest other) {
-        if (other == net.synchthia.api.systera.SysteraProtos.AnnounceRequest.getDefaultInstance()) return this;
-        if (!other.getMessage().isEmpty()) {
-          message_ = other.message_;
-          onChanged();
-        }
-        onChanged();
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        net.synchthia.api.systera.SysteraProtos.AnnounceRequest parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (net.synchthia.api.systera.SysteraProtos.AnnounceRequest) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private java.lang.Object message_ = "";
-      /**
-       * <code>optional string message = 1;</code>
-       */
-      public java.lang.String getMessage() {
-        java.lang.Object ref = message_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          message_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string message = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getMessageBytes() {
-        java.lang.Object ref = message_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          message_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string message = 1;</code>
-       */
-      public Builder setMessage(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        message_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string message = 1;</code>
-       */
-      public Builder clearMessage() {
-        
-        message_ = getDefaultInstance().getMessage();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string message = 1;</code>
-       */
-      public Builder setMessageBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        message_ = value;
-        onChanged();
-        return this;
-      }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
       }
-
-
-      // @@protoc_insertion_point(builder_scope:apipb.AnnounceRequest)
-    }
-
-    // @@protoc_insertion_point(class_scope:apipb.AnnounceRequest)
-    private static final net.synchthia.api.systera.SysteraProtos.AnnounceRequest DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new net.synchthia.api.systera.SysteraProtos.AnnounceRequest();
-    }
-
-    public static net.synchthia.api.systera.SysteraProtos.AnnounceRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<AnnounceRequest>
-        PARSER = new com.google.protobuf.AbstractParser<AnnounceRequest>() {
-      public AnnounceRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-          return new AnnounceRequest(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<AnnounceRequest> parser() {
-      return PARSER;
+      return VALUES[desc.getIndex()];
     }
 
-    @java.lang.Override
-    public com.google.protobuf.Parser<AnnounceRequest> getParserForType() {
-      return PARSER;
-    }
+    private final int value;
 
-    public net.synchthia.api.systera.SysteraProtos.AnnounceRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
+    private StreamType(int value) {
+      this.value = value;
     }
 
+    // @@protoc_insertion_point(enum_scope:apipb.StreamType)
   }
 
   public interface EmptyOrBuilder extends
@@ -2020,6 +476,2476 @@ public final class SysteraProtos {
     }
 
     public net.synchthia.api.systera.SysteraProtos.Empty getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface StreamRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:apipb.StreamRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string name = 1;</code>
+     */
+    java.lang.String getName();
+    /**
+     * <code>optional string name = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
+    /**
+     * <code>optional .apipb.StreamType type = 2;</code>
+     */
+    int getTypeValue();
+    /**
+     * <code>optional .apipb.StreamType type = 2;</code>
+     */
+    net.synchthia.api.systera.SysteraProtos.StreamType getType();
+  }
+  /**
+   * Protobuf type {@code apipb.StreamRequest}
+   */
+  public  static final class StreamRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:apipb.StreamRequest)
+      StreamRequestOrBuilder {
+    // Use StreamRequest.newBuilder() to construct.
+    private StreamRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private StreamRequest() {
+      name_ = "";
+      type_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private StreamRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              name_ = s;
+              break;
+            }
+            case 16: {
+              int rawValue = input.readEnum();
+
+              type_ = rawValue;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_StreamRequest_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_StreamRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              net.synchthia.api.systera.SysteraProtos.StreamRequest.class, net.synchthia.api.systera.SysteraProtos.StreamRequest.Builder.class);
+    }
+
+    public static final int NAME_FIELD_NUMBER = 1;
+    private volatile java.lang.Object name_;
+    /**
+     * <code>optional string name = 1;</code>
+     */
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        name_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string name = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TYPE_FIELD_NUMBER = 2;
+    private int type_;
+    /**
+     * <code>optional .apipb.StreamType type = 2;</code>
+     */
+    public int getTypeValue() {
+      return type_;
+    }
+    /**
+     * <code>optional .apipb.StreamType type = 2;</code>
+     */
+    public net.synchthia.api.systera.SysteraProtos.StreamType getType() {
+      net.synchthia.api.systera.SysteraProtos.StreamType result = net.synchthia.api.systera.SysteraProtos.StreamType.valueOf(type_);
+      return result == null ? net.synchthia.api.systera.SysteraProtos.StreamType.UNRECOGNIZED : result;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
+      }
+      if (type_ != net.synchthia.api.systera.SysteraProtos.StreamType.QUIT.getNumber()) {
+        output.writeEnum(2, type_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
+      }
+      if (type_ != net.synchthia.api.systera.SysteraProtos.StreamType.QUIT.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(2, type_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof net.synchthia.api.systera.SysteraProtos.StreamRequest)) {
+        return super.equals(obj);
+      }
+      net.synchthia.api.systera.SysteraProtos.StreamRequest other = (net.synchthia.api.systera.SysteraProtos.StreamRequest) obj;
+
+      boolean result = true;
+      result = result && getName()
+          .equals(other.getName());
+      result = result && type_ == other.type_;
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
+      hash = (37 * hash) + TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + type_;
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static net.synchthia.api.systera.SysteraProtos.StreamRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.StreamRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.StreamRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.StreamRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.StreamRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.StreamRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.StreamRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.StreamRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.StreamRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.StreamRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(net.synchthia.api.systera.SysteraProtos.StreamRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code apipb.StreamRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:apipb.StreamRequest)
+        net.synchthia.api.systera.SysteraProtos.StreamRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_StreamRequest_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_StreamRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                net.synchthia.api.systera.SysteraProtos.StreamRequest.class, net.synchthia.api.systera.SysteraProtos.StreamRequest.Builder.class);
+      }
+
+      // Construct using net.synchthia.api.systera.SysteraProtos.StreamRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        name_ = "";
+
+        type_ = 0;
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_StreamRequest_descriptor;
+      }
+
+      public net.synchthia.api.systera.SysteraProtos.StreamRequest getDefaultInstanceForType() {
+        return net.synchthia.api.systera.SysteraProtos.StreamRequest.getDefaultInstance();
+      }
+
+      public net.synchthia.api.systera.SysteraProtos.StreamRequest build() {
+        net.synchthia.api.systera.SysteraProtos.StreamRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public net.synchthia.api.systera.SysteraProtos.StreamRequest buildPartial() {
+        net.synchthia.api.systera.SysteraProtos.StreamRequest result = new net.synchthia.api.systera.SysteraProtos.StreamRequest(this);
+        result.name_ = name_;
+        result.type_ = type_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof net.synchthia.api.systera.SysteraProtos.StreamRequest) {
+          return mergeFrom((net.synchthia.api.systera.SysteraProtos.StreamRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(net.synchthia.api.systera.SysteraProtos.StreamRequest other) {
+        if (other == net.synchthia.api.systera.SysteraProtos.StreamRequest.getDefaultInstance()) return this;
+        if (!other.getName().isEmpty()) {
+          name_ = other.name_;
+          onChanged();
+        }
+        if (other.type_ != 0) {
+          setTypeValue(other.getTypeValue());
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        net.synchthia.api.systera.SysteraProtos.StreamRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (net.synchthia.api.systera.SysteraProtos.StreamRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object name_ = "";
+      /**
+       * <code>optional string name = 1;</code>
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string name = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string name = 1;</code>
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string name = 1;</code>
+       */
+      public Builder clearName() {
+        
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string name = 1;</code>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        name_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int type_ = 0;
+      /**
+       * <code>optional .apipb.StreamType type = 2;</code>
+       */
+      public int getTypeValue() {
+        return type_;
+      }
+      /**
+       * <code>optional .apipb.StreamType type = 2;</code>
+       */
+      public Builder setTypeValue(int value) {
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .apipb.StreamType type = 2;</code>
+       */
+      public net.synchthia.api.systera.SysteraProtos.StreamType getType() {
+        net.synchthia.api.systera.SysteraProtos.StreamType result = net.synchthia.api.systera.SysteraProtos.StreamType.valueOf(type_);
+        return result == null ? net.synchthia.api.systera.SysteraProtos.StreamType.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>optional .apipb.StreamType type = 2;</code>
+       */
+      public Builder setType(net.synchthia.api.systera.SysteraProtos.StreamType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        type_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .apipb.StreamType type = 2;</code>
+       */
+      public Builder clearType() {
+        
+        type_ = 0;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:apipb.StreamRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:apipb.StreamRequest)
+    private static final net.synchthia.api.systera.SysteraProtos.StreamRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new net.synchthia.api.systera.SysteraProtos.StreamRequest();
+    }
+
+    public static net.synchthia.api.systera.SysteraProtos.StreamRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<StreamRequest>
+        PARSER = new com.google.protobuf.AbstractParser<StreamRequest>() {
+      public StreamRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new StreamRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<StreamRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<StreamRequest> getParserForType() {
+      return PARSER;
+    }
+
+    public net.synchthia.api.systera.SysteraProtos.StreamRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ActionStreamResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:apipb.ActionStreamResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional .apipb.StreamType type = 1;</code>
+     */
+    int getTypeValue();
+    /**
+     * <code>optional .apipb.StreamType type = 1;</code>
+     */
+    net.synchthia.api.systera.SysteraProtos.StreamType getType();
+
+    /**
+     * <code>optional string target = 2;</code>
+     */
+    java.lang.String getTarget();
+    /**
+     * <code>optional string target = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getTargetBytes();
+
+    /**
+     * <code>optional string cmd = 3;</code>
+     */
+    java.lang.String getCmd();
+    /**
+     * <code>optional string cmd = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getCmdBytes();
+  }
+  /**
+   * Protobuf type {@code apipb.ActionStreamResponse}
+   */
+  public  static final class ActionStreamResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:apipb.ActionStreamResponse)
+      ActionStreamResponseOrBuilder {
+    // Use ActionStreamResponse.newBuilder() to construct.
+    private ActionStreamResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ActionStreamResponse() {
+      type_ = 0;
+      target_ = "";
+      cmd_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private ActionStreamResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              int rawValue = input.readEnum();
+
+              type_ = rawValue;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              target_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              cmd_ = s;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_ActionStreamResponse_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_ActionStreamResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              net.synchthia.api.systera.SysteraProtos.ActionStreamResponse.class, net.synchthia.api.systera.SysteraProtos.ActionStreamResponse.Builder.class);
+    }
+
+    public static final int TYPE_FIELD_NUMBER = 1;
+    private int type_;
+    /**
+     * <code>optional .apipb.StreamType type = 1;</code>
+     */
+    public int getTypeValue() {
+      return type_;
+    }
+    /**
+     * <code>optional .apipb.StreamType type = 1;</code>
+     */
+    public net.synchthia.api.systera.SysteraProtos.StreamType getType() {
+      net.synchthia.api.systera.SysteraProtos.StreamType result = net.synchthia.api.systera.SysteraProtos.StreamType.valueOf(type_);
+      return result == null ? net.synchthia.api.systera.SysteraProtos.StreamType.UNRECOGNIZED : result;
+    }
+
+    public static final int TARGET_FIELD_NUMBER = 2;
+    private volatile java.lang.Object target_;
+    /**
+     * <code>optional string target = 2;</code>
+     */
+    public java.lang.String getTarget() {
+      java.lang.Object ref = target_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        target_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string target = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTargetBytes() {
+      java.lang.Object ref = target_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        target_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int CMD_FIELD_NUMBER = 3;
+    private volatile java.lang.Object cmd_;
+    /**
+     * <code>optional string cmd = 3;</code>
+     */
+    public java.lang.String getCmd() {
+      java.lang.Object ref = cmd_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        cmd_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string cmd = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getCmdBytes() {
+      java.lang.Object ref = cmd_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        cmd_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (type_ != net.synchthia.api.systera.SysteraProtos.StreamType.QUIT.getNumber()) {
+        output.writeEnum(1, type_);
+      }
+      if (!getTargetBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, target_);
+      }
+      if (!getCmdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, cmd_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (type_ != net.synchthia.api.systera.SysteraProtos.StreamType.QUIT.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, type_);
+      }
+      if (!getTargetBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, target_);
+      }
+      if (!getCmdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, cmd_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof net.synchthia.api.systera.SysteraProtos.ActionStreamResponse)) {
+        return super.equals(obj);
+      }
+      net.synchthia.api.systera.SysteraProtos.ActionStreamResponse other = (net.synchthia.api.systera.SysteraProtos.ActionStreamResponse) obj;
+
+      boolean result = true;
+      result = result && type_ == other.type_;
+      result = result && getTarget()
+          .equals(other.getTarget());
+      result = result && getCmd()
+          .equals(other.getCmd());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + type_;
+      hash = (37 * hash) + TARGET_FIELD_NUMBER;
+      hash = (53 * hash) + getTarget().hashCode();
+      hash = (37 * hash) + CMD_FIELD_NUMBER;
+      hash = (53 * hash) + getCmd().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static net.synchthia.api.systera.SysteraProtos.ActionStreamResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.ActionStreamResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.ActionStreamResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.ActionStreamResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.ActionStreamResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.ActionStreamResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.ActionStreamResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.ActionStreamResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.ActionStreamResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.ActionStreamResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(net.synchthia.api.systera.SysteraProtos.ActionStreamResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code apipb.ActionStreamResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:apipb.ActionStreamResponse)
+        net.synchthia.api.systera.SysteraProtos.ActionStreamResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_ActionStreamResponse_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_ActionStreamResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                net.synchthia.api.systera.SysteraProtos.ActionStreamResponse.class, net.synchthia.api.systera.SysteraProtos.ActionStreamResponse.Builder.class);
+      }
+
+      // Construct using net.synchthia.api.systera.SysteraProtos.ActionStreamResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        type_ = 0;
+
+        target_ = "";
+
+        cmd_ = "";
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_ActionStreamResponse_descriptor;
+      }
+
+      public net.synchthia.api.systera.SysteraProtos.ActionStreamResponse getDefaultInstanceForType() {
+        return net.synchthia.api.systera.SysteraProtos.ActionStreamResponse.getDefaultInstance();
+      }
+
+      public net.synchthia.api.systera.SysteraProtos.ActionStreamResponse build() {
+        net.synchthia.api.systera.SysteraProtos.ActionStreamResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public net.synchthia.api.systera.SysteraProtos.ActionStreamResponse buildPartial() {
+        net.synchthia.api.systera.SysteraProtos.ActionStreamResponse result = new net.synchthia.api.systera.SysteraProtos.ActionStreamResponse(this);
+        result.type_ = type_;
+        result.target_ = target_;
+        result.cmd_ = cmd_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof net.synchthia.api.systera.SysteraProtos.ActionStreamResponse) {
+          return mergeFrom((net.synchthia.api.systera.SysteraProtos.ActionStreamResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(net.synchthia.api.systera.SysteraProtos.ActionStreamResponse other) {
+        if (other == net.synchthia.api.systera.SysteraProtos.ActionStreamResponse.getDefaultInstance()) return this;
+        if (other.type_ != 0) {
+          setTypeValue(other.getTypeValue());
+        }
+        if (!other.getTarget().isEmpty()) {
+          target_ = other.target_;
+          onChanged();
+        }
+        if (!other.getCmd().isEmpty()) {
+          cmd_ = other.cmd_;
+          onChanged();
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        net.synchthia.api.systera.SysteraProtos.ActionStreamResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (net.synchthia.api.systera.SysteraProtos.ActionStreamResponse) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int type_ = 0;
+      /**
+       * <code>optional .apipb.StreamType type = 1;</code>
+       */
+      public int getTypeValue() {
+        return type_;
+      }
+      /**
+       * <code>optional .apipb.StreamType type = 1;</code>
+       */
+      public Builder setTypeValue(int value) {
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .apipb.StreamType type = 1;</code>
+       */
+      public net.synchthia.api.systera.SysteraProtos.StreamType getType() {
+        net.synchthia.api.systera.SysteraProtos.StreamType result = net.synchthia.api.systera.SysteraProtos.StreamType.valueOf(type_);
+        return result == null ? net.synchthia.api.systera.SysteraProtos.StreamType.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>optional .apipb.StreamType type = 1;</code>
+       */
+      public Builder setType(net.synchthia.api.systera.SysteraProtos.StreamType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        type_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .apipb.StreamType type = 1;</code>
+       */
+      public Builder clearType() {
+        
+        type_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object target_ = "";
+      /**
+       * <code>optional string target = 2;</code>
+       */
+      public java.lang.String getTarget() {
+        java.lang.Object ref = target_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          target_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string target = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTargetBytes() {
+        java.lang.Object ref = target_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          target_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string target = 2;</code>
+       */
+      public Builder setTarget(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        target_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string target = 2;</code>
+       */
+      public Builder clearTarget() {
+        
+        target_ = getDefaultInstance().getTarget();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string target = 2;</code>
+       */
+      public Builder setTargetBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        target_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object cmd_ = "";
+      /**
+       * <code>optional string cmd = 3;</code>
+       */
+      public java.lang.String getCmd() {
+        java.lang.Object ref = cmd_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          cmd_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string cmd = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getCmdBytes() {
+        java.lang.Object ref = cmd_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          cmd_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string cmd = 3;</code>
+       */
+      public Builder setCmd(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        cmd_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string cmd = 3;</code>
+       */
+      public Builder clearCmd() {
+        
+        cmd_ = getDefaultInstance().getCmd();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string cmd = 3;</code>
+       */
+      public Builder setCmdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        cmd_ = value;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:apipb.ActionStreamResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:apipb.ActionStreamResponse)
+    private static final net.synchthia.api.systera.SysteraProtos.ActionStreamResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new net.synchthia.api.systera.SysteraProtos.ActionStreamResponse();
+    }
+
+    public static net.synchthia.api.systera.SysteraProtos.ActionStreamResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ActionStreamResponse>
+        PARSER = new com.google.protobuf.AbstractParser<ActionStreamResponse>() {
+      public ActionStreamResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new ActionStreamResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ActionStreamResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ActionStreamResponse> getParserForType() {
+      return PARSER;
+    }
+
+    public net.synchthia.api.systera.SysteraProtos.ActionStreamResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface AnnounceRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:apipb.AnnounceRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string message = 1;</code>
+     */
+    java.lang.String getMessage();
+    /**
+     * <code>optional string message = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getMessageBytes();
+
+    /**
+     * <code>optional string target = 2;</code>
+     */
+    java.lang.String getTarget();
+    /**
+     * <code>optional string target = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getTargetBytes();
+  }
+  /**
+   * Protobuf type {@code apipb.AnnounceRequest}
+   */
+  public  static final class AnnounceRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:apipb.AnnounceRequest)
+      AnnounceRequestOrBuilder {
+    // Use AnnounceRequest.newBuilder() to construct.
+    private AnnounceRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private AnnounceRequest() {
+      message_ = "";
+      target_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private AnnounceRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              message_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              target_ = s;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_AnnounceRequest_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_AnnounceRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              net.synchthia.api.systera.SysteraProtos.AnnounceRequest.class, net.synchthia.api.systera.SysteraProtos.AnnounceRequest.Builder.class);
+    }
+
+    public static final int MESSAGE_FIELD_NUMBER = 1;
+    private volatile java.lang.Object message_;
+    /**
+     * <code>optional string message = 1;</code>
+     */
+    public java.lang.String getMessage() {
+      java.lang.Object ref = message_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        message_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string message = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getMessageBytes() {
+      java.lang.Object ref = message_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        message_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TARGET_FIELD_NUMBER = 2;
+    private volatile java.lang.Object target_;
+    /**
+     * <code>optional string target = 2;</code>
+     */
+    public java.lang.String getTarget() {
+      java.lang.Object ref = target_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        target_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string target = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTargetBytes() {
+      java.lang.Object ref = target_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        target_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getMessageBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, message_);
+      }
+      if (!getTargetBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, target_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getMessageBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, message_);
+      }
+      if (!getTargetBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, target_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof net.synchthia.api.systera.SysteraProtos.AnnounceRequest)) {
+        return super.equals(obj);
+      }
+      net.synchthia.api.systera.SysteraProtos.AnnounceRequest other = (net.synchthia.api.systera.SysteraProtos.AnnounceRequest) obj;
+
+      boolean result = true;
+      result = result && getMessage()
+          .equals(other.getMessage());
+      result = result && getTarget()
+          .equals(other.getTarget());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+      hash = (53 * hash) + getMessage().hashCode();
+      hash = (37 * hash) + TARGET_FIELD_NUMBER;
+      hash = (53 * hash) + getTarget().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static net.synchthia.api.systera.SysteraProtos.AnnounceRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.AnnounceRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.AnnounceRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.AnnounceRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.AnnounceRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.AnnounceRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.AnnounceRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.AnnounceRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.AnnounceRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.AnnounceRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(net.synchthia.api.systera.SysteraProtos.AnnounceRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code apipb.AnnounceRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:apipb.AnnounceRequest)
+        net.synchthia.api.systera.SysteraProtos.AnnounceRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_AnnounceRequest_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_AnnounceRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                net.synchthia.api.systera.SysteraProtos.AnnounceRequest.class, net.synchthia.api.systera.SysteraProtos.AnnounceRequest.Builder.class);
+      }
+
+      // Construct using net.synchthia.api.systera.SysteraProtos.AnnounceRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        message_ = "";
+
+        target_ = "";
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_AnnounceRequest_descriptor;
+      }
+
+      public net.synchthia.api.systera.SysteraProtos.AnnounceRequest getDefaultInstanceForType() {
+        return net.synchthia.api.systera.SysteraProtos.AnnounceRequest.getDefaultInstance();
+      }
+
+      public net.synchthia.api.systera.SysteraProtos.AnnounceRequest build() {
+        net.synchthia.api.systera.SysteraProtos.AnnounceRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public net.synchthia.api.systera.SysteraProtos.AnnounceRequest buildPartial() {
+        net.synchthia.api.systera.SysteraProtos.AnnounceRequest result = new net.synchthia.api.systera.SysteraProtos.AnnounceRequest(this);
+        result.message_ = message_;
+        result.target_ = target_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof net.synchthia.api.systera.SysteraProtos.AnnounceRequest) {
+          return mergeFrom((net.synchthia.api.systera.SysteraProtos.AnnounceRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(net.synchthia.api.systera.SysteraProtos.AnnounceRequest other) {
+        if (other == net.synchthia.api.systera.SysteraProtos.AnnounceRequest.getDefaultInstance()) return this;
+        if (!other.getMessage().isEmpty()) {
+          message_ = other.message_;
+          onChanged();
+        }
+        if (!other.getTarget().isEmpty()) {
+          target_ = other.target_;
+          onChanged();
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        net.synchthia.api.systera.SysteraProtos.AnnounceRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (net.synchthia.api.systera.SysteraProtos.AnnounceRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object message_ = "";
+      /**
+       * <code>optional string message = 1;</code>
+       */
+      public java.lang.String getMessage() {
+        java.lang.Object ref = message_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          message_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string message = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getMessageBytes() {
+        java.lang.Object ref = message_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          message_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string message = 1;</code>
+       */
+      public Builder setMessage(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        message_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string message = 1;</code>
+       */
+      public Builder clearMessage() {
+        
+        message_ = getDefaultInstance().getMessage();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string message = 1;</code>
+       */
+      public Builder setMessageBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        message_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object target_ = "";
+      /**
+       * <code>optional string target = 2;</code>
+       */
+      public java.lang.String getTarget() {
+        java.lang.Object ref = target_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          target_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string target = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTargetBytes() {
+        java.lang.Object ref = target_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          target_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string target = 2;</code>
+       */
+      public Builder setTarget(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        target_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string target = 2;</code>
+       */
+      public Builder clearTarget() {
+        
+        target_ = getDefaultInstance().getTarget();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string target = 2;</code>
+       */
+      public Builder setTargetBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        target_ = value;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:apipb.AnnounceRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:apipb.AnnounceRequest)
+    private static final net.synchthia.api.systera.SysteraProtos.AnnounceRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new net.synchthia.api.systera.SysteraProtos.AnnounceRequest();
+    }
+
+    public static net.synchthia.api.systera.SysteraProtos.AnnounceRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<AnnounceRequest>
+        PARSER = new com.google.protobuf.AbstractParser<AnnounceRequest>() {
+      public AnnounceRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new AnnounceRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<AnnounceRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AnnounceRequest> getParserForType() {
+      return PARSER;
+    }
+
+    public net.synchthia.api.systera.SysteraProtos.AnnounceRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface QuitStreamRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:apipb.QuitStreamRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string name = 1;</code>
+     */
+    java.lang.String getName();
+    /**
+     * <code>optional string name = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+  }
+  /**
+   * Protobuf type {@code apipb.QuitStreamRequest}
+   */
+  public  static final class QuitStreamRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:apipb.QuitStreamRequest)
+      QuitStreamRequestOrBuilder {
+    // Use QuitStreamRequest.newBuilder() to construct.
+    private QuitStreamRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private QuitStreamRequest() {
+      name_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private QuitStreamRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              name_ = s;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_QuitStreamRequest_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_QuitStreamRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              net.synchthia.api.systera.SysteraProtos.QuitStreamRequest.class, net.synchthia.api.systera.SysteraProtos.QuitStreamRequest.Builder.class);
+    }
+
+    public static final int NAME_FIELD_NUMBER = 1;
+    private volatile java.lang.Object name_;
+    /**
+     * <code>optional string name = 1;</code>
+     */
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        name_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string name = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof net.synchthia.api.systera.SysteraProtos.QuitStreamRequest)) {
+        return super.equals(obj);
+      }
+      net.synchthia.api.systera.SysteraProtos.QuitStreamRequest other = (net.synchthia.api.systera.SysteraProtos.QuitStreamRequest) obj;
+
+      boolean result = true;
+      result = result && getName()
+          .equals(other.getName());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static net.synchthia.api.systera.SysteraProtos.QuitStreamRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.QuitStreamRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.QuitStreamRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.QuitStreamRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.QuitStreamRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.QuitStreamRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.QuitStreamRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.QuitStreamRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.QuitStreamRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.QuitStreamRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(net.synchthia.api.systera.SysteraProtos.QuitStreamRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code apipb.QuitStreamRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:apipb.QuitStreamRequest)
+        net.synchthia.api.systera.SysteraProtos.QuitStreamRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_QuitStreamRequest_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_QuitStreamRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                net.synchthia.api.systera.SysteraProtos.QuitStreamRequest.class, net.synchthia.api.systera.SysteraProtos.QuitStreamRequest.Builder.class);
+      }
+
+      // Construct using net.synchthia.api.systera.SysteraProtos.QuitStreamRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        name_ = "";
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_QuitStreamRequest_descriptor;
+      }
+
+      public net.synchthia.api.systera.SysteraProtos.QuitStreamRequest getDefaultInstanceForType() {
+        return net.synchthia.api.systera.SysteraProtos.QuitStreamRequest.getDefaultInstance();
+      }
+
+      public net.synchthia.api.systera.SysteraProtos.QuitStreamRequest build() {
+        net.synchthia.api.systera.SysteraProtos.QuitStreamRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public net.synchthia.api.systera.SysteraProtos.QuitStreamRequest buildPartial() {
+        net.synchthia.api.systera.SysteraProtos.QuitStreamRequest result = new net.synchthia.api.systera.SysteraProtos.QuitStreamRequest(this);
+        result.name_ = name_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof net.synchthia.api.systera.SysteraProtos.QuitStreamRequest) {
+          return mergeFrom((net.synchthia.api.systera.SysteraProtos.QuitStreamRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(net.synchthia.api.systera.SysteraProtos.QuitStreamRequest other) {
+        if (other == net.synchthia.api.systera.SysteraProtos.QuitStreamRequest.getDefaultInstance()) return this;
+        if (!other.getName().isEmpty()) {
+          name_ = other.name_;
+          onChanged();
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        net.synchthia.api.systera.SysteraProtos.QuitStreamRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (net.synchthia.api.systera.SysteraProtos.QuitStreamRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object name_ = "";
+      /**
+       * <code>optional string name = 1;</code>
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string name = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string name = 1;</code>
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string name = 1;</code>
+       */
+      public Builder clearName() {
+        
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string name = 1;</code>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:apipb.QuitStreamRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:apipb.QuitStreamRequest)
+    private static final net.synchthia.api.systera.SysteraProtos.QuitStreamRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new net.synchthia.api.systera.SysteraProtos.QuitStreamRequest();
+    }
+
+    public static net.synchthia.api.systera.SysteraProtos.QuitStreamRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<QuitStreamRequest>
+        PARSER = new com.google.protobuf.AbstractParser<QuitStreamRequest>() {
+      public QuitStreamRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new QuitStreamRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<QuitStreamRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<QuitStreamRequest> getParserForType() {
+      return PARSER;
+    }
+
+    public net.synchthia.api.systera.SysteraProtos.QuitStreamRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -4415,6 +5341,715 @@ public final class SysteraProtos {
 
   }
 
+  public interface SetPlayerSettingsRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:apipb.SetPlayerSettingsRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string playerUUID = 1;</code>
+     */
+    java.lang.String getPlayerUUID();
+    /**
+     * <code>optional string playerUUID = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getPlayerUUIDBytes();
+
+    /**
+     * <code>optional string key = 2;</code>
+     */
+    java.lang.String getKey();
+    /**
+     * <code>optional string key = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getKeyBytes();
+
+    /**
+     * <code>optional bool value = 3;</code>
+     */
+    boolean getValue();
+  }
+  /**
+   * Protobuf type {@code apipb.SetPlayerSettingsRequest}
+   */
+  public  static final class SetPlayerSettingsRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:apipb.SetPlayerSettingsRequest)
+      SetPlayerSettingsRequestOrBuilder {
+    // Use SetPlayerSettingsRequest.newBuilder() to construct.
+    private SetPlayerSettingsRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SetPlayerSettingsRequest() {
+      playerUUID_ = "";
+      key_ = "";
+      value_ = false;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private SetPlayerSettingsRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              playerUUID_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              key_ = s;
+              break;
+            }
+            case 24: {
+
+              value_ = input.readBool();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_SetPlayerSettingsRequest_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_SetPlayerSettingsRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest.class, net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest.Builder.class);
+    }
+
+    public static final int PLAYERUUID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object playerUUID_;
+    /**
+     * <code>optional string playerUUID = 1;</code>
+     */
+    public java.lang.String getPlayerUUID() {
+      java.lang.Object ref = playerUUID_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        playerUUID_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string playerUUID = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getPlayerUUIDBytes() {
+      java.lang.Object ref = playerUUID_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        playerUUID_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int KEY_FIELD_NUMBER = 2;
+    private volatile java.lang.Object key_;
+    /**
+     * <code>optional string key = 2;</code>
+     */
+    public java.lang.String getKey() {
+      java.lang.Object ref = key_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        key_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string key = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getKeyBytes() {
+      java.lang.Object ref = key_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        key_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int VALUE_FIELD_NUMBER = 3;
+    private boolean value_;
+    /**
+     * <code>optional bool value = 3;</code>
+     */
+    public boolean getValue() {
+      return value_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getPlayerUUIDBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, playerUUID_);
+      }
+      if (!getKeyBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, key_);
+      }
+      if (value_ != false) {
+        output.writeBool(3, value_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getPlayerUUIDBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, playerUUID_);
+      }
+      if (!getKeyBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, key_);
+      }
+      if (value_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(3, value_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest)) {
+        return super.equals(obj);
+      }
+      net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest other = (net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest) obj;
+
+      boolean result = true;
+      result = result && getPlayerUUID()
+          .equals(other.getPlayerUUID());
+      result = result && getKey()
+          .equals(other.getKey());
+      result = result && (getValue()
+          == other.getValue());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + PLAYERUUID_FIELD_NUMBER;
+      hash = (53 * hash) + getPlayerUUID().hashCode();
+      hash = (37 * hash) + KEY_FIELD_NUMBER;
+      hash = (53 * hash) + getKey().hashCode();
+      hash = (37 * hash) + VALUE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getValue());
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code apipb.SetPlayerSettingsRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:apipb.SetPlayerSettingsRequest)
+        net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_SetPlayerSettingsRequest_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_SetPlayerSettingsRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest.class, net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest.Builder.class);
+      }
+
+      // Construct using net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        playerUUID_ = "";
+
+        key_ = "";
+
+        value_ = false;
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_SetPlayerSettingsRequest_descriptor;
+      }
+
+      public net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest getDefaultInstanceForType() {
+        return net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest.getDefaultInstance();
+      }
+
+      public net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest build() {
+        net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest buildPartial() {
+        net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest result = new net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest(this);
+        result.playerUUID_ = playerUUID_;
+        result.key_ = key_;
+        result.value_ = value_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest) {
+          return mergeFrom((net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest other) {
+        if (other == net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest.getDefaultInstance()) return this;
+        if (!other.getPlayerUUID().isEmpty()) {
+          playerUUID_ = other.playerUUID_;
+          onChanged();
+        }
+        if (!other.getKey().isEmpty()) {
+          key_ = other.key_;
+          onChanged();
+        }
+        if (other.getValue() != false) {
+          setValue(other.getValue());
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object playerUUID_ = "";
+      /**
+       * <code>optional string playerUUID = 1;</code>
+       */
+      public java.lang.String getPlayerUUID() {
+        java.lang.Object ref = playerUUID_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          playerUUID_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string playerUUID = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getPlayerUUIDBytes() {
+        java.lang.Object ref = playerUUID_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          playerUUID_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string playerUUID = 1;</code>
+       */
+      public Builder setPlayerUUID(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        playerUUID_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string playerUUID = 1;</code>
+       */
+      public Builder clearPlayerUUID() {
+        
+        playerUUID_ = getDefaultInstance().getPlayerUUID();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string playerUUID = 1;</code>
+       */
+      public Builder setPlayerUUIDBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        playerUUID_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object key_ = "";
+      /**
+       * <code>optional string key = 2;</code>
+       */
+      public java.lang.String getKey() {
+        java.lang.Object ref = key_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          key_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string key = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getKeyBytes() {
+        java.lang.Object ref = key_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          key_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string key = 2;</code>
+       */
+      public Builder setKey(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        key_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string key = 2;</code>
+       */
+      public Builder clearKey() {
+        
+        key_ = getDefaultInstance().getKey();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string key = 2;</code>
+       */
+      public Builder setKeyBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        key_ = value;
+        onChanged();
+        return this;
+      }
+
+      private boolean value_ ;
+      /**
+       * <code>optional bool value = 3;</code>
+       */
+      public boolean getValue() {
+        return value_;
+      }
+      /**
+       * <code>optional bool value = 3;</code>
+       */
+      public Builder setValue(boolean value) {
+        
+        value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool value = 3;</code>
+       */
+      public Builder clearValue() {
+        
+        value_ = false;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:apipb.SetPlayerSettingsRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:apipb.SetPlayerSettingsRequest)
+    private static final net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest();
+    }
+
+    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SetPlayerSettingsRequest>
+        PARSER = new com.google.protobuf.AbstractParser<SetPlayerSettingsRequest>() {
+      public SetPlayerSettingsRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new SetPlayerSettingsRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SetPlayerSettingsRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SetPlayerSettingsRequest> getParserForType() {
+      return PARSER;
+    }
+
+    public net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_apipb_Empty_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_apipb_Empty_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_apipb_StreamRequest_descriptor;
   private static final 
@@ -4431,10 +6066,10 @@ public final class SysteraProtos {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_apipb_AnnounceRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_apipb_Empty_descriptor;
+    internal_static_apipb_QuitStreamRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_apipb_Empty_fieldAccessorTable;
+      internal_static_apipb_QuitStreamRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_apipb_InitPlayerProfileRequest_descriptor;
   private static final 
@@ -4460,6 +6095,11 @@ public final class SysteraProtos {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_apipb_FetchPlayerProfileResponse_SettingsEntry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_apipb_SetPlayerSettingsRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_apipb_SetPlayerSettingsRequest_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -4469,28 +6109,37 @@ public final class SysteraProtos {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\rsystera.proto\022\005apipb\"\035\n\rStreamRequest\022" +
-      "\014\n\004name\030\001 \001(\t\"1\n\024ActionStreamResponse\022\014\n" +
-      "\004type\030\001 \001(\t\022\013\n\003cmd\030\002 \001(\t\"\"\n\017AnnounceRequ" +
-      "est\022\017\n\007message\030\001 \001(\t\"\007\n\005Empty\"[\n\030InitPla" +
-      "yerProfileRequest\022\022\n\nplayerUUID\030\001 \001(\t\022\022\n" +
-      "\nplayerName\030\002 \001(\t\022\027\n\017playerIPAddress\030\003 \001" +
-      "(\t\"/\n\031InitPlayerProfileResponse\022\022\n\nhasPr" +
-      "ofile\030\001 \001(\010\"/\n\031FetchPlayerProfileRequest" +
-      "\022\022\n\nplayerUUID\030\001 \001(\t\"\220\001\n\032FetchPlayerProf" +
-      "ileResponse\022A\n\010settings\030\001 \003(\0132/.apipb.Fe",
-      "tchPlayerProfileResponse.SettingsEntry\032/" +
-      "\n\rSettingsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 " +
-      "\001(\010:\0028\0012\273\002\n\007Systera\022E\n\014ActionStream\022\024.ap" +
-      "ipb.StreamRequest\032\033.apipb.ActionStreamRe" +
-      "sponse\"\0000\001\0222\n\010Announce\022\026.apipb.AnnounceR" +
-      "equest\032\014.apipb.Empty\"\000\022X\n\021InitPlayerProf" +
-      "ile\022\037.apipb.InitPlayerProfileRequest\032 .a" +
-      "pipb.InitPlayerProfileResponse\"\000\022[\n\022Fetc" +
-      "hPlayerProfile\022 .apipb.FetchPlayerProfil" +
-      "eRequest\032!.apipb.FetchPlayerProfileRespo",
-      "nse\"\000B*\n\031net.synchthia.api.systeraB\rSyst" +
-      "eraProtosb\006proto3"
+      "\n\rsystera.proto\022\005apipb\"\007\n\005Empty\">\n\rStrea" +
+      "mRequest\022\014\n\004name\030\001 \001(\t\022\037\n\004type\030\002 \001(\0162\021.a" +
+      "pipb.StreamType\"T\n\024ActionStreamResponse\022" +
+      "\037\n\004type\030\001 \001(\0162\021.apipb.StreamType\022\016\n\006targ" +
+      "et\030\002 \001(\t\022\013\n\003cmd\030\003 \001(\t\"2\n\017AnnounceRequest" +
+      "\022\017\n\007message\030\001 \001(\t\022\016\n\006target\030\002 \001(\t\"!\n\021Qui" +
+      "tStreamRequest\022\014\n\004name\030\001 \001(\t\"[\n\030InitPlay" +
+      "erProfileRequest\022\022\n\nplayerUUID\030\001 \001(\t\022\022\n\n" +
+      "playerName\030\002 \001(\t\022\027\n\017playerIPAddress\030\003 \001(" +
+      "\t\"/\n\031InitPlayerProfileResponse\022\022\n\nhasPro",
+      "file\030\001 \001(\010\"/\n\031FetchPlayerProfileRequest\022" +
+      "\022\n\nplayerUUID\030\001 \001(\t\"\220\001\n\032FetchPlayerProfi" +
+      "leResponse\022A\n\010settings\030\001 \003(\0132/.apipb.Fet" +
+      "chPlayerProfileResponse.SettingsEntry\032/\n" +
+      "\rSettingsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001" +
+      "(\010:\0028\001\"J\n\030SetPlayerSettingsRequest\022\022\n\npl" +
+      "ayerUUID\030\001 \001(\t\022\013\n\003key\030\002 \001(\t\022\r\n\005value\030\003 \001" +
+      "(\010*$\n\nStreamType\022\010\n\004QUIT\020\000\022\014\n\010DISPATCH\020\001" +
+      "2\267\003\n\007Systera\022E\n\014ActionStream\022\024.apipb.Str" +
+      "eamRequest\032\033.apipb.ActionStreamResponse\"",
+      "\0000\001\0222\n\010Announce\022\026.apipb.AnnounceRequest\032" +
+      "\014.apipb.Empty\"\000\0226\n\nQuitStream\022\030.apipb.Qu" +
+      "itStreamRequest\032\014.apipb.Empty\"\000\022X\n\021InitP" +
+      "layerProfile\022\037.apipb.InitPlayerProfileRe" +
+      "quest\032 .apipb.InitPlayerProfileResponse\"" +
+      "\000\022[\n\022FetchPlayerProfile\022 .apipb.FetchPla" +
+      "yerProfileRequest\032!.apipb.FetchPlayerPro" +
+      "fileResponse\"\000\022B\n\021SetPlayerSettings\022\037.ap" +
+      "ipb.SetPlayerSettingsRequest\032\014.apipb.Emp" +
+      "tyB*\n\031net.synchthia.api.systeraB\rSystera",
+      "Protosb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -4504,50 +6153,56 @@ public final class SysteraProtos {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_apipb_StreamRequest_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_apipb_StreamRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_apipb_StreamRequest_descriptor,
-        new java.lang.String[] { "Name", });
-    internal_static_apipb_ActionStreamResponse_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_apipb_ActionStreamResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_apipb_ActionStreamResponse_descriptor,
-        new java.lang.String[] { "Type", "Cmd", });
-    internal_static_apipb_AnnounceRequest_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_apipb_AnnounceRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_apipb_AnnounceRequest_descriptor,
-        new java.lang.String[] { "Message", });
     internal_static_apipb_Empty_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(0);
     internal_static_apipb_Empty_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_apipb_Empty_descriptor,
         new java.lang.String[] { });
-    internal_static_apipb_InitPlayerProfileRequest_descriptor =
+    internal_static_apipb_StreamRequest_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_apipb_StreamRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_apipb_StreamRequest_descriptor,
+        new java.lang.String[] { "Name", "Type", });
+    internal_static_apipb_ActionStreamResponse_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_apipb_ActionStreamResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_apipb_ActionStreamResponse_descriptor,
+        new java.lang.String[] { "Type", "Target", "Cmd", });
+    internal_static_apipb_AnnounceRequest_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_apipb_AnnounceRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_apipb_AnnounceRequest_descriptor,
+        new java.lang.String[] { "Message", "Target", });
+    internal_static_apipb_QuitStreamRequest_descriptor =
       getDescriptor().getMessageTypes().get(4);
+    internal_static_apipb_QuitStreamRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_apipb_QuitStreamRequest_descriptor,
+        new java.lang.String[] { "Name", });
+    internal_static_apipb_InitPlayerProfileRequest_descriptor =
+      getDescriptor().getMessageTypes().get(5);
     internal_static_apipb_InitPlayerProfileRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_apipb_InitPlayerProfileRequest_descriptor,
         new java.lang.String[] { "PlayerUUID", "PlayerName", "PlayerIPAddress", });
     internal_static_apipb_InitPlayerProfileResponse_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_apipb_InitPlayerProfileResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_apipb_InitPlayerProfileResponse_descriptor,
         new java.lang.String[] { "HasProfile", });
     internal_static_apipb_FetchPlayerProfileRequest_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_apipb_FetchPlayerProfileRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_apipb_FetchPlayerProfileRequest_descriptor,
         new java.lang.String[] { "PlayerUUID", });
     internal_static_apipb_FetchPlayerProfileResponse_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_apipb_FetchPlayerProfileResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_apipb_FetchPlayerProfileResponse_descriptor,
@@ -4558,6 +6213,12 @@ public final class SysteraProtos {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_apipb_FetchPlayerProfileResponse_SettingsEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
+    internal_static_apipb_SetPlayerSettingsRequest_descriptor =
+      getDescriptor().getMessageTypes().get(9);
+    internal_static_apipb_SetPlayerSettingsRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_apipb_SetPlayerSettingsRequest_descriptor,
+        new java.lang.String[] { "PlayerUUID", "Key", "Value", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

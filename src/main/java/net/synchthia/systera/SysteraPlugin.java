@@ -4,6 +4,8 @@ import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
 import com.sk89q.bukkit.util.CommandsManagerRegistration;
 import com.sk89q.minecraft.util.commands.*;
+import lombok.Getter;
+import lombok.SneakyThrows;
 import net.synchthia.systera.command.*;
 import net.synchthia.systera.config.ConfigManager;
 import net.synchthia.systera.i18n.I18n;

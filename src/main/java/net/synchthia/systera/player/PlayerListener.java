@@ -38,8 +38,8 @@ public class PlayerListener implements Listener {
         }
 
         try {
-            plugin.playerAPI.initPlayerProfile(event.getUniqueId(), event.getName(), event.getAddress().getHostAddress()).get(5, TimeUnit.SECONDS);
-            plugin.playerAPI.fetchPlayerProfile(event.getUniqueId(), event.getName()).get(5, TimeUnit.SECONDS);
+            plugin.playerAPI.initPlayerProfile(event.getUniqueId(), event.getName(), event.getAddress().getHostAddress()).get(10, TimeUnit.SECONDS);
+            plugin.playerAPI.fetchPlayerProfile(event.getUniqueId(), event.getName()).get(10, TimeUnit.SECONDS);
         } catch (InterruptedException | ExecutionException | TimeoutException ex) {
             plugin.getLogger().log(Level.SEVERE, "Exception threw executing onPlayerPreLogin", ex);
             event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, ChatColor.RED + "Currently not Available");

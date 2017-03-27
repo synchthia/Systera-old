@@ -1,10 +1,12 @@
 package net.synchthia.systera.player;
 
 import com.google.protobuf.ProtocolStringList;
+import lombok.SneakyThrows;
 import net.synchthia.api.systera.SysteraProtos;
 import net.synchthia.systera.SysteraPlugin;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.logging.Level;
@@ -15,7 +17,7 @@ import java.util.logging.Level;
 public class PlayerAPI {
     private final SysteraPlugin plugin;
 
-    private static HashMap<UUID, PlayerData> localPlayerProfile = new HashMap<>();
+    private static Map<UUID, PlayerData> localPlayerProfile = new HashMap<>();
     private PlayerData playerData;
 
     public PlayerAPI(SysteraPlugin plugin) {
@@ -27,9 +29,9 @@ public class PlayerAPI {
         public UUID playerUUID;
         public String playerName;
         public ProtocolStringList groups;
-        public HashMap<String, Boolean> settings = new HashMap<String, Boolean>();
+        public Map<String, Boolean> settings = new HashMap<>();
     }
-    
+
     public Integer localProfileSize() {
         return localPlayerProfile.size();
     }
@@ -42,16 +44,28 @@ public class PlayerAPI {
         });
     }
 
+    @SneakyThrows
     public CompletableFuture<SysteraProtos.FetchPlayerProfileResponse> fetchPlayerProfile(UUID playerUUID, String playerName) {
-        return plugin.apiClient.fetchPlayerProfile(playerUUID).whenComplete((value, throwable) -> {
+        return plugin.apiClient.fetchPlayerProfile(playerUUID).whenComplete((response, throwable) -> {
             if (throwable != null) {
-                plugin.getLogger().log(Level.WARNING, "Failed Init Player Profile: Exception threw", throwable);
+                plugin.getLogger().log(Level.WARNING, "Failed Fetch Player Profile: Exception threw", throwable);
+                return;
             }
 
+            // Player UUID/Name
             playerData.playerUUID = playerUUID;
             playerData.playerName = playerName;
-            playerData.settings.putAll(value.getSettingsMap());
 
+            // Player Settings
+            playerData.settings.putAll(PlayerSettings.getSettingsTemp());
+
+            response.getSettingsMap().forEach((key, value) -> {
+                if (playerData.settings.containsKey(key)) {
+                    playerData.settings.put(key, value);
+                }
+            });
+
+            // Put PlayerData to Local
             localPlayerProfile.put(playerUUID, playerData);
         });
     }
@@ -65,5 +79,14 @@ public class PlayerAPI {
             return playerData;
         }
         return localPlayerProfile.get(playerUUID);
+    }
+
+    public CompletableFuture<SysteraProtos.Empty> setPlayerSettings(UUID playerUUID, String key, Boolean value) {
+        localPlayerProfile.get(playerUUID).settings.put(key, value);
+        return plugin.apiClient.setPlayerSettings(playerUUID, key, value).whenComplete(((empty, throwable) -> {
+            if (throwable != null) {
+                plugin.getLogger().log(Level.WARNING, "Failed Set Player Settings: Exception threw", throwable);
+            }
+        }));
     }
 }

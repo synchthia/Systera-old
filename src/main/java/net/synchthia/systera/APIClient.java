@@ -158,6 +158,19 @@ public class APIClient {
         return future;
     }
 
+    public CompletableFuture<SysteraProtos.Empty> setPlayerSettings(@NonNull UUID uuid, String key, Boolean value) {
+        SysteraProtos.SetPlayerSettingsRequest request = SysteraProtos.SetPlayerSettingsRequest.newBuilder()
+                .setPlayerUUID(toString(uuid))
+                .setKey(key)
+                .setValue(value)
+                .build();
+
+        CompletableFuture<SysteraProtos.Empty> future = new CompletableFuture<>();
+        stub.setPlayerSettings(request, new CompletableFutureObserver<>(future));
+
+        return future;
+    }
+
     @RequiredArgsConstructor
     private static class CompletableFutureObserver<V> implements StreamObserver<V> {
         private final CompletableFuture<V> future;

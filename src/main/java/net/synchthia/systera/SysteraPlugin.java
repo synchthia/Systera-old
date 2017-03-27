@@ -20,6 +20,9 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.util.logging.Level;
 
 /**
@@ -82,6 +85,14 @@ public class SysteraPlugin extends JavaPlugin {
         apiClient.actionStream(Bukkit.getServerName());
 
         playerAPI = new PlayerAPI(this);
+
+        Bukkit.getOnlinePlayers().forEach(player -> {
+            try {
+                playerAPI.fetchPlayerProfile(player.getUniqueId(), player.getName()).get(5, TimeUnit.SECONDS);
+            } catch (Exception ex) {
+                getLogger().log(Level.WARNING, "Failed FetchPlayerProfile (AllPlayers)", ex);
+            }
+        });
     }
 
     private void registerEvents() {
@@ -102,6 +113,7 @@ public class SysteraPlugin extends JavaPlugin {
         cmdRegister.register(AnnounceCommand.class);
         cmdRegister.register(SpawnCommand.class);
         cmdRegister.register(APICommand.class);
+        cmdRegister.register(SettingsCommand.class);
     }
 
     @Override

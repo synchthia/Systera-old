@@ -1,6 +1,9 @@
 package net.synchthia.systera.util;
 
+import lombok.NonNull;
 import org.bukkit.ChatColor;
+
+import java.util.Objects;
 
 /**
  * @author Laica-Lunasys
@@ -36,5 +39,19 @@ public class StringUtil {
         }
 
         return string;
+    }
+
+    public static <T> boolean contains(@NonNull T value, T... values) {
+        for (T v : values) {
+            if (Objects.equals(v, value)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static Boolean stringSwitch(@NonNull String str) {
+        String[] bol = new String[]{"true", "on"};
+        return contains(str.toLowerCase(), bol);
     }
 }

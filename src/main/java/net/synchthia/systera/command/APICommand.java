@@ -43,5 +43,11 @@ public class APICommand {
             sender.sendMessage("Profiles: " + plugin.playerAPI.localProfileSize());
             return;
         }
+
+        if (args.getString(0).equals("clearlocalprofile")) {
+            sender.sendMessage("Clear: " + sender.getName());
+            plugin.playerAPI.clearPlayerProfile(Bukkit.getPlayer(sender.getName()).getUniqueId());
+            return;
+        }
     }
 }

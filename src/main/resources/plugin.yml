@@ -7,3 +7,5 @@ main: ${bukkit.plugin.main}
 website: ${project.url}
 
 softdepend: [ProtocolLib]
+
+load: STARTUP

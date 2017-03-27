@@ -70,7 +70,7 @@ public class APIClient {
             public void onError(Throwable t) {
                 Status status = Status.fromThrowable(t);
 
-                if (status.getCause() instanceof StatusRuntimeException) {
+                if (status.getCode().toStatus() == Status.UNAVAILABLE) {
                     SysteraPlugin.getInstance().getLogger().log(Level.SEVERE, "StatusRuntimeException Occurred! Retrying...");
                     Thread.sleep(3000L);
                     actionStream(name);
@@ -87,6 +87,7 @@ public class APIClient {
                 System.out.println(status.getCause());
                 System.out.println(status.getCode());
                 System.out.println(status.getDescription());
+                t.printStackTrace();
                 System.out.println("Trace ===");
             }
 

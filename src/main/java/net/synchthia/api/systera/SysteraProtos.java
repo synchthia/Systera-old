@@ -4706,16 +4706,6 @@ public final class SysteraProtos {
 
     boolean getSettingsOrThrow(
         java.lang.String key);
-
-    /**
-     * <code>optional string serverName = 2;</code>
-     */
-    java.lang.String getServerName();
-    /**
-     * <code>optional string serverName = 2;</code>
-     */
-    com.google.protobuf.ByteString
-        getServerNameBytes();
   }
   /**
    * Protobuf type {@code apipb.FetchPlayerProfileResponse}
@@ -4729,7 +4719,6 @@ public final class SysteraProtos {
       super(builder);
     }
     private FetchPlayerProfileResponse() {
-      serverName_ = "";
     }
 
     @java.lang.Override
@@ -4769,12 +4758,6 @@ public final class SysteraProtos {
               settings_.getMutableMap().put(settings.getKey(), settings.getValue());
               break;
             }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              serverName_ = s;
-              break;
-            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -4809,7 +4792,6 @@ public final class SysteraProtos {
               net.synchthia.api.systera.SysteraProtos.FetchPlayerProfileResponse.class, net.synchthia.api.systera.SysteraProtos.FetchPlayerProfileResponse.Builder.class);
     }
 
-    private int bitField0_;
     public static final int SETTINGS_FIELD_NUMBER = 1;
     private static final class SettingsDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
@@ -4886,40 +4868,6 @@ public final class SysteraProtos {
       return map.get(key);
     }
 
-    public static final int SERVERNAME_FIELD_NUMBER = 2;
-    private volatile java.lang.Object serverName_;
-    /**
-     * <code>optional string serverName = 2;</code>
-     */
-    public java.lang.String getServerName() {
-      java.lang.Object ref = serverName_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        serverName_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string serverName = 2;</code>
-     */
-    public com.google.protobuf.ByteString
-        getServerNameBytes() {
-      java.lang.Object ref = serverName_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        serverName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -4941,9 +4889,6 @@ public final class SysteraProtos {
             .build();
         output.writeMessage(1, settings);
       }
-      if (!getServerNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, serverName_);
-      }
     }
 
     public int getSerializedSize() {
@@ -4960,9 +4905,6 @@ public final class SysteraProtos {
             .build();
         size += com.google.protobuf.CodedOutputStream
             .computeMessageSize(1, settings);
-      }
-      if (!getServerNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, serverName_);
       }
       memoizedSize = size;
       return size;
@@ -4982,8 +4924,6 @@ public final class SysteraProtos {
       boolean result = true;
       result = result && internalGetSettings().equals(
           other.internalGetSettings());
-      result = result && getServerName()
-          .equals(other.getServerName());
       return result;
     }
 
@@ -4998,8 +4938,6 @@ public final class SysteraProtos {
         hash = (37 * hash) + SETTINGS_FIELD_NUMBER;
         hash = (53 * hash) + internalGetSettings().hashCode();
       }
-      hash = (37 * hash) + SERVERNAME_FIELD_NUMBER;
-      hash = (53 * hash) + getServerName().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -5141,8 +5079,6 @@ public final class SysteraProtos {
       public Builder clear() {
         super.clear();
         internalGetMutableSettings().clear();
-        serverName_ = "";
-
         return this;
       }
 
@@ -5166,11 +5102,8 @@ public final class SysteraProtos {
       public net.synchthia.api.systera.SysteraProtos.FetchPlayerProfileResponse buildPartial() {
         net.synchthia.api.systera.SysteraProtos.FetchPlayerProfileResponse result = new net.synchthia.api.systera.SysteraProtos.FetchPlayerProfileResponse(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         result.settings_ = internalGetSettings();
         result.settings_.makeImmutable();
-        result.serverName_ = serverName_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -5214,10 +5147,6 @@ public final class SysteraProtos {
         if (other == net.synchthia.api.systera.SysteraProtos.FetchPlayerProfileResponse.getDefaultInstance()) return this;
         internalGetMutableSettings().mergeFrom(
             other.internalGetSettings());
-        if (!other.getServerName().isEmpty()) {
-          serverName_ = other.serverName_;
-          onChanged();
-        }
         onChanged();
         return this;
       }
@@ -5361,75 +5290,6 @@ public final class SysteraProtos {
       public Builder putAllSettings(
           java.util.Map<java.lang.String, java.lang.Boolean> values) {
         getMutableSettings().putAll(values);
-        return this;
-      }
-
-      private java.lang.Object serverName_ = "";
-      /**
-       * <code>optional string serverName = 2;</code>
-       */
-      public java.lang.String getServerName() {
-        java.lang.Object ref = serverName_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          serverName_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string serverName = 2;</code>
-       */
-      public com.google.protobuf.ByteString
-          getServerNameBytes() {
-        java.lang.Object ref = serverName_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          serverName_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string serverName = 2;</code>
-       */
-      public Builder setServerName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        serverName_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string serverName = 2;</code>
-       */
-      public Builder clearServerName() {
-        
-        serverName_ = getDefaultInstance().getServerName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string serverName = 2;</code>
-       */
-      public Builder setServerNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        serverName_ = value;
-        onChanged();
         return this;
       }
       public final Builder setUnknownFields(
@@ -6850,10 +6710,6 @@ public final class SysteraProtos {
         getServerNameBytes();
   }
   /**
-   * <pre>
-   *リクエストされたサーバー名とDB上のサーバー名をチェックして、一緒なら""に？
-   * </pre>
-   *
    * Protobuf type {@code apipb.RemovePlayerServerRequest}
    */
   public  static final class RemovePlayerServerRequest extends
@@ -7145,10 +7001,6 @@ public final class SysteraProtos {
       return builder;
     }
     /**
-     * <pre>
-     *リクエストされたサーバー名とDB上のサーバー名をチェックして、一緒なら""に？
-     * </pre>
-     *
      * Protobuf type {@code apipb.RemovePlayerServerRequest}
      */
     public static final class Builder extends
@@ -7558,33 +7410,33 @@ public final class SysteraProtos {
       "playerName\030\002 \001(\t\022\027\n\017playerIPAddress\030\003 \001(" +
       "\t\"/\n\031InitPlayerProfileResponse\022\022\n\nhasPro",
       "file\030\001 \001(\010\"/\n\031FetchPlayerProfileRequest\022" +
-      "\022\n\nplayerUUID\030\001 \001(\t\"\244\001\n\032FetchPlayerProfi" +
+      "\022\n\nplayerUUID\030\001 \001(\t\"\220\001\n\032FetchPlayerProfi" +
       "leResponse\022A\n\010settings\030\001 \003(\0132/.apipb.Fet" +
-      "chPlayerProfileResponse.SettingsEntry\022\022\n" +
-      "\nserverName\030\002 \001(\t\032/\n\rSettingsEntry\022\013\n\003ke" +
-      "y\030\001 \001(\t\022\r\n\005value\030\002 \001(\010:\0028\001\"J\n\030SetPlayerS" +
-      "ettingsRequest\022\022\n\nplayerUUID\030\001 \001(\t\022\013\n\003ke" +
-      "y\030\002 \001(\t\022\r\n\005value\030\003 \001(\010\"@\n\026SetPlayerServe" +
-      "rRequest\022\022\n\nplayerUUID\030\001 \001(\t\022\022\n\nserverNa" +
-      "me\030\002 \001(\t\"C\n\031RemovePlayerServerRequest\022\022\n",
-      "\nplayerUUID\030\001 \001(\t\022\022\n\nserverName\030\002 \001(\t*$\n" +
-      "\nStreamType\022\010\n\004QUIT\020\000\022\014\n\010DISPATCH\020\0012\275\004\n\007" +
-      "Systera\022E\n\014ActionStream\022\024.apipb.StreamRe" +
-      "quest\032\033.apipb.ActionStreamResponse\"\0000\001\0222" +
-      "\n\010Announce\022\026.apipb.AnnounceRequest\032\014.api" +
-      "pb.Empty\"\000\0226\n\nQuitStream\022\030.apipb.QuitStr" +
-      "eamRequest\032\014.apipb.Empty\"\000\022X\n\021InitPlayer" +
-      "Profile\022\037.apipb.InitPlayerProfileRequest" +
-      "\032 .apipb.InitPlayerProfileResponse\"\000\022[\n\022" +
-      "FetchPlayerProfile\022 .apipb.FetchPlayerPr",
-      "ofileRequest\032!.apipb.FetchPlayerProfileR" +
-      "esponse\"\000\022B\n\021SetPlayerSettings\022\037.apipb.S" +
-      "etPlayerSettingsRequest\032\014.apipb.Empty\022>\n" +
-      "\017SetPlayerServer\022\035.apipb.SetPlayerServer" +
-      "Request\032\014.apipb.Empty\022D\n\022RemovePlayerSer" +
-      "ver\022 .apipb.RemovePlayerServerRequest\032\014." +
-      "apipb.EmptyB*\n\031net.synchthia.api.systera" +
-      "B\rSysteraProtosb\006proto3"
+      "chPlayerProfileResponse.SettingsEntry\032/\n" +
+      "\rSettingsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001" +
+      "(\010:\0028\001\"J\n\030SetPlayerSettingsRequest\022\022\n\npl" +
+      "ayerUUID\030\001 \001(\t\022\013\n\003key\030\002 \001(\t\022\r\n\005value\030\003 \001" +
+      "(\010\"@\n\026SetPlayerServerRequest\022\022\n\nplayerUU" +
+      "ID\030\001 \001(\t\022\022\n\nserverName\030\002 \001(\t\"C\n\031RemovePl" +
+      "ayerServerRequest\022\022\n\nplayerUUID\030\001 \001(\t\022\022\n",
+      "\nserverName\030\002 \001(\t*$\n\nStreamType\022\010\n\004QUIT\020" +
+      "\000\022\014\n\010DISPATCH\020\0012\275\004\n\007Systera\022E\n\014ActionStr" +
+      "eam\022\024.apipb.StreamRequest\032\033.apipb.Action" +
+      "StreamResponse\"\0000\001\0222\n\010Announce\022\026.apipb.A" +
+      "nnounceRequest\032\014.apipb.Empty\"\000\0226\n\nQuitSt" +
+      "ream\022\030.apipb.QuitStreamRequest\032\014.apipb.E" +
+      "mpty\"\000\022X\n\021InitPlayerProfile\022\037.apipb.Init" +
+      "PlayerProfileRequest\032 .apipb.InitPlayerP" +
+      "rofileResponse\"\000\022[\n\022FetchPlayerProfile\022 " +
+      ".apipb.FetchPlayerProfileRequest\032!.apipb",
+      ".FetchPlayerProfileResponse\"\000\022B\n\021SetPlay" +
+      "erSettings\022\037.apipb.SetPlayerSettingsRequ" +
+      "est\032\014.apipb.Empty\022>\n\017SetPlayerServer\022\035.a" +
+      "pipb.SetPlayerServerRequest\032\014.apipb.Empt" +
+      "y\022D\n\022RemovePlayerServer\022 .apipb.RemovePl" +
+      "ayerServerRequest\032\014.apipb.EmptyB*\n\031net.s" +
+      "ynchthia.api.systeraB\rSysteraProtosb\006pro" +
+      "to3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -7651,7 +7503,7 @@ public final class SysteraProtos {
     internal_static_apipb_FetchPlayerProfileResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_apipb_FetchPlayerProfileResponse_descriptor,
-        new java.lang.String[] { "Settings", "ServerName", });
+        new java.lang.String[] { "Settings", });
     internal_static_apipb_FetchPlayerProfileResponse_SettingsEntry_descriptor =
       internal_static_apipb_FetchPlayerProfileResponse_descriptor.getNestedTypes().get(0);
     internal_static_apipb_FetchPlayerProfileResponse_SettingsEntry_fieldAccessorTable = new

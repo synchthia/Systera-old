@@ -1,6 +1,9 @@
 package net.synchthia.systera.command;
 
-import com.sk89q.minecraft.util.commands.*;
+import com.sk89q.minecraft.util.commands.Command;
+import com.sk89q.minecraft.util.commands.CommandContext;
+import com.sk89q.minecraft.util.commands.CommandException;
+import com.sk89q.minecraft.util.commands.CommandPermissions;
 import net.synchthia.systera.SysteraPlugin;
 import net.synchthia.systera.util.StringUtil;
 import org.bukkit.command.CommandSender;

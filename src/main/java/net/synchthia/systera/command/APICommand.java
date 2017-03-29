@@ -5,6 +5,7 @@ import com.sk89q.minecraft.util.commands.CommandContext;
 import com.sk89q.minecraft.util.commands.CommandException;
 import com.sk89q.minecraft.util.commands.CommandPermissions;
 import net.synchthia.systera.SysteraPlugin;
+import net.synchthia.systera.player.PlayerAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 
@@ -24,7 +25,7 @@ public class APICommand {
 
         if (args.getString(0).equals("settings")) {
             sender.sendMessage("Get>>" + args.getString(1));
-            Boolean s = plugin.playerAPI.getPlayerProfile(Bukkit.getPlayer(sender.getName()).getUniqueId()).settings.get(args.getString(1));
+            Boolean s = PlayerAPI.getLocalProfile(Bukkit.getPlayer(sender.getName()).getUniqueId()).settings.get(args.getString(1));
             sender.sendMessage(String.format("%s: %s", args.getString(1), s));
             return;
         }
@@ -40,13 +41,18 @@ public class APICommand {
         }
 
         if (args.getString(0).equals("localprofile")) {
-            sender.sendMessage("Profiles: " + plugin.playerAPI.localProfileSize());
+            sender.sendMessage("Profiles: " + PlayerAPI.localProfileSize());
             return;
         }
 
         if (args.getString(0).equals("clearlocalprofile")) {
             sender.sendMessage("Clear: " + sender.getName());
-            plugin.playerAPI.clearPlayerProfile(Bukkit.getPlayer(sender.getName()).getUniqueId());
+            PlayerAPI.clearLocalProfile(Bukkit.getPlayer(sender.getName()).getUniqueId());
+            return;
+        }
+
+        if (args.getString(0).equals("debugprofile")) {
+            PlayerAPI.debug(Bukkit.getPlayer(sender.getName()).getUniqueId());
             return;
         }
     }

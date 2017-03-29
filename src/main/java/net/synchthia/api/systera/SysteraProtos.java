@@ -5341,710 +5341,6 @@ public final class SysteraProtos {
 
   }
 
-  public interface SetPlayerSettingsRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:apipb.SetPlayerSettingsRequest)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>optional string playerUUID = 1;</code>
-     */
-    java.lang.String getPlayerUUID();
-    /**
-     * <code>optional string playerUUID = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getPlayerUUIDBytes();
-
-    /**
-     * <code>optional string key = 2;</code>
-     */
-    java.lang.String getKey();
-    /**
-     * <code>optional string key = 2;</code>
-     */
-    com.google.protobuf.ByteString
-        getKeyBytes();
-
-    /**
-     * <code>optional bool value = 3;</code>
-     */
-    boolean getValue();
-  }
-  /**
-   * Protobuf type {@code apipb.SetPlayerSettingsRequest}
-   */
-  public  static final class SetPlayerSettingsRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:apipb.SetPlayerSettingsRequest)
-      SetPlayerSettingsRequestOrBuilder {
-    // Use SetPlayerSettingsRequest.newBuilder() to construct.
-    private SetPlayerSettingsRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private SetPlayerSettingsRequest() {
-      playerUUID_ = "";
-      key_ = "";
-      value_ = false;
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
-    }
-    private SetPlayerSettingsRequest(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      int mutable_bitField0_ = 0;
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!input.skipField(tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              playerUUID_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              key_ = s;
-              break;
-            }
-            case 24: {
-
-              value_ = input.readBool();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_SetPlayerSettingsRequest_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_SetPlayerSettingsRequest_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest.class, net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest.Builder.class);
-    }
-
-    public static final int PLAYERUUID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object playerUUID_;
-    /**
-     * <code>optional string playerUUID = 1;</code>
-     */
-    public java.lang.String getPlayerUUID() {
-      java.lang.Object ref = playerUUID_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        playerUUID_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string playerUUID = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getPlayerUUIDBytes() {
-      java.lang.Object ref = playerUUID_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        playerUUID_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int KEY_FIELD_NUMBER = 2;
-    private volatile java.lang.Object key_;
-    /**
-     * <code>optional string key = 2;</code>
-     */
-    public java.lang.String getKey() {
-      java.lang.Object ref = key_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        key_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string key = 2;</code>
-     */
-    public com.google.protobuf.ByteString
-        getKeyBytes() {
-      java.lang.Object ref = key_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        key_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int VALUE_FIELD_NUMBER = 3;
-    private boolean value_;
-    /**
-     * <code>optional bool value = 3;</code>
-     */
-    public boolean getValue() {
-      return value_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!getPlayerUUIDBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, playerUUID_);
-      }
-      if (!getKeyBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, key_);
-      }
-      if (value_ != false) {
-        output.writeBool(3, value_);
-      }
-    }
-
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!getPlayerUUIDBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, playerUUID_);
-      }
-      if (!getKeyBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, key_);
-      }
-      if (value_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(3, value_);
-      }
-      memoizedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest)) {
-        return super.equals(obj);
-      }
-      net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest other = (net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest) obj;
-
-      boolean result = true;
-      result = result && getPlayerUUID()
-          .equals(other.getPlayerUUID());
-      result = result && getKey()
-          .equals(other.getKey());
-      result = result && (getValue()
-          == other.getValue());
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
-      hash = (37 * hash) + PLAYERUUID_FIELD_NUMBER;
-      hash = (53 * hash) + getPlayerUUID().hashCode();
-      hash = (37 * hash) + KEY_FIELD_NUMBER;
-      hash = (53 * hash) + getKey().hashCode();
-      hash = (37 * hash) + VALUE_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getValue());
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code apipb.SetPlayerSettingsRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:apipb.SetPlayerSettingsRequest)
-        net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_SetPlayerSettingsRequest_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_SetPlayerSettingsRequest_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest.class, net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest.Builder.class);
-      }
-
-      // Construct using net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      public Builder clear() {
-        super.clear();
-        playerUUID_ = "";
-
-        key_ = "";
-
-        value_ = false;
-
-        return this;
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_SetPlayerSettingsRequest_descriptor;
-      }
-
-      public net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest getDefaultInstanceForType() {
-        return net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest.getDefaultInstance();
-      }
-
-      public net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest build() {
-        net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest buildPartial() {
-        net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest result = new net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest(this);
-        result.playerUUID_ = playerUUID_;
-        result.key_ = key_;
-        result.value_ = value_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest) {
-          return mergeFrom((net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest other) {
-        if (other == net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest.getDefaultInstance()) return this;
-        if (!other.getPlayerUUID().isEmpty()) {
-          playerUUID_ = other.playerUUID_;
-          onChanged();
-        }
-        if (!other.getKey().isEmpty()) {
-          key_ = other.key_;
-          onChanged();
-        }
-        if (other.getValue() != false) {
-          setValue(other.getValue());
-        }
-        onChanged();
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private java.lang.Object playerUUID_ = "";
-      /**
-       * <code>optional string playerUUID = 1;</code>
-       */
-      public java.lang.String getPlayerUUID() {
-        java.lang.Object ref = playerUUID_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          playerUUID_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string playerUUID = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getPlayerUUIDBytes() {
-        java.lang.Object ref = playerUUID_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          playerUUID_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string playerUUID = 1;</code>
-       */
-      public Builder setPlayerUUID(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        playerUUID_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string playerUUID = 1;</code>
-       */
-      public Builder clearPlayerUUID() {
-        
-        playerUUID_ = getDefaultInstance().getPlayerUUID();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string playerUUID = 1;</code>
-       */
-      public Builder setPlayerUUIDBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        playerUUID_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object key_ = "";
-      /**
-       * <code>optional string key = 2;</code>
-       */
-      public java.lang.String getKey() {
-        java.lang.Object ref = key_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          key_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string key = 2;</code>
-       */
-      public com.google.protobuf.ByteString
-          getKeyBytes() {
-        java.lang.Object ref = key_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          key_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string key = 2;</code>
-       */
-      public Builder setKey(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        key_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string key = 2;</code>
-       */
-      public Builder clearKey() {
-        
-        key_ = getDefaultInstance().getKey();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string key = 2;</code>
-       */
-      public Builder setKeyBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        key_ = value;
-        onChanged();
-        return this;
-      }
-
-      private boolean value_ ;
-      /**
-       * <code>optional bool value = 3;</code>
-       */
-      public boolean getValue() {
-        return value_;
-      }
-      /**
-       * <code>optional bool value = 3;</code>
-       */
-      public Builder setValue(boolean value) {
-        
-        value_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional bool value = 3;</code>
-       */
-      public Builder clearValue() {
-        
-        value_ = false;
-        onChanged();
-        return this;
-      }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:apipb.SetPlayerSettingsRequest)
-    }
-
-    // @@protoc_insertion_point(class_scope:apipb.SetPlayerSettingsRequest)
-    private static final net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest();
-    }
-
-    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<SetPlayerSettingsRequest>
-        PARSER = new com.google.protobuf.AbstractParser<SetPlayerSettingsRequest>() {
-      public SetPlayerSettingsRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-          return new SetPlayerSettingsRequest(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<SetPlayerSettingsRequest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<SetPlayerSettingsRequest> getParserForType() {
-      return PARSER;
-    }
-
-    public net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
   public interface SetPlayerServerRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:apipb.SetPlayerServerRequest)
       com.google.protobuf.MessageOrBuilder {
@@ -7325,6 +6621,710 @@ public final class SysteraProtos {
 
   }
 
+  public interface SetPlayerSettingsRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:apipb.SetPlayerSettingsRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string playerUUID = 1;</code>
+     */
+    java.lang.String getPlayerUUID();
+    /**
+     * <code>optional string playerUUID = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getPlayerUUIDBytes();
+
+    /**
+     * <code>optional string key = 2;</code>
+     */
+    java.lang.String getKey();
+    /**
+     * <code>optional string key = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getKeyBytes();
+
+    /**
+     * <code>optional bool value = 3;</code>
+     */
+    boolean getValue();
+  }
+  /**
+   * Protobuf type {@code apipb.SetPlayerSettingsRequest}
+   */
+  public  static final class SetPlayerSettingsRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:apipb.SetPlayerSettingsRequest)
+      SetPlayerSettingsRequestOrBuilder {
+    // Use SetPlayerSettingsRequest.newBuilder() to construct.
+    private SetPlayerSettingsRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SetPlayerSettingsRequest() {
+      playerUUID_ = "";
+      key_ = "";
+      value_ = false;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private SetPlayerSettingsRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              playerUUID_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              key_ = s;
+              break;
+            }
+            case 24: {
+
+              value_ = input.readBool();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_SetPlayerSettingsRequest_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_SetPlayerSettingsRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest.class, net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest.Builder.class);
+    }
+
+    public static final int PLAYERUUID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object playerUUID_;
+    /**
+     * <code>optional string playerUUID = 1;</code>
+     */
+    public java.lang.String getPlayerUUID() {
+      java.lang.Object ref = playerUUID_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        playerUUID_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string playerUUID = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getPlayerUUIDBytes() {
+      java.lang.Object ref = playerUUID_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        playerUUID_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int KEY_FIELD_NUMBER = 2;
+    private volatile java.lang.Object key_;
+    /**
+     * <code>optional string key = 2;</code>
+     */
+    public java.lang.String getKey() {
+      java.lang.Object ref = key_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        key_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string key = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getKeyBytes() {
+      java.lang.Object ref = key_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        key_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int VALUE_FIELD_NUMBER = 3;
+    private boolean value_;
+    /**
+     * <code>optional bool value = 3;</code>
+     */
+    public boolean getValue() {
+      return value_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getPlayerUUIDBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, playerUUID_);
+      }
+      if (!getKeyBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, key_);
+      }
+      if (value_ != false) {
+        output.writeBool(3, value_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getPlayerUUIDBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, playerUUID_);
+      }
+      if (!getKeyBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, key_);
+      }
+      if (value_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(3, value_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest)) {
+        return super.equals(obj);
+      }
+      net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest other = (net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest) obj;
+
+      boolean result = true;
+      result = result && getPlayerUUID()
+          .equals(other.getPlayerUUID());
+      result = result && getKey()
+          .equals(other.getKey());
+      result = result && (getValue()
+          == other.getValue());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + PLAYERUUID_FIELD_NUMBER;
+      hash = (53 * hash) + getPlayerUUID().hashCode();
+      hash = (37 * hash) + KEY_FIELD_NUMBER;
+      hash = (53 * hash) + getKey().hashCode();
+      hash = (37 * hash) + VALUE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getValue());
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code apipb.SetPlayerSettingsRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:apipb.SetPlayerSettingsRequest)
+        net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_SetPlayerSettingsRequest_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_SetPlayerSettingsRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest.class, net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest.Builder.class);
+      }
+
+      // Construct using net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        playerUUID_ = "";
+
+        key_ = "";
+
+        value_ = false;
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_SetPlayerSettingsRequest_descriptor;
+      }
+
+      public net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest getDefaultInstanceForType() {
+        return net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest.getDefaultInstance();
+      }
+
+      public net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest build() {
+        net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest buildPartial() {
+        net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest result = new net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest(this);
+        result.playerUUID_ = playerUUID_;
+        result.key_ = key_;
+        result.value_ = value_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest) {
+          return mergeFrom((net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest other) {
+        if (other == net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest.getDefaultInstance()) return this;
+        if (!other.getPlayerUUID().isEmpty()) {
+          playerUUID_ = other.playerUUID_;
+          onChanged();
+        }
+        if (!other.getKey().isEmpty()) {
+          key_ = other.key_;
+          onChanged();
+        }
+        if (other.getValue() != false) {
+          setValue(other.getValue());
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object playerUUID_ = "";
+      /**
+       * <code>optional string playerUUID = 1;</code>
+       */
+      public java.lang.String getPlayerUUID() {
+        java.lang.Object ref = playerUUID_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          playerUUID_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string playerUUID = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getPlayerUUIDBytes() {
+        java.lang.Object ref = playerUUID_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          playerUUID_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string playerUUID = 1;</code>
+       */
+      public Builder setPlayerUUID(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        playerUUID_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string playerUUID = 1;</code>
+       */
+      public Builder clearPlayerUUID() {
+        
+        playerUUID_ = getDefaultInstance().getPlayerUUID();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string playerUUID = 1;</code>
+       */
+      public Builder setPlayerUUIDBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        playerUUID_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object key_ = "";
+      /**
+       * <code>optional string key = 2;</code>
+       */
+      public java.lang.String getKey() {
+        java.lang.Object ref = key_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          key_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string key = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getKeyBytes() {
+        java.lang.Object ref = key_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          key_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string key = 2;</code>
+       */
+      public Builder setKey(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        key_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string key = 2;</code>
+       */
+      public Builder clearKey() {
+        
+        key_ = getDefaultInstance().getKey();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string key = 2;</code>
+       */
+      public Builder setKeyBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        key_ = value;
+        onChanged();
+        return this;
+      }
+
+      private boolean value_ ;
+      /**
+       * <code>optional bool value = 3;</code>
+       */
+      public boolean getValue() {
+        return value_;
+      }
+      /**
+       * <code>optional bool value = 3;</code>
+       */
+      public Builder setValue(boolean value) {
+        
+        value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool value = 3;</code>
+       */
+      public Builder clearValue() {
+        
+        value_ = false;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:apipb.SetPlayerSettingsRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:apipb.SetPlayerSettingsRequest)
+    private static final net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest();
+    }
+
+    public static net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SetPlayerSettingsRequest>
+        PARSER = new com.google.protobuf.AbstractParser<SetPlayerSettingsRequest>() {
+      public SetPlayerSettingsRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new SetPlayerSettingsRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SetPlayerSettingsRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SetPlayerSettingsRequest> getParserForType() {
+      return PARSER;
+    }
+
+    public net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_apipb_Empty_descriptor;
   private static final 
@@ -7376,11 +7376,6 @@ public final class SysteraProtos {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_apipb_FetchPlayerProfileResponse_SettingsEntry_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_apipb_SetPlayerSettingsRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_apipb_SetPlayerSettingsRequest_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_apipb_SetPlayerServerRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -7390,6 +7385,11 @@ public final class SysteraProtos {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_apipb_RemovePlayerServerRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_apipb_SetPlayerSettingsRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_apipb_SetPlayerSettingsRequest_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -7414,12 +7414,12 @@ public final class SysteraProtos {
       "leResponse\022A\n\010settings\030\001 \003(\0132/.apipb.Fet" +
       "chPlayerProfileResponse.SettingsEntry\032/\n" +
       "\rSettingsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001" +
-      "(\010:\0028\001\"J\n\030SetPlayerSettingsRequest\022\022\n\npl" +
-      "ayerUUID\030\001 \001(\t\022\013\n\003key\030\002 \001(\t\022\r\n\005value\030\003 \001" +
-      "(\010\"@\n\026SetPlayerServerRequest\022\022\n\nplayerUU" +
-      "ID\030\001 \001(\t\022\022\n\nserverName\030\002 \001(\t\"C\n\031RemovePl" +
-      "ayerServerRequest\022\022\n\nplayerUUID\030\001 \001(\t\022\022\n",
-      "\nserverName\030\002 \001(\t*$\n\nStreamType\022\010\n\004QUIT\020" +
+      "(\010:\0028\001\"@\n\026SetPlayerServerRequest\022\022\n\nplay" +
+      "erUUID\030\001 \001(\t\022\022\n\nserverName\030\002 \001(\t\"C\n\031Remo" +
+      "vePlayerServerRequest\022\022\n\nplayerUUID\030\001 \001(" +
+      "\t\022\022\n\nserverName\030\002 \001(\t\"J\n\030SetPlayerSettin" +
+      "gsRequest\022\022\n\nplayerUUID\030\001 \001(\t\022\013\n\003key\030\002 \001",
+      "(\t\022\r\n\005value\030\003 \001(\010*$\n\nStreamType\022\010\n\004QUIT\020" +
       "\000\022\014\n\010DISPATCH\020\0012\275\004\n\007Systera\022E\n\014ActionStr" +
       "eam\022\024.apipb.StreamRequest\032\033.apipb.Action" +
       "StreamResponse\"\0000\001\0222\n\010Announce\022\026.apipb.A" +
@@ -7429,12 +7429,12 @@ public final class SysteraProtos {
       "PlayerProfileRequest\032 .apipb.InitPlayerP" +
       "rofileResponse\"\000\022[\n\022FetchPlayerProfile\022 " +
       ".apipb.FetchPlayerProfileRequest\032!.apipb",
-      ".FetchPlayerProfileResponse\"\000\022B\n\021SetPlay" +
-      "erSettings\022\037.apipb.SetPlayerSettingsRequ" +
-      "est\032\014.apipb.Empty\022>\n\017SetPlayerServer\022\035.a" +
-      "pipb.SetPlayerServerRequest\032\014.apipb.Empt" +
-      "y\022D\n\022RemovePlayerServer\022 .apipb.RemovePl" +
-      "ayerServerRequest\032\014.apipb.EmptyB*\n\031net.s" +
+      ".FetchPlayerProfileResponse\"\000\022>\n\017SetPlay" +
+      "erServer\022\035.apipb.SetPlayerServerRequest\032" +
+      "\014.apipb.Empty\022D\n\022RemovePlayerServer\022 .ap" +
+      "ipb.RemovePlayerServerRequest\032\014.apipb.Em" +
+      "pty\022B\n\021SetPlayerSettings\022\037.apipb.SetPlay" +
+      "erSettingsRequest\032\014.apipb.EmptyB*\n\031net.s" +
       "ynchthia.api.systeraB\rSysteraProtosb\006pro" +
       "to3"
     };
@@ -7510,24 +7510,24 @@ public final class SysteraProtos {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_apipb_FetchPlayerProfileResponse_SettingsEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
-    internal_static_apipb_SetPlayerSettingsRequest_descriptor =
-      getDescriptor().getMessageTypes().get(9);
-    internal_static_apipb_SetPlayerSettingsRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_apipb_SetPlayerSettingsRequest_descriptor,
-        new java.lang.String[] { "PlayerUUID", "Key", "Value", });
     internal_static_apipb_SetPlayerServerRequest_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_apipb_SetPlayerServerRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_apipb_SetPlayerServerRequest_descriptor,
         new java.lang.String[] { "PlayerUUID", "ServerName", });
     internal_static_apipb_RemovePlayerServerRequest_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_apipb_RemovePlayerServerRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_apipb_RemovePlayerServerRequest_descriptor,
         new java.lang.String[] { "PlayerUUID", "ServerName", });
+    internal_static_apipb_SetPlayerSettingsRequest_descriptor =
+      getDescriptor().getMessageTypes().get(11);
+    internal_static_apipb_SetPlayerSettingsRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_apipb_SetPlayerSettingsRequest_descriptor,
+        new java.lang.String[] { "PlayerUUID", "Key", "Value", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -67,6 +67,6 @@ public class PlayerListener implements Listener {
             }
         }));
 
-        plugin.playerAPI.clearPlayerProfile(event.getPlayer().getUniqueId());
+        PlayerAPI.clearLocalProfile(event.getPlayer().getUniqueId());
     }
 }

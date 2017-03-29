@@ -2,7 +2,6 @@ package net.synchthia.systera;
 
 import io.grpc.ManagedChannel;
 import io.grpc.Status;
-import io.grpc.StatusRuntimeException;
 import io.grpc.internal.DnsNameResolverProvider;
 import io.grpc.netty.NettyChannelBuilder;
 import io.grpc.stub.StreamObserver;

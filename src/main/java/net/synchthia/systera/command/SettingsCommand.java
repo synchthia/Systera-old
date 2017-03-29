@@ -67,7 +67,7 @@ public class SettingsCommand {
     private static Boolean get(Player player, String key) {
         PlayerAPI.PlayerData profile = PlayerAPI.getLocalProfile(player.getUniqueId());
         if (profile == null) {
-            I18n.sendMessage(player, "error,localprofile");
+            I18n.sendMessage(player, "error.localprofile");
             return false;
         }
         return profile.settings.get(key);
@@ -76,7 +76,7 @@ public class SettingsCommand {
     private static void set(Player player, String key, Boolean value) {
         PlayerAPI.PlayerData profile = PlayerAPI.getLocalProfile(player.getUniqueId());
         if (profile == null) {
-            I18n.sendMessage(player, "error,localprofile");
+            I18n.sendMessage(player, "error.localprofile");
             return;
         }
         SysteraPlugin.getInstance().playerAPI.setPlayerSettings(player.getUniqueId(), key, value).whenComplete(((empty, throwable) -> {

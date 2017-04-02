@@ -52,9 +52,9 @@ public class PlayerListener implements Listener {
 
         // Vanish
         event.setJoinMessage(null);
+        VanishManager.hideFoundVanishPlayer(player);
         if (PlayerAPI.getSetting(player.getUniqueId(), "vanish")) {
             player.sendMessage(ChatColor.YELLOW + "You are now Vanish! be careful action on this server!!");
-            VanishManager.hideFoundVanishPlayer(player);
             VanishManager.applyVanishInServer(player, true);
         } else {
             sendJoinQuitMessage(ChatColor.GRAY + "Join≫ " + player.getName());
@@ -74,7 +74,7 @@ public class PlayerListener implements Listener {
 
         // Vanish
         event.setQuitMessage(null);
-        if (VanishManager.getVanishPlayerInServer().contains(player.getUniqueId())) {
+        if (VanishManager.getVanishPlayerInServer().contains(player)) {
             VanishManager.applyVanishInServer(player, false);
         } else {
             sendJoinQuitMessage(ChatColor.GRAY + "Quit≫ " + player.getName());

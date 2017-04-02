@@ -50,6 +50,17 @@ public class PlayerListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
 
+        // Vanish
+        event.setJoinMessage(null);
+        if (PlayerAPI.getSetting(player.getUniqueId(), "vanish")) {
+            player.sendMessage(ChatColor.YELLOW + "You are now Vanish! be careful action on this server!!");
+            VanishManager.hideFoundVanishPlayer(player);
+            VanishManager.applyVanishInServer(player, true);
+        } else {
+            sendJoinQuitMessage(ChatColor.GRAY + "Join≫ " + player.getName());
+        }
+
+        // Current Server
         plugin.apiClient.setPlayerServer(player.getUniqueId(), player.getServer().getServerName()).whenComplete(((empty, throwable) -> {
             if (throwable != null) {
                 throwable.printStackTrace();
@@ -61,12 +72,27 @@ public class PlayerListener implements Listener {
     public void onPlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
 
+        // Vanish
+        event.setQuitMessage(null);
+        if (VanishManager.getVanishPlayerInServer().contains(player.getUniqueId())) {
+            VanishManager.applyVanishInServer(player, false);
+        } else {
+            sendJoinQuitMessage(ChatColor.GRAY + "Quit≫ " + player.getName());
+        }
+
+        // Current Server
         plugin.apiClient.quitServer(player.getUniqueId(), player.getServer().getServerName()).whenComplete(((empty, throwable) -> {
             if (throwable != null) {
                 throwable.printStackTrace();
             }
         }));
 
-        PlayerAPI.clearLocalProfile(event.getPlayer().getUniqueId());
+        // Clear LocalProfile
+        PlayerAPI.clearLocalProfile(player.getUniqueId());
+    }
+
+    public void sendJoinQuitMessage(String message) {
+        //TODO: SettingsからプレイヤーのJoinMessageを表示するかどうかを取得して対象ユーザーにメッセージを送信するようにする
+        Bukkit.getOnlinePlayers().forEach(players -> players.sendMessage(message));
     }
 }

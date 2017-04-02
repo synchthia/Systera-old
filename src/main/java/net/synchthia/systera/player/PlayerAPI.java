@@ -52,9 +52,8 @@ public class PlayerAPI {
 
             // Player Settings
             playerData.settings.putAll(PlayerSettings.getSettingsTemp());
-
             response.getSettingsMap().forEach((key, value) -> {
-                if (playerData.settings.containsKey(key)) {
+                if (PlayerSettings.getSettingsTemp().containsKey(key)) {
                     playerData.settings.put(key, value);
                 }
             });
@@ -62,6 +61,14 @@ public class PlayerAPI {
             // Put PlayerData to Local
             localPlayerProfile.put(playerUUID, playerData);
         });
+    }
+
+    public static Boolean getSetting(UUID playerUUID, String key) {
+        Map<String, Boolean> settings = localPlayerProfile.get(playerUUID).settings;
+        if (!settings.containsKey(key)) {
+            return null;
+        }
+        return settings.get(key);
     }
 
     public CompletableFuture<SysteraProtos.Empty> setPlayerSettings(UUID playerUUID, String key, Boolean value) {

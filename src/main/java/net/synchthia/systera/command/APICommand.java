@@ -6,6 +6,7 @@ import com.sk89q.minecraft.util.commands.CommandException;
 import com.sk89q.minecraft.util.commands.CommandPermissions;
 import net.synchthia.systera.SysteraPlugin;
 import net.synchthia.systera.player.PlayerAPI;
+import net.synchthia.systera.player.VanishManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 
@@ -53,6 +54,12 @@ public class APICommand {
 
         if (args.getString(0).equals("debugprofile")) {
             PlayerAPI.debug(Bukkit.getPlayer(sender.getName()).getUniqueId());
+            return;
+        }
+
+        if (args.getString(0).equals("vanish")) {
+            int size = VanishManager.getVanishPlayerInServer().size();
+            sender.sendMessage("Vanishing: " + size);
             return;
         }
     }

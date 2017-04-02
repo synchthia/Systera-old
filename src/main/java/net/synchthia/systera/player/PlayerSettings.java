@@ -12,6 +12,7 @@ public class PlayerSettings {
         Map<String, Boolean> settingsList = new HashMap<>();
 
         settingsList.put("japanize", false);
+        settingsList.put("vanish", false);
 
         return settingsList;
     }

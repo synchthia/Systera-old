@@ -50,6 +50,9 @@ public class PlayerAPI {
             playerData.playerUUID = playerUUID;
             playerData.playerName = playerName;
 
+            // Player Groups
+            playerData.groups = response.getGroupsList();
+
             // Player Settings
             playerData.settings.putAll(PlayerSettings.getSettingsTemp());
             response.getSettingsMap().forEach((key, value) -> {
@@ -61,6 +64,12 @@ public class PlayerAPI {
             // Put PlayerData to Local
             localPlayerProfile.put(playerUUID, playerData);
         });
+    }
+
+    public static ProtocolStringList getGroups(UUID playerUUID) {
+        ProtocolStringList groups = localPlayerProfile.get(playerUUID).groups;
+
+        return groups;
     }
 
     public static Boolean getSetting(UUID playerUUID, String key) {

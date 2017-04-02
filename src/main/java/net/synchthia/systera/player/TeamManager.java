@@ -1,6 +1,7 @@
 package net.synchthia.systera.player;
 
 import net.synchthia.systera.SysteraPlugin;
+import net.synchthia.systera.permissions.PermissionsAPI;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
@@ -16,17 +17,16 @@ public class TeamManager {
     }
 
     public void registerTeam(Player player) {
-        //String coloredPrefix = PermissionManager.getPrefix(player).replaceAll("&", "§");
-        String coloredPrefix = "§7";
+        String coloredPrefix = PermissionsAPI.getPrefix(player).replaceAll("&", "§");
 
         player.setPlayerListName(coloredPrefix + player.getName());
 
         Scoreboard scoreboard = player.getScoreboard();
-        String teamName = player.getName();
+        String teamName = "ST_" + player.getName();
         Team getTeam = scoreboard.getTeam(teamName);
 
         if (getTeam == null) {
-            scoreboard.registerNewTeam(teamName);//.setPrefix(coloredPrefix + player.getName());
+            scoreboard.registerNewTeam(teamName);
         }
 
         scoreboard.getTeam(teamName).setOption(Team.Option.COLLISION_RULE, Team.OptionStatus.NEVER);
@@ -41,6 +41,7 @@ public class TeamManager {
         if (getTeam == null) {
             return;
         }
+
         scoreboard.getTeam(teamName).unregister();
     }
 }

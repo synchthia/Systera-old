@@ -10,6 +10,8 @@ import net.synchthia.systera.command.*;
 import net.synchthia.systera.config.ConfigManager;
 import net.synchthia.systera.i18n.I18n;
 import net.synchthia.systera.i18n.I18nManager;
+import net.synchthia.systera.permissions.PermissionsAPI;
+import net.synchthia.systera.permissions.PermissionsManager;
 import net.synchthia.systera.player.PlayerAPI;
 import net.synchthia.systera.player.PlayerListener;
 import org.bukkit.Bukkit;
@@ -38,6 +40,10 @@ public class SysteraPlugin extends JavaPlugin {
     private String apiServerAddress = "192.168.100.53:17300";
 
     public PlayerAPI playerAPI;
+    public PermissionsAPI permissionsAPI;
+
+    @Getter
+    private static PermissionsManager permissionsManager;
 
     @Getter
     private static ProtocolManager protocolManager;
@@ -51,6 +57,8 @@ public class SysteraPlugin extends JavaPlugin {
 
             this.configManager = new ConfigManager(this);
             this.configManager.load();
+
+            permissionsManager = new PermissionsManager(this);
 
             protocolManager = ProtocolLibrary.getProtocolManager();
             I18n.setI18nManager(new I18nManager(this));
@@ -83,6 +91,13 @@ public class SysteraPlugin extends JavaPlugin {
         apiClient.actionStream(Bukkit.getServerName());
 
         playerAPI = new PlayerAPI(this);
+        permissionsAPI = new PermissionsAPI(this);
+
+        try {
+            permissionsAPI.fetchGroups().get(5, TimeUnit.SECONDS);
+        } catch (Exception ex) {
+            getLogger().log(Level.WARNING, "Failed during FetchData", ex);
+        }
 
         Bukkit.getOnlinePlayers().forEach(player -> {
             try {

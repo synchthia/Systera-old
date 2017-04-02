@@ -76,6 +76,15 @@ public class SysteraGrpc {
           io.grpc.protobuf.ProtoUtils.marshaller(net.synchthia.api.systera.SysteraProtos.FetchPlayerProfileRequest.getDefaultInstance()),
           io.grpc.protobuf.ProtoUtils.marshaller(net.synchthia.api.systera.SysteraProtos.FetchPlayerProfileResponse.getDefaultInstance()));
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  public static final io.grpc.MethodDescriptor<net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest,
+      net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse> METHOD_FETCH_GROUPS =
+      io.grpc.MethodDescriptor.create(
+          io.grpc.MethodDescriptor.MethodType.UNARY,
+          generateFullMethodName(
+              "apipb.Systera", "FetchGroups"),
+          io.grpc.protobuf.ProtoUtils.marshaller(net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest.getDefaultInstance()),
+          io.grpc.protobuf.ProtoUtils.marshaller(net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse.getDefaultInstance()));
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
   public static final io.grpc.MethodDescriptor<net.synchthia.api.systera.SysteraProtos.SetPlayerServerRequest,
       net.synchthia.api.systera.SysteraProtos.Empty> METHOD_SET_PLAYER_SERVER =
       io.grpc.MethodDescriptor.create(
@@ -170,6 +179,13 @@ public class SysteraGrpc {
 
     /**
      */
+    public void fetchGroups(net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest request,
+        io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(METHOD_FETCH_GROUPS, responseObserver);
+    }
+
+    /**
+     */
     public void setPlayerServer(net.synchthia.api.systera.SysteraProtos.SetPlayerServerRequest request,
         io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.Empty> responseObserver) {
       asyncUnimplementedUnaryCall(METHOD_SET_PLAYER_SERVER, responseObserver);
@@ -226,6 +242,13 @@ public class SysteraGrpc {
                 net.synchthia.api.systera.SysteraProtos.FetchPlayerProfileRequest,
                 net.synchthia.api.systera.SysteraProtos.FetchPlayerProfileResponse>(
                   this, METHODID_FETCH_PLAYER_PROFILE)))
+          .addMethod(
+            METHOD_FETCH_GROUPS,
+            asyncUnaryCall(
+              new MethodHandlers<
+                net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest,
+                net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse>(
+                  this, METHODID_FETCH_GROUPS)))
           .addMethod(
             METHOD_SET_PLAYER_SERVER,
             asyncUnaryCall(
@@ -314,6 +337,14 @@ public class SysteraGrpc {
 
     /**
      */
+    public void fetchGroups(net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest request,
+        io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(METHOD_FETCH_GROUPS, getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
     public void setPlayerServer(net.synchthia.api.systera.SysteraProtos.SetPlayerServerRequest request,
         io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.Empty> responseObserver) {
       asyncUnaryCall(
@@ -396,6 +427,13 @@ public class SysteraGrpc {
 
     /**
      */
+    public net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse fetchGroups(net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest request) {
+      return blockingUnaryCall(
+          getChannel(), METHOD_FETCH_GROUPS, getCallOptions(), request);
+    }
+
+    /**
+     */
     public net.synchthia.api.systera.SysteraProtos.Empty setPlayerServer(net.synchthia.api.systera.SysteraProtos.SetPlayerServerRequest request) {
       return blockingUnaryCall(
           getChannel(), METHOD_SET_PLAYER_SERVER, getCallOptions(), request);
@@ -471,6 +509,14 @@ public class SysteraGrpc {
 
     /**
      */
+    public com.google.common.util.concurrent.ListenableFuture<net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse> fetchGroups(
+        net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(METHOD_FETCH_GROUPS, getCallOptions()), request);
+    }
+
+    /**
+     */
     public com.google.common.util.concurrent.ListenableFuture<net.synchthia.api.systera.SysteraProtos.Empty> setPlayerServer(
         net.synchthia.api.systera.SysteraProtos.SetPlayerServerRequest request) {
       return futureUnaryCall(
@@ -499,9 +545,10 @@ public class SysteraGrpc {
   private static final int METHODID_QUIT_STREAM = 2;
   private static final int METHODID_INIT_PLAYER_PROFILE = 3;
   private static final int METHODID_FETCH_PLAYER_PROFILE = 4;
-  private static final int METHODID_SET_PLAYER_SERVER = 5;
-  private static final int METHODID_REMOVE_PLAYER_SERVER = 6;
-  private static final int METHODID_SET_PLAYER_SETTINGS = 7;
+  private static final int METHODID_FETCH_GROUPS = 5;
+  private static final int METHODID_SET_PLAYER_SERVER = 6;
+  private static final int METHODID_REMOVE_PLAYER_SERVER = 7;
+  private static final int METHODID_SET_PLAYER_SETTINGS = 8;
 
   private static class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -540,6 +587,10 @@ public class SysteraGrpc {
           serviceImpl.fetchPlayerProfile((net.synchthia.api.systera.SysteraProtos.FetchPlayerProfileRequest) request,
               (io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.FetchPlayerProfileResponse>) responseObserver);
           break;
+        case METHODID_FETCH_GROUPS:
+          serviceImpl.fetchGroups((net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest) request,
+              (io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse>) responseObserver);
+          break;
         case METHODID_SET_PLAYER_SERVER:
           serviceImpl.setPlayerServer((net.synchthia.api.systera.SysteraProtos.SetPlayerServerRequest) request,
               (io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.Empty>) responseObserver);
@@ -575,6 +626,7 @@ public class SysteraGrpc {
         METHOD_QUIT_STREAM,
         METHOD_INIT_PLAYER_PROFILE,
         METHOD_FETCH_PLAYER_PROFILE,
+        METHOD_FETCH_GROUPS,
         METHOD_SET_PLAYER_SERVER,
         METHOD_REMOVE_PLAYER_SERVER,
         METHOD_SET_PLAYER_SETTINGS);

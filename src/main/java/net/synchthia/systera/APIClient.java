@@ -170,6 +170,17 @@ public class APIClient {
         return future;
     }
 
+    public CompletableFuture<SysteraProtos.FetchGroupsResponse> fetchGroups(@NonNull String serverName) {
+        SysteraProtos.FetchGroupsRequest request = SysteraProtos.FetchGroupsRequest.newBuilder()
+                .setServerName(serverName)
+                .build();
+
+        CompletableFuture<SysteraProtos.FetchGroupsResponse> future = new CompletableFuture<>();
+        stub.fetchGroups(request, new CompletableFutureObserver<>(future));
+
+        return future;
+    }
+
     @RequiredArgsConstructor
     private static class CompletableFutureObserver<V> implements StreamObserver<V> {
         private final CompletableFuture<V> future;

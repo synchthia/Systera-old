@@ -51,6 +51,9 @@ public class PlayerListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
 
+        // Permission
+        SysteraPlugin.getPermissionsManager().applyPermission(player);
+
         // Team
         TeamManager teamManager = new TeamManager(plugin);
         teamManager.registerTeam(player);
@@ -102,6 +105,9 @@ public class PlayerListener implements Listener {
 
         // Clear LocalProfile
         PlayerAPI.clearLocalProfile(player.getUniqueId());
+
+        // Permissions
+        SysteraPlugin.getPermissionsManager().removePlayerAttachments(player);
     }
 
     public void sendJoinQuitMessage(String message) {

@@ -4674,11 +4674,30 @@ public final class SysteraProtos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>map&lt;string, bool&gt; settings = 1;</code>
+     * <code>repeated string groups = 1;</code>
+     */
+    java.util.List<java.lang.String>
+        getGroupsList();
+    /**
+     * <code>repeated string groups = 1;</code>
+     */
+    int getGroupsCount();
+    /**
+     * <code>repeated string groups = 1;</code>
+     */
+    java.lang.String getGroups(int index);
+    /**
+     * <code>repeated string groups = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getGroupsBytes(int index);
+
+    /**
+     * <code>map&lt;string, bool&gt; settings = 2;</code>
      */
     int getSettingsCount();
     /**
-     * <code>map&lt;string, bool&gt; settings = 1;</code>
+     * <code>map&lt;string, bool&gt; settings = 2;</code>
      */
     boolean containsSettings(
         java.lang.String key);
@@ -4689,19 +4708,19 @@ public final class SysteraProtos {
     java.util.Map<java.lang.String, java.lang.Boolean>
     getSettings();
     /**
-     * <code>map&lt;string, bool&gt; settings = 1;</code>
+     * <code>map&lt;string, bool&gt; settings = 2;</code>
      */
     java.util.Map<java.lang.String, java.lang.Boolean>
     getSettingsMap();
     /**
-     * <code>map&lt;string, bool&gt; settings = 1;</code>
+     * <code>map&lt;string, bool&gt; settings = 2;</code>
      */
 
     boolean getSettingsOrDefault(
         java.lang.String key,
         boolean defaultValue);
     /**
-     * <code>map&lt;string, bool&gt; settings = 1;</code>
+     * <code>map&lt;string, bool&gt; settings = 2;</code>
      */
 
     boolean getSettingsOrThrow(
@@ -4719,6 +4738,7 @@ public final class SysteraProtos {
       super(builder);
     }
     private FetchPlayerProfileResponse() {
+      groups_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     }
 
     @java.lang.Override
@@ -4747,10 +4767,19 @@ public final class SysteraProtos {
               break;
             }
             case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                groups_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              groups_.add(s);
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
                 settings_ = com.google.protobuf.MapField.newMapField(
                     SettingsDefaultEntryHolder.defaultEntry);
-                mutable_bitField0_ |= 0x00000001;
+                mutable_bitField0_ |= 0x00000002;
               }
               com.google.protobuf.MapEntry<java.lang.String, java.lang.Boolean>
               settings = input.readMessage(
@@ -4766,6 +4795,9 @@ public final class SysteraProtos {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          groups_ = groups_.getUnmodifiableView();
+        }
         makeExtensionsImmutable();
       }
     }
@@ -4778,7 +4810,7 @@ public final class SysteraProtos {
     protected com.google.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
-        case 1:
+        case 2:
           return internalGetSettings();
         default:
           throw new RuntimeException(
@@ -4792,7 +4824,36 @@ public final class SysteraProtos {
               net.synchthia.api.systera.SysteraProtos.FetchPlayerProfileResponse.class, net.synchthia.api.systera.SysteraProtos.FetchPlayerProfileResponse.Builder.class);
     }
 
-    public static final int SETTINGS_FIELD_NUMBER = 1;
+    public static final int GROUPS_FIELD_NUMBER = 1;
+    private com.google.protobuf.LazyStringList groups_;
+    /**
+     * <code>repeated string groups = 1;</code>
+     */
+    public com.google.protobuf.ProtocolStringList
+        getGroupsList() {
+      return groups_;
+    }
+    /**
+     * <code>repeated string groups = 1;</code>
+     */
+    public int getGroupsCount() {
+      return groups_.size();
+    }
+    /**
+     * <code>repeated string groups = 1;</code>
+     */
+    public java.lang.String getGroups(int index) {
+      return groups_.get(index);
+    }
+    /**
+     * <code>repeated string groups = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getGroupsBytes(int index) {
+      return groups_.getByteString(index);
+    }
+
+    public static final int SETTINGS_FIELD_NUMBER = 2;
     private static final class SettingsDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
           java.lang.String, java.lang.Boolean> defaultEntry =
@@ -4819,7 +4880,7 @@ public final class SysteraProtos {
       return internalGetSettings().getMap().size();
     }
     /**
-     * <code>map&lt;string, bool&gt; settings = 1;</code>
+     * <code>map&lt;string, bool&gt; settings = 2;</code>
      */
 
     public boolean containsSettings(
@@ -4835,14 +4896,14 @@ public final class SysteraProtos {
       return getSettingsMap();
     }
     /**
-     * <code>map&lt;string, bool&gt; settings = 1;</code>
+     * <code>map&lt;string, bool&gt; settings = 2;</code>
      */
 
     public java.util.Map<java.lang.String, java.lang.Boolean> getSettingsMap() {
       return internalGetSettings().getMap();
     }
     /**
-     * <code>map&lt;string, bool&gt; settings = 1;</code>
+     * <code>map&lt;string, bool&gt; settings = 2;</code>
      */
 
     public boolean getSettingsOrDefault(
@@ -4854,7 +4915,7 @@ public final class SysteraProtos {
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>map&lt;string, bool&gt; settings = 1;</code>
+     * <code>map&lt;string, bool&gt; settings = 2;</code>
      */
 
     public boolean getSettingsOrThrow(
@@ -4880,6 +4941,9 @@ public final class SysteraProtos {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      for (int i = 0; i < groups_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, groups_.getRaw(i));
+      }
       for (java.util.Map.Entry<java.lang.String, java.lang.Boolean> entry
            : internalGetSettings().getMap().entrySet()) {
         com.google.protobuf.MapEntry<java.lang.String, java.lang.Boolean>
@@ -4887,7 +4951,7 @@ public final class SysteraProtos {
             .setKey(entry.getKey())
             .setValue(entry.getValue())
             .build();
-        output.writeMessage(1, settings);
+        output.writeMessage(2, settings);
       }
     }
 
@@ -4896,6 +4960,14 @@ public final class SysteraProtos {
       if (size != -1) return size;
 
       size = 0;
+      {
+        int dataSize = 0;
+        for (int i = 0; i < groups_.size(); i++) {
+          dataSize += computeStringSizeNoTag(groups_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getGroupsList().size();
+      }
       for (java.util.Map.Entry<java.lang.String, java.lang.Boolean> entry
            : internalGetSettings().getMap().entrySet()) {
         com.google.protobuf.MapEntry<java.lang.String, java.lang.Boolean>
@@ -4904,7 +4976,7 @@ public final class SysteraProtos {
             .setValue(entry.getValue())
             .build();
         size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(1, settings);
+            .computeMessageSize(2, settings);
       }
       memoizedSize = size;
       return size;
@@ -4922,6 +4994,8 @@ public final class SysteraProtos {
       net.synchthia.api.systera.SysteraProtos.FetchPlayerProfileResponse other = (net.synchthia.api.systera.SysteraProtos.FetchPlayerProfileResponse) obj;
 
       boolean result = true;
+      result = result && getGroupsList()
+          .equals(other.getGroupsList());
       result = result && internalGetSettings().equals(
           other.internalGetSettings());
       return result;
@@ -4934,6 +5008,10 @@ public final class SysteraProtos {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (getGroupsCount() > 0) {
+        hash = (37 * hash) + GROUPS_FIELD_NUMBER;
+        hash = (53 * hash) + getGroupsList().hashCode();
+      }
       if (!internalGetSettings().getMap().isEmpty()) {
         hash = (37 * hash) + SETTINGS_FIELD_NUMBER;
         hash = (53 * hash) + internalGetSettings().hashCode();
@@ -5036,7 +5114,7 @@ public final class SysteraProtos {
       protected com.google.protobuf.MapField internalGetMapField(
           int number) {
         switch (number) {
-          case 1:
+          case 2:
             return internalGetSettings();
           default:
             throw new RuntimeException(
@@ -5047,7 +5125,7 @@ public final class SysteraProtos {
       protected com.google.protobuf.MapField internalGetMutableMapField(
           int number) {
         switch (number) {
-          case 1:
+          case 2:
             return internalGetMutableSettings();
           default:
             throw new RuntimeException(
@@ -5078,6 +5156,8 @@ public final class SysteraProtos {
       }
       public Builder clear() {
         super.clear();
+        groups_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
         internalGetMutableSettings().clear();
         return this;
       }
@@ -5102,6 +5182,11 @@ public final class SysteraProtos {
       public net.synchthia.api.systera.SysteraProtos.FetchPlayerProfileResponse buildPartial() {
         net.synchthia.api.systera.SysteraProtos.FetchPlayerProfileResponse result = new net.synchthia.api.systera.SysteraProtos.FetchPlayerProfileResponse(this);
         int from_bitField0_ = bitField0_;
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          groups_ = groups_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.groups_ = groups_;
         result.settings_ = internalGetSettings();
         result.settings_.makeImmutable();
         onBuilt();
@@ -5145,6 +5230,16 @@ public final class SysteraProtos {
 
       public Builder mergeFrom(net.synchthia.api.systera.SysteraProtos.FetchPlayerProfileResponse other) {
         if (other == net.synchthia.api.systera.SysteraProtos.FetchPlayerProfileResponse.getDefaultInstance()) return this;
+        if (!other.groups_.isEmpty()) {
+          if (groups_.isEmpty()) {
+            groups_ = other.groups_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureGroupsIsMutable();
+            groups_.addAll(other.groups_);
+          }
+          onChanged();
+        }
         internalGetMutableSettings().mergeFrom(
             other.internalGetSettings());
         onChanged();
@@ -5174,6 +5269,100 @@ public final class SysteraProtos {
       }
       private int bitField0_;
 
+      private com.google.protobuf.LazyStringList groups_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureGroupsIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          groups_ = new com.google.protobuf.LazyStringArrayList(groups_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+      /**
+       * <code>repeated string groups = 1;</code>
+       */
+      public com.google.protobuf.ProtocolStringList
+          getGroupsList() {
+        return groups_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string groups = 1;</code>
+       */
+      public int getGroupsCount() {
+        return groups_.size();
+      }
+      /**
+       * <code>repeated string groups = 1;</code>
+       */
+      public java.lang.String getGroups(int index) {
+        return groups_.get(index);
+      }
+      /**
+       * <code>repeated string groups = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getGroupsBytes(int index) {
+        return groups_.getByteString(index);
+      }
+      /**
+       * <code>repeated string groups = 1;</code>
+       */
+      public Builder setGroups(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureGroupsIsMutable();
+        groups_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string groups = 1;</code>
+       */
+      public Builder addGroups(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureGroupsIsMutable();
+        groups_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string groups = 1;</code>
+       */
+      public Builder addAllGroups(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureGroupsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, groups_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string groups = 1;</code>
+       */
+      public Builder clearGroups() {
+        groups_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string groups = 1;</code>
+       */
+      public Builder addGroupsBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        ensureGroupsIsMutable();
+        groups_.add(value);
+        onChanged();
+        return this;
+      }
+
       private com.google.protobuf.MapField<
           java.lang.String, java.lang.Boolean> settings_;
       private com.google.protobuf.MapField<java.lang.String, java.lang.Boolean>
@@ -5201,7 +5390,7 @@ public final class SysteraProtos {
         return internalGetSettings().getMap().size();
       }
       /**
-       * <code>map&lt;string, bool&gt; settings = 1;</code>
+       * <code>map&lt;string, bool&gt; settings = 2;</code>
        */
 
       public boolean containsSettings(
@@ -5217,14 +5406,14 @@ public final class SysteraProtos {
         return getSettingsMap();
       }
       /**
-       * <code>map&lt;string, bool&gt; settings = 1;</code>
+       * <code>map&lt;string, bool&gt; settings = 2;</code>
        */
 
       public java.util.Map<java.lang.String, java.lang.Boolean> getSettingsMap() {
         return internalGetSettings().getMap();
       }
       /**
-       * <code>map&lt;string, bool&gt; settings = 1;</code>
+       * <code>map&lt;string, bool&gt; settings = 2;</code>
        */
 
       public boolean getSettingsOrDefault(
@@ -5236,7 +5425,7 @@ public final class SysteraProtos {
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
-       * <code>map&lt;string, bool&gt; settings = 1;</code>
+       * <code>map&lt;string, bool&gt; settings = 2;</code>
        */
 
       public boolean getSettingsOrThrow(
@@ -5255,7 +5444,7 @@ public final class SysteraProtos {
         return this;
       }
       /**
-       * <code>map&lt;string, bool&gt; settings = 1;</code>
+       * <code>map&lt;string, bool&gt; settings = 2;</code>
        */
 
       public Builder removeSettings(
@@ -5273,7 +5462,7 @@ public final class SysteraProtos {
         return internalGetMutableSettings().getMutableMap();
       }
       /**
-       * <code>map&lt;string, bool&gt; settings = 1;</code>
+       * <code>map&lt;string, bool&gt; settings = 2;</code>
        */
       public Builder putSettings(
           java.lang.String key,
@@ -5284,7 +5473,7 @@ public final class SysteraProtos {
         return this;
       }
       /**
-       * <code>map&lt;string, bool&gt; settings = 1;</code>
+       * <code>map&lt;string, bool&gt; settings = 2;</code>
        */
 
       public Builder putAllSettings(
@@ -7325,6 +7514,2275 @@ public final class SysteraProtos {
 
   }
 
+  public interface GroupEntryOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:apipb.GroupEntry)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string groupName = 1;</code>
+     */
+    java.lang.String getGroupName();
+    /**
+     * <code>optional string groupName = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getGroupNameBytes();
+
+    /**
+     * <code>optional string groupPrefix = 2;</code>
+     */
+    java.lang.String getGroupPrefix();
+    /**
+     * <code>optional string groupPrefix = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getGroupPrefixBytes();
+
+    /**
+     * <code>repeated string globalPerms = 3;</code>
+     */
+    java.util.List<java.lang.String>
+        getGlobalPermsList();
+    /**
+     * <code>repeated string globalPerms = 3;</code>
+     */
+    int getGlobalPermsCount();
+    /**
+     * <code>repeated string globalPerms = 3;</code>
+     */
+    java.lang.String getGlobalPerms(int index);
+    /**
+     * <code>repeated string globalPerms = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getGlobalPermsBytes(int index);
+
+    /**
+     * <code>repeated string serverPerms = 4;</code>
+     */
+    java.util.List<java.lang.String>
+        getServerPermsList();
+    /**
+     * <code>repeated string serverPerms = 4;</code>
+     */
+    int getServerPermsCount();
+    /**
+     * <code>repeated string serverPerms = 4;</code>
+     */
+    java.lang.String getServerPerms(int index);
+    /**
+     * <code>repeated string serverPerms = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getServerPermsBytes(int index);
+  }
+  /**
+   * <pre>
+   * GROUP PERMISISONS
+   * </pre>
+   *
+   * Protobuf type {@code apipb.GroupEntry}
+   */
+  public  static final class GroupEntry extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:apipb.GroupEntry)
+      GroupEntryOrBuilder {
+    // Use GroupEntry.newBuilder() to construct.
+    private GroupEntry(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private GroupEntry() {
+      groupName_ = "";
+      groupPrefix_ = "";
+      globalPerms_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      serverPerms_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private GroupEntry(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              groupName_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              groupPrefix_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                globalPerms_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              globalPerms_.add(s);
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                serverPerms_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              serverPerms_.add(s);
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          globalPerms_ = globalPerms_.getUnmodifiableView();
+        }
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+          serverPerms_ = serverPerms_.getUnmodifiableView();
+        }
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_GroupEntry_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_GroupEntry_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              net.synchthia.api.systera.SysteraProtos.GroupEntry.class, net.synchthia.api.systera.SysteraProtos.GroupEntry.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int GROUPNAME_FIELD_NUMBER = 1;
+    private volatile java.lang.Object groupName_;
+    /**
+     * <code>optional string groupName = 1;</code>
+     */
+    public java.lang.String getGroupName() {
+      java.lang.Object ref = groupName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        groupName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string groupName = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getGroupNameBytes() {
+      java.lang.Object ref = groupName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        groupName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int GROUPPREFIX_FIELD_NUMBER = 2;
+    private volatile java.lang.Object groupPrefix_;
+    /**
+     * <code>optional string groupPrefix = 2;</code>
+     */
+    public java.lang.String getGroupPrefix() {
+      java.lang.Object ref = groupPrefix_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        groupPrefix_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string groupPrefix = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getGroupPrefixBytes() {
+      java.lang.Object ref = groupPrefix_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        groupPrefix_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int GLOBALPERMS_FIELD_NUMBER = 3;
+    private com.google.protobuf.LazyStringList globalPerms_;
+    /**
+     * <code>repeated string globalPerms = 3;</code>
+     */
+    public com.google.protobuf.ProtocolStringList
+        getGlobalPermsList() {
+      return globalPerms_;
+    }
+    /**
+     * <code>repeated string globalPerms = 3;</code>
+     */
+    public int getGlobalPermsCount() {
+      return globalPerms_.size();
+    }
+    /**
+     * <code>repeated string globalPerms = 3;</code>
+     */
+    public java.lang.String getGlobalPerms(int index) {
+      return globalPerms_.get(index);
+    }
+    /**
+     * <code>repeated string globalPerms = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getGlobalPermsBytes(int index) {
+      return globalPerms_.getByteString(index);
+    }
+
+    public static final int SERVERPERMS_FIELD_NUMBER = 4;
+    private com.google.protobuf.LazyStringList serverPerms_;
+    /**
+     * <code>repeated string serverPerms = 4;</code>
+     */
+    public com.google.protobuf.ProtocolStringList
+        getServerPermsList() {
+      return serverPerms_;
+    }
+    /**
+     * <code>repeated string serverPerms = 4;</code>
+     */
+    public int getServerPermsCount() {
+      return serverPerms_.size();
+    }
+    /**
+     * <code>repeated string serverPerms = 4;</code>
+     */
+    public java.lang.String getServerPerms(int index) {
+      return serverPerms_.get(index);
+    }
+    /**
+     * <code>repeated string serverPerms = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getServerPermsBytes(int index) {
+      return serverPerms_.getByteString(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getGroupNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, groupName_);
+      }
+      if (!getGroupPrefixBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, groupPrefix_);
+      }
+      for (int i = 0; i < globalPerms_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, globalPerms_.getRaw(i));
+      }
+      for (int i = 0; i < serverPerms_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, serverPerms_.getRaw(i));
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getGroupNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, groupName_);
+      }
+      if (!getGroupPrefixBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, groupPrefix_);
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < globalPerms_.size(); i++) {
+          dataSize += computeStringSizeNoTag(globalPerms_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getGlobalPermsList().size();
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < serverPerms_.size(); i++) {
+          dataSize += computeStringSizeNoTag(serverPerms_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getServerPermsList().size();
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof net.synchthia.api.systera.SysteraProtos.GroupEntry)) {
+        return super.equals(obj);
+      }
+      net.synchthia.api.systera.SysteraProtos.GroupEntry other = (net.synchthia.api.systera.SysteraProtos.GroupEntry) obj;
+
+      boolean result = true;
+      result = result && getGroupName()
+          .equals(other.getGroupName());
+      result = result && getGroupPrefix()
+          .equals(other.getGroupPrefix());
+      result = result && getGlobalPermsList()
+          .equals(other.getGlobalPermsList());
+      result = result && getServerPermsList()
+          .equals(other.getServerPermsList());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + GROUPNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getGroupName().hashCode();
+      hash = (37 * hash) + GROUPPREFIX_FIELD_NUMBER;
+      hash = (53 * hash) + getGroupPrefix().hashCode();
+      if (getGlobalPermsCount() > 0) {
+        hash = (37 * hash) + GLOBALPERMS_FIELD_NUMBER;
+        hash = (53 * hash) + getGlobalPermsList().hashCode();
+      }
+      if (getServerPermsCount() > 0) {
+        hash = (37 * hash) + SERVERPERMS_FIELD_NUMBER;
+        hash = (53 * hash) + getServerPermsList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static net.synchthia.api.systera.SysteraProtos.GroupEntry parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.GroupEntry parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.GroupEntry parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.GroupEntry parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.GroupEntry parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.GroupEntry parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.GroupEntry parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.GroupEntry parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.GroupEntry parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.GroupEntry parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(net.synchthia.api.systera.SysteraProtos.GroupEntry prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * GROUP PERMISISONS
+     * </pre>
+     *
+     * Protobuf type {@code apipb.GroupEntry}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:apipb.GroupEntry)
+        net.synchthia.api.systera.SysteraProtos.GroupEntryOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_GroupEntry_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_GroupEntry_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                net.synchthia.api.systera.SysteraProtos.GroupEntry.class, net.synchthia.api.systera.SysteraProtos.GroupEntry.Builder.class);
+      }
+
+      // Construct using net.synchthia.api.systera.SysteraProtos.GroupEntry.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        groupName_ = "";
+
+        groupPrefix_ = "";
+
+        globalPerms_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        serverPerms_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_GroupEntry_descriptor;
+      }
+
+      public net.synchthia.api.systera.SysteraProtos.GroupEntry getDefaultInstanceForType() {
+        return net.synchthia.api.systera.SysteraProtos.GroupEntry.getDefaultInstance();
+      }
+
+      public net.synchthia.api.systera.SysteraProtos.GroupEntry build() {
+        net.synchthia.api.systera.SysteraProtos.GroupEntry result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public net.synchthia.api.systera.SysteraProtos.GroupEntry buildPartial() {
+        net.synchthia.api.systera.SysteraProtos.GroupEntry result = new net.synchthia.api.systera.SysteraProtos.GroupEntry(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.groupName_ = groupName_;
+        result.groupPrefix_ = groupPrefix_;
+        if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          globalPerms_ = globalPerms_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        }
+        result.globalPerms_ = globalPerms_;
+        if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          serverPerms_ = serverPerms_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000008);
+        }
+        result.serverPerms_ = serverPerms_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof net.synchthia.api.systera.SysteraProtos.GroupEntry) {
+          return mergeFrom((net.synchthia.api.systera.SysteraProtos.GroupEntry)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(net.synchthia.api.systera.SysteraProtos.GroupEntry other) {
+        if (other == net.synchthia.api.systera.SysteraProtos.GroupEntry.getDefaultInstance()) return this;
+        if (!other.getGroupName().isEmpty()) {
+          groupName_ = other.groupName_;
+          onChanged();
+        }
+        if (!other.getGroupPrefix().isEmpty()) {
+          groupPrefix_ = other.groupPrefix_;
+          onChanged();
+        }
+        if (!other.globalPerms_.isEmpty()) {
+          if (globalPerms_.isEmpty()) {
+            globalPerms_ = other.globalPerms_;
+            bitField0_ = (bitField0_ & ~0x00000004);
+          } else {
+            ensureGlobalPermsIsMutable();
+            globalPerms_.addAll(other.globalPerms_);
+          }
+          onChanged();
+        }
+        if (!other.serverPerms_.isEmpty()) {
+          if (serverPerms_.isEmpty()) {
+            serverPerms_ = other.serverPerms_;
+            bitField0_ = (bitField0_ & ~0x00000008);
+          } else {
+            ensureServerPermsIsMutable();
+            serverPerms_.addAll(other.serverPerms_);
+          }
+          onChanged();
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        net.synchthia.api.systera.SysteraProtos.GroupEntry parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (net.synchthia.api.systera.SysteraProtos.GroupEntry) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object groupName_ = "";
+      /**
+       * <code>optional string groupName = 1;</code>
+       */
+      public java.lang.String getGroupName() {
+        java.lang.Object ref = groupName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          groupName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string groupName = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getGroupNameBytes() {
+        java.lang.Object ref = groupName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          groupName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string groupName = 1;</code>
+       */
+      public Builder setGroupName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        groupName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string groupName = 1;</code>
+       */
+      public Builder clearGroupName() {
+        
+        groupName_ = getDefaultInstance().getGroupName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string groupName = 1;</code>
+       */
+      public Builder setGroupNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        groupName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object groupPrefix_ = "";
+      /**
+       * <code>optional string groupPrefix = 2;</code>
+       */
+      public java.lang.String getGroupPrefix() {
+        java.lang.Object ref = groupPrefix_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          groupPrefix_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string groupPrefix = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getGroupPrefixBytes() {
+        java.lang.Object ref = groupPrefix_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          groupPrefix_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string groupPrefix = 2;</code>
+       */
+      public Builder setGroupPrefix(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        groupPrefix_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string groupPrefix = 2;</code>
+       */
+      public Builder clearGroupPrefix() {
+        
+        groupPrefix_ = getDefaultInstance().getGroupPrefix();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string groupPrefix = 2;</code>
+       */
+      public Builder setGroupPrefixBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        groupPrefix_ = value;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.LazyStringList globalPerms_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureGlobalPermsIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          globalPerms_ = new com.google.protobuf.LazyStringArrayList(globalPerms_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+      /**
+       * <code>repeated string globalPerms = 3;</code>
+       */
+      public com.google.protobuf.ProtocolStringList
+          getGlobalPermsList() {
+        return globalPerms_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string globalPerms = 3;</code>
+       */
+      public int getGlobalPermsCount() {
+        return globalPerms_.size();
+      }
+      /**
+       * <code>repeated string globalPerms = 3;</code>
+       */
+      public java.lang.String getGlobalPerms(int index) {
+        return globalPerms_.get(index);
+      }
+      /**
+       * <code>repeated string globalPerms = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getGlobalPermsBytes(int index) {
+        return globalPerms_.getByteString(index);
+      }
+      /**
+       * <code>repeated string globalPerms = 3;</code>
+       */
+      public Builder setGlobalPerms(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureGlobalPermsIsMutable();
+        globalPerms_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string globalPerms = 3;</code>
+       */
+      public Builder addGlobalPerms(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureGlobalPermsIsMutable();
+        globalPerms_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string globalPerms = 3;</code>
+       */
+      public Builder addAllGlobalPerms(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureGlobalPermsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, globalPerms_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string globalPerms = 3;</code>
+       */
+      public Builder clearGlobalPerms() {
+        globalPerms_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string globalPerms = 3;</code>
+       */
+      public Builder addGlobalPermsBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        ensureGlobalPermsIsMutable();
+        globalPerms_.add(value);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.LazyStringList serverPerms_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureServerPermsIsMutable() {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          serverPerms_ = new com.google.protobuf.LazyStringArrayList(serverPerms_);
+          bitField0_ |= 0x00000008;
+         }
+      }
+      /**
+       * <code>repeated string serverPerms = 4;</code>
+       */
+      public com.google.protobuf.ProtocolStringList
+          getServerPermsList() {
+        return serverPerms_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string serverPerms = 4;</code>
+       */
+      public int getServerPermsCount() {
+        return serverPerms_.size();
+      }
+      /**
+       * <code>repeated string serverPerms = 4;</code>
+       */
+      public java.lang.String getServerPerms(int index) {
+        return serverPerms_.get(index);
+      }
+      /**
+       * <code>repeated string serverPerms = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getServerPermsBytes(int index) {
+        return serverPerms_.getByteString(index);
+      }
+      /**
+       * <code>repeated string serverPerms = 4;</code>
+       */
+      public Builder setServerPerms(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureServerPermsIsMutable();
+        serverPerms_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string serverPerms = 4;</code>
+       */
+      public Builder addServerPerms(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureServerPermsIsMutable();
+        serverPerms_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string serverPerms = 4;</code>
+       */
+      public Builder addAllServerPerms(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureServerPermsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, serverPerms_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string serverPerms = 4;</code>
+       */
+      public Builder clearServerPerms() {
+        serverPerms_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string serverPerms = 4;</code>
+       */
+      public Builder addServerPermsBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        ensureServerPermsIsMutable();
+        serverPerms_.add(value);
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:apipb.GroupEntry)
+    }
+
+    // @@protoc_insertion_point(class_scope:apipb.GroupEntry)
+    private static final net.synchthia.api.systera.SysteraProtos.GroupEntry DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new net.synchthia.api.systera.SysteraProtos.GroupEntry();
+    }
+
+    public static net.synchthia.api.systera.SysteraProtos.GroupEntry getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<GroupEntry>
+        PARSER = new com.google.protobuf.AbstractParser<GroupEntry>() {
+      public GroupEntry parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new GroupEntry(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<GroupEntry> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GroupEntry> getParserForType() {
+      return PARSER;
+    }
+
+    public net.synchthia.api.systera.SysteraProtos.GroupEntry getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface FetchGroupsRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:apipb.FetchGroupsRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string serverName = 1;</code>
+     */
+    java.lang.String getServerName();
+    /**
+     * <code>optional string serverName = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getServerNameBytes();
+  }
+  /**
+   * Protobuf type {@code apipb.FetchGroupsRequest}
+   */
+  public  static final class FetchGroupsRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:apipb.FetchGroupsRequest)
+      FetchGroupsRequestOrBuilder {
+    // Use FetchGroupsRequest.newBuilder() to construct.
+    private FetchGroupsRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private FetchGroupsRequest() {
+      serverName_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private FetchGroupsRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              serverName_ = s;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_FetchGroupsRequest_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_FetchGroupsRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest.class, net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest.Builder.class);
+    }
+
+    public static final int SERVERNAME_FIELD_NUMBER = 1;
+    private volatile java.lang.Object serverName_;
+    /**
+     * <code>optional string serverName = 1;</code>
+     */
+    public java.lang.String getServerName() {
+      java.lang.Object ref = serverName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        serverName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string serverName = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getServerNameBytes() {
+      java.lang.Object ref = serverName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        serverName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getServerNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, serverName_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getServerNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, serverName_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest)) {
+        return super.equals(obj);
+      }
+      net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest other = (net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest) obj;
+
+      boolean result = true;
+      result = result && getServerName()
+          .equals(other.getServerName());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + SERVERNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getServerName().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code apipb.FetchGroupsRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:apipb.FetchGroupsRequest)
+        net.synchthia.api.systera.SysteraProtos.FetchGroupsRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_FetchGroupsRequest_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_FetchGroupsRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest.class, net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest.Builder.class);
+      }
+
+      // Construct using net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        serverName_ = "";
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_FetchGroupsRequest_descriptor;
+      }
+
+      public net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest getDefaultInstanceForType() {
+        return net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest.getDefaultInstance();
+      }
+
+      public net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest build() {
+        net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest buildPartial() {
+        net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest result = new net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest(this);
+        result.serverName_ = serverName_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest) {
+          return mergeFrom((net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest other) {
+        if (other == net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest.getDefaultInstance()) return this;
+        if (!other.getServerName().isEmpty()) {
+          serverName_ = other.serverName_;
+          onChanged();
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object serverName_ = "";
+      /**
+       * <code>optional string serverName = 1;</code>
+       */
+      public java.lang.String getServerName() {
+        java.lang.Object ref = serverName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          serverName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string serverName = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getServerNameBytes() {
+        java.lang.Object ref = serverName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          serverName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string serverName = 1;</code>
+       */
+      public Builder setServerName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        serverName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string serverName = 1;</code>
+       */
+      public Builder clearServerName() {
+        
+        serverName_ = getDefaultInstance().getServerName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string serverName = 1;</code>
+       */
+      public Builder setServerNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        serverName_ = value;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:apipb.FetchGroupsRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:apipb.FetchGroupsRequest)
+    private static final net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest();
+    }
+
+    public static net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<FetchGroupsRequest>
+        PARSER = new com.google.protobuf.AbstractParser<FetchGroupsRequest>() {
+      public FetchGroupsRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new FetchGroupsRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<FetchGroupsRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<FetchGroupsRequest> getParserForType() {
+      return PARSER;
+    }
+
+    public net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface FetchGroupsResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:apipb.FetchGroupsResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .apipb.GroupEntry groups = 1;</code>
+     */
+    java.util.List<net.synchthia.api.systera.SysteraProtos.GroupEntry> 
+        getGroupsList();
+    /**
+     * <code>repeated .apipb.GroupEntry groups = 1;</code>
+     */
+    net.synchthia.api.systera.SysteraProtos.GroupEntry getGroups(int index);
+    /**
+     * <code>repeated .apipb.GroupEntry groups = 1;</code>
+     */
+    int getGroupsCount();
+    /**
+     * <code>repeated .apipb.GroupEntry groups = 1;</code>
+     */
+    java.util.List<? extends net.synchthia.api.systera.SysteraProtos.GroupEntryOrBuilder> 
+        getGroupsOrBuilderList();
+    /**
+     * <code>repeated .apipb.GroupEntry groups = 1;</code>
+     */
+    net.synchthia.api.systera.SysteraProtos.GroupEntryOrBuilder getGroupsOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code apipb.FetchGroupsResponse}
+   */
+  public  static final class FetchGroupsResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:apipb.FetchGroupsResponse)
+      FetchGroupsResponseOrBuilder {
+    // Use FetchGroupsResponse.newBuilder() to construct.
+    private FetchGroupsResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private FetchGroupsResponse() {
+      groups_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private FetchGroupsResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                groups_ = new java.util.ArrayList<net.synchthia.api.systera.SysteraProtos.GroupEntry>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              groups_.add(
+                  input.readMessage(net.synchthia.api.systera.SysteraProtos.GroupEntry.parser(), extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          groups_ = java.util.Collections.unmodifiableList(groups_);
+        }
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_FetchGroupsResponse_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_FetchGroupsResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse.class, net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse.Builder.class);
+    }
+
+    public static final int GROUPS_FIELD_NUMBER = 1;
+    private java.util.List<net.synchthia.api.systera.SysteraProtos.GroupEntry> groups_;
+    /**
+     * <code>repeated .apipb.GroupEntry groups = 1;</code>
+     */
+    public java.util.List<net.synchthia.api.systera.SysteraProtos.GroupEntry> getGroupsList() {
+      return groups_;
+    }
+    /**
+     * <code>repeated .apipb.GroupEntry groups = 1;</code>
+     */
+    public java.util.List<? extends net.synchthia.api.systera.SysteraProtos.GroupEntryOrBuilder> 
+        getGroupsOrBuilderList() {
+      return groups_;
+    }
+    /**
+     * <code>repeated .apipb.GroupEntry groups = 1;</code>
+     */
+    public int getGroupsCount() {
+      return groups_.size();
+    }
+    /**
+     * <code>repeated .apipb.GroupEntry groups = 1;</code>
+     */
+    public net.synchthia.api.systera.SysteraProtos.GroupEntry getGroups(int index) {
+      return groups_.get(index);
+    }
+    /**
+     * <code>repeated .apipb.GroupEntry groups = 1;</code>
+     */
+    public net.synchthia.api.systera.SysteraProtos.GroupEntryOrBuilder getGroupsOrBuilder(
+        int index) {
+      return groups_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < groups_.size(); i++) {
+        output.writeMessage(1, groups_.get(i));
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < groups_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, groups_.get(i));
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse)) {
+        return super.equals(obj);
+      }
+      net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse other = (net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse) obj;
+
+      boolean result = true;
+      result = result && getGroupsList()
+          .equals(other.getGroupsList());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (getGroupsCount() > 0) {
+        hash = (37 * hash) + GROUPS_FIELD_NUMBER;
+        hash = (53 * hash) + getGroupsList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code apipb.FetchGroupsResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:apipb.FetchGroupsResponse)
+        net.synchthia.api.systera.SysteraProtos.FetchGroupsResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_FetchGroupsResponse_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_FetchGroupsResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse.class, net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse.Builder.class);
+      }
+
+      // Construct using net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getGroupsFieldBuilder();
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        if (groupsBuilder_ == null) {
+          groups_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          groupsBuilder_.clear();
+        }
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return net.synchthia.api.systera.SysteraProtos.internal_static_apipb_FetchGroupsResponse_descriptor;
+      }
+
+      public net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse getDefaultInstanceForType() {
+        return net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse.getDefaultInstance();
+      }
+
+      public net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse build() {
+        net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse buildPartial() {
+        net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse result = new net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse(this);
+        int from_bitField0_ = bitField0_;
+        if (groupsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            groups_ = java.util.Collections.unmodifiableList(groups_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.groups_ = groups_;
+        } else {
+          result.groups_ = groupsBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse) {
+          return mergeFrom((net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse other) {
+        if (other == net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse.getDefaultInstance()) return this;
+        if (groupsBuilder_ == null) {
+          if (!other.groups_.isEmpty()) {
+            if (groups_.isEmpty()) {
+              groups_ = other.groups_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureGroupsIsMutable();
+              groups_.addAll(other.groups_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.groups_.isEmpty()) {
+            if (groupsBuilder_.isEmpty()) {
+              groupsBuilder_.dispose();
+              groupsBuilder_ = null;
+              groups_ = other.groups_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              groupsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getGroupsFieldBuilder() : null;
+            } else {
+              groupsBuilder_.addAllMessages(other.groups_);
+            }
+          }
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<net.synchthia.api.systera.SysteraProtos.GroupEntry> groups_ =
+        java.util.Collections.emptyList();
+      private void ensureGroupsIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          groups_ = new java.util.ArrayList<net.synchthia.api.systera.SysteraProtos.GroupEntry>(groups_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          net.synchthia.api.systera.SysteraProtos.GroupEntry, net.synchthia.api.systera.SysteraProtos.GroupEntry.Builder, net.synchthia.api.systera.SysteraProtos.GroupEntryOrBuilder> groupsBuilder_;
+
+      /**
+       * <code>repeated .apipb.GroupEntry groups = 1;</code>
+       */
+      public java.util.List<net.synchthia.api.systera.SysteraProtos.GroupEntry> getGroupsList() {
+        if (groupsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(groups_);
+        } else {
+          return groupsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .apipb.GroupEntry groups = 1;</code>
+       */
+      public int getGroupsCount() {
+        if (groupsBuilder_ == null) {
+          return groups_.size();
+        } else {
+          return groupsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .apipb.GroupEntry groups = 1;</code>
+       */
+      public net.synchthia.api.systera.SysteraProtos.GroupEntry getGroups(int index) {
+        if (groupsBuilder_ == null) {
+          return groups_.get(index);
+        } else {
+          return groupsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .apipb.GroupEntry groups = 1;</code>
+       */
+      public Builder setGroups(
+          int index, net.synchthia.api.systera.SysteraProtos.GroupEntry value) {
+        if (groupsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureGroupsIsMutable();
+          groups_.set(index, value);
+          onChanged();
+        } else {
+          groupsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .apipb.GroupEntry groups = 1;</code>
+       */
+      public Builder setGroups(
+          int index, net.synchthia.api.systera.SysteraProtos.GroupEntry.Builder builderForValue) {
+        if (groupsBuilder_ == null) {
+          ensureGroupsIsMutable();
+          groups_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          groupsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .apipb.GroupEntry groups = 1;</code>
+       */
+      public Builder addGroups(net.synchthia.api.systera.SysteraProtos.GroupEntry value) {
+        if (groupsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureGroupsIsMutable();
+          groups_.add(value);
+          onChanged();
+        } else {
+          groupsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .apipb.GroupEntry groups = 1;</code>
+       */
+      public Builder addGroups(
+          int index, net.synchthia.api.systera.SysteraProtos.GroupEntry value) {
+        if (groupsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureGroupsIsMutable();
+          groups_.add(index, value);
+          onChanged();
+        } else {
+          groupsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .apipb.GroupEntry groups = 1;</code>
+       */
+      public Builder addGroups(
+          net.synchthia.api.systera.SysteraProtos.GroupEntry.Builder builderForValue) {
+        if (groupsBuilder_ == null) {
+          ensureGroupsIsMutable();
+          groups_.add(builderForValue.build());
+          onChanged();
+        } else {
+          groupsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .apipb.GroupEntry groups = 1;</code>
+       */
+      public Builder addGroups(
+          int index, net.synchthia.api.systera.SysteraProtos.GroupEntry.Builder builderForValue) {
+        if (groupsBuilder_ == null) {
+          ensureGroupsIsMutable();
+          groups_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          groupsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .apipb.GroupEntry groups = 1;</code>
+       */
+      public Builder addAllGroups(
+          java.lang.Iterable<? extends net.synchthia.api.systera.SysteraProtos.GroupEntry> values) {
+        if (groupsBuilder_ == null) {
+          ensureGroupsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, groups_);
+          onChanged();
+        } else {
+          groupsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .apipb.GroupEntry groups = 1;</code>
+       */
+      public Builder clearGroups() {
+        if (groupsBuilder_ == null) {
+          groups_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          groupsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .apipb.GroupEntry groups = 1;</code>
+       */
+      public Builder removeGroups(int index) {
+        if (groupsBuilder_ == null) {
+          ensureGroupsIsMutable();
+          groups_.remove(index);
+          onChanged();
+        } else {
+          groupsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .apipb.GroupEntry groups = 1;</code>
+       */
+      public net.synchthia.api.systera.SysteraProtos.GroupEntry.Builder getGroupsBuilder(
+          int index) {
+        return getGroupsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .apipb.GroupEntry groups = 1;</code>
+       */
+      public net.synchthia.api.systera.SysteraProtos.GroupEntryOrBuilder getGroupsOrBuilder(
+          int index) {
+        if (groupsBuilder_ == null) {
+          return groups_.get(index);  } else {
+          return groupsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .apipb.GroupEntry groups = 1;</code>
+       */
+      public java.util.List<? extends net.synchthia.api.systera.SysteraProtos.GroupEntryOrBuilder> 
+           getGroupsOrBuilderList() {
+        if (groupsBuilder_ != null) {
+          return groupsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(groups_);
+        }
+      }
+      /**
+       * <code>repeated .apipb.GroupEntry groups = 1;</code>
+       */
+      public net.synchthia.api.systera.SysteraProtos.GroupEntry.Builder addGroupsBuilder() {
+        return getGroupsFieldBuilder().addBuilder(
+            net.synchthia.api.systera.SysteraProtos.GroupEntry.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .apipb.GroupEntry groups = 1;</code>
+       */
+      public net.synchthia.api.systera.SysteraProtos.GroupEntry.Builder addGroupsBuilder(
+          int index) {
+        return getGroupsFieldBuilder().addBuilder(
+            index, net.synchthia.api.systera.SysteraProtos.GroupEntry.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .apipb.GroupEntry groups = 1;</code>
+       */
+      public java.util.List<net.synchthia.api.systera.SysteraProtos.GroupEntry.Builder> 
+           getGroupsBuilderList() {
+        return getGroupsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          net.synchthia.api.systera.SysteraProtos.GroupEntry, net.synchthia.api.systera.SysteraProtos.GroupEntry.Builder, net.synchthia.api.systera.SysteraProtos.GroupEntryOrBuilder> 
+          getGroupsFieldBuilder() {
+        if (groupsBuilder_ == null) {
+          groupsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              net.synchthia.api.systera.SysteraProtos.GroupEntry, net.synchthia.api.systera.SysteraProtos.GroupEntry.Builder, net.synchthia.api.systera.SysteraProtos.GroupEntryOrBuilder>(
+                  groups_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          groups_ = null;
+        }
+        return groupsBuilder_;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:apipb.FetchGroupsResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:apipb.FetchGroupsResponse)
+    private static final net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse();
+    }
+
+    public static net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<FetchGroupsResponse>
+        PARSER = new com.google.protobuf.AbstractParser<FetchGroupsResponse>() {
+      public FetchGroupsResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new FetchGroupsResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<FetchGroupsResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<FetchGroupsResponse> getParserForType() {
+      return PARSER;
+    }
+
+    public net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_apipb_Empty_descriptor;
   private static final 
@@ -7390,6 +9848,21 @@ public final class SysteraProtos {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_apipb_SetPlayerSettingsRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_apipb_GroupEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_apipb_GroupEntry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_apipb_FetchGroupsRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_apipb_FetchGroupsRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_apipb_FetchGroupsResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_apipb_FetchGroupsResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -7410,33 +9883,40 @@ public final class SysteraProtos {
       "playerName\030\002 \001(\t\022\027\n\017playerIPAddress\030\003 \001(" +
       "\t\"/\n\031InitPlayerProfileResponse\022\022\n\nhasPro",
       "file\030\001 \001(\010\"/\n\031FetchPlayerProfileRequest\022" +
-      "\022\n\nplayerUUID\030\001 \001(\t\"\220\001\n\032FetchPlayerProfi" +
-      "leResponse\022A\n\010settings\030\001 \003(\0132/.apipb.Fet" +
-      "chPlayerProfileResponse.SettingsEntry\032/\n" +
-      "\rSettingsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001" +
-      "(\010:\0028\001\"@\n\026SetPlayerServerRequest\022\022\n\nplay" +
-      "erUUID\030\001 \001(\t\022\022\n\nserverName\030\002 \001(\t\"C\n\031Remo" +
-      "vePlayerServerRequest\022\022\n\nplayerUUID\030\001 \001(" +
-      "\t\022\022\n\nserverName\030\002 \001(\t\"J\n\030SetPlayerSettin" +
-      "gsRequest\022\022\n\nplayerUUID\030\001 \001(\t\022\013\n\003key\030\002 \001",
-      "(\t\022\r\n\005value\030\003 \001(\010*$\n\nStreamType\022\010\n\004QUIT\020" +
-      "\000\022\014\n\010DISPATCH\020\0012\275\004\n\007Systera\022E\n\014ActionStr" +
-      "eam\022\024.apipb.StreamRequest\032\033.apipb.Action" +
-      "StreamResponse\"\0000\001\0222\n\010Announce\022\026.apipb.A" +
-      "nnounceRequest\032\014.apipb.Empty\"\000\0226\n\nQuitSt" +
-      "ream\022\030.apipb.QuitStreamRequest\032\014.apipb.E" +
-      "mpty\"\000\022X\n\021InitPlayerProfile\022\037.apipb.Init" +
-      "PlayerProfileRequest\032 .apipb.InitPlayerP" +
-      "rofileResponse\"\000\022[\n\022FetchPlayerProfile\022 " +
-      ".apipb.FetchPlayerProfileRequest\032!.apipb",
-      ".FetchPlayerProfileResponse\"\000\022>\n\017SetPlay" +
-      "erServer\022\035.apipb.SetPlayerServerRequest\032" +
-      "\014.apipb.Empty\022D\n\022RemovePlayerServer\022 .ap" +
-      "ipb.RemovePlayerServerRequest\032\014.apipb.Em" +
-      "pty\022B\n\021SetPlayerSettings\022\037.apipb.SetPlay" +
-      "erSettingsRequest\032\014.apipb.EmptyB*\n\031net.s" +
-      "ynchthia.api.systeraB\rSysteraProtosb\006pro" +
-      "to3"
+      "\022\n\nplayerUUID\030\001 \001(\t\"\240\001\n\032FetchPlayerProfi" +
+      "leResponse\022\016\n\006groups\030\001 \003(\t\022A\n\010settings\030\002" +
+      " \003(\0132/.apipb.FetchPlayerProfileResponse." +
+      "SettingsEntry\032/\n\rSettingsEntry\022\013\n\003key\030\001 " +
+      "\001(\t\022\r\n\005value\030\002 \001(\010:\0028\001\"@\n\026SetPlayerServe" +
+      "rRequest\022\022\n\nplayerUUID\030\001 \001(\t\022\022\n\nserverNa" +
+      "me\030\002 \001(\t\"C\n\031RemovePlayerServerRequest\022\022\n" +
+      "\nplayerUUID\030\001 \001(\t\022\022\n\nserverName\030\002 \001(\t\"J\n" +
+      "\030SetPlayerSettingsRequest\022\022\n\nplayerUUID\030",
+      "\001 \001(\t\022\013\n\003key\030\002 \001(\t\022\r\n\005value\030\003 \001(\010\"^\n\nGro" +
+      "upEntry\022\021\n\tgroupName\030\001 \001(\t\022\023\n\013groupPrefi" +
+      "x\030\002 \001(\t\022\023\n\013globalPerms\030\003 \003(\t\022\023\n\013serverPe" +
+      "rms\030\004 \003(\t\"(\n\022FetchGroupsRequest\022\022\n\nserve" +
+      "rName\030\001 \001(\t\"8\n\023FetchGroupsResponse\022!\n\006gr" +
+      "oups\030\001 \003(\0132\021.apipb.GroupEntry*$\n\nStreamT" +
+      "ype\022\010\n\004QUIT\020\000\022\014\n\010DISPATCH\020\0012\205\005\n\007Systera\022" +
+      "E\n\014ActionStream\022\024.apipb.StreamRequest\032\033." +
+      "apipb.ActionStreamResponse\"\0000\001\0222\n\010Announ" +
+      "ce\022\026.apipb.AnnounceRequest\032\014.apipb.Empty",
+      "\"\000\0226\n\nQuitStream\022\030.apipb.QuitStreamReque" +
+      "st\032\014.apipb.Empty\"\000\022X\n\021InitPlayerProfile\022" +
+      "\037.apipb.InitPlayerProfileRequest\032 .apipb" +
+      ".InitPlayerProfileResponse\"\000\022[\n\022FetchPla" +
+      "yerProfile\022 .apipb.FetchPlayerProfileReq" +
+      "uest\032!.apipb.FetchPlayerProfileResponse\"" +
+      "\000\022F\n\013FetchGroups\022\031.apipb.FetchGroupsRequ" +
+      "est\032\032.apipb.FetchGroupsResponse\"\000\022>\n\017Set" +
+      "PlayerServer\022\035.apipb.SetPlayerServerRequ" +
+      "est\032\014.apipb.Empty\022D\n\022RemovePlayerServer\022",
+      " .apipb.RemovePlayerServerRequest\032\014.apip" +
+      "b.Empty\022B\n\021SetPlayerSettings\022\037.apipb.Set" +
+      "PlayerSettingsRequest\032\014.apipb.EmptyB*\n\031n" +
+      "et.synchthia.api.systeraB\rSysteraProtosb" +
+      "\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -7503,7 +9983,7 @@ public final class SysteraProtos {
     internal_static_apipb_FetchPlayerProfileResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_apipb_FetchPlayerProfileResponse_descriptor,
-        new java.lang.String[] { "Settings", });
+        new java.lang.String[] { "Groups", "Settings", });
     internal_static_apipb_FetchPlayerProfileResponse_SettingsEntry_descriptor =
       internal_static_apipb_FetchPlayerProfileResponse_descriptor.getNestedTypes().get(0);
     internal_static_apipb_FetchPlayerProfileResponse_SettingsEntry_fieldAccessorTable = new
@@ -7528,6 +10008,24 @@ public final class SysteraProtos {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_apipb_SetPlayerSettingsRequest_descriptor,
         new java.lang.String[] { "PlayerUUID", "Key", "Value", });
+    internal_static_apipb_GroupEntry_descriptor =
+      getDescriptor().getMessageTypes().get(12);
+    internal_static_apipb_GroupEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_apipb_GroupEntry_descriptor,
+        new java.lang.String[] { "GroupName", "GroupPrefix", "GlobalPerms", "ServerPerms", });
+    internal_static_apipb_FetchGroupsRequest_descriptor =
+      getDescriptor().getMessageTypes().get(13);
+    internal_static_apipb_FetchGroupsRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_apipb_FetchGroupsRequest_descriptor,
+        new java.lang.String[] { "ServerName", });
+    internal_static_apipb_FetchGroupsResponse_descriptor =
+      getDescriptor().getMessageTypes().get(14);
+    internal_static_apipb_FetchGroupsResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_apipb_FetchGroupsResponse_descriptor,
+        new java.lang.String[] { "Groups", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

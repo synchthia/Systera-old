@@ -1,10 +1,12 @@
 package net.synchthia.systera.command;
 
+import com.google.protobuf.ProtocolStringList;
 import com.sk89q.minecraft.util.commands.Command;
 import com.sk89q.minecraft.util.commands.CommandContext;
 import com.sk89q.minecraft.util.commands.CommandException;
 import com.sk89q.minecraft.util.commands.CommandPermissions;
 import net.synchthia.systera.SysteraPlugin;
+import net.synchthia.systera.permissions.PermissionsManager;
 import net.synchthia.systera.player.PlayerAPI;
 import net.synchthia.systera.player.VanishManager;
 import org.bukkit.Bukkit;
@@ -61,6 +63,32 @@ public class APICommand {
             int size = VanishManager.getVanishPlayerInServer().size();
             sender.sendMessage("Vanishing: " + size);
             return;
+        }
+
+        if (args.getString(0).equals("groups")) {
+            ProtocolStringList groups = PlayerAPI.getLocalProfile(Bukkit.getPlayer(sender.getName()).getUniqueId()).groups;
+            sender.sendMessage("You are assigned of: " + groups);
+            return;
+        }
+
+        if (args.getString(0).equals("fetchperms")) {
+            sender.sendMessage("FetchPerms...");
+            SysteraPlugin.getInstance().permissionsAPI.fetchGroups().whenComplete((r, t) -> {
+                if (t != null) {
+                    System.out.println("Error! @ fetch perms api cmd");
+                    return;
+                }
+            });
+            return;
+        }
+
+        if (args.getString(0).equals("updateperms")) {
+            sender.sendMessage("Apply Permission everyone...");
+            PermissionsManager manager = SysteraPlugin.getPermissionsManager();
+            //manager.paStats(Bukkit.getPlayer(sender.getName()));
+            manager.removeAttachments();
+
+            Bukkit.getOnlinePlayers().forEach((manager::applyPermission));
         }
     }
 }

@@ -1,6 +1,7 @@
 package net.synchthia.systera.player;
 
 import net.synchthia.systera.SysteraPlugin;
+import net.synchthia.systera.world.TabManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
@@ -50,6 +51,14 @@ public class PlayerListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
 
+        // Team
+        TeamManager teamManager = new TeamManager(plugin);
+        teamManager.registerTeam(player);
+
+        // TabList
+        TabManager tabManager = new TabManager();
+        tabManager.setHeaderFooter(player);
+
         // Vanish
         event.setJoinMessage(null);
         VanishManager.hideFoundVanishPlayer(player);
@@ -71,6 +80,10 @@ public class PlayerListener implements Listener {
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
+
+        // Team
+        TeamManager teamManager = new TeamManager(plugin);
+        teamManager.unregisterTeam(player);
 
         // Vanish
         event.setQuitMessage(null);

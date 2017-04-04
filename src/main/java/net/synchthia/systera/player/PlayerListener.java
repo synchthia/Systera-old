@@ -1,6 +1,9 @@
 package net.synchthia.systera.player;
 
+import net.synchthia.api.systera.SysteraProtos;
 import net.synchthia.systera.SysteraPlugin;
+import net.synchthia.systera.punishment.PunishManager;
+import net.synchthia.systera.util.StringUtil;
 import net.synchthia.systera.world.TabManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -12,6 +15,7 @@ import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -39,6 +43,14 @@ public class PlayerListener implements Listener {
         }
 
         try {
+            List<SysteraProtos.PunishEntry> punishList = plugin.punishAPI.lookupPlayer(event.getUniqueId(), SysteraProtos.PunishLevel.TBAN).get(5, TimeUnit.SECONDS).getEntryList();
+            if (punishList.size() != 0) {
+                SysteraProtos.PunishEntry punishEntry = punishList.get(punishList.size() - 1);
+                String message = StringUtil.someLineToOneLine(PunishManager.punishMessage(punishEntry)).replaceAll("&","§");
+                event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_BANNED, message);
+                return;
+            }
+            
             plugin.playerAPI.initPlayerProfile(event.getUniqueId(), event.getName(), event.getAddress().getHostAddress()).get(10, TimeUnit.SECONDS);
             plugin.playerAPI.fetchPlayerProfile(event.getUniqueId(), event.getName()).get(10, TimeUnit.SECONDS);
         } catch (InterruptedException | ExecutionException | TimeoutException ex) {

@@ -66,6 +66,14 @@ public class PlayerAPI {
         });
     }
 
+    public CompletableFuture<SysteraProtos.FetchPlayerProfileResponse> fetchPlayerProfileByName(String playerName) {
+        return plugin.apiClient.fetchPlayerProfileByName(playerName).whenComplete(((response, throwable) -> {
+            if (throwable != null) {
+                plugin.getLogger().log(Level.WARNING, "Failed Fetch Player Profile by Name: Exception threw", throwable);
+            }
+        }));
+    }
+
     public static ProtocolStringList getGroups(UUID playerUUID) {
         ProtocolStringList groups = localPlayerProfile.get(playerUUID).groups;
 

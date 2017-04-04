@@ -14,6 +14,7 @@ import net.synchthia.systera.permissions.PermissionsAPI;
 import net.synchthia.systera.permissions.PermissionsManager;
 import net.synchthia.systera.player.PlayerAPI;
 import net.synchthia.systera.player.PlayerListener;
+import net.synchthia.systera.punishment.PunishAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -41,6 +42,7 @@ public class SysteraPlugin extends JavaPlugin {
 
     public PlayerAPI playerAPI;
     public PermissionsAPI permissionsAPI;
+    public PunishAPI punishAPI;
 
     @Getter
     private static PermissionsManager permissionsManager;
@@ -64,6 +66,7 @@ public class SysteraPlugin extends JavaPlugin {
             I18n.setI18nManager(new I18nManager(this));
 
             registerAPI();
+            registerStream();
             registerEvents();
             registerCommands();
 
@@ -88,10 +91,10 @@ public class SysteraPlugin extends JavaPlugin {
 
     private void registerAPI() {
         apiClient = new APIClient(apiServerAddress);
-        apiClient.actionStream(Bukkit.getServerName());
 
         playerAPI = new PlayerAPI(this);
         permissionsAPI = new PermissionsAPI(this);
+        punishAPI = new PunishAPI(this);
 
         try {
             permissionsAPI.fetchGroups().get(5, TimeUnit.SECONDS);
@@ -106,6 +109,11 @@ public class SysteraPlugin extends JavaPlugin {
                 getLogger().log(Level.WARNING, "Failed FetchPlayerProfile (AllPlayers)", ex);
             }
         });
+    }
+
+    public void registerStream() {
+        apiClient.actionStream(Bukkit.getServer().getServerName());
+        apiClient.punishStream(Bukkit.getServer().getServerName());
     }
 
     private void registerEvents() {
@@ -127,6 +135,7 @@ public class SysteraPlugin extends JavaPlugin {
         cmdRegister.register(SpawnCommand.class);
         cmdRegister.register(APICommand.class);
         cmdRegister.register(SettingsCommand.class);
+        cmdRegister.register(PunishCommand.class);
     }
 
     @Override

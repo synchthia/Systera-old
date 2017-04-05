@@ -51,7 +51,7 @@ public class JapanizeManager {
             connection.setConnectTimeout(1000);
             connection.setRequestMethod("GET");
             connection.connect();
-            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), "utf-8"));
             StringBuilder builder = new StringBuilder();
             JsonParser parser = new JsonParser();
             JsonElement rootElement = parser.parse(br.readLine());

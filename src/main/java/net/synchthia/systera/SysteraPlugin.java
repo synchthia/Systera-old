@@ -6,6 +6,7 @@ import com.sk89q.bukkit.util.CommandsManagerRegistration;
 import com.sk89q.minecraft.util.commands.*;
 import lombok.Getter;
 import lombok.SneakyThrows;
+import net.synchthia.systera.chat.ChatListener;
 import net.synchthia.systera.command.*;
 import net.synchthia.systera.config.ConfigManager;
 import net.synchthia.systera.i18n.I18n;
@@ -119,6 +120,7 @@ public class SysteraPlugin extends JavaPlugin {
     private void registerEvents() {
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new PlayerListener(this), this);
+        pm.registerEvents(new ChatListener(this), this);
     }
 
     private void registerCommands() {

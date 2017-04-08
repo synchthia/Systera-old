@@ -39,7 +39,7 @@ public class SysteraPlugin extends JavaPlugin {
 
     @Getter
     public APIClient apiClient;
-    private String apiServerAddress = "192.168.100.53:17300";
+    private String apiServerAddress;
 
     public PlayerAPI playerAPI;
     public PermissionsAPI permissionsAPI;
@@ -91,6 +91,14 @@ public class SysteraPlugin extends JavaPlugin {
     }
 
     private void registerAPI() {
+        String addressEnv = System.getenv("SYSTERA_API_ADDRESS");
+        if (addressEnv == null) {
+            apiServerAddress = "localhost:17300";
+        } else {
+            apiServerAddress = addressEnv;
+        }
+        getLogger().log(Level.INFO, "API Address: " + apiServerAddress);
+        
         apiClient = new APIClient(apiServerAddress);
 
         playerAPI = new PlayerAPI(this);

@@ -44,7 +44,7 @@ public class PunishCommand {
     public static void tempBan(final CommandContext args, CommandSender sender, SysteraPlugin plugin) throws CommandException {
         String toPlayerName = args.getString(0);
         String expireDate = args.argsLength() < 3 ? "7d" : args.getString(1);
-        String reason = args.getJoinedStrings(args.argsLength() - 1);
+        String reason = args.argsLength() < 3 ? args.getJoinedStrings(1) : args.getJoinedStrings(2);
 
         try {
             Long expire = DateUtil.getEpochMilliTime() + DateUtil.parseDateString(expireDate);

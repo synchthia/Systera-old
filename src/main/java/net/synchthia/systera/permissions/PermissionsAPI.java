@@ -58,11 +58,10 @@ public class PermissionsAPI {
 
     public static String getPrefix(Player player) {
         String prefix = "&7";
-
-        Integer groupLength = PlayerAPI.getGroups(player.getUniqueId()).size();
-        if (groupLength != 0) {
-            String primaryGroup = PlayerAPI.getGroups(player.getUniqueId()).get(groupLength - 1);
-            prefix = permsListMap.get(primaryGroup).prefix;
+        ProtocolStringList groups = PlayerAPI.getGroups(player.getUniqueId());
+        if (groups.size() != 0) {
+            String primaryGroup = groups.get(groups.size() - 1);
+            prefix = permsListMap.containsKey(primaryGroup) ? permsListMap.get(primaryGroup).prefix : "&7";
         }
 
         return prefix.replaceAll("&", "§");

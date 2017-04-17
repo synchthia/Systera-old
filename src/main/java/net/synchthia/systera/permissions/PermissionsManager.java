@@ -37,6 +37,10 @@ public class PermissionsManager {
 
     public void set(Player player, PermissionAttachment attachment, String groupName) {
         PermissionsAPI.PermsList permsList = PermissionsAPI.getPermissions(groupName);
+        if (permsList == null) {
+            return;
+        }
+
         if (permsList.globalPerms != null) {
             permsList.globalPerms.forEach(perms -> {
                 if (perms.startsWith("-")) {

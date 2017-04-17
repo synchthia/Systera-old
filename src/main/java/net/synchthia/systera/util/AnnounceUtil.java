@@ -33,7 +33,7 @@ public class AnnounceUtil extends BukkitRunnable {
     }
 
     public void sendAnnounce() {
-        this.runTaskTimerAsynchronously(SysteraPlugin.getInstance(), 0L, 3L);
+        this.runTaskTimerAsynchronously(SysteraPlugin.getInstance(), 0L, 4L);
     }
 
     @Override

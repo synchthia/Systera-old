@@ -1,0 +1,14 @@
+image: maven:latest
+
+stages:
+  - build_systera
+
+  build-systera:
+    stage: build_systera
+    artifacts:
+      paths:
+      - target/Systera.jar
+
+  script:
+  # Run Maven
+  - mvn clean package

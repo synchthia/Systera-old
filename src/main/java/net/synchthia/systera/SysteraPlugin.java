@@ -147,6 +147,7 @@ public class SysteraPlugin extends JavaPlugin {
         cmdRegister.register(SettingsCommand.class);
         cmdRegister.register(PunishCommand.class);
         cmdRegister.register(ListCommand.class);
+        cmdRegister.register(TellCommand.class);
     }
 
     @Override

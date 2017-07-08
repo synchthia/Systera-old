@@ -28,13 +28,17 @@ public final class SysteraProtos {
      */
     QUIT(0),
     /**
-     * <code>RESTORED = 1;</code>
+     * <code>CONNECT = 1;</code>
      */
-    RESTORED(1),
+    CONNECT(1),
     /**
-     * <code>DISPATCH = 2;</code>
+     * <code>RESTORED = 2;</code>
      */
-    DISPATCH(2),
+    RESTORED(2),
+    /**
+     * <code>DISPATCH = 3;</code>
+     */
+    DISPATCH(3),
     UNRECOGNIZED(-1),
     ;
 
@@ -43,13 +47,17 @@ public final class SysteraProtos {
      */
     public static final int QUIT_VALUE = 0;
     /**
-     * <code>RESTORED = 1;</code>
+     * <code>CONNECT = 1;</code>
      */
-    public static final int RESTORED_VALUE = 1;
+    public static final int CONNECT_VALUE = 1;
     /**
-     * <code>DISPATCH = 2;</code>
+     * <code>RESTORED = 2;</code>
      */
-    public static final int DISPATCH_VALUE = 2;
+    public static final int RESTORED_VALUE = 2;
+    /**
+     * <code>DISPATCH = 3;</code>
+     */
+    public static final int DISPATCH_VALUE = 3;
 
 
     public final int getNumber() {
@@ -71,8 +79,9 @@ public final class SysteraProtos {
     public static StreamType forNumber(int value) {
       switch (value) {
         case 0: return QUIT;
-        case 1: return RESTORED;
-        case 2: return DISPATCH;
+        case 1: return CONNECT;
+        case 2: return RESTORED;
+        case 3: return DISPATCH;
         default: return null;
       }
     }
@@ -16174,37 +16183,37 @@ public final class SysteraProtos {
       "pPrefix\030\002 \001(\t\022\023\n\013globalPerms\030\003 \003(\t\022\023\n\013se" +
       "rverPerms\030\004 \003(\t\"(\n\022FetchGroupsRequest\022\022\n" +
       "\nserverName\030\001 \001(\t\"8\n\023FetchGroupsResponse" +
-      "\022!\n\006groups\030\001 \003(\0132\021.apipb.GroupEntry*2\n\nS" +
-      "treamType\022\010\n\004QUIT\020\000\022\014\n\010RESTORED\020\001\022\014\n\010DIS" +
-      "PATCH\020\002*5\n\013PunishLevel\022\010\n\004WARN\020\000\022\010\n\004KICK" +
-      "\020\001\022\010\n\004TBAN\020\002\022\010\n\004PBAN\020\0032\203\010\n\007Systera\022$\n\004Pi" +
-      "ng\022\014.apipb.Empty\032\014.apipb.Empty\"\000\022E\n\014Acti",
-      "onStream\022\024.apipb.StreamRequest\032\033.apipb.A" +
-      "ctionStreamResponse\"\0000\001\022E\n\014PunishStream\022" +
-      "\024.apipb.StreamRequest\032\033.apipb.PunishStre" +
-      "amResponse\"\0000\001\0222\n\010Announce\022\026.apipb.Annou" +
-      "nceRequest\032\014.apipb.Empty\"\000\0226\n\nQuitStream" +
-      "\022\030.apipb.QuitStreamRequest\032\014.apipb.Empty" +
-      "\"\000\022X\n\021InitPlayerProfile\022\037.apipb.InitPlay" +
-      "erProfileRequest\032 .apipb.InitPlayerProfi" +
-      "leResponse\"\000\022[\n\022FetchPlayerProfile\022 .api" +
-      "pb.FetchPlayerProfileRequest\032!.apipb.Fet",
-      "chPlayerProfileResponse\"\000\022g\n\030FetchPlayer" +
-      "ProfileByName\022&.apipb.FetchPlayerProfile" +
-      "ByNameRequest\032!.apipb.FetchPlayerProfile" +
-      "Response\"\000\022>\n\017SetPlayerServer\022\035.apipb.Se" +
-      "tPlayerServerRequest\032\014.apipb.Empty\022D\n\022Re" +
-      "movePlayerServer\022 .apipb.RemovePlayerSer" +
-      "verRequest\032\014.apipb.Empty\022B\n\021SetPlayerSet" +
-      "tings\022\037.apipb.SetPlayerSettingsRequest\032\014" +
-      ".apipb.Empty\022R\n\017GetPlayerPunish\022\035.apipb." +
-      "GetPlayerPunishRequest\032\036.apipb.GetPlayer",
-      "PunishResponse\"\000\022R\n\017SetPlayerPunish\022\035.ap" +
-      "ipb.SetPlayerPunishRequest\032\036.apipb.SetPl" +
-      "ayerPunishResponse\"\000\022F\n\013FetchGroups\022\031.ap" +
-      "ipb.FetchGroupsRequest\032\032.apipb.FetchGrou" +
-      "psResponse\"\000B*\n\031net.synchthia.api.syster" +
-      "aB\rSysteraProtosb\006proto3"
+      "\022!\n\006groups\030\001 \003(\0132\021.apipb.GroupEntry*?\n\nS" +
+      "treamType\022\010\n\004QUIT\020\000\022\013\n\007CONNECT\020\001\022\014\n\010REST" +
+      "ORED\020\002\022\014\n\010DISPATCH\020\003*5\n\013PunishLevel\022\010\n\004W" +
+      "ARN\020\000\022\010\n\004KICK\020\001\022\010\n\004TBAN\020\002\022\010\n\004PBAN\020\0032\203\010\n\007" +
+      "Systera\022$\n\004Ping\022\014.apipb.Empty\032\014.apipb.Em",
+      "pty\"\000\022E\n\014ActionStream\022\024.apipb.StreamRequ" +
+      "est\032\033.apipb.ActionStreamResponse\"\0000\001\022E\n\014" +
+      "PunishStream\022\024.apipb.StreamRequest\032\033.api" +
+      "pb.PunishStreamResponse\"\0000\001\0222\n\010Announce\022" +
+      "\026.apipb.AnnounceRequest\032\014.apipb.Empty\"\000\022" +
+      "6\n\nQuitStream\022\030.apipb.QuitStreamRequest\032" +
+      "\014.apipb.Empty\"\000\022X\n\021InitPlayerProfile\022\037.a" +
+      "pipb.InitPlayerProfileRequest\032 .apipb.In" +
+      "itPlayerProfileResponse\"\000\022[\n\022FetchPlayer" +
+      "Profile\022 .apipb.FetchPlayerProfileReques",
+      "t\032!.apipb.FetchPlayerProfileResponse\"\000\022g" +
+      "\n\030FetchPlayerProfileByName\022&.apipb.Fetch" +
+      "PlayerProfileByNameRequest\032!.apipb.Fetch" +
+      "PlayerProfileResponse\"\000\022>\n\017SetPlayerServ" +
+      "er\022\035.apipb.SetPlayerServerRequest\032\014.apip" +
+      "b.Empty\022D\n\022RemovePlayerServer\022 .apipb.Re" +
+      "movePlayerServerRequest\032\014.apipb.Empty\022B\n" +
+      "\021SetPlayerSettings\022\037.apipb.SetPlayerSett" +
+      "ingsRequest\032\014.apipb.Empty\022R\n\017GetPlayerPu" +
+      "nish\022\035.apipb.GetPlayerPunishRequest\032\036.ap",
+      "ipb.GetPlayerPunishResponse\"\000\022R\n\017SetPlay" +
+      "erPunish\022\035.apipb.SetPlayerPunishRequest\032" +
+      "\036.apipb.SetPlayerPunishResponse\"\000\022F\n\013Fet" +
+      "chGroups\022\031.apipb.FetchGroupsRequest\032\032.ap" +
+      "ipb.FetchGroupsResponse\"\000B*\n\031net.synchth" +
+      "ia.api.systeraB\rSysteraProtosb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

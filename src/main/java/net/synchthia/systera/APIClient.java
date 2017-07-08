@@ -21,6 +21,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
 import static net.synchthia.api.systera.SysteraProtos.*;
+import static net.synchthia.api.systera.SysteraProtos.StreamType.*;
 
 /**
  * @author misterT2525, Laica-Lunasys
@@ -98,6 +99,7 @@ public class APIClient {
     public void actionStream(@NonNull String name) {
         StreamRequest request = StreamRequest.newBuilder()
                 .setName(name)
+                .setType(CONNECT)
                 .build();
 
         stub.actionStream(request, new StreamObserver<SysteraProtos.ActionStreamResponse>() {

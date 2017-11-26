@@ -39,12 +39,13 @@ public class PunishCommand {
         punish(false, SysteraProtos.PunishLevel.KICK, sender, toPlayerName, reason, 0L);
     }
 
-    @Command(aliases = {"tempban", "tban", "punish"}, desc = "Temporary BAN Command", min = 2, usage = "<player> [expire] <reason>")
+    @Command(aliases = {"tempban", "tban", "punish"}, flags = "t:t",desc = "Temporary BAN Command", min = 2, usage = "<player> <reason>")
     @CommandPermissions("systera.command.punishment")
     public static void tempBan(final CommandContext args, CommandSender sender, SysteraPlugin plugin) throws CommandException {
         String toPlayerName = args.getString(0);
-        String expireDate = args.argsLength() < 3 ? "7d" : args.getString(1);
-        String reason = args.argsLength() < 3 ? args.getJoinedStrings(1) : args.getJoinedStrings(2);
+
+        String expireDate = args.hasFlag('t') ? args.getFlag('t') : "7d";
+        String reason = args.getJoinedStrings(1);
 
         try {
             Long expire = DateUtil.getEpochMilliTime() + DateUtil.parseDateString(expireDate);
@@ -57,13 +58,9 @@ public class PunishCommand {
     @Command(aliases = {"permban", "pban", "ppunish"}, flags = "f", desc = "Permanently BAN Command", min = 2, usage = "<player> <reason>")
     @CommandPermissions("systera.command.punishment")
     public static void permBan(final CommandContext args, CommandSender sender, SysteraPlugin plugin) throws CommandException {
-        Boolean force = false;
+        Boolean force = args.hasFlag('f');
         String toPlayerName = args.getString(0);
         String reason = args.getJoinedStrings(1);
-
-        if (args.hasFlag('f')) {
-            force = true;
-        }
 
         punish(force, SysteraProtos.PunishLevel.PBAN, sender, toPlayerName, reason, 0L);
     }

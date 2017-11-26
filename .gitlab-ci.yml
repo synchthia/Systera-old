@@ -1,10 +1,11 @@
 image: maven:latest
 
 stages:
-  - build_systera
+  - build
+  - deploy
 
-build-systera:
-  stage: build_systera
+build:
+  stage: build
   artifacts:
     paths:
     - target/Systera.jar
@@ -12,3 +13,8 @@ build-systera:
   script:
   # Run Maven
   - mvn clean package
+
+deploy:
+  stage: deploy
+  script:
+  - "curl -X POST -H \"PRIVATE-TOKEN: ${STARTAIL_AGENT_KEY}\" 'https://gitlab.com/api/v4/projects/startail%2Fmcserver/pipeline?ref=master'"

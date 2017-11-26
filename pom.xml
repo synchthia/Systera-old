@@ -27,11 +27,6 @@
         </repository>
 
         <repository>
-            <id>synchthia-repo</id>
-            <url>https://repo.synchthia.net/spigotmc/</url>
-        </repository>
-
-        <repository>
             <id>extension.ws-repo</id>
             <url>https://repo.extension.ws/content/repositories/public/</url>
         </repository>
@@ -44,22 +39,21 @@
     </repositories>
 
     <dependencies>
+        <!-- gRPC -->
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-netty</artifactId>
-            <version>1.1.2</version>
+            <version>1.4.0</version>
         </dependency>
-
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-protobuf</artifactId>
-            <version>1.1.2</version>
+            <version>1.4.0</version>
         </dependency>
-
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-stub</artifactId>
-            <version>1.1.2</version>
+            <version>1.4.0</version>
         </dependency>
 
         <dependency>
@@ -71,14 +65,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.11.2-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.bukkit</groupId>
-            <artifactId>craftbukkit</artifactId>
-            <version>1.11.2-R0.1-SNAPSHOT</version>
+            <version>1.12.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 

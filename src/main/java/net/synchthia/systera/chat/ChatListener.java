@@ -29,25 +29,27 @@ public class ChatListener implements Listener {
         String prefix = permissionManager.getPrefix(event.getPlayer());*/
         String prefix = PermissionsAPI.getPrefix(event.getPlayer());
         String playerName = event.getPlayer().getDisplayName();
-        String chatMessage = event.getMessage();
 
         String leftFormat = "{prefix}§7{player}§a:§r "
                 .replace("{prefix}", prefix)
                 .replace("{player}", playerName)
                 .replaceAll("&","§");
 
-        String fullFormat = leftFormat + chatMessage;
-
+        // is Enabled?
+        String japanizeMsg = "";
         if (PlayerAPI.getSetting(event.getPlayer().getUniqueId(), "japanize")) {
             JapanizeManager japanizeManager = new JapanizeManager();
-            String converted = japanizeManager.convert(chatMessage);
-            if (converted != null) { fullFormat = fullFormat + "§6 (" + converted + "§6)"; }
+            String converted = japanizeManager.convert(event.getMessage());
+            if (converted != null) {
+                japanizeMsg = "§6 (" + converted + "§6)";
+            }
         }
 
-        for (Player receivedPlayer : event.getRecipients()) {
+        /*for (Player receivedPlayer : event.getRecipients()) {
             receivedPlayer.sendMessage(fullFormat);
-        }
-        Bukkit.getConsoleSender().sendMessage(fullFormat);
-        event.setCancelled(true);
+        }*/
+        //Bukkit.getConsoleSender().sendMessage(fullFormat);
+        event.setFormat(leftFormat + "%2$s" + japanizeMsg);
+        //event.setCancelled(true);
     }
 }

@@ -51,15 +51,10 @@ public class PlayerAPI {
             playerData.playerName = playerName;
 
             // Player Groups
-            playerData.groups = response.getGroupsList();
+            playerData.groups = response.getEntry().getGroupsList();
 
             // Player Settings
-            playerData.settings.putAll(PlayerSettings.getSettingsTemp());
-            response.getSettingsMap().forEach((key, value) -> {
-                if (PlayerSettings.getSettingsTemp().containsKey(key)) {
-                    playerData.settings.put(key, value);
-                }
-            });
+            playerData.settings.putAll(response.getEntry().getSettingsMap());
 
             // Put PlayerData to Local
             localPlayerProfile.put(playerUUID, playerData);

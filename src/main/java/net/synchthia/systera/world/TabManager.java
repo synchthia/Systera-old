@@ -15,8 +15,8 @@ import org.bukkit.entity.Player;
 public class TabManager {
     public void setHeaderFooter(Player player) {
         String serverName = Bukkit.getServer().getServerName();
-        String headerFormat = StringUtil.coloring("  &b&lSynchthia &7&lNetwork &8- &6&l" + serverName);
-        String footerFormat = StringUtil.coloring("&asynchthia.net");
+        String headerFormat = StringUtil.coloring("  &b&lSTARTAIL &8- &6&l" + serverName);
+        String footerFormat = StringUtil.coloring("&astartail.io");
 
         PacketContainer container = SysteraPlugin.getProtocolManager()
                 .createPacket(PacketType.Play.Server.PLAYER_LIST_HEADER_FOOTER);

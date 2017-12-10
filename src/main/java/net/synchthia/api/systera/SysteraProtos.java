@@ -5787,6 +5787,16 @@ public final class SysteraProtos {
      */
     com.google.protobuf.ByteString
         getPlayerIPAddressBytes();
+
+    /**
+     * <code>string playerHostname = 4;</code>
+     */
+    java.lang.String getPlayerHostname();
+    /**
+     * <code>string playerHostname = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getPlayerHostnameBytes();
   }
   /**
    * Protobuf type {@code apipb.InitPlayerProfileRequest}
@@ -5803,6 +5813,7 @@ public final class SysteraProtos {
       playerUUID_ = "";
       playerName_ = "";
       playerIPAddress_ = "";
+      playerHostname_ = "";
     }
 
     @java.lang.Override
@@ -5846,6 +5857,12 @@ public final class SysteraProtos {
               java.lang.String s = input.readStringRequireUtf8();
 
               playerIPAddress_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              playerHostname_ = s;
               break;
             }
           }
@@ -5973,6 +5990,40 @@ public final class SysteraProtos {
       }
     }
 
+    public static final int PLAYERHOSTNAME_FIELD_NUMBER = 4;
+    private volatile java.lang.Object playerHostname_;
+    /**
+     * <code>string playerHostname = 4;</code>
+     */
+    public java.lang.String getPlayerHostname() {
+      java.lang.Object ref = playerHostname_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        playerHostname_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string playerHostname = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getPlayerHostnameBytes() {
+      java.lang.Object ref = playerHostname_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        playerHostname_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -5994,6 +6045,9 @@ public final class SysteraProtos {
       if (!getPlayerIPAddressBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, playerIPAddress_);
       }
+      if (!getPlayerHostnameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, playerHostname_);
+      }
     }
 
     public int getSerializedSize() {
@@ -6009,6 +6063,9 @@ public final class SysteraProtos {
       }
       if (!getPlayerIPAddressBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, playerIPAddress_);
+      }
+      if (!getPlayerHostnameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, playerHostname_);
       }
       memoizedSize = size;
       return size;
@@ -6032,6 +6089,8 @@ public final class SysteraProtos {
           .equals(other.getPlayerName());
       result = result && getPlayerIPAddress()
           .equals(other.getPlayerIPAddress());
+      result = result && getPlayerHostname()
+          .equals(other.getPlayerHostname());
       return result;
     }
 
@@ -6048,6 +6107,8 @@ public final class SysteraProtos {
       hash = (53 * hash) + getPlayerName().hashCode();
       hash = (37 * hash) + PLAYERIPADDRESS_FIELD_NUMBER;
       hash = (53 * hash) + getPlayerIPAddress().hashCode();
+      hash = (37 * hash) + PLAYERHOSTNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getPlayerHostname().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -6183,6 +6244,8 @@ public final class SysteraProtos {
 
         playerIPAddress_ = "";
 
+        playerHostname_ = "";
+
         return this;
       }
 
@@ -6208,6 +6271,7 @@ public final class SysteraProtos {
         result.playerUUID_ = playerUUID_;
         result.playerName_ = playerName_;
         result.playerIPAddress_ = playerIPAddress_;
+        result.playerHostname_ = playerHostname_;
         onBuilt();
         return result;
       }
@@ -6259,6 +6323,10 @@ public final class SysteraProtos {
         }
         if (!other.getPlayerIPAddress().isEmpty()) {
           playerIPAddress_ = other.playerIPAddress_;
+          onChanged();
+        }
+        if (!other.getPlayerHostname().isEmpty()) {
+          playerHostname_ = other.playerHostname_;
           onChanged();
         }
         onChanged();
@@ -6490,6 +6558,75 @@ public final class SysteraProtos {
   checkByteStringIsUtf8(value);
         
         playerIPAddress_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object playerHostname_ = "";
+      /**
+       * <code>string playerHostname = 4;</code>
+       */
+      public java.lang.String getPlayerHostname() {
+        java.lang.Object ref = playerHostname_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          playerHostname_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string playerHostname = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getPlayerHostnameBytes() {
+        java.lang.Object ref = playerHostname_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          playerHostname_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string playerHostname = 4;</code>
+       */
+      public Builder setPlayerHostname(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        playerHostname_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string playerHostname = 4;</code>
+       */
+      public Builder clearPlayerHostname() {
+        
+        playerHostname_ = getDefaultInstance().getPlayerHostname();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string playerHostname = 4;</code>
+       */
+      public Builder setPlayerHostnameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        playerHostname_ = value;
         onChanged();
         return this;
       }
@@ -16983,69 +17120,70 @@ public final class SysteraProtos {
       "ayerUUID\030\001 \001(\t\022\022\n\nplayerName\030\002 \001(\t\022\016\n\006gr" +
       "oups\030\003 \003(\t\0222\n\010settings\030\004 \003(\0132 .apipb.Pla" +
       "yerEntry.SettingsEntry\032/\n\rSettingsEntry\022" +
-      "\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\010:\0028\001\"[\n\030InitP" +
+      "\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\010:\0028\001\"s\n\030InitP" +
       "layerProfileRequest\022\022\n\nplayerUUID\030\001 \001(\t\022" +
       "\022\n\nplayerName\030\002 \001(\t\022\027\n\017playerIPAddress\030\003" +
-      " \001(\t\"/\n\031InitPlayerProfileResponse\022\022\n\nhas" +
-      "Profile\030\001 \001(\010\"/\n\031FetchPlayerProfileReque" +
-      "st\022\022\n\nplayerUUID\030\001 \001(\t\"5\n\037FetchPlayerPro",
-      "fileByNameRequest\022\022\n\nplayerName\030\001 \001(\t\"?\n" +
-      "\032FetchPlayerProfileResponse\022!\n\005entry\030\001 \001" +
-      "(\0132\022.apipb.PlayerEntry\"@\n\026SetPlayerServe" +
-      "rRequest\022\022\n\nplayerUUID\030\001 \001(\t\022\022\n\nserverNa" +
-      "me\030\002 \001(\t\"C\n\031RemovePlayerServerRequest\022\022\n" +
-      "\nplayerUUID\030\001 \001(\t\022\022\n\nserverName\030\002 \001(\t\"J\n" +
-      "\030SetPlayerSettingsRequest\022\022\n\nplayerUUID\030" +
-      "\001 \001(\t\022\013\n\003key\030\002 \001(\t\022\r\n\005value\030\003 \001(\010\"\301\001\n\013Pu" +
-      "nishEntry\022\021\n\tavailable\030\001 \001(\010\022!\n\005level\030\002 " +
-      "\001(\0162\022.apipb.PunishLevel\022\016\n\006reason\030\003 \001(\t\022",
-      "\014\n\004date\030\004 \001(\003\022\016\n\006expire\030\005 \001(\003\022\'\n\014punishe" +
-      "dFrom\030\006 \001(\0132\021.apipb.PlayerData\022%\n\npunish" +
-      "edTo\030\007 \001(\0132\021.apipb.PlayerData\"m\n\026GetPlay" +
-      "erPunishRequest\022\022\n\nplayerUUID\030\001 \001(\t\022\'\n\013f" +
-      "ilterLevel\030\002 \001(\0162\022.apipb.PunishLevel\022\026\n\016" +
-      "includeExpired\030\003 \001(\010\"<\n\027GetPlayerPunishR" +
-      "esponse\022!\n\005entry\030\001 \003(\0132\022.apipb.PunishEnt" +
-      "ry\"Z\n\026SetPlayerPunishRequest\022\016\n\006remote\030\001" +
-      " \001(\010\022\r\n\005force\030\002 \001(\010\022!\n\005entry\030\003 \001(\0132\022.api" +
-      "pb.PunishEntry\"b\n\027SetPlayerPunishRespons",
-      "e\022\021\n\tnoprofile\030\001 \001(\010\022\017\n\007offline\030\002 \001(\010\022\021\n" +
-      "\tduplicate\030\003 \001(\010\022\020\n\010cooldown\030\004 \001(\010\"^\n\nGr" +
-      "oupEntry\022\021\n\tgroupName\030\001 \001(\t\022\023\n\013groupPref" +
-      "ix\030\002 \001(\t\022\023\n\013globalPerms\030\003 \003(\t\022\023\n\013serverP" +
-      "erms\030\004 \003(\t\"(\n\022FetchGroupsRequest\022\022\n\nserv" +
-      "erName\030\001 \001(\t\"8\n\023FetchGroupsResponse\022!\n\006g" +
-      "roups\030\001 \003(\0132\021.apipb.GroupEntry*?\n\nStream" +
-      "Type\022\010\n\004QUIT\020\000\022\013\n\007CONNECT\020\001\022\014\n\010RESTORED\020" +
-      "\002\022\014\n\010DISPATCH\020\003*5\n\013PunishLevel\022\010\n\004WARN\020\000" +
-      "\022\010\n\004KICK\020\001\022\010\n\004TBAN\020\002\022\010\n\004PBAN\020\0032\203\010\n\007Syste",
-      "ra\022$\n\004Ping\022\014.apipb.Empty\032\014.apipb.Empty\"\000" +
-      "\022E\n\014ActionStream\022\024.apipb.StreamRequest\032\033" +
-      ".apipb.ActionStreamResponse\"\0000\001\022E\n\014Punis" +
-      "hStream\022\024.apipb.StreamRequest\032\033.apipb.Pu" +
-      "nishStreamResponse\"\0000\001\0222\n\010Announce\022\026.api" +
-      "pb.AnnounceRequest\032\014.apipb.Empty\"\000\0226\n\nQu" +
-      "itStream\022\030.apipb.QuitStreamRequest\032\014.api" +
-      "pb.Empty\"\000\022X\n\021InitPlayerProfile\022\037.apipb." +
-      "InitPlayerProfileRequest\032 .apipb.InitPla" +
-      "yerProfileResponse\"\000\022[\n\022FetchPlayerProfi",
-      "le\022 .apipb.FetchPlayerProfileRequest\032!.a" +
-      "pipb.FetchPlayerProfileResponse\"\000\022g\n\030Fet" +
-      "chPlayerProfileByName\022&.apipb.FetchPlaye" +
-      "rProfileByNameRequest\032!.apipb.FetchPlaye" +
-      "rProfileResponse\"\000\022>\n\017SetPlayerServer\022\035." +
-      "apipb.SetPlayerServerRequest\032\014.apipb.Emp" +
-      "ty\022D\n\022RemovePlayerServer\022 .apipb.RemoveP" +
-      "layerServerRequest\032\014.apipb.Empty\022B\n\021SetP" +
-      "layerSettings\022\037.apipb.SetPlayerSettingsR" +
-      "equest\032\014.apipb.Empty\022R\n\017GetPlayerPunish\022",
-      "\035.apipb.GetPlayerPunishRequest\032\036.apipb.G" +
-      "etPlayerPunishResponse\"\000\022R\n\017SetPlayerPun" +
-      "ish\022\035.apipb.SetPlayerPunishRequest\032\036.api" +
-      "pb.SetPlayerPunishResponse\"\000\022F\n\013FetchGro" +
-      "ups\022\031.apipb.FetchGroupsRequest\032\032.apipb.F" +
-      "etchGroupsResponse\"\000B*\n\031net.synchthia.ap" +
-      "i.systeraB\rSysteraProtosb\006proto3"
+      " \001(\t\022\026\n\016playerHostname\030\004 \001(\t\"/\n\031InitPlay" +
+      "erProfileResponse\022\022\n\nhasProfile\030\001 \001(\010\"/\n" +
+      "\031FetchPlayerProfileRequest\022\022\n\nplayerUUID",
+      "\030\001 \001(\t\"5\n\037FetchPlayerProfileByNameReques" +
+      "t\022\022\n\nplayerName\030\001 \001(\t\"?\n\032FetchPlayerProf" +
+      "ileResponse\022!\n\005entry\030\001 \001(\0132\022.apipb.Playe" +
+      "rEntry\"@\n\026SetPlayerServerRequest\022\022\n\nplay" +
+      "erUUID\030\001 \001(\t\022\022\n\nserverName\030\002 \001(\t\"C\n\031Remo" +
+      "vePlayerServerRequest\022\022\n\nplayerUUID\030\001 \001(" +
+      "\t\022\022\n\nserverName\030\002 \001(\t\"J\n\030SetPlayerSettin" +
+      "gsRequest\022\022\n\nplayerUUID\030\001 \001(\t\022\013\n\003key\030\002 \001" +
+      "(\t\022\r\n\005value\030\003 \001(\010\"\301\001\n\013PunishEntry\022\021\n\tava" +
+      "ilable\030\001 \001(\010\022!\n\005level\030\002 \001(\0162\022.apipb.Puni",
+      "shLevel\022\016\n\006reason\030\003 \001(\t\022\014\n\004date\030\004 \001(\003\022\016\n" +
+      "\006expire\030\005 \001(\003\022\'\n\014punishedFrom\030\006 \001(\0132\021.ap" +
+      "ipb.PlayerData\022%\n\npunishedTo\030\007 \001(\0132\021.api" +
+      "pb.PlayerData\"m\n\026GetPlayerPunishRequest\022" +
+      "\022\n\nplayerUUID\030\001 \001(\t\022\'\n\013filterLevel\030\002 \001(\016" +
+      "2\022.apipb.PunishLevel\022\026\n\016includeExpired\030\003" +
+      " \001(\010\"<\n\027GetPlayerPunishResponse\022!\n\005entry" +
+      "\030\001 \003(\0132\022.apipb.PunishEntry\"Z\n\026SetPlayerP" +
+      "unishRequest\022\016\n\006remote\030\001 \001(\010\022\r\n\005force\030\002 " +
+      "\001(\010\022!\n\005entry\030\003 \001(\0132\022.apipb.PunishEntry\"b",
+      "\n\027SetPlayerPunishResponse\022\021\n\tnoprofile\030\001" +
+      " \001(\010\022\017\n\007offline\030\002 \001(\010\022\021\n\tduplicate\030\003 \001(\010" +
+      "\022\020\n\010cooldown\030\004 \001(\010\"^\n\nGroupEntry\022\021\n\tgrou" +
+      "pName\030\001 \001(\t\022\023\n\013groupPrefix\030\002 \001(\t\022\023\n\013glob" +
+      "alPerms\030\003 \003(\t\022\023\n\013serverPerms\030\004 \003(\t\"(\n\022Fe" +
+      "tchGroupsRequest\022\022\n\nserverName\030\001 \001(\t\"8\n\023" +
+      "FetchGroupsResponse\022!\n\006groups\030\001 \003(\0132\021.ap" +
+      "ipb.GroupEntry*?\n\nStreamType\022\010\n\004QUIT\020\000\022\013" +
+      "\n\007CONNECT\020\001\022\014\n\010RESTORED\020\002\022\014\n\010DISPATCH\020\003*" +
+      "5\n\013PunishLevel\022\010\n\004WARN\020\000\022\010\n\004KICK\020\001\022\010\n\004TB",
+      "AN\020\002\022\010\n\004PBAN\020\0032\203\010\n\007Systera\022$\n\004Ping\022\014.api" +
+      "pb.Empty\032\014.apipb.Empty\"\000\022E\n\014ActionStream" +
+      "\022\024.apipb.StreamRequest\032\033.apipb.ActionStr" +
+      "eamResponse\"\0000\001\022E\n\014PunishStream\022\024.apipb." +
+      "StreamRequest\032\033.apipb.PunishStreamRespon" +
+      "se\"\0000\001\0222\n\010Announce\022\026.apipb.AnnounceReque" +
+      "st\032\014.apipb.Empty\"\000\0226\n\nQuitStream\022\030.apipb" +
+      ".QuitStreamRequest\032\014.apipb.Empty\"\000\022X\n\021In" +
+      "itPlayerProfile\022\037.apipb.InitPlayerProfil" +
+      "eRequest\032 .apipb.InitPlayerProfileRespon",
+      "se\"\000\022[\n\022FetchPlayerProfile\022 .apipb.Fetch" +
+      "PlayerProfileRequest\032!.apipb.FetchPlayer" +
+      "ProfileResponse\"\000\022g\n\030FetchPlayerProfileB" +
+      "yName\022&.apipb.FetchPlayerProfileByNameRe" +
+      "quest\032!.apipb.FetchPlayerProfileResponse" +
+      "\"\000\022>\n\017SetPlayerServer\022\035.apipb.SetPlayerS" +
+      "erverRequest\032\014.apipb.Empty\022D\n\022RemovePlay" +
+      "erServer\022 .apipb.RemovePlayerServerReque" +
+      "st\032\014.apipb.Empty\022B\n\021SetPlayerSettings\022\037." +
+      "apipb.SetPlayerSettingsRequest\032\014.apipb.E",
+      "mpty\022R\n\017GetPlayerPunish\022\035.apipb.GetPlaye" +
+      "rPunishRequest\032\036.apipb.GetPlayerPunishRe" +
+      "sponse\"\000\022R\n\017SetPlayerPunish\022\035.apipb.SetP" +
+      "layerPunishRequest\032\036.apipb.SetPlayerPuni" +
+      "shResponse\"\000\022F\n\013FetchGroups\022\031.apipb.Fetc" +
+      "hGroupsRequest\032\032.apipb.FetchGroupsRespon" +
+      "se\"\000B*\n\031net.synchthia.api.systeraB\rSyste" +
+      "raProtosb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -17118,7 +17256,7 @@ public final class SysteraProtos {
     internal_static_apipb_InitPlayerProfileRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_apipb_InitPlayerProfileRequest_descriptor,
-        new java.lang.String[] { "PlayerUUID", "PlayerName", "PlayerIPAddress", });
+        new java.lang.String[] { "PlayerUUID", "PlayerName", "PlayerIPAddress", "PlayerHostname", });
     internal_static_apipb_InitPlayerProfileResponse_descriptor =
       getDescriptor().getMessageTypes().get(9);
     internal_static_apipb_InitPlayerProfileResponse_fieldAccessorTable = new

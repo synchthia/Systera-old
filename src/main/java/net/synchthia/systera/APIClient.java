@@ -170,11 +170,12 @@ public class APIClient {
         return future;
     }
 
-    public CompletableFuture<Boolean> initPlayerProfile(@NonNull UUID uuid, @NonNull String name, @NonNull String ipAddress) {
+    public CompletableFuture<Boolean> initPlayerProfile(@NonNull UUID uuid, @NonNull String name, @NonNull String ipAddress, @NonNull String hostname) {
         InitPlayerProfileRequest request = InitPlayerProfileRequest.newBuilder()
                 .setPlayerUUID(toString(uuid))
                 .setPlayerName(name)
                 .setPlayerIPAddress(ipAddress)
+                .setPlayerHostname(hostname)
                 .build();
 
         CompletableFuture<SysteraProtos.InitPlayerProfileResponse> future = new CompletableFuture<>();

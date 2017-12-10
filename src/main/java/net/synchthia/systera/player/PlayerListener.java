@@ -51,7 +51,7 @@ public class PlayerListener implements Listener {
                 return;
             }
             
-            plugin.playerAPI.initPlayerProfile(event.getUniqueId(), event.getName(), event.getAddress().getHostAddress()).get(10, TimeUnit.SECONDS);
+            plugin.playerAPI.initPlayerProfile(event.getUniqueId(), event.getName(), event.getAddress().getHostAddress(), event.getAddress().getHostName()).get(10, TimeUnit.SECONDS);
             plugin.playerAPI.fetchPlayerProfile(event.getUniqueId(), event.getName()).get(10, TimeUnit.SECONDS);
         } catch (InterruptedException | ExecutionException | TimeoutException ex) {
             plugin.getLogger().log(Level.SEVERE, "Exception threw executing onPlayerPreLogin", ex);

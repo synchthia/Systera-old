@@ -28,8 +28,8 @@ public class PlayerAPI {
         public Map<String, Boolean> settings = new HashMap<>();
     }
 
-    public CompletableFuture<Boolean> initPlayerProfile(UUID playerUUID, String playerName, String playerAddress) {
-        return plugin.apiClient.initPlayerProfile(playerUUID, playerName, playerAddress).whenComplete((response, throwable) -> {
+    public CompletableFuture<Boolean> initPlayerProfile(UUID playerUUID, String playerName, String playerAddress, String playerHostname) {
+        return plugin.apiClient.initPlayerProfile(playerUUID, playerName, playerAddress, playerHostname).whenComplete((response, throwable) -> {
             if (throwable != null) {
                 plugin.getLogger().log(Level.WARNING, "Failed Init Player Profile: Exception threw", throwable);
             }

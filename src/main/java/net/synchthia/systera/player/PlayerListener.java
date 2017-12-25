@@ -2,6 +2,7 @@ package net.synchthia.systera.player;
 
 import net.synchthia.api.systera.SysteraProtos;
 import net.synchthia.systera.SysteraPlugin;
+import net.synchthia.systera.permissions.PermissionsAPI;
 import net.synchthia.systera.punishment.PunishManager;
 import net.synchthia.systera.util.StringUtil;
 import net.synchthia.systera.world.TabManager;
@@ -64,11 +65,10 @@ public class PlayerListener implements Listener {
         Player player = event.getPlayer();
 
         // Permission
-        SysteraPlugin.getPermissionsManager().applyPermission(player);
+        SysteraPlugin.getPermissionsManager().applyPermission(player.getUniqueId(), PlayerAPI.getGroups(player.getUniqueId()));
 
         // Team
-        TeamManager teamManager = new TeamManager(plugin);
-        teamManager.registerTeam(player);
+        TeamManager.registerTeam(player);
 
         // TabList
         TabManager tabManager = new TabManager();
@@ -97,8 +97,7 @@ public class PlayerListener implements Listener {
         Player player = event.getPlayer();
 
         // Team
-        TeamManager teamManager = new TeamManager(plugin);
-        teamManager.unregisterTeam(player);
+        TeamManager.unregisterTeam(player);
 
         // Vanish
         event.setQuitMessage(null);

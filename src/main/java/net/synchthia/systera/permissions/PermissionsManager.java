@@ -22,20 +22,25 @@ public class PermissionsManager {
         this.plugin = plugin;
     }
 
-    public void applyPermission(Player player) {
+    public void applyPermission(UUID playerUUID, ProtocolStringList groups) {
+        Player player = Bukkit.getPlayer(playerUUID);
         PermissionAttachment attachment = player.addAttachment(plugin);
         attachments.put(player.getUniqueId(), attachment);
+
+        // Set Prefix
+        String coloredPrefix = PermissionsAPI.getPrefix(player).replaceAll("&", "§");
+
+        player.setPlayerListName(coloredPrefix + player.getName());
 
         // Assign Message
         plugin.getLogger().log(Level.INFO, player.getName() + " assigned to: " + PlayerAPI.getGroups(player.getUniqueId()));
 
         // Set Permission
-        ProtocolStringList groups = PlayerAPI.getGroups(player.getUniqueId());
-        set(player, attachment, "default");
+        //set(player, attachment, "default");
         groups.forEach(group -> set(player, attachment, group));
     }
 
-    public void set(Player player, PermissionAttachment attachment, String groupName) {
+    private void set(Player player, PermissionAttachment attachment, String groupName) {
         PermissionsAPI.PermsList permsList = PermissionsAPI.getPermissions(groupName);
         if (permsList == null) {
             return;

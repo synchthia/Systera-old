@@ -91,6 +91,10 @@ public class PlayerAPI {
         }));
     }
 
+    public void setPlayerGroups(UUID playerUUID, ProtocolStringList groups) {
+        localPlayerProfile.get(playerUUID).groups = groups;
+    }
+
     public static void clearLocalProfile(UUID playerUUID) {
         localPlayerProfile.remove(playerUUID);
     }

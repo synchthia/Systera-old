@@ -122,6 +122,7 @@ public class SysteraPlugin extends JavaPlugin {
 
     public void registerStream() {
         apiClient.actionStream(Bukkit.getServer().getServerName());
+        apiClient.playerStream(Bukkit.getServer().getServerName());
         apiClient.punishStream(Bukkit.getServer().getServerName());
     }
 

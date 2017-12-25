@@ -10,9 +10,12 @@ import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import net.synchthia.api.systera.SysteraGrpc;
 import net.synchthia.api.systera.SysteraProtos;
+import net.synchthia.systera.permissions.PermissionsManager;
+import net.synchthia.systera.player.PlayerAPI;
 import net.synchthia.systera.punishment.PunishManager;
 import net.synchthia.systera.util.DateUtil;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -21,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
 import static net.synchthia.api.systera.SysteraProtos.*;
-import static net.synchthia.api.systera.SysteraProtos.StreamType.*;
+import static net.synchthia.api.systera.SysteraProtos.StreamType.CONNECT;
 
 /**
  * @author misterT2525, Laica-Lunasys
@@ -43,6 +46,11 @@ public class APIClient {
 
     private String toString(@NonNull UUID uuid) {
         return uuid.toString().replaceAll("-", "");
+    }
+
+    private UUID toUUID(@NonNull String plain) {
+        plain = plain.substring(0, 8) + "-" + plain.substring(8, 12) + "-" + plain.substring(12, 16) + "-" + plain.substring(16, 20) + "-" + plain.substring(20, 32);
+        return UUID.fromString(plain);
     }
 
     public void quitStream(@NonNull String name) {
@@ -129,9 +137,47 @@ public class APIClient {
         });
     }
 
+    public void playerStream(@NonNull String name) {
+        StreamRequest request = StreamRequest.newBuilder()
+                .setName(name)
+                .setType(CONNECT)
+                .build();
+
+        stub.playerStream(request, new StreamObserver<PlayerStreamResponse>() {
+            @Override
+            public void onNext(PlayerStreamResponse value) {
+                SysteraPlugin.getInstance().getLogger().log(Level.INFO, "onNext Hooked.");
+                if (value.getType().equals(StreamType.DISPATCH)) {
+                    SysteraPlugin.getInstance().getLogger().log(Level.INFO, "onNext > Dispatch Hooked.");
+                    PlayerEntry entry = value.getEntry();
+                    switch (value.getSyncType()) {
+                        case GROUPS:
+                            UUID playerUUID = toUUID(entry.getPlayerUUID());
+                            SysteraPlugin.getInstance().playerAPI.setPlayerGroups(playerUUID, entry.getGroupsList());
+                            PermissionsManager permsManager = new PermissionsManager(SysteraPlugin.getInstance());
+                            SysteraPlugin.getInstance().getLogger().log(Level.INFO, "onNext > Dispatch > GROUPS Hooked.");
+                            permsManager.applyPermission(playerUUID, entry.getGroupsList());
+
+                    }
+                }
+            }
+
+            @SneakyThrows
+            @Override
+            public void onError(Throwable t) {
+            }
+
+            @Override
+            public void onCompleted() {
+                SysteraPlugin.getInstance().getLogger().log(Level.INFO, "PlayerStream connection closed!");
+            }
+        });
+    }
+
     public void punishStream(@NonNull String name) {
         StreamRequest request = StreamRequest.newBuilder()
                 .setName(name)
+                .setType(CONNECT)
                 .build();
 
         stub.punishStream(request, new StreamObserver<SysteraProtos.PunishStreamResponse>() {

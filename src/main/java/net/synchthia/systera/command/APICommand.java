@@ -88,7 +88,7 @@ public class APICommand {
             //manager.paStats(Bukkit.getPlayer(sender.getName()));
             manager.removeAttachments();
 
-            Bukkit.getOnlinePlayers().forEach((manager::applyPermission));
+            //Bukkit.getOnlinePlayers().forEach((player -> manager.applyPermission(player, PlayerAPI.getGroups(player.getUniqueId()))));
         }
     }
 }

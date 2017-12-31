@@ -16,6 +16,7 @@ import net.synchthia.systera.permissions.PermissionsManager;
 import net.synchthia.systera.player.PlayerAPI;
 import net.synchthia.systera.player.PlayerListener;
 import net.synchthia.systera.punishment.PunishAPI;
+import net.synchthia.systera.stream.RedisClient;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -33,6 +34,8 @@ import java.util.logging.Level;
 public class SysteraPlugin extends JavaPlugin {
     @Getter
     private static SysteraPlugin instance;
+
+    private static RedisClient redisClient;
 
     @Getter
     private ConfigManager configManager;
@@ -66,8 +69,9 @@ public class SysteraPlugin extends JavaPlugin {
             protocolManager = ProtocolLibrary.getProtocolManager();
             I18n.setI18nManager(new I18nManager(this));
 
+            registerRedis();
+
             registerAPI();
-            registerStream();
             registerEvents();
             registerCommands();
 
@@ -83,11 +87,29 @@ public class SysteraPlugin extends JavaPlugin {
     @Override
     @SneakyThrows
     public void onDisable() {
-        apiClient.quitStream(Bukkit.getServerName());
         apiClient.shutdown();
 
         this.configManager.save();
         getLogger().info(this.getName() + "Disabled");
+    }
+
+    private void registerRedis() throws InterruptedException {
+        String hostname = "localhost";
+        Integer port = 6379;
+
+        String redisAddress = System.getenv("SYSTERA_REDIS_ADDRESS");
+        if (redisAddress != null) {
+            if (redisAddress.contains(":")) {
+                String[] splited = redisAddress.split(":");
+                hostname = splited[0];
+                port = Integer.valueOf(splited[1]);
+            } else {
+                hostname = redisAddress;
+            }
+        }
+
+        getLogger().log(Level.INFO, "Redis Address: " + redisAddress);
+        redisClient = new RedisClient(Bukkit.getServer().getServerName(), hostname, port);
     }
 
     private void registerAPI() {
@@ -118,12 +140,6 @@ public class SysteraPlugin extends JavaPlugin {
                 getLogger().log(Level.WARNING, "Failed FetchPlayerProfile (AllPlayers)", ex);
             }
         });
-    }
-
-    public void registerStream() {
-        apiClient.actionStream(Bukkit.getServer().getServerName());
-        apiClient.playerStream(Bukkit.getServer().getServerName());
-        apiClient.punishStream(Bukkit.getServer().getServerName());
     }
 
     private void registerEvents() {

@@ -21,6 +21,6 @@ public class DispatchCommand {
         String message = StringUtil.coloring(String.format("&aDispatched: %s >> &6%s", target, commands));
 
         sender.sendMessage(message);
-        plugin.apiClient.announce(target, commands);
+        plugin.apiClient.dispatch(target, commands);
     }
 }

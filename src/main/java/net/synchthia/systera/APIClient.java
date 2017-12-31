@@ -1,30 +1,21 @@
 package net.synchthia.systera;
 
+import com.google.protobuf.util.JsonFormat;
 import io.grpc.ManagedChannel;
-import io.grpc.Status;
 import io.grpc.internal.DnsNameResolverProvider;
 import io.grpc.netty.NettyChannelBuilder;
 import io.grpc.stub.StreamObserver;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import net.synchthia.api.systera.SysteraGrpc;
 import net.synchthia.api.systera.SysteraProtos;
-import net.synchthia.systera.permissions.PermissionsManager;
-import net.synchthia.systera.player.PlayerAPI;
-import net.synchthia.systera.punishment.PunishManager;
 import net.synchthia.systera.util.DateUtil;
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 
-import java.io.IOException;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
 
 import static net.synchthia.api.systera.SysteraProtos.*;
-import static net.synchthia.api.systera.SysteraProtos.StreamType.CONNECT;
 
 /**
  * @author misterT2525, Laica-Lunasys
@@ -40,6 +31,37 @@ public class APIClient {
         blockingStub = SysteraGrpc.newBlockingStub(channel);
     }
 
+    // Utility Method
+    public static SysteraProtos.SystemStream systemStreamFromJson(String jsonText) {
+        try {
+            SysteraProtos.SystemStream.Builder builder = SysteraProtos.SystemStream.newBuilder();
+            JsonFormat.parser().ignoringUnknownFields().merge(jsonText, builder);
+            return builder.build();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public static SysteraProtos.PlayerEntryStream playerEntryStreamFromJson(String jsonText) {
+        try {
+            SysteraProtos.PlayerEntryStream.Builder builder = SysteraProtos.PlayerEntryStream.newBuilder();
+            JsonFormat.parser().ignoringUnknownFields().merge(jsonText, builder);
+            return builder.build();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public static SysteraProtos.PunishEntryStream punishEntryStreamFromJson(String jsonText) {
+        try {
+            SysteraProtos.PunishEntryStream.Builder builder = SysteraProtos.PunishEntryStream.newBuilder();
+            JsonFormat.parser().ignoringUnknownFields().merge(jsonText, builder);
+            return builder.build();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
     public void shutdown() throws InterruptedException {
         channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
     }
@@ -48,160 +70,9 @@ public class APIClient {
         return uuid.toString().replaceAll("-", "");
     }
 
-    private UUID toUUID(@NonNull String plain) {
+    public static UUID toUUID(@NonNull String plain) {
         plain = plain.substring(0, 8) + "-" + plain.substring(8, 12) + "-" + plain.substring(12, 16) + "-" + plain.substring(16, 20) + "-" + plain.substring(20, 32);
         return UUID.fromString(plain);
-    }
-
-    public void quitStream(@NonNull String name) {
-        QuitStreamRequest request = QuitStreamRequest.newBuilder()
-                .setName(name)
-                .build();
-
-        blockingStub.quitStream(request);
-    }
-
-    public void ping() {
-        Empty request = Empty.newBuilder().build();
-
-        stub.ping(request, new StreamObserver<Empty>() {
-            @Override
-            public void onNext(Empty value) {
-                SysteraPlugin.getInstance().getLogger().log(Level.INFO, "### Welcome Back!");
-                SysteraPlugin.getInstance().registerStream();
-            }
-
-            @SneakyThrows
-            @Override
-            public void onError(Throwable t) {
-                Status status = Status.fromThrowable(t);
-
-                if (status.getCode().toStatus() == Status.UNAVAILABLE) {
-                    SysteraPlugin.getInstance().getLogger().log(Level.SEVERE, "StatusRuntimeException Occurred! Retrying...");
-                    Thread.sleep(3000L);
-                    ping();
-                    return;
-                }
-
-                if (status.getCause() instanceof IOException) {
-                    SysteraPlugin.getInstance().getLogger().log(Level.SEVERE, "IOException Occurred! API Server down?");
-                    ping();
-                    return;
-                }
-
-                System.out.println("Trace ===");
-                System.out.println(status.getCause());
-                System.out.println(status.getCode());
-                System.out.println(status.getDescription());
-                t.printStackTrace();
-                System.out.println("Trace ===");
-            }
-
-            @Override
-            public void onCompleted() {
-
-            }
-        });
-    }
-
-    public void actionStream(@NonNull String name) {
-        StreamRequest request = StreamRequest.newBuilder()
-                .setName(name)
-                .setType(CONNECT)
-                .build();
-
-        stub.actionStream(request, new StreamObserver<SysteraProtos.ActionStreamResponse>() {
-            @Override
-            public void onNext(ActionStreamResponse value) {
-                switch (value.getType()) {
-                    case RESTORED:
-                        SysteraPlugin.getInstance().getLogger().log(Level.INFO, "### Connected!");
-                        break;
-                    case DISPATCH:
-                        SysteraPlugin.getInstance().getLogger().log(Level.INFO, "Incoming Command: " + value.getCmd());
-                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), value.getCmd());
-                        break;
-                }
-            }
-
-            @SneakyThrows
-            @Override
-            public void onError(Throwable t) {
-                ping();
-            }
-
-            @Override
-            public void onCompleted() {
-                SysteraPlugin.getInstance().getLogger().log(Level.INFO, "ActionStream connection closed!");
-            }
-        });
-    }
-
-    public void playerStream(@NonNull String name) {
-        StreamRequest request = StreamRequest.newBuilder()
-                .setName(name)
-                .setType(CONNECT)
-                .build();
-
-        stub.playerStream(request, new StreamObserver<PlayerStreamResponse>() {
-            @Override
-            public void onNext(PlayerStreamResponse value) {
-                SysteraPlugin.getInstance().getLogger().log(Level.INFO, "onNext Hooked.");
-                if (value.getType().equals(StreamType.DISPATCH)) {
-                    SysteraPlugin.getInstance().getLogger().log(Level.INFO, "onNext > Dispatch Hooked.");
-                    PlayerEntry entry = value.getEntry();
-                    switch (value.getSyncType()) {
-                        case GROUPS:
-                            UUID playerUUID = toUUID(entry.getPlayerUUID());
-                            SysteraPlugin.getInstance().playerAPI.setPlayerGroups(playerUUID, entry.getGroupsList());
-                            PermissionsManager permsManager = new PermissionsManager(SysteraPlugin.getInstance());
-                            SysteraPlugin.getInstance().getLogger().log(Level.INFO, "onNext > Dispatch > GROUPS Hooked.");
-                            permsManager.applyPermission(playerUUID, entry.getGroupsList());
-
-                    }
-                }
-            }
-
-            @SneakyThrows
-            @Override
-            public void onError(Throwable t) {
-            }
-
-            @Override
-            public void onCompleted() {
-                SysteraPlugin.getInstance().getLogger().log(Level.INFO, "PlayerStream connection closed!");
-            }
-        });
-    }
-
-    public void punishStream(@NonNull String name) {
-        StreamRequest request = StreamRequest.newBuilder()
-                .setName(name)
-                .setType(CONNECT)
-                .build();
-
-        stub.punishStream(request, new StreamObserver<SysteraProtos.PunishStreamResponse>() {
-            @Override
-            public void onNext(PunishStreamResponse value) {
-                if (value.getType().equals(StreamType.DISPATCH)) {
-                    PunishEntry entry = value.getEntry();
-                    String[] messages = PunishManager.punishMessage(entry);
-                    PunishManager punishManager = new PunishManager(SysteraPlugin.getInstance());
-                    punishManager.action(Bukkit.getPlayer(entry.getPunishedTo().getName()), entry.getLevel(), messages);
-                    punishManager.broadcast(entry.getLevel().toString(), entry.getPunishedTo().getName(), entry.getReason());
-                }
-            }
-
-            @SneakyThrows
-            @Override
-            public void onError(Throwable t) {
-            }
-
-            @Override
-            public void onCompleted() {
-                SysteraPlugin.getInstance().getLogger().log(Level.INFO, "PunishStream connection closed!");
-            }
-        });
     }
 
     public CompletableFuture<SysteraProtos.Empty> announce(@NonNull String target, @NonNull String message) {
@@ -215,6 +86,19 @@ public class APIClient {
 
         return future;
     }
+
+    public CompletableFuture<SysteraProtos.Empty> dispatch(@NonNull String target, @NonNull String cmd) {
+        DispatchRequest request = DispatchRequest.newBuilder()
+                .setTarget(target)
+                .setCmd(cmd)
+                .build();
+
+        CompletableFuture<SysteraProtos.Empty> future = new CompletableFuture<>();
+        stub.dispatch(request, new CompletableFutureObserver<>(future));
+
+        return future;
+    }
+
 
     public CompletableFuture<Boolean> initPlayerProfile(@NonNull UUID uuid, @NonNull String name, @NonNull String ipAddress, @NonNull String hostname) {
         InitPlayerProfileRequest request = InitPlayerProfileRequest.newBuilder()

@@ -1,7 +1,5 @@
 package net.synchthia.systera.player;
 
-import net.synchthia.systera.SysteraPlugin;
-import net.synchthia.systera.permissions.PermissionsAPI;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;

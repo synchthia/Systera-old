@@ -20,12 +20,6 @@ public class APICommand {
     @Command(aliases = "api", desc = "API Command", min = 1)
     @CommandPermissions("systera.command.api")
     public static void api(final CommandContext args, CommandSender sender, SysteraPlugin plugin) throws CommandException {
-        if (args.getString(0).equals("quit")) {
-            sender.sendMessage("Quitting stream...");
-            plugin.apiClient.quitStream(Bukkit.getServerName());
-            return;
-        }
-
         if (args.getString(0).equals("settings")) {
             sender.sendMessage("Get>>" + args.getString(1));
             Boolean s = PlayerAPI.getLocalProfile(Bukkit.getPlayer(sender.getName()).getUniqueId()).settings.get(args.getString(1));

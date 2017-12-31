@@ -1,19 +1,11 @@
 package net.synchthia.api.systera;
 
-import static io.grpc.stub.ClientCalls.asyncUnaryCall;
-import static io.grpc.stub.ClientCalls.asyncServerStreamingCall;
-import static io.grpc.stub.ClientCalls.asyncClientStreamingCall;
-import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
-import static io.grpc.stub.ClientCalls.blockingUnaryCall;
-import static io.grpc.stub.ClientCalls.blockingServerStreamingCall;
-import static io.grpc.stub.ClientCalls.futureUnaryCall;
 import static io.grpc.MethodDescriptor.generateFullMethodName;
+import static io.grpc.stub.ClientCalls.asyncUnaryCall;
+import static io.grpc.stub.ClientCalls.blockingUnaryCall;
+import static io.grpc.stub.ClientCalls.futureUnaryCall;
 import static io.grpc.stub.ServerCalls.asyncUnaryCall;
-import static io.grpc.stub.ServerCalls.asyncServerStreamingCall;
-import static io.grpc.stub.ServerCalls.asyncClientStreamingCall;
-import static io.grpc.stub.ServerCalls.asyncBidiStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
-import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
 
 /**
  * <pre>
@@ -31,54 +23,6 @@ public final class SysteraGrpc {
 
   // Static method descriptors that strictly reflect the proto.
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static final io.grpc.MethodDescriptor<net.synchthia.api.systera.SysteraProtos.Empty,
-      net.synchthia.api.systera.SysteraProtos.Empty> METHOD_PING =
-      io.grpc.MethodDescriptor.<net.synchthia.api.systera.SysteraProtos.Empty, net.synchthia.api.systera.SysteraProtos.Empty>newBuilder()
-          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-          .setFullMethodName(generateFullMethodName(
-              "apipb.Systera", "Ping"))
-          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              net.synchthia.api.systera.SysteraProtos.Empty.getDefaultInstance()))
-          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              net.synchthia.api.systera.SysteraProtos.Empty.getDefaultInstance()))
-          .build();
-  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static final io.grpc.MethodDescriptor<net.synchthia.api.systera.SysteraProtos.StreamRequest,
-      net.synchthia.api.systera.SysteraProtos.ActionStreamResponse> METHOD_ACTION_STREAM =
-      io.grpc.MethodDescriptor.<net.synchthia.api.systera.SysteraProtos.StreamRequest, net.synchthia.api.systera.SysteraProtos.ActionStreamResponse>newBuilder()
-          .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-          .setFullMethodName(generateFullMethodName(
-              "apipb.Systera", "ActionStream"))
-          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              net.synchthia.api.systera.SysteraProtos.StreamRequest.getDefaultInstance()))
-          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              net.synchthia.api.systera.SysteraProtos.ActionStreamResponse.getDefaultInstance()))
-          .build();
-  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static final io.grpc.MethodDescriptor<net.synchthia.api.systera.SysteraProtos.StreamRequest,
-      net.synchthia.api.systera.SysteraProtos.PlayerStreamResponse> METHOD_PLAYER_STREAM =
-      io.grpc.MethodDescriptor.<net.synchthia.api.systera.SysteraProtos.StreamRequest, net.synchthia.api.systera.SysteraProtos.PlayerStreamResponse>newBuilder()
-          .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-          .setFullMethodName(generateFullMethodName(
-              "apipb.Systera", "PlayerStream"))
-          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              net.synchthia.api.systera.SysteraProtos.StreamRequest.getDefaultInstance()))
-          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              net.synchthia.api.systera.SysteraProtos.PlayerStreamResponse.getDefaultInstance()))
-          .build();
-  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static final io.grpc.MethodDescriptor<net.synchthia.api.systera.SysteraProtos.StreamRequest,
-      net.synchthia.api.systera.SysteraProtos.PunishStreamResponse> METHOD_PUNISH_STREAM =
-      io.grpc.MethodDescriptor.<net.synchthia.api.systera.SysteraProtos.StreamRequest, net.synchthia.api.systera.SysteraProtos.PunishStreamResponse>newBuilder()
-          .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-          .setFullMethodName(generateFullMethodName(
-              "apipb.Systera", "PunishStream"))
-          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              net.synchthia.api.systera.SysteraProtos.StreamRequest.getDefaultInstance()))
-          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              net.synchthia.api.systera.SysteraProtos.PunishStreamResponse.getDefaultInstance()))
-          .build();
-  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
   public static final io.grpc.MethodDescriptor<net.synchthia.api.systera.SysteraProtos.AnnounceRequest,
       net.synchthia.api.systera.SysteraProtos.Empty> METHOD_ANNOUNCE =
       io.grpc.MethodDescriptor.<net.synchthia.api.systera.SysteraProtos.AnnounceRequest, net.synchthia.api.systera.SysteraProtos.Empty>newBuilder()
@@ -91,14 +35,14 @@ public final class SysteraGrpc {
               net.synchthia.api.systera.SysteraProtos.Empty.getDefaultInstance()))
           .build();
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static final io.grpc.MethodDescriptor<net.synchthia.api.systera.SysteraProtos.QuitStreamRequest,
-      net.synchthia.api.systera.SysteraProtos.Empty> METHOD_QUIT_STREAM =
-      io.grpc.MethodDescriptor.<net.synchthia.api.systera.SysteraProtos.QuitStreamRequest, net.synchthia.api.systera.SysteraProtos.Empty>newBuilder()
+  public static final io.grpc.MethodDescriptor<net.synchthia.api.systera.SysteraProtos.DispatchRequest,
+      net.synchthia.api.systera.SysteraProtos.Empty> METHOD_DISPATCH =
+      io.grpc.MethodDescriptor.<net.synchthia.api.systera.SysteraProtos.DispatchRequest, net.synchthia.api.systera.SysteraProtos.Empty>newBuilder()
           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
           .setFullMethodName(generateFullMethodName(
-              "apipb.Systera", "QuitStream"))
+              "apipb.Systera", "Dispatch"))
           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              net.synchthia.api.systera.SysteraProtos.QuitStreamRequest.getDefaultInstance()))
+              net.synchthia.api.systera.SysteraProtos.DispatchRequest.getDefaultInstance()))
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
               net.synchthia.api.systera.SysteraProtos.Empty.getDefaultInstance()))
           .build();
@@ -255,34 +199,6 @@ public final class SysteraGrpc {
 
     /**
      */
-    public void ping(net.synchthia.api.systera.SysteraProtos.Empty request,
-        io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.Empty> responseObserver) {
-      asyncUnimplementedUnaryCall(METHOD_PING, responseObserver);
-    }
-
-    /**
-     */
-    public void actionStream(net.synchthia.api.systera.SysteraProtos.StreamRequest request,
-        io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.ActionStreamResponse> responseObserver) {
-      asyncUnimplementedUnaryCall(METHOD_ACTION_STREAM, responseObserver);
-    }
-
-    /**
-     */
-    public void playerStream(net.synchthia.api.systera.SysteraProtos.StreamRequest request,
-        io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.PlayerStreamResponse> responseObserver) {
-      asyncUnimplementedUnaryCall(METHOD_PLAYER_STREAM, responseObserver);
-    }
-
-    /**
-     */
-    public void punishStream(net.synchthia.api.systera.SysteraProtos.StreamRequest request,
-        io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.PunishStreamResponse> responseObserver) {
-      asyncUnimplementedUnaryCall(METHOD_PUNISH_STREAM, responseObserver);
-    }
-
-    /**
-     */
     public void announce(net.synchthia.api.systera.SysteraProtos.AnnounceRequest request,
         io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.Empty> responseObserver) {
       asyncUnimplementedUnaryCall(METHOD_ANNOUNCE, responseObserver);
@@ -290,9 +206,9 @@ public final class SysteraGrpc {
 
     /**
      */
-    public void quitStream(net.synchthia.api.systera.SysteraProtos.QuitStreamRequest request,
+    public void dispatch(net.synchthia.api.systera.SysteraProtos.DispatchRequest request,
         io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.Empty> responseObserver) {
-      asyncUnimplementedUnaryCall(METHOD_QUIT_STREAM, responseObserver);
+      asyncUnimplementedUnaryCall(METHOD_DISPATCH, responseObserver);
     }
 
     /**
@@ -368,34 +284,6 @@ public final class SysteraGrpc {
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
-            METHOD_PING,
-            asyncUnaryCall(
-              new MethodHandlers<
-                net.synchthia.api.systera.SysteraProtos.Empty,
-                net.synchthia.api.systera.SysteraProtos.Empty>(
-                  this, METHODID_PING)))
-          .addMethod(
-            METHOD_ACTION_STREAM,
-            asyncServerStreamingCall(
-              new MethodHandlers<
-                net.synchthia.api.systera.SysteraProtos.StreamRequest,
-                net.synchthia.api.systera.SysteraProtos.ActionStreamResponse>(
-                  this, METHODID_ACTION_STREAM)))
-          .addMethod(
-            METHOD_PLAYER_STREAM,
-            asyncServerStreamingCall(
-              new MethodHandlers<
-                net.synchthia.api.systera.SysteraProtos.StreamRequest,
-                net.synchthia.api.systera.SysteraProtos.PlayerStreamResponse>(
-                  this, METHODID_PLAYER_STREAM)))
-          .addMethod(
-            METHOD_PUNISH_STREAM,
-            asyncServerStreamingCall(
-              new MethodHandlers<
-                net.synchthia.api.systera.SysteraProtos.StreamRequest,
-                net.synchthia.api.systera.SysteraProtos.PunishStreamResponse>(
-                  this, METHODID_PUNISH_STREAM)))
-          .addMethod(
             METHOD_ANNOUNCE,
             asyncUnaryCall(
               new MethodHandlers<
@@ -403,12 +291,12 @@ public final class SysteraGrpc {
                 net.synchthia.api.systera.SysteraProtos.Empty>(
                   this, METHODID_ANNOUNCE)))
           .addMethod(
-            METHOD_QUIT_STREAM,
+            METHOD_DISPATCH,
             asyncUnaryCall(
               new MethodHandlers<
-                net.synchthia.api.systera.SysteraProtos.QuitStreamRequest,
+                net.synchthia.api.systera.SysteraProtos.DispatchRequest,
                 net.synchthia.api.systera.SysteraProtos.Empty>(
-                  this, METHODID_QUIT_STREAM)))
+                  this, METHODID_DISPATCH)))
           .addMethod(
             METHOD_INIT_PLAYER_PROFILE,
             asyncUnaryCall(
@@ -506,38 +394,6 @@ public final class SysteraGrpc {
 
     /**
      */
-    public void ping(net.synchthia.api.systera.SysteraProtos.Empty request,
-        io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.Empty> responseObserver) {
-      asyncUnaryCall(
-          getChannel().newCall(METHOD_PING, getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void actionStream(net.synchthia.api.systera.SysteraProtos.StreamRequest request,
-        io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.ActionStreamResponse> responseObserver) {
-      asyncServerStreamingCall(
-          getChannel().newCall(METHOD_ACTION_STREAM, getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void playerStream(net.synchthia.api.systera.SysteraProtos.StreamRequest request,
-        io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.PlayerStreamResponse> responseObserver) {
-      asyncServerStreamingCall(
-          getChannel().newCall(METHOD_PLAYER_STREAM, getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void punishStream(net.synchthia.api.systera.SysteraProtos.StreamRequest request,
-        io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.PunishStreamResponse> responseObserver) {
-      asyncServerStreamingCall(
-          getChannel().newCall(METHOD_PUNISH_STREAM, getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
     public void announce(net.synchthia.api.systera.SysteraProtos.AnnounceRequest request,
         io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.Empty> responseObserver) {
       asyncUnaryCall(
@@ -546,10 +402,10 @@ public final class SysteraGrpc {
 
     /**
      */
-    public void quitStream(net.synchthia.api.systera.SysteraProtos.QuitStreamRequest request,
+    public void dispatch(net.synchthia.api.systera.SysteraProtos.DispatchRequest request,
         io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.Empty> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(METHOD_QUIT_STREAM, getCallOptions()), request, responseObserver);
+          getChannel().newCall(METHOD_DISPATCH, getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -656,37 +512,6 @@ public final class SysteraGrpc {
 
     /**
      */
-    public net.synchthia.api.systera.SysteraProtos.Empty ping(net.synchthia.api.systera.SysteraProtos.Empty request) {
-      return blockingUnaryCall(
-          getChannel(), METHOD_PING, getCallOptions(), request);
-    }
-
-    /**
-     */
-    public java.util.Iterator<net.synchthia.api.systera.SysteraProtos.ActionStreamResponse> actionStream(
-        net.synchthia.api.systera.SysteraProtos.StreamRequest request) {
-      return blockingServerStreamingCall(
-          getChannel(), METHOD_ACTION_STREAM, getCallOptions(), request);
-    }
-
-    /**
-     */
-    public java.util.Iterator<net.synchthia.api.systera.SysteraProtos.PlayerStreamResponse> playerStream(
-        net.synchthia.api.systera.SysteraProtos.StreamRequest request) {
-      return blockingServerStreamingCall(
-          getChannel(), METHOD_PLAYER_STREAM, getCallOptions(), request);
-    }
-
-    /**
-     */
-    public java.util.Iterator<net.synchthia.api.systera.SysteraProtos.PunishStreamResponse> punishStream(
-        net.synchthia.api.systera.SysteraProtos.StreamRequest request) {
-      return blockingServerStreamingCall(
-          getChannel(), METHOD_PUNISH_STREAM, getCallOptions(), request);
-    }
-
-    /**
-     */
     public net.synchthia.api.systera.SysteraProtos.Empty announce(net.synchthia.api.systera.SysteraProtos.AnnounceRequest request) {
       return blockingUnaryCall(
           getChannel(), METHOD_ANNOUNCE, getCallOptions(), request);
@@ -694,9 +519,9 @@ public final class SysteraGrpc {
 
     /**
      */
-    public net.synchthia.api.systera.SysteraProtos.Empty quitStream(net.synchthia.api.systera.SysteraProtos.QuitStreamRequest request) {
+    public net.synchthia.api.systera.SysteraProtos.Empty dispatch(net.synchthia.api.systera.SysteraProtos.DispatchRequest request) {
       return blockingUnaryCall(
-          getChannel(), METHOD_QUIT_STREAM, getCallOptions(), request);
+          getChannel(), METHOD_DISPATCH, getCallOptions(), request);
     }
 
     /**
@@ -793,14 +618,6 @@ public final class SysteraGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<net.synchthia.api.systera.SysteraProtos.Empty> ping(
-        net.synchthia.api.systera.SysteraProtos.Empty request) {
-      return futureUnaryCall(
-          getChannel().newCall(METHOD_PING, getCallOptions()), request);
-    }
-
-    /**
-     */
     public com.google.common.util.concurrent.ListenableFuture<net.synchthia.api.systera.SysteraProtos.Empty> announce(
         net.synchthia.api.systera.SysteraProtos.AnnounceRequest request) {
       return futureUnaryCall(
@@ -809,10 +626,10 @@ public final class SysteraGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<net.synchthia.api.systera.SysteraProtos.Empty> quitStream(
-        net.synchthia.api.systera.SysteraProtos.QuitStreamRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<net.synchthia.api.systera.SysteraProtos.Empty> dispatch(
+        net.synchthia.api.systera.SysteraProtos.DispatchRequest request) {
       return futureUnaryCall(
-          getChannel().newCall(METHOD_QUIT_STREAM, getCallOptions()), request);
+          getChannel().newCall(METHOD_DISPATCH, getCallOptions()), request);
     }
 
     /**
@@ -896,22 +713,18 @@ public final class SysteraGrpc {
     }
   }
 
-  private static final int METHODID_PING = 0;
-  private static final int METHODID_ACTION_STREAM = 1;
-  private static final int METHODID_PLAYER_STREAM = 2;
-  private static final int METHODID_PUNISH_STREAM = 3;
-  private static final int METHODID_ANNOUNCE = 4;
-  private static final int METHODID_QUIT_STREAM = 5;
-  private static final int METHODID_INIT_PLAYER_PROFILE = 6;
-  private static final int METHODID_FETCH_PLAYER_PROFILE = 7;
-  private static final int METHODID_FETCH_PLAYER_PROFILE_BY_NAME = 8;
-  private static final int METHODID_SET_PLAYER_GROUPS = 9;
-  private static final int METHODID_SET_PLAYER_SERVER = 10;
-  private static final int METHODID_REMOVE_PLAYER_SERVER = 11;
-  private static final int METHODID_SET_PLAYER_SETTINGS = 12;
-  private static final int METHODID_GET_PLAYER_PUNISH = 13;
-  private static final int METHODID_SET_PLAYER_PUNISH = 14;
-  private static final int METHODID_FETCH_GROUPS = 15;
+  private static final int METHODID_ANNOUNCE = 0;
+  private static final int METHODID_DISPATCH = 1;
+  private static final int METHODID_INIT_PLAYER_PROFILE = 2;
+  private static final int METHODID_FETCH_PLAYER_PROFILE = 3;
+  private static final int METHODID_FETCH_PLAYER_PROFILE_BY_NAME = 4;
+  private static final int METHODID_SET_PLAYER_GROUPS = 5;
+  private static final int METHODID_SET_PLAYER_SERVER = 6;
+  private static final int METHODID_REMOVE_PLAYER_SERVER = 7;
+  private static final int METHODID_SET_PLAYER_SETTINGS = 8;
+  private static final int METHODID_GET_PLAYER_PUNISH = 9;
+  private static final int METHODID_SET_PLAYER_PUNISH = 10;
+  private static final int METHODID_FETCH_GROUPS = 11;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -930,28 +743,12 @@ public final class SysteraGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_PING:
-          serviceImpl.ping((net.synchthia.api.systera.SysteraProtos.Empty) request,
-              (io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.Empty>) responseObserver);
-          break;
-        case METHODID_ACTION_STREAM:
-          serviceImpl.actionStream((net.synchthia.api.systera.SysteraProtos.StreamRequest) request,
-              (io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.ActionStreamResponse>) responseObserver);
-          break;
-        case METHODID_PLAYER_STREAM:
-          serviceImpl.playerStream((net.synchthia.api.systera.SysteraProtos.StreamRequest) request,
-              (io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.PlayerStreamResponse>) responseObserver);
-          break;
-        case METHODID_PUNISH_STREAM:
-          serviceImpl.punishStream((net.synchthia.api.systera.SysteraProtos.StreamRequest) request,
-              (io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.PunishStreamResponse>) responseObserver);
-          break;
         case METHODID_ANNOUNCE:
           serviceImpl.announce((net.synchthia.api.systera.SysteraProtos.AnnounceRequest) request,
               (io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.Empty>) responseObserver);
           break;
-        case METHODID_QUIT_STREAM:
-          serviceImpl.quitStream((net.synchthia.api.systera.SysteraProtos.QuitStreamRequest) request,
+        case METHODID_DISPATCH:
+          serviceImpl.dispatch((net.synchthia.api.systera.SysteraProtos.DispatchRequest) request,
               (io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.Empty>) responseObserver);
           break;
         case METHODID_INIT_PLAYER_PROFILE:
@@ -1027,12 +824,8 @@ public final class SysteraGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new SysteraDescriptorSupplier())
-              .addMethod(METHOD_PING)
-              .addMethod(METHOD_ACTION_STREAM)
-              .addMethod(METHOD_PLAYER_STREAM)
-              .addMethod(METHOD_PUNISH_STREAM)
               .addMethod(METHOD_ANNOUNCE)
-              .addMethod(METHOD_QUIT_STREAM)
+              .addMethod(METHOD_DISPATCH)
               .addMethod(METHOD_INIT_PLAYER_PROFILE)
               .addMethod(METHOD_FETCH_PLAYER_PROFILE)
               .addMethod(METHOD_FETCH_PLAYER_PROFILE_BY_NAME)

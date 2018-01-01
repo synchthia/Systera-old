@@ -11,7 +11,6 @@ import java.util.logging.Level;
  * @author Laica-Lunasys
  */
 public class RedisClient {
-    private static Boolean wantClose = false;
     private static JedisPool pool;
     private SysteraPlugin plugin = SysteraPlugin.getInstance();
     private String name;
@@ -109,8 +108,6 @@ public class RedisClient {
     }
 
     public void disconnect() {
-        wantClose = true;
-
         if (systemSubs != null) {
             systemSubs.punsubscribe();
         }

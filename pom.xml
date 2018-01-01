@@ -150,11 +150,6 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.10</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>2.4.3</version>
                 <executions>
@@ -168,9 +163,6 @@
                                 <relocation>
                                     <pattern>redis.clients.jedis</pattern>
                                     <shadedPattern>net.synchthia.systera.libs.redis.clients.jedis</shadedPattern>
-
-                                    <pattern>org.apache.commons</pattern>
-                                    <shadedPattern>net.synchthia.systera.libs.org.apache.commons</shadedPattern>
 
                                     <pattern>io.netty</pattern>
                                     <shadedPattern>net.synchthia.systera.libs.netty</shadedPattern>

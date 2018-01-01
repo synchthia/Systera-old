@@ -11,7 +11,7 @@ import java.util.logging.Level;
  * @author Laica-Lunasys
  */
 public class RedisClient {
-    private static JedisPool pool;
+    private JedisPool pool;
     private SysteraPlugin plugin = SysteraPlugin.getInstance();
     private String name;
     private String hostname;

@@ -16,7 +16,6 @@ public class RedisClient {
     private String name;
     private String hostname;
     private Integer port;
-    private Jedis jedis;
 
     private SystemSubs systemSubs;
     private PlayerSubs playerSubs;
@@ -26,6 +25,8 @@ public class RedisClient {
         this.name = name;
         this.hostname = hostname;
         this.port = port;
+        this.pool = new JedisPool(hostname, port);
+
         runSystemTask();
         runPlayerTask();
         runPunishTask();
@@ -33,7 +34,6 @@ public class RedisClient {
 
     private void runSystemTask() {
         String taskName = "[SYSTEM_TASK] ";
-        pool = new JedisPool(hostname, port);
 
         plugin.getServer().getScheduler().runTaskAsynchronously(plugin, new Runnable() {
             @Override
@@ -43,8 +43,7 @@ public class RedisClient {
                     systemSubs = new SystemSubs();
 
                     plugin.getLogger().log(Level.INFO, taskName + "Connecting to Redis: " + hostname + ":" + port);
-                    jedis = pool.getResource();
-                    jedis.connect();
+                    Jedis jedis = pool.getResource();
 
                     // Subscribe
                     jedis.psubscribe(systemSubs, "systera.system.global", "systera.system." + name);
@@ -59,7 +58,6 @@ public class RedisClient {
 
     private void runPlayerTask() {
         String taskName = "[PLAYER_TASK] ";
-        pool = new JedisPool(hostname, port);
 
         plugin.getServer().getScheduler().runTaskAsynchronously(plugin, new Runnable() {
             @Override
@@ -69,8 +67,7 @@ public class RedisClient {
                     playerSubs = new PlayerSubs();
 
                     plugin.getLogger().log(Level.INFO, taskName + "Connecting to Redis: " + hostname + ":" + port);
-                    jedis = pool.getResource();
-                    jedis.connect();
+                    Jedis jedis = pool.getResource();
 
                     // Subscribe
                     jedis.psubscribe(playerSubs, "systera.player.global", "systera.player." + name);
@@ -85,7 +82,6 @@ public class RedisClient {
 
     private void runPunishTask() {
         String taskName = "[PUNISH_TASK] ";
-        pool = new JedisPool(hostname, port);
 
         plugin.getServer().getScheduler().runTaskAsynchronously(plugin, new Runnable() {
             @Override
@@ -95,8 +91,7 @@ public class RedisClient {
                     punishSubs = new PunishSubs();
 
                     plugin.getLogger().log(Level.INFO, taskName + "Connecting to Redis: " + hostname + ":" + port);
-                    jedis = pool.getResource();
-                    jedis.connect();
+                    Jedis jedis = pool.getResource();
 
                     // Subscribe
                     jedis.psubscribe(punishSubs, "systera.punish.global", "systera.punish." + name);

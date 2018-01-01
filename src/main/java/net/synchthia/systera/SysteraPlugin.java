@@ -88,6 +88,7 @@ public class SysteraPlugin extends JavaPlugin {
     @SneakyThrows
     public void onDisable() {
         apiClient.shutdown();
+        redisClient.disconnect();
 
         this.configManager.save();
         getLogger().info(this.getName() + "Disabled");

@@ -35,4 +35,9 @@ public class PunishSubs extends JedisPubSub {
         plugin.getLogger().log(Level.INFO, "P Subscribed : " + pattern);
     }
 
+    @Override
+    public void onPUnsubscribe(String pattern, int subscribedChannels) {
+        plugin.getLogger().log(Level.INFO, "P UN Subscribed : " + pattern);
+    }
+
 }

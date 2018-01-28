@@ -49,7 +49,7 @@ public class PunishCommand {
 
         try {
             Long expire = DateUtil.getEpochMilliTime() + DateUtil.parseDateString(expireDate);
-            punish(false, SysteraProtos.PunishLevel.TBAN, sender, toPlayerName, reason, expire);
+            punish(false, SysteraProtos.PunishLevel.TEMPBAN, sender, toPlayerName, reason, expire);
         } catch (IllegalArgumentException e) {
             sender.sendMessage(ChatColor.RED + "Invalid Expire Date!");
         }
@@ -62,7 +62,7 @@ public class PunishCommand {
         String toPlayerName = args.getString(0);
         String reason = args.getJoinedStrings(1);
 
-        punish(force, SysteraProtos.PunishLevel.PBAN, sender, toPlayerName, reason, 0L);
+        punish(force, SysteraProtos.PunishLevel.PERMBAN, sender, toPlayerName, reason, 0L);
     }
 
     private static void punish(Boolean force, SysteraProtos.PunishLevel level, CommandSender sender, String toPlayerName, String reason, Long expire) {
@@ -79,7 +79,7 @@ public class PunishCommand {
                 return;
             }
 
-            if (!force && level.getNumber() < SysteraProtos.PunishLevel.TBAN.getNumber() && response.getOffline()) {
+            if (!force && level.getNumber() < SysteraProtos.PunishLevel.TEMPBAN.getNumber() && response.getOffline()) {
                 I18n.sendMessage(sender, "error.player_offline", toPlayerName);
                 return;
             }

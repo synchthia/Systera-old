@@ -58,7 +58,7 @@ public class PunishManager {
                         "&6&lAppeal at https://sn7.jp/appeal"
                 };
                 break;
-            case TBAN:
+            case TEMPBAN:
                 messages = new String[]{
                         "&c&lYou are Temporary Banned from STARTAIL!!",
                         "&e&lReason: &r" + reason,
@@ -68,7 +68,7 @@ public class PunishManager {
                         "&6&lAppeal at https://sn7.jp/appeal"
                 };
                 break;
-            case PBAN:
+            case PERMBAN:
                 messages = new String[]{
                         "&c&lYou are Permanently Banned from STARTAIL!!",
                         "&e&lReason: &r" + reason,

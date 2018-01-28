@@ -32,13 +32,13 @@ public final class SysteraProtos {
      */
     KICK(1),
     /**
-     * <code>TBAN = 2;</code>
+     * <code>TEMPBAN = 2;</code>
      */
-    TBAN(2),
+    TEMPBAN(2),
     /**
-     * <code>PBAN = 3;</code>
+     * <code>PERMBAN = 3;</code>
      */
-    PBAN(3),
+    PERMBAN(3),
     UNRECOGNIZED(-1),
     ;
 
@@ -51,13 +51,13 @@ public final class SysteraProtos {
      */
     public static final int KICK_VALUE = 1;
     /**
-     * <code>TBAN = 2;</code>
+     * <code>TEMPBAN = 2;</code>
      */
-    public static final int TBAN_VALUE = 2;
+    public static final int TEMPBAN_VALUE = 2;
     /**
-     * <code>PBAN = 3;</code>
+     * <code>PERMBAN = 3;</code>
      */
-    public static final int PBAN_VALUE = 3;
+    public static final int PERMBAN_VALUE = 3;
 
 
     public final int getNumber() {
@@ -80,8 +80,8 @@ public final class SysteraProtos {
       switch (value) {
         case 0: return WARN;
         case 1: return KICK;
-        case 2: return TBAN;
-        case 3: return PBAN;
+        case 2: return TEMPBAN;
+        case 3: return PERMBAN;
         default: return null;
       }
     }
@@ -21169,36 +21169,36 @@ public final class SysteraProtos {
       "\003 \003(\t\022\023\n\013serverPerms\030\004 \003(\t\"(\n\022FetchGroup" +
       "sRequest\022\022\n\nserverName\030\001 \001(\t\"<\n\023FetchGro" +
       "upsResponse\022%\n\006groups\030\001 \003(\0132\025.systerapb." +
-      "GroupEntry*5\n\013PunishLevel\022\010\n\004WARN\020\000\022\010\n\004K" +
-      "ICK\020\001\022\010\n\004TBAN\020\002\022\010\n\004PBAN\020\0032\254\010\n\007Systera\022:\n" +
-      "\010Announce\022\032.systerapb.AnnounceRequest\032\020." +
-      "systerapb.Empty\"\000\022:\n\010Dispatch\022\032.systerap" +
-      "b.DispatchRequest\032\020.systerapb.Empty\"\000\022`\n" +
-      "\021InitPlayerProfile\022#.systerapb.InitPlaye" +
-      "rProfileRequest\032$.systerapb.InitPlayerPr",
-      "ofileResponse\"\000\022c\n\022FetchPlayerProfile\022$." +
-      "systerapb.FetchPlayerProfileRequest\032%.sy" +
-      "sterapb.FetchPlayerProfileResponse\"\000\022o\n\030" +
-      "FetchPlayerProfileByName\022*.systerapb.Fet" +
-      "chPlayerProfileByNameRequest\032%.systerapb" +
-      ".FetchPlayerProfileResponse\"\000\022F\n\017SetPlay" +
-      "erGroups\022!.systerapb.SetPlayerGroupsRequ" +
-      "est\032\020.systerapb.Empty\022F\n\017SetPlayerServer" +
-      "\022!.systerapb.SetPlayerServerRequest\032\020.sy" +
-      "sterapb.Empty\022L\n\022RemovePlayerServer\022$.sy",
-      "sterapb.RemovePlayerServerRequest\032\020.syst" +
-      "erapb.Empty\022J\n\021SetPlayerSettings\022#.syste" +
-      "rapb.SetPlayerSettingsRequest\032\020.systerap" +
-      "b.Empty\022Z\n\017GetPlayerPunish\022!.systerapb.G" +
-      "etPlayerPunishRequest\032\".systerapb.GetPla" +
-      "yerPunishResponse\"\000\022Z\n\017SetPlayerPunish\022!" +
-      ".systerapb.SetPlayerPunishRequest\032\".syst" +
-      "erapb.SetPlayerPunishResponse\"\000\022?\n\006Repor" +
-      "t\022\030.systerapb.ReportRequest\032\031.systerapb." +
-      "ReportResponse\"\000\022N\n\013FetchGroups\022\035.syster",
-      "apb.FetchGroupsRequest\032\036.systerapb.Fetch" +
-      "GroupsResponse\"\000B*\n\031net.synchthia.api.sy" +
-      "steraB\rSysteraProtosb\006proto3"
+      "GroupEntry*;\n\013PunishLevel\022\010\n\004WARN\020\000\022\010\n\004K" +
+      "ICK\020\001\022\013\n\007TEMPBAN\020\002\022\013\n\007PERMBAN\020\0032\254\010\n\007Syst" +
+      "era\022:\n\010Announce\022\032.systerapb.AnnounceRequ" +
+      "est\032\020.systerapb.Empty\"\000\022:\n\010Dispatch\022\032.sy" +
+      "sterapb.DispatchRequest\032\020.systerapb.Empt" +
+      "y\"\000\022`\n\021InitPlayerProfile\022#.systerapb.Ini" +
+      "tPlayerProfileRequest\032$.systerapb.InitPl",
+      "ayerProfileResponse\"\000\022c\n\022FetchPlayerProf" +
+      "ile\022$.systerapb.FetchPlayerProfileReques" +
+      "t\032%.systerapb.FetchPlayerProfileResponse" +
+      "\"\000\022o\n\030FetchPlayerProfileByName\022*.systera" +
+      "pb.FetchPlayerProfileByNameRequest\032%.sys" +
+      "terapb.FetchPlayerProfileResponse\"\000\022F\n\017S" +
+      "etPlayerGroups\022!.systerapb.SetPlayerGrou" +
+      "psRequest\032\020.systerapb.Empty\022F\n\017SetPlayer" +
+      "Server\022!.systerapb.SetPlayerServerReques" +
+      "t\032\020.systerapb.Empty\022L\n\022RemovePlayerServe",
+      "r\022$.systerapb.RemovePlayerServerRequest\032" +
+      "\020.systerapb.Empty\022J\n\021SetPlayerSettings\022#" +
+      ".systerapb.SetPlayerSettingsRequest\032\020.sy" +
+      "sterapb.Empty\022Z\n\017GetPlayerPunish\022!.syste" +
+      "rapb.GetPlayerPunishRequest\032\".systerapb." +
+      "GetPlayerPunishResponse\"\000\022Z\n\017SetPlayerPu" +
+      "nish\022!.systerapb.SetPlayerPunishRequest\032" +
+      "\".systerapb.SetPlayerPunishResponse\"\000\022?\n" +
+      "\006Report\022\030.systerapb.ReportRequest\032\031.syst" +
+      "erapb.ReportResponse\"\000\022N\n\013FetchGroups\022\035.",
+      "systerapb.FetchGroupsRequest\032\036.systerapb" +
+      ".FetchGroupsResponse\"\000B*\n\031net.synchthia." +
+      "api.systeraB\rSysteraProtosb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

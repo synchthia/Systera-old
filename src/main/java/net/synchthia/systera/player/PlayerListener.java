@@ -43,7 +43,7 @@ public class PlayerListener implements Listener {
         }
 
         try {
-            List<SysteraProtos.PunishEntry> punishList = plugin.punishAPI.lookupPlayer(event.getUniqueId(), SysteraProtos.PunishLevel.TBAN).get(5, TimeUnit.SECONDS).getEntryList();
+            List<SysteraProtos.PunishEntry> punishList = plugin.punishAPI.lookupPlayer(event.getUniqueId(), SysteraProtos.PunishLevel.TEMPBAN).get(5, TimeUnit.SECONDS).getEntryList();
             if (punishList.size() != 0) {
                 SysteraProtos.PunishEntry punishEntry = punishList.get(punishList.size() - 1);
                 String message = StringUtil.someLineToOneLine(PunishManager.punishMessage(punishEntry)).replaceAll("&", "§");

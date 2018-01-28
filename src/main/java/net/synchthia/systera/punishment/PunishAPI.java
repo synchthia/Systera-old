@@ -49,7 +49,7 @@ public class PunishAPI {
         String toPlayerUUID = "";
 
         if (punishLevel.equals(PunishLevel.UNRECOGNIZED)) {
-            punishLevel = PunishLevel.PBAN;
+            punishLevel = PunishLevel.PERMBAN;
         }
 
         // if Executor is player, put UUID.

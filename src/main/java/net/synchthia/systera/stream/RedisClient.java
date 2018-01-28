@@ -20,6 +20,7 @@ public class RedisClient {
     private SystemSubs systemSubs;
     private PlayerSubs playerSubs;
     private PunishSubs punishSubs;
+    private ReportSubs reportSubs;
 
     public RedisClient(String name, String hostname, Integer port) {
         this.name = name;
@@ -30,6 +31,7 @@ public class RedisClient {
         runSystemTask();
         runPlayerTask();
         runPunishTask();
+        runReportTask();
     }
 
     private void runSystemTask() {
@@ -104,6 +106,30 @@ public class RedisClient {
         });
     }
 
+    private void runReportTask() {
+        String taskName = "[REPORT_TASK] ";
+
+        plugin.getServer().getScheduler().runTaskAsynchronously(plugin, new Runnable() {
+            @Override
+            @SneakyThrows
+            public void run() {
+                try {
+                    reportSubs = new ReportSubs();
+
+                    plugin.getLogger().log(Level.INFO, taskName + "Connecting to Redis: " + hostname + ":" + port);
+                    Jedis jedis = pool.getResource();
+
+                    // Subscribe
+                    jedis.psubscribe(reportSubs, "systera.report.global");
+                } catch (Exception ex) {
+                    plugin.getLogger().log(Level.WARNING, taskName + "Connection Error! Try Reconnecting every 3 seconds... : ", ex);
+                    Thread.sleep(3000L);
+                    runReportTask();
+                }
+            }
+        });
+    }
+
     public void disconnect() {
         if (systemSubs != null) {
             systemSubs.punsubscribe();
@@ -113,6 +139,9 @@ public class RedisClient {
         }
         if (punishSubs != null) {
             punishSubs.punsubscribe();
+        }
+        if (reportSubs != null) {
+            reportSubs.punsubscribe();
         }
 
         pool.close();

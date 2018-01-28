@@ -25,6 +25,7 @@ public class GsonUtil {
             return gson.fromJson(reader, type);
         }
     }
+
     public static <T> void save(@NonNull Gson gson, @NonNull File file, @NonNull T obj, @NonNull Type type) throws IOException, RuntimeException {
         try (JsonWriter writer = new JsonWriter(new OutputStreamWriter(new FileOutputStream(file), "UTF-8"))) {
             gson.toJson(obj, type, writer);

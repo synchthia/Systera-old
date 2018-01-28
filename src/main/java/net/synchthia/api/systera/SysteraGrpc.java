@@ -1,11 +1,19 @@
 package net.synchthia.api.systera;
 
-import static io.grpc.MethodDescriptor.generateFullMethodName;
 import static io.grpc.stub.ClientCalls.asyncUnaryCall;
+import static io.grpc.stub.ClientCalls.asyncServerStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncClientStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
 import static io.grpc.stub.ClientCalls.blockingUnaryCall;
+import static io.grpc.stub.ClientCalls.blockingServerStreamingCall;
 import static io.grpc.stub.ClientCalls.futureUnaryCall;
+import static io.grpc.MethodDescriptor.generateFullMethodName;
 import static io.grpc.stub.ServerCalls.asyncUnaryCall;
+import static io.grpc.stub.ServerCalls.asyncServerStreamingCall;
+import static io.grpc.stub.ServerCalls.asyncClientStreamingCall;
+import static io.grpc.stub.ServerCalls.asyncBidiStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
+import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
 
 /**
  * <pre>
@@ -19,7 +27,7 @@ public final class SysteraGrpc {
 
   private SysteraGrpc() {}
 
-  public static final String SERVICE_NAME = "apipb.Systera";
+  public static final String SERVICE_NAME = "systerapb.Systera";
 
   // Static method descriptors that strictly reflect the proto.
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
@@ -28,7 +36,7 @@ public final class SysteraGrpc {
       io.grpc.MethodDescriptor.<net.synchthia.api.systera.SysteraProtos.AnnounceRequest, net.synchthia.api.systera.SysteraProtos.Empty>newBuilder()
           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
           .setFullMethodName(generateFullMethodName(
-              "apipb.Systera", "Announce"))
+              "systerapb.Systera", "Announce"))
           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
               net.synchthia.api.systera.SysteraProtos.AnnounceRequest.getDefaultInstance()))
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
@@ -40,7 +48,7 @@ public final class SysteraGrpc {
       io.grpc.MethodDescriptor.<net.synchthia.api.systera.SysteraProtos.DispatchRequest, net.synchthia.api.systera.SysteraProtos.Empty>newBuilder()
           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
           .setFullMethodName(generateFullMethodName(
-              "apipb.Systera", "Dispatch"))
+              "systerapb.Systera", "Dispatch"))
           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
               net.synchthia.api.systera.SysteraProtos.DispatchRequest.getDefaultInstance()))
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
@@ -52,7 +60,7 @@ public final class SysteraGrpc {
       io.grpc.MethodDescriptor.<net.synchthia.api.systera.SysteraProtos.InitPlayerProfileRequest, net.synchthia.api.systera.SysteraProtos.InitPlayerProfileResponse>newBuilder()
           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
           .setFullMethodName(generateFullMethodName(
-              "apipb.Systera", "InitPlayerProfile"))
+              "systerapb.Systera", "InitPlayerProfile"))
           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
               net.synchthia.api.systera.SysteraProtos.InitPlayerProfileRequest.getDefaultInstance()))
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
@@ -64,7 +72,7 @@ public final class SysteraGrpc {
       io.grpc.MethodDescriptor.<net.synchthia.api.systera.SysteraProtos.FetchPlayerProfileRequest, net.synchthia.api.systera.SysteraProtos.FetchPlayerProfileResponse>newBuilder()
           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
           .setFullMethodName(generateFullMethodName(
-              "apipb.Systera", "FetchPlayerProfile"))
+              "systerapb.Systera", "FetchPlayerProfile"))
           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
               net.synchthia.api.systera.SysteraProtos.FetchPlayerProfileRequest.getDefaultInstance()))
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
@@ -76,7 +84,7 @@ public final class SysteraGrpc {
       io.grpc.MethodDescriptor.<net.synchthia.api.systera.SysteraProtos.FetchPlayerProfileByNameRequest, net.synchthia.api.systera.SysteraProtos.FetchPlayerProfileResponse>newBuilder()
           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
           .setFullMethodName(generateFullMethodName(
-              "apipb.Systera", "FetchPlayerProfileByName"))
+              "systerapb.Systera", "FetchPlayerProfileByName"))
           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
               net.synchthia.api.systera.SysteraProtos.FetchPlayerProfileByNameRequest.getDefaultInstance()))
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
@@ -88,7 +96,7 @@ public final class SysteraGrpc {
       io.grpc.MethodDescriptor.<net.synchthia.api.systera.SysteraProtos.SetPlayerGroupsRequest, net.synchthia.api.systera.SysteraProtos.Empty>newBuilder()
           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
           .setFullMethodName(generateFullMethodName(
-              "apipb.Systera", "SetPlayerGroups"))
+              "systerapb.Systera", "SetPlayerGroups"))
           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
               net.synchthia.api.systera.SysteraProtos.SetPlayerGroupsRequest.getDefaultInstance()))
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
@@ -100,7 +108,7 @@ public final class SysteraGrpc {
       io.grpc.MethodDescriptor.<net.synchthia.api.systera.SysteraProtos.SetPlayerServerRequest, net.synchthia.api.systera.SysteraProtos.Empty>newBuilder()
           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
           .setFullMethodName(generateFullMethodName(
-              "apipb.Systera", "SetPlayerServer"))
+              "systerapb.Systera", "SetPlayerServer"))
           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
               net.synchthia.api.systera.SysteraProtos.SetPlayerServerRequest.getDefaultInstance()))
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
@@ -112,7 +120,7 @@ public final class SysteraGrpc {
       io.grpc.MethodDescriptor.<net.synchthia.api.systera.SysteraProtos.RemovePlayerServerRequest, net.synchthia.api.systera.SysteraProtos.Empty>newBuilder()
           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
           .setFullMethodName(generateFullMethodName(
-              "apipb.Systera", "RemovePlayerServer"))
+              "systerapb.Systera", "RemovePlayerServer"))
           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
               net.synchthia.api.systera.SysteraProtos.RemovePlayerServerRequest.getDefaultInstance()))
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
@@ -124,7 +132,7 @@ public final class SysteraGrpc {
       io.grpc.MethodDescriptor.<net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest, net.synchthia.api.systera.SysteraProtos.Empty>newBuilder()
           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
           .setFullMethodName(generateFullMethodName(
-              "apipb.Systera", "SetPlayerSettings"))
+              "systerapb.Systera", "SetPlayerSettings"))
           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
               net.synchthia.api.systera.SysteraProtos.SetPlayerSettingsRequest.getDefaultInstance()))
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
@@ -136,7 +144,7 @@ public final class SysteraGrpc {
       io.grpc.MethodDescriptor.<net.synchthia.api.systera.SysteraProtos.GetPlayerPunishRequest, net.synchthia.api.systera.SysteraProtos.GetPlayerPunishResponse>newBuilder()
           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
           .setFullMethodName(generateFullMethodName(
-              "apipb.Systera", "GetPlayerPunish"))
+              "systerapb.Systera", "GetPlayerPunish"))
           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
               net.synchthia.api.systera.SysteraProtos.GetPlayerPunishRequest.getDefaultInstance()))
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
@@ -148,11 +156,23 @@ public final class SysteraGrpc {
       io.grpc.MethodDescriptor.<net.synchthia.api.systera.SysteraProtos.SetPlayerPunishRequest, net.synchthia.api.systera.SysteraProtos.SetPlayerPunishResponse>newBuilder()
           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
           .setFullMethodName(generateFullMethodName(
-              "apipb.Systera", "SetPlayerPunish"))
+              "systerapb.Systera", "SetPlayerPunish"))
           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
               net.synchthia.api.systera.SysteraProtos.SetPlayerPunishRequest.getDefaultInstance()))
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
               net.synchthia.api.systera.SysteraProtos.SetPlayerPunishResponse.getDefaultInstance()))
+          .build();
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  public static final io.grpc.MethodDescriptor<net.synchthia.api.systera.SysteraProtos.ReportRequest,
+      net.synchthia.api.systera.SysteraProtos.ReportResponse> METHOD_REPORT =
+      io.grpc.MethodDescriptor.<net.synchthia.api.systera.SysteraProtos.ReportRequest, net.synchthia.api.systera.SysteraProtos.ReportResponse>newBuilder()
+          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+          .setFullMethodName(generateFullMethodName(
+              "systerapb.Systera", "Report"))
+          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              net.synchthia.api.systera.SysteraProtos.ReportRequest.getDefaultInstance()))
+          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              net.synchthia.api.systera.SysteraProtos.ReportResponse.getDefaultInstance()))
           .build();
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
   public static final io.grpc.MethodDescriptor<net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest,
@@ -160,7 +180,7 @@ public final class SysteraGrpc {
       io.grpc.MethodDescriptor.<net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest, net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse>newBuilder()
           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
           .setFullMethodName(generateFullMethodName(
-              "apipb.Systera", "FetchGroups"))
+              "systerapb.Systera", "FetchGroups"))
           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
               net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest.getDefaultInstance()))
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
@@ -276,6 +296,13 @@ public final class SysteraGrpc {
 
     /**
      */
+    public void report(net.synchthia.api.systera.SysteraProtos.ReportRequest request,
+        io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.ReportResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(METHOD_REPORT, responseObserver);
+    }
+
+    /**
+     */
     public void fetchGroups(net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest request,
         io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse> responseObserver) {
       asyncUnimplementedUnaryCall(METHOD_FETCH_GROUPS, responseObserver);
@@ -360,6 +387,13 @@ public final class SysteraGrpc {
                 net.synchthia.api.systera.SysteraProtos.SetPlayerPunishRequest,
                 net.synchthia.api.systera.SysteraProtos.SetPlayerPunishResponse>(
                   this, METHODID_SET_PLAYER_PUNISH)))
+          .addMethod(
+            METHOD_REPORT,
+            asyncUnaryCall(
+              new MethodHandlers<
+                net.synchthia.api.systera.SysteraProtos.ReportRequest,
+                net.synchthia.api.systera.SysteraProtos.ReportResponse>(
+                  this, METHODID_REPORT)))
           .addMethod(
             METHOD_FETCH_GROUPS,
             asyncUnaryCall(
@@ -482,6 +516,14 @@ public final class SysteraGrpc {
 
     /**
      */
+    public void report(net.synchthia.api.systera.SysteraProtos.ReportRequest request,
+        io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.ReportResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(METHOD_REPORT, getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
     public void fetchGroups(net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest request,
         io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse> responseObserver) {
       asyncUnaryCall(
@@ -585,6 +627,13 @@ public final class SysteraGrpc {
     public net.synchthia.api.systera.SysteraProtos.SetPlayerPunishResponse setPlayerPunish(net.synchthia.api.systera.SysteraProtos.SetPlayerPunishRequest request) {
       return blockingUnaryCall(
           getChannel(), METHOD_SET_PLAYER_PUNISH, getCallOptions(), request);
+    }
+
+    /**
+     */
+    public net.synchthia.api.systera.SysteraProtos.ReportResponse report(net.synchthia.api.systera.SysteraProtos.ReportRequest request) {
+      return blockingUnaryCall(
+          getChannel(), METHOD_REPORT, getCallOptions(), request);
     }
 
     /**
@@ -706,6 +755,14 @@ public final class SysteraGrpc {
 
     /**
      */
+    public com.google.common.util.concurrent.ListenableFuture<net.synchthia.api.systera.SysteraProtos.ReportResponse> report(
+        net.synchthia.api.systera.SysteraProtos.ReportRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(METHOD_REPORT, getCallOptions()), request);
+    }
+
+    /**
+     */
     public com.google.common.util.concurrent.ListenableFuture<net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse> fetchGroups(
         net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest request) {
       return futureUnaryCall(
@@ -724,7 +781,8 @@ public final class SysteraGrpc {
   private static final int METHODID_SET_PLAYER_SETTINGS = 8;
   private static final int METHODID_GET_PLAYER_PUNISH = 9;
   private static final int METHODID_SET_PLAYER_PUNISH = 10;
-  private static final int METHODID_FETCH_GROUPS = 11;
+  private static final int METHODID_REPORT = 11;
+  private static final int METHODID_FETCH_GROUPS = 12;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -787,6 +845,10 @@ public final class SysteraGrpc {
           serviceImpl.setPlayerPunish((net.synchthia.api.systera.SysteraProtos.SetPlayerPunishRequest) request,
               (io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.SetPlayerPunishResponse>) responseObserver);
           break;
+        case METHODID_REPORT:
+          serviceImpl.report((net.synchthia.api.systera.SysteraProtos.ReportRequest) request,
+              (io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.ReportResponse>) responseObserver);
+          break;
         case METHODID_FETCH_GROUPS:
           serviceImpl.fetchGroups((net.synchthia.api.systera.SysteraProtos.FetchGroupsRequest) request,
               (io.grpc.stub.StreamObserver<net.synchthia.api.systera.SysteraProtos.FetchGroupsResponse>) responseObserver);
@@ -835,6 +897,7 @@ public final class SysteraGrpc {
               .addMethod(METHOD_SET_PLAYER_SETTINGS)
               .addMethod(METHOD_GET_PLAYER_PUNISH)
               .addMethod(METHOD_SET_PLAYER_PUNISH)
+              .addMethod(METHOD_REPORT)
               .addMethod(METHOD_FETCH_GROUPS)
               .build();
         }

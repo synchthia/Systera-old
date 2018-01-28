@@ -39,7 +39,7 @@ public class PunishCommand {
         punish(false, SysteraProtos.PunishLevel.KICK, sender, toPlayerName, reason, 0L);
     }
 
-    @Command(aliases = {"tempban", "tban", "punish"}, flags = "t:t",desc = "Temporary BAN Command", min = 2, usage = "<player> <reason>")
+    @Command(aliases = {"tempban", "tban", "punish"}, flags = "t:t", desc = "Temporary BAN Command", min = 2, usage = "<player> <reason>")
     @CommandPermissions("systera.command.punishment")
     public static void tempBan(final CommandContext args, CommandSender sender, SysteraPlugin plugin) throws CommandException {
         String toPlayerName = args.getString(0);
@@ -54,7 +54,7 @@ public class PunishCommand {
             sender.sendMessage(ChatColor.RED + "Invalid Expire Date!");
         }
     }
-    
+
     @Command(aliases = {"permban", "pban", "ppunish"}, flags = "f", desc = "Permanently BAN Command", min = 2, usage = "<player> <reason>")
     @CommandPermissions("systera.command.punishment")
     public static void permBan(final CommandContext args, CommandSender sender, SysteraPlugin plugin) throws CommandException {

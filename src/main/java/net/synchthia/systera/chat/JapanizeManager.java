@@ -56,8 +56,7 @@ public class JapanizeManager {
             JsonParser parser = new JsonParser();
             JsonElement rootElement = parser.parse(br.readLine());
             Iterator<JsonElement> iterator = rootElement.getAsJsonArray().iterator();
-            while(iterator.hasNext())
-            {
+            while (iterator.hasNext()) {
                 JsonArray rootArray = iterator.next().getAsJsonArray();
                 JsonArray jsonArray = rootArray.get(1).getAsJsonArray();
                 builder.append(jsonArray.get(0).getAsString());

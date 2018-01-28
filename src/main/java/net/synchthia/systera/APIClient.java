@@ -62,6 +62,16 @@ public class APIClient {
         }
     }
 
+    public static SysteraProtos.ReportEntryStream reportEntryStreamFromJson(String jsonText) {
+        try {
+            SysteraProtos.ReportEntryStream.Builder builder = SysteraProtos.ReportEntryStream.newBuilder();
+            JsonFormat.parser().ignoringUnknownFields().merge(jsonText, builder);
+            return builder.build();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
     public void shutdown() throws InterruptedException {
         channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
     }
@@ -204,6 +214,28 @@ public class APIClient {
 
         CompletableFuture<SysteraProtos.SetPlayerPunishResponse> future = new CompletableFuture<>();
         stub.setPlayerPunish(request, new CompletableFutureObserver<>(future));
+        return future;
+    }
+
+    public CompletableFuture<SysteraProtos.ReportResponse> report(UUID fromUUID, String fromName, UUID toUUID, String toName, String message) {
+        PlayerData from = PlayerData.newBuilder()
+                .setUUID(toString(fromUUID))
+                .setName(fromName)
+                .build();
+
+        PlayerData to = PlayerData.newBuilder()
+                .setUUID(toString(toUUID))
+                .setName(toName)
+                .build();
+
+        ReportRequest request = ReportRequest.newBuilder()
+                .setFrom(from)
+                .setTo(to)
+                .setMessage(message)
+                .build();
+
+        CompletableFuture<SysteraProtos.ReportResponse> future = new CompletableFuture<>();
+        stub.report(request, new CompletableFutureObserver<>(future));
         return future;
     }
 

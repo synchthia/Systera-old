@@ -29,7 +29,9 @@ public class VanishManager {
     //現在のサーバー内のプレイヤー全員に対してplayerを非表示にする
     public static void applyVanishInServer(Player player, Boolean value) {
         if (value) {
-            if (!vanishPlayers.contains(player)) { vanishPlayers.add(player); }
+            if (!vanishPlayers.contains(player)) {
+                vanishPlayers.add(player);
+            }
             SysteraPlugin.getInstance().getLogger().log(Level.INFO, "Vanish Applied to: " + player.getName());
             Bukkit.getOnlinePlayers().stream()
                     .filter(viewer -> !viewer.hasPermission("systera.command.vanish"))

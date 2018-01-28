@@ -121,7 +121,7 @@ public class SysteraPlugin extends JavaPlugin {
             apiServerAddress = addressEnv;
         }
         getLogger().log(Level.INFO, "API Address: " + apiServerAddress);
-        
+
         apiClient = new APIClient(apiServerAddress);
 
         playerAPI = new PlayerAPI(this);
@@ -164,6 +164,7 @@ public class SysteraPlugin extends JavaPlugin {
         cmdRegister.register(APICommand.class);
         cmdRegister.register(SettingsCommand.class);
         cmdRegister.register(PunishCommand.class);
+        cmdRegister.register(ReportCommand.class);
         cmdRegister.register(ListCommand.class);
         cmdRegister.register(TellCommand.class);
     }

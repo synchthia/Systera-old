@@ -30,7 +30,7 @@ public class ChatListener implements Listener {
         String leftFormat = "{prefix}§7{player}§a:§r "
                 .replace("{prefix}", prefix)
                 .replace("{player}", playerName)
-                .replaceAll("&","§");
+                .replaceAll("&", "§");
 
         // is Enabled?
         String japanizeMsg = "";

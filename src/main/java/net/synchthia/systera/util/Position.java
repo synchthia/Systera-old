@@ -17,12 +17,15 @@ public class Position implements Cloneable {
     private double x, y, z;
     private float yaw;
     private float pitch;
+
     private Position(Position pos) {
         this(pos.world, pos.x, pos.y, pos.z, pos.yaw, pos.pitch);
     }
+
     public Position(Location location) {
         this(location.getWorld().getName(), location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
     }
+
     public Position(String world, double x, double y, double z, float yaw, float pitch) {
         this.world = world;
         this.x = x;
@@ -31,21 +34,26 @@ public class Position implements Cloneable {
         this.yaw = yaw;
         this.pitch = pitch;
     }
+
     public String getWorldName() {
         return world;
     }
+
     public Optional<World> getWorld() {
         return Optional.ofNullable(Bukkit.getWorld(world));
     }
+
     public Optional<Location> toBukkitLocation() {
         return getWorld().map(world -> new Location(world, x, y, z, yaw, pitch));
     }
+
     public Position add(double x, double y, double z) {
         this.x += x;
         this.y += y;
         this.z += z;
         return this;
     }
+
     @Override
     public boolean equals(Object object) {
         if (object instanceof Block) {
@@ -54,6 +62,7 @@ public class Position implements Cloneable {
         }
         return super.equals(object);
     }
+
     @Override
     public Position clone() {
         return new Position(this);

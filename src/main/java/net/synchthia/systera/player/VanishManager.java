@@ -22,7 +22,7 @@ public class VanishManager {
 
     public static void hideFoundVanishPlayer(Player player) {
         if (!player.hasPermission("systera.command.vanish")) {
-            vanishPlayers.forEach(akPlayer -> player.hidePlayer(akPlayer));
+            vanishPlayers.forEach(akPlayer -> player.hidePlayer(SysteraPlugin.getInstance(), akPlayer));
         }
     }
 
@@ -35,13 +35,13 @@ public class VanishManager {
             SysteraPlugin.getInstance().getLogger().log(Level.INFO, "Vanish Applied to: " + player.getName());
             Bukkit.getOnlinePlayers().stream()
                     .filter(viewer -> !viewer.hasPermission("systera.command.vanish"))
-                    .forEach(viewer -> viewer.hidePlayer(player));
+                    .forEach(viewer -> viewer.hidePlayer(SysteraPlugin.getInstance(), player));
         } else {
             vanishPlayers.remove(player);
             SysteraPlugin.getInstance().getLogger().log(Level.INFO, "Vanish Removed from: " + player.getName());
             Bukkit.getOnlinePlayers().stream()
                     .filter(viewer -> !viewer.hasPermission("systera.command.vanish"))
-                    .forEach(viewer -> viewer.showPlayer(player));
+                    .forEach(viewer -> viewer.showPlayer(SysteraPlugin.getInstance(), player));
         }
     }
 }

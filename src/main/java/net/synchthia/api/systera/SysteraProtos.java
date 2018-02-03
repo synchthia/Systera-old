@@ -14937,25 +14937,20 @@ public final class SysteraProtos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>bool remote = 1;</code>
-     */
-    boolean getRemote();
-
-    /**
-     * <code>bool force = 2;</code>
+     * <code>bool force = 1;</code>
      */
     boolean getForce();
 
     /**
-     * <code>.systerapb.PunishEntry entry = 3;</code>
+     * <code>.systerapb.PunishEntry entry = 2;</code>
      */
     boolean hasEntry();
     /**
-     * <code>.systerapb.PunishEntry entry = 3;</code>
+     * <code>.systerapb.PunishEntry entry = 2;</code>
      */
     net.synchthia.api.systera.SysteraProtos.PunishEntry getEntry();
     /**
-     * <code>.systerapb.PunishEntry entry = 3;</code>
+     * <code>.systerapb.PunishEntry entry = 2;</code>
      */
     net.synchthia.api.systera.SysteraProtos.PunishEntryOrBuilder getEntryOrBuilder();
   }
@@ -14971,7 +14966,6 @@ public final class SysteraProtos {
       super(builder);
     }
     private SetPlayerPunishRequest() {
-      remote_ = false;
       force_ = false;
     }
 
@@ -15002,15 +14996,10 @@ public final class SysteraProtos {
             }
             case 8: {
 
-              remote_ = input.readBool();
-              break;
-            }
-            case 16: {
-
               force_ = input.readBool();
               break;
             }
-            case 26: {
+            case 18: {
               net.synchthia.api.systera.SysteraProtos.PunishEntry.Builder subBuilder = null;
               if (entry_ != null) {
                 subBuilder = entry_.toBuilder();
@@ -15046,40 +15035,31 @@ public final class SysteraProtos {
               net.synchthia.api.systera.SysteraProtos.SetPlayerPunishRequest.class, net.synchthia.api.systera.SysteraProtos.SetPlayerPunishRequest.Builder.class);
     }
 
-    public static final int REMOTE_FIELD_NUMBER = 1;
-    private boolean remote_;
-    /**
-     * <code>bool remote = 1;</code>
-     */
-    public boolean getRemote() {
-      return remote_;
-    }
-
-    public static final int FORCE_FIELD_NUMBER = 2;
+    public static final int FORCE_FIELD_NUMBER = 1;
     private boolean force_;
     /**
-     * <code>bool force = 2;</code>
+     * <code>bool force = 1;</code>
      */
     public boolean getForce() {
       return force_;
     }
 
-    public static final int ENTRY_FIELD_NUMBER = 3;
+    public static final int ENTRY_FIELD_NUMBER = 2;
     private net.synchthia.api.systera.SysteraProtos.PunishEntry entry_;
     /**
-     * <code>.systerapb.PunishEntry entry = 3;</code>
+     * <code>.systerapb.PunishEntry entry = 2;</code>
      */
     public boolean hasEntry() {
       return entry_ != null;
     }
     /**
-     * <code>.systerapb.PunishEntry entry = 3;</code>
+     * <code>.systerapb.PunishEntry entry = 2;</code>
      */
     public net.synchthia.api.systera.SysteraProtos.PunishEntry getEntry() {
       return entry_ == null ? net.synchthia.api.systera.SysteraProtos.PunishEntry.getDefaultInstance() : entry_;
     }
     /**
-     * <code>.systerapb.PunishEntry entry = 3;</code>
+     * <code>.systerapb.PunishEntry entry = 2;</code>
      */
     public net.synchthia.api.systera.SysteraProtos.PunishEntryOrBuilder getEntryOrBuilder() {
       return getEntry();
@@ -15097,14 +15077,11 @@ public final class SysteraProtos {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (remote_ != false) {
-        output.writeBool(1, remote_);
-      }
       if (force_ != false) {
-        output.writeBool(2, force_);
+        output.writeBool(1, force_);
       }
       if (entry_ != null) {
-        output.writeMessage(3, getEntry());
+        output.writeMessage(2, getEntry());
       }
     }
 
@@ -15113,17 +15090,13 @@ public final class SysteraProtos {
       if (size != -1) return size;
 
       size = 0;
-      if (remote_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(1, remote_);
-      }
       if (force_ != false) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(2, force_);
+          .computeBoolSize(1, force_);
       }
       if (entry_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getEntry());
+          .computeMessageSize(2, getEntry());
       }
       memoizedSize = size;
       return size;
@@ -15141,8 +15114,6 @@ public final class SysteraProtos {
       net.synchthia.api.systera.SysteraProtos.SetPlayerPunishRequest other = (net.synchthia.api.systera.SysteraProtos.SetPlayerPunishRequest) obj;
 
       boolean result = true;
-      result = result && (getRemote()
-          == other.getRemote());
       result = result && (getForce()
           == other.getForce());
       result = result && (hasEntry() == other.hasEntry());
@@ -15160,9 +15131,6 @@ public final class SysteraProtos {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + REMOTE_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getRemote());
       hash = (37 * hash) + FORCE_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getForce());
@@ -15299,8 +15267,6 @@ public final class SysteraProtos {
       }
       public Builder clear() {
         super.clear();
-        remote_ = false;
-
         force_ = false;
 
         if (entryBuilder_ == null) {
@@ -15331,7 +15297,6 @@ public final class SysteraProtos {
 
       public net.synchthia.api.systera.SysteraProtos.SetPlayerPunishRequest buildPartial() {
         net.synchthia.api.systera.SysteraProtos.SetPlayerPunishRequest result = new net.synchthia.api.systera.SysteraProtos.SetPlayerPunishRequest(this);
-        result.remote_ = remote_;
         result.force_ = force_;
         if (entryBuilder_ == null) {
           result.entry_ = entry_;
@@ -15379,9 +15344,6 @@ public final class SysteraProtos {
 
       public Builder mergeFrom(net.synchthia.api.systera.SysteraProtos.SetPlayerPunishRequest other) {
         if (other == net.synchthia.api.systera.SysteraProtos.SetPlayerPunishRequest.getDefaultInstance()) return this;
-        if (other.getRemote() != false) {
-          setRemote(other.getRemote());
-        }
         if (other.getForce() != false) {
           setForce(other.getForce());
         }
@@ -15414,41 +15376,15 @@ public final class SysteraProtos {
         return this;
       }
 
-      private boolean remote_ ;
-      /**
-       * <code>bool remote = 1;</code>
-       */
-      public boolean getRemote() {
-        return remote_;
-      }
-      /**
-       * <code>bool remote = 1;</code>
-       */
-      public Builder setRemote(boolean value) {
-        
-        remote_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bool remote = 1;</code>
-       */
-      public Builder clearRemote() {
-        
-        remote_ = false;
-        onChanged();
-        return this;
-      }
-
       private boolean force_ ;
       /**
-       * <code>bool force = 2;</code>
+       * <code>bool force = 1;</code>
        */
       public boolean getForce() {
         return force_;
       }
       /**
-       * <code>bool force = 2;</code>
+       * <code>bool force = 1;</code>
        */
       public Builder setForce(boolean value) {
         
@@ -15457,7 +15393,7 @@ public final class SysteraProtos {
         return this;
       }
       /**
-       * <code>bool force = 2;</code>
+       * <code>bool force = 1;</code>
        */
       public Builder clearForce() {
         
@@ -15470,13 +15406,13 @@ public final class SysteraProtos {
       private com.google.protobuf.SingleFieldBuilderV3<
           net.synchthia.api.systera.SysteraProtos.PunishEntry, net.synchthia.api.systera.SysteraProtos.PunishEntry.Builder, net.synchthia.api.systera.SysteraProtos.PunishEntryOrBuilder> entryBuilder_;
       /**
-       * <code>.systerapb.PunishEntry entry = 3;</code>
+       * <code>.systerapb.PunishEntry entry = 2;</code>
        */
       public boolean hasEntry() {
         return entryBuilder_ != null || entry_ != null;
       }
       /**
-       * <code>.systerapb.PunishEntry entry = 3;</code>
+       * <code>.systerapb.PunishEntry entry = 2;</code>
        */
       public net.synchthia.api.systera.SysteraProtos.PunishEntry getEntry() {
         if (entryBuilder_ == null) {
@@ -15486,7 +15422,7 @@ public final class SysteraProtos {
         }
       }
       /**
-       * <code>.systerapb.PunishEntry entry = 3;</code>
+       * <code>.systerapb.PunishEntry entry = 2;</code>
        */
       public Builder setEntry(net.synchthia.api.systera.SysteraProtos.PunishEntry value) {
         if (entryBuilder_ == null) {
@@ -15502,7 +15438,7 @@ public final class SysteraProtos {
         return this;
       }
       /**
-       * <code>.systerapb.PunishEntry entry = 3;</code>
+       * <code>.systerapb.PunishEntry entry = 2;</code>
        */
       public Builder setEntry(
           net.synchthia.api.systera.SysteraProtos.PunishEntry.Builder builderForValue) {
@@ -15516,7 +15452,7 @@ public final class SysteraProtos {
         return this;
       }
       /**
-       * <code>.systerapb.PunishEntry entry = 3;</code>
+       * <code>.systerapb.PunishEntry entry = 2;</code>
        */
       public Builder mergeEntry(net.synchthia.api.systera.SysteraProtos.PunishEntry value) {
         if (entryBuilder_ == null) {
@@ -15534,7 +15470,7 @@ public final class SysteraProtos {
         return this;
       }
       /**
-       * <code>.systerapb.PunishEntry entry = 3;</code>
+       * <code>.systerapb.PunishEntry entry = 2;</code>
        */
       public Builder clearEntry() {
         if (entryBuilder_ == null) {
@@ -15548,7 +15484,7 @@ public final class SysteraProtos {
         return this;
       }
       /**
-       * <code>.systerapb.PunishEntry entry = 3;</code>
+       * <code>.systerapb.PunishEntry entry = 2;</code>
        */
       public net.synchthia.api.systera.SysteraProtos.PunishEntry.Builder getEntryBuilder() {
         
@@ -15556,7 +15492,7 @@ public final class SysteraProtos {
         return getEntryFieldBuilder().getBuilder();
       }
       /**
-       * <code>.systerapb.PunishEntry entry = 3;</code>
+       * <code>.systerapb.PunishEntry entry = 2;</code>
        */
       public net.synchthia.api.systera.SysteraProtos.PunishEntryOrBuilder getEntryOrBuilder() {
         if (entryBuilder_ != null) {
@@ -15567,7 +15503,7 @@ public final class SysteraProtos {
         }
       }
       /**
-       * <code>.systerapb.PunishEntry entry = 3;</code>
+       * <code>.systerapb.PunishEntry entry = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           net.synchthia.api.systera.SysteraProtos.PunishEntry, net.synchthia.api.systera.SysteraProtos.PunishEntry.Builder, net.synchthia.api.systera.SysteraProtos.PunishEntryOrBuilder> 
@@ -21152,53 +21088,53 @@ public final class SysteraProtos {
       "\022\022\n\nplayerUUID\030\001 \001(\t\022+\n\013filterLevel\030\002 \001(" +
       "\0162\026.systerapb.PunishLevel\022\026\n\016includeExpi" +
       "red\030\003 \001(\010\"@\n\027GetPlayerPunishResponse\022%\n\005" +
-      "entry\030\001 \003(\0132\026.systerapb.PunishEntry\"^\n\026S" +
-      "etPlayerPunishRequest\022\016\n\006remote\030\001 \001(\010\022\r\n" +
-      "\005force\030\002 \001(\010\022%\n\005entry\030\003 \001(\0132\026.systerapb." +
-      "PunishEntry\"b\n\027SetPlayerPunishResponse\022\021",
-      "\n\tnoprofile\030\001 \001(\010\022\017\n\007offline\030\002 \001(\010\022\021\n\tdu" +
-      "plicate\030\003 \001(\010\022\020\n\010cooldown\030\004 \001(\010\"\204\001\n\013Repo" +
-      "rtEntry\022#\n\004from\030\001 \001(\0132\025.systerapb.Player" +
+      "entry\030\001 \003(\0132\026.systerapb.PunishEntry\"N\n\026S" +
+      "etPlayerPunishRequest\022\r\n\005force\030\001 \001(\010\022%\n\005" +
+      "entry\030\002 \001(\0132\026.systerapb.PunishEntry\"b\n\027S" +
+      "etPlayerPunishResponse\022\021\n\tnoprofile\030\001 \001(",
+      "\010\022\017\n\007offline\030\002 \001(\010\022\021\n\tduplicate\030\003 \001(\010\022\020\n" +
+      "\010cooldown\030\004 \001(\010\"\204\001\n\013ReportEntry\022#\n\004from\030" +
+      "\001 \001(\0132\025.systerapb.PlayerData\022!\n\002to\030\002 \001(\013" +
+      "2\025.systerapb.PlayerData\022\017\n\007message\030\003 \001(\t" +
+      "\022\014\n\004date\030\004 \001(\003\022\016\n\006server\030\005 \001(\t\"h\n\rReport" +
+      "Request\022#\n\004from\030\001 \001(\0132\025.systerapb.Player" +
       "Data\022!\n\002to\030\002 \001(\0132\025.systerapb.PlayerData\022" +
-      "\017\n\007message\030\003 \001(\t\022\014\n\004date\030\004 \001(\003\022\016\n\006server" +
-      "\030\005 \001(\t\"h\n\rReportRequest\022#\n\004from\030\001 \001(\0132\025." +
-      "systerapb.PlayerData\022!\n\002to\030\002 \001(\0132\025.syste" +
-      "rapb.PlayerData\022\017\n\007message\030\003 \001(\t\"\020\n\016Repo" +
-      "rtResponse\"^\n\nGroupEntry\022\021\n\tgroupName\030\001 " +
-      "\001(\t\022\023\n\013groupPrefix\030\002 \001(\t\022\023\n\013globalPerms\030",
-      "\003 \003(\t\022\023\n\013serverPerms\030\004 \003(\t\"(\n\022FetchGroup" +
-      "sRequest\022\022\n\nserverName\030\001 \001(\t\"<\n\023FetchGro" +
-      "upsResponse\022%\n\006groups\030\001 \003(\0132\025.systerapb." +
-      "GroupEntry*;\n\013PunishLevel\022\010\n\004WARN\020\000\022\010\n\004K" +
-      "ICK\020\001\022\013\n\007TEMPBAN\020\002\022\013\n\007PERMBAN\020\0032\254\010\n\007Syst" +
-      "era\022:\n\010Announce\022\032.systerapb.AnnounceRequ" +
-      "est\032\020.systerapb.Empty\"\000\022:\n\010Dispatch\022\032.sy" +
-      "sterapb.DispatchRequest\032\020.systerapb.Empt" +
-      "y\"\000\022`\n\021InitPlayerProfile\022#.systerapb.Ini" +
-      "tPlayerProfileRequest\032$.systerapb.InitPl",
-      "ayerProfileResponse\"\000\022c\n\022FetchPlayerProf" +
-      "ile\022$.systerapb.FetchPlayerProfileReques" +
-      "t\032%.systerapb.FetchPlayerProfileResponse" +
-      "\"\000\022o\n\030FetchPlayerProfileByName\022*.systera" +
-      "pb.FetchPlayerProfileByNameRequest\032%.sys" +
-      "terapb.FetchPlayerProfileResponse\"\000\022F\n\017S" +
-      "etPlayerGroups\022!.systerapb.SetPlayerGrou" +
-      "psRequest\032\020.systerapb.Empty\022F\n\017SetPlayer" +
-      "Server\022!.systerapb.SetPlayerServerReques" +
-      "t\032\020.systerapb.Empty\022L\n\022RemovePlayerServe",
-      "r\022$.systerapb.RemovePlayerServerRequest\032" +
-      "\020.systerapb.Empty\022J\n\021SetPlayerSettings\022#" +
-      ".systerapb.SetPlayerSettingsRequest\032\020.sy" +
-      "sterapb.Empty\022Z\n\017GetPlayerPunish\022!.syste" +
-      "rapb.GetPlayerPunishRequest\032\".systerapb." +
-      "GetPlayerPunishResponse\"\000\022Z\n\017SetPlayerPu" +
-      "nish\022!.systerapb.SetPlayerPunishRequest\032" +
-      "\".systerapb.SetPlayerPunishResponse\"\000\022?\n" +
-      "\006Report\022\030.systerapb.ReportRequest\032\031.syst" +
-      "erapb.ReportResponse\"\000\022N\n\013FetchGroups\022\035.",
-      "systerapb.FetchGroupsRequest\032\036.systerapb" +
-      ".FetchGroupsResponse\"\000B*\n\031net.synchthia." +
-      "api.systeraB\rSysteraProtosb\006proto3"
+      "\017\n\007message\030\003 \001(\t\"\020\n\016ReportResponse\"^\n\nGr" +
+      "oupEntry\022\021\n\tgroupName\030\001 \001(\t\022\023\n\013groupPref" +
+      "ix\030\002 \001(\t\022\023\n\013globalPerms\030\003 \003(\t\022\023\n\013serverP",
+      "erms\030\004 \003(\t\"(\n\022FetchGroupsRequest\022\022\n\nserv" +
+      "erName\030\001 \001(\t\"<\n\023FetchGroupsResponse\022%\n\006g" +
+      "roups\030\001 \003(\0132\025.systerapb.GroupEntry*;\n\013Pu" +
+      "nishLevel\022\010\n\004WARN\020\000\022\010\n\004KICK\020\001\022\013\n\007TEMPBAN" +
+      "\020\002\022\013\n\007PERMBAN\020\0032\254\010\n\007Systera\022:\n\010Announce\022" +
+      "\032.systerapb.AnnounceRequest\032\020.systerapb." +
+      "Empty\"\000\022:\n\010Dispatch\022\032.systerapb.Dispatch" +
+      "Request\032\020.systerapb.Empty\"\000\022`\n\021InitPlaye" +
+      "rProfile\022#.systerapb.InitPlayerProfileRe" +
+      "quest\032$.systerapb.InitPlayerProfileRespo",
+      "nse\"\000\022c\n\022FetchPlayerProfile\022$.systerapb." +
+      "FetchPlayerProfileRequest\032%.systerapb.Fe" +
+      "tchPlayerProfileResponse\"\000\022o\n\030FetchPlaye" +
+      "rProfileByName\022*.systerapb.FetchPlayerPr" +
+      "ofileByNameRequest\032%.systerapb.FetchPlay" +
+      "erProfileResponse\"\000\022F\n\017SetPlayerGroups\022!" +
+      ".systerapb.SetPlayerGroupsRequest\032\020.syst" +
+      "erapb.Empty\022F\n\017SetPlayerServer\022!.systera" +
+      "pb.SetPlayerServerRequest\032\020.systerapb.Em" +
+      "pty\022L\n\022RemovePlayerServer\022$.systerapb.Re",
+      "movePlayerServerRequest\032\020.systerapb.Empt" +
+      "y\022J\n\021SetPlayerSettings\022#.systerapb.SetPl" +
+      "ayerSettingsRequest\032\020.systerapb.Empty\022Z\n" +
+      "\017GetPlayerPunish\022!.systerapb.GetPlayerPu" +
+      "nishRequest\032\".systerapb.GetPlayerPunishR" +
+      "esponse\"\000\022Z\n\017SetPlayerPunish\022!.systerapb" +
+      ".SetPlayerPunishRequest\032\".systerapb.SetP" +
+      "layerPunishResponse\"\000\022?\n\006Report\022\030.syster" +
+      "apb.ReportRequest\032\031.systerapb.ReportResp" +
+      "onse\"\000\022N\n\013FetchGroups\022\035.systerapb.FetchG",
+      "roupsRequest\032\036.systerapb.FetchGroupsResp" +
+      "onse\"\000B*\n\031net.synchthia.api.systeraB\rSys" +
+      "teraProtosb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -21349,7 +21285,7 @@ public final class SysteraProtos {
     internal_static_systerapb_SetPlayerPunishRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_systerapb_SetPlayerPunishRequest_descriptor,
-        new java.lang.String[] { "Remote", "Force", "Entry", });
+        new java.lang.String[] { "Force", "Entry", });
     internal_static_systerapb_SetPlayerPunishResponse_descriptor =
       getDescriptor().getMessageTypes().get(22);
     internal_static_systerapb_SetPlayerPunishResponse_fieldAccessorTable = new

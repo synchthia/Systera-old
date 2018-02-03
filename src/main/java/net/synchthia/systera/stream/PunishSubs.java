@@ -22,10 +22,13 @@ public class PunishSubs extends JedisPubSub {
         switch (stream.getType()) {
             case PUNISH:
                 SysteraProtos.PunishEntry entry = stream.getEntry();
-                String[] messages = PunishManager.punishMessage(entry);
                 PunishManager punishManager = new PunishManager(SysteraPlugin.getInstance());
-                punishManager.action(Bukkit.getPlayer(entry.getPunishedTo().getName()), entry.getLevel(), messages);
-                punishManager.broadcast(entry.getLevel().toString(), entry.getPunishedTo().getName(), entry.getReason());
+                punishManager.action(
+                        APIClient.toUUID(entry.getPunishedTo().getUUID()),
+                        entry.getLevel(),
+                        entry.getReason(),
+                        entry.getExpire()
+                );
                 break;
         }
     }

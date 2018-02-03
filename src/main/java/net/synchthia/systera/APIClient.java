@@ -207,7 +207,6 @@ public class APIClient {
                 .build();
 
         SetPlayerPunishRequest request = SetPlayerPunishRequest.newBuilder()
-                .setRemote(remote)
                 .setForce(force)
                 .setEntry(entry)
                 .build();

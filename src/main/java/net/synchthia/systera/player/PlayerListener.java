@@ -1,6 +1,7 @@
 package net.synchthia.systera.player;
 
 import net.synchthia.api.systera.SysteraProtos;
+import net.synchthia.systera.APIClient;
 import net.synchthia.systera.SysteraPlugin;
 import net.synchthia.systera.punishment.PunishManager;
 import net.synchthia.systera.util.StringUtil;
@@ -45,8 +46,17 @@ public class PlayerListener implements Listener {
         try {
             List<SysteraProtos.PunishEntry> punishList = plugin.punishAPI.lookupPlayer(event.getUniqueId(), SysteraProtos.PunishLevel.TEMPBAN).get(5, TimeUnit.SECONDS).getEntryList();
             if (punishList.size() != 0) {
-                SysteraProtos.PunishEntry punishEntry = punishList.get(punishList.size() - 1);
-                String message = StringUtil.someLineToOneLine(PunishManager.punishMessage(punishEntry)).replaceAll("&", "§");
+                SysteraProtos.PunishEntry entry = punishList.get(punishList.size() - 1);
+                String message = StringUtil.coloring(
+                        StringUtil.someLineToOneLine(
+                                PunishManager.punishMessage(
+                                        entry.getLevel(),
+                                        entry.getReason(),
+                                        entry.getDate(),
+                                        entry.getExpire()
+                                )
+                        )
+                );
                 event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_BANNED, message);
                 return;
             }

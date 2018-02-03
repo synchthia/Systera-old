@@ -97,14 +97,10 @@ public class PunishCommand {
             sender.sendMessage(StringUtil.coloring("&9&lPunish &7[" + level.toString() + "]&8≫ &e&lPunished &6&l" + toPlayerName + " &e&l: &a&l" + reason));
 
             Player targetPlayer = Bukkit.getPlayer(toPlayerName);
-            if (targetPlayer == null) {
-                return;
+            if (targetPlayer != null) {
+                PunishManager punishManager = new PunishManager(plugin);
+                punishManager.action(targetPlayer.getUniqueId(), level, reason, expire);
             }
-
-            String[] messages = PunishManager.punishMessage(level, reason, DateUtil.getEpochMilliTime(), expire);
-            PunishManager punishManager = new PunishManager(plugin);
-            punishManager.broadcast(level.toString(), targetPlayer.getName(), reason);
-            punishManager.action(targetPlayer, level, messages);
         });
     }
 }

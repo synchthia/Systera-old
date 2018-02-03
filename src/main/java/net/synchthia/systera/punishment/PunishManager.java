@@ -1,12 +1,15 @@
 package net.synchthia.systera.punishment;
 
 import net.synchthia.api.systera.SysteraProtos;
+import net.synchthia.systera.APIClient;
 import net.synchthia.systera.SysteraPlugin;
 import net.synchthia.systera.util.BungeeUtil;
 import net.synchthia.systera.util.DateUtil;
 import net.synchthia.systera.util.StringUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+
+import java.util.UUID;
 
 /**
  * @author Laica-Lunasys
@@ -18,23 +21,21 @@ public class PunishManager {
         this.plugin = plugin;
     }
 
-    public void broadcast(String level, String name, String reason) {
-        Bukkit.broadcastMessage(StringUtil.coloring("&9&lPunish &7[" + level + "]&8≫ &6&l" + name + " &e&lwas Punished for: &a&l" + reason));
-    }
+    public void action(UUID targetUUID, SysteraProtos.PunishLevel level, String reason, Long expire) {
+        Player targetPlayer = Bukkit.getPlayer(targetUUID);
+        if (targetPlayer != null) {
+            Bukkit.broadcastMessage(StringUtil.coloring("&9&lPunish &7[" + level.name() + "]&8≫ &6&l" + targetPlayer.getName() + " &e&lwas Punished for: &a&l" + reason));
 
-    public void action(Player targetPlayer, SysteraProtos.PunishLevel level, String[] messages) {
-        if (level.equals(SysteraProtos.PunishLevel.WARN)) {
-            for (String s : messages) {
-                targetPlayer.sendMessage(s.replaceAll("&", "§"));
+            String[] messages = punishMessage(level, reason, DateUtil.getEpochMilliTime(), expire);
+            if (level.equals(SysteraProtos.PunishLevel.WARN)) {
+                for (String s : messages) {
+                    targetPlayer.sendMessage(StringUtil.coloring(s));
+                }
+            } else {
+                String message = StringUtil.coloring(StringUtil.someLineToOneLine(messages));
+                BungeeUtil.disconnect(plugin, targetPlayer, message);
             }
-        } else {
-            String message = StringUtil.someLineToOneLine(messages).replaceAll("&", "§");
-            BungeeUtil.disconnect(plugin, targetPlayer, message);
         }
-    }
-
-    public static String[] punishMessage(SysteraProtos.PunishEntry punishEntry) {
-        return punishMessage(punishEntry.getLevel(), punishEntry.getReason(), punishEntry.getDate(), punishEntry.getExpire());
     }
 
     public static String[] punishMessage(SysteraProtos.PunishLevel level, String reason, Long date, Long expire) {

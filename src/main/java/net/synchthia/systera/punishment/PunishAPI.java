@@ -79,7 +79,7 @@ public class PunishAPI {
 
     public PlayerData buildPlayerData(String playerUUID, String playerName) {
         PlayerData data = PlayerData.newBuilder()
-                .setUUID(playerUUID.toString().replaceAll("-", ""))
+                .setUUID(playerUUID.replaceAll("-", ""))
                 .setName(playerName)
                 .build();
         return data;

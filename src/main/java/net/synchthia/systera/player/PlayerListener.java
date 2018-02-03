@@ -130,7 +130,7 @@ public class PlayerListener implements Listener {
         SysteraPlugin.getPermissionsManager().removePlayerAttachments(player);
     }
 
-    public void sendJoinQuitMessage(String message) {
+    private void sendJoinQuitMessage(String message) {
         //TODO: SettingsからプレイヤーのJoinMessageを表示するかどうかを取得して対象ユーザーにメッセージを送信するようにする
         Bukkit.getOnlinePlayers().forEach(players -> players.sendMessage(message));
     }

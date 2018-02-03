@@ -77,10 +77,7 @@ public class PlayerAPI {
 
     public static Boolean getSetting(UUID playerUUID, String key) {
         Map<String, Boolean> settings = localPlayerProfile.get(playerUUID).settings;
-        if (!settings.containsKey(key)) {
-            return null;
-        }
-        return settings.get(key);
+        return settings.getOrDefault(key, false);
     }
 
     public CompletableFuture<SysteraProtos.Empty> setPlayerSettings(UUID playerUUID, String key, Boolean value) {

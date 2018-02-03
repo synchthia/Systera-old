@@ -96,7 +96,7 @@ public class RedisClient {
                     Jedis jedis = pool.getResource();
 
                     // Subscribe
-                    jedis.psubscribe(punishSubs, "systera.punish.global", "systera.punish." + name);
+                    jedis.psubscribe(punishSubs, "systera.punish");
                 } catch (Exception ex) {
                     plugin.getLogger().log(Level.WARNING, taskName + "Connection Error! Try Reconnecting every 3 seconds... : ", ex);
                     Thread.sleep(3000L);

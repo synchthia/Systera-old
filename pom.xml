@@ -161,8 +161,11 @@
                         <configuration>
                             <relocations>
                                 <relocation>
-                                    <pattern>redis.clients.jedis</pattern>
-                                    <shadedPattern>net.synchthia.systera.libs.redis.clients.jedis</shadedPattern>
+                                    <pattern>redis.clients</pattern>
+                                    <shadedPattern>net.synchthia.systera.libs.redis.clients</shadedPattern>
+
+                                    <pattern>org.apache.commons</pattern>
+                                    <shadedPattern>net.synchthia.systera.libs.apache.commons</shadedPattern>
 
                                     <pattern>io.netty</pattern>
                                     <shadedPattern>net.synchthia.systera.libs.netty</shadedPattern>

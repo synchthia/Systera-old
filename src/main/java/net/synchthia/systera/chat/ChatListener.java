@@ -37,7 +37,7 @@ public class ChatListener implements Listener {
         if (PlayerAPI.getSetting(event.getPlayer().getUniqueId(), "japanize")) {
             JapanizeManager japanizeManager = new JapanizeManager();
             String converted = japanizeManager.convert(event.getMessage());
-            if (converted != null) {
+            if (converted != null && !converted.isEmpty()) {
                 japanizeMsg = "§6 (" + converted + "§6)";
             }
         }

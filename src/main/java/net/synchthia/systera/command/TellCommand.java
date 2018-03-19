@@ -51,7 +51,7 @@ public class TellCommand {
         if ((sender instanceof Player) && PlayerAPI.getSetting(((Player) sender).getUniqueId(), "japanize")) {
             JapanizeManager japanize = new JapanizeManager();
             String converted = japanize.convert(message);
-            if (converted != null) {
+            if (converted != null && !converted.isEmpty()) {
                 message = message + "§6 (" + converted + "§6)";
             }
         }

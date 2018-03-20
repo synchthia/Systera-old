@@ -4,6 +4,7 @@ import com.google.protobuf.ProtocolStringList;
 import net.synchthia.systera.SysteraPlugin;
 import net.synchthia.systera.player.PlayerAPI;
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionAttachment;
 
@@ -22,18 +23,20 @@ public class PermissionsManager {
         this.plugin = plugin;
     }
 
-    public void applyPermission(UUID playerUUID, ProtocolStringList groups) {
-        Player player = Bukkit.getPlayer(playerUUID);
-        PermissionAttachment attachment = player.addAttachment(plugin);
+    public void applyPermission(Player player, ProtocolStringList groups) {
+//        Player player = Bukkit.getPlayer(playerUUID);
+//        OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(playerUUID);
+//        Player player = offlinePlayer.getPlayer();
+        PermissionAttachment attachment = player.addAttachment(this.plugin);
         attachments.put(player.getUniqueId(), attachment);
 
         // Set Prefix
-        String coloredPrefix = PermissionsAPI.getPrefix(player).replaceAll("&", "§");
+        String coloredPrefix = plugin.getPermissionsAPI().getPrefix(player).replaceAll("&", "§");
 
         player.setPlayerListName(coloredPrefix + player.getName());
 
         // Assign Message
-        plugin.getLogger().log(Level.INFO, player.getName() + " assigned to: " + PlayerAPI.getGroups(player.getUniqueId()));
+        plugin.getLogger().log(Level.INFO, player.getName() + " assigned to: " + plugin.getPlayerAPI().getGroups(player.getUniqueId()));
 
         // Set Permission
         //set(player, attachment, "default");
@@ -41,7 +44,7 @@ public class PermissionsManager {
     }
 
     private void set(Player player, PermissionAttachment attachment, String groupName) {
-        PermissionsAPI.PermsList permsList = PermissionsAPI.getPermissions(groupName);
+        PermissionsAPI.PermsList permsList = plugin.getPermissionsAPI().getPermissions(groupName);
         if (permsList == null) {
             return;
         }
@@ -65,6 +68,7 @@ public class PermissionsManager {
                 }
             });
         }
+        player.recalculatePermissions();
     }
 
     public void removePlayerAttachments(Player player) {

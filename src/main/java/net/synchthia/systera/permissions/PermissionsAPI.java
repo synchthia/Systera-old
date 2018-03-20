@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.logging.Level;
 
@@ -45,9 +46,9 @@ public class PermissionsAPI {
         });
     }
 
-    public static PermsList getPermissions(String group) {
+    public PermsList getPermissions(String group) {
         if (permsListMap.size() == 0) {
-            SysteraPlugin.getInstance().permissionsAPI.fetchGroups().join();
+            plugin.getPermissionsAPI().fetchGroups().join();
         }
 
         if (!permsListMap.containsKey(group)) {
@@ -56,14 +57,13 @@ public class PermissionsAPI {
         return permsListMap.get(group);
     }
 
-    public static String getPrefix(Player player) {
+    public String getPrefix(Player player) {
         String prefix = "&7";
-        ProtocolStringList groups = PlayerAPI.getGroups(player.getUniqueId());
+        ProtocolStringList groups = plugin.getPlayerAPI().getGroups(player.getUniqueId());
         if (groups.size() != 0) {
             String primaryGroup = groups.get(groups.size() - 1);
             prefix = permsListMap.containsKey(primaryGroup) ? permsListMap.get(primaryGroup).prefix : "&7";
         }
-
         return prefix.replaceAll("&", "§");
     }
 }

@@ -4,6 +4,7 @@ import net.synchthia.api.systera.SysteraProtos;
 import net.synchthia.systera.APIClient;
 import net.synchthia.systera.SysteraPlugin;
 import net.synchthia.systera.permissions.PermissionsManager;
+import org.bukkit.Bukkit;
 import redis.clients.jedis.JedisPubSub;
 
 import java.util.UUID;
@@ -22,10 +23,10 @@ public class PlayerSubs extends JedisPubSub {
         switch (stream.getType()) {
             case GROUPS:
                 UUID playerUUID = APIClient.toUUID(stream.getEntry().getPlayerUUID());
-                SysteraPlugin.getInstance().playerAPI.setPlayerGroups(playerUUID, stream.getEntry().getGroupsList());
+                SysteraPlugin.getInstance().getPlayerAPI().setPlayerGroups(playerUUID, stream.getEntry().getGroupsList());
                 PermissionsManager permsManager = new PermissionsManager(SysteraPlugin.getInstance());
                 SysteraPlugin.getInstance().getLogger().log(Level.INFO, "onNext > Dispatch > GROUPS Hooked.");
-                permsManager.applyPermission(playerUUID, stream.getEntry().getGroupsList());
+                permsManager.applyPermission(Bukkit.getPlayer(playerUUID), stream.getEntry().getGroupsList());
                 break;
         }
     }

@@ -28,7 +28,7 @@ public class SettingsCommand {
         }
 
         Player player = Bukkit.getPlayer(sender.getName());
-        PlayerAPI.PlayerData localProfile = PlayerAPI.getLocalProfile(player.getUniqueId());
+        PlayerAPI.PlayerData localProfile = plugin.getPlayerAPI().getLocalProfile(player.getUniqueId());
         if (localProfile == null) {
             I18n.sendMessage(sender, "error.localprofile");
             return;
@@ -38,7 +38,10 @@ public class SettingsCommand {
         if (args.argsLength() == 0) {
             sender.sendMessage("§8§m[§b§lSettings§8§m]-----------------------------------");
             sender.sendMessage("§eUsage: /settings <setting> <on/off>");
-            settings(player).forEach((key, value) -> sender.sendMessage(MessageUtil.settingMsg(key, value)));
+            Map<String, Boolean> settings = settings(plugin, player);
+            if (settings != null) {
+                settings.forEach((key, value) -> sender.sendMessage(MessageUtil.settingMsg(key, value)));
+            }
             sender.sendMessage("§8§m----------------------------------------------");
             return;
         }
@@ -49,7 +52,7 @@ public class SettingsCommand {
                 I18n.sendMessage(sender, "settings.notfound", args.getString(0));
                 return;
             }
-            Boolean value = settings(player).get(args.getString(0));
+            Boolean value = settings(plugin, player).get(args.getString(0));
             sender.sendMessage(MessageUtil.settingMsg(args.getString(0), value));
             return;
         }
@@ -62,13 +65,12 @@ public class SettingsCommand {
             }
             Boolean getBoolean = StringUtil.stringSwitch(args.getString(1));
             sender.sendMessage(MessageUtil.settingMsg(args.getString(0), getBoolean));
-            set(player, args.getString(0), getBoolean);
-            return;
+            set(plugin, player, args.getString(0), getBoolean);
         }
     }
 
-    private static Map<String, Boolean> settings(Player player) {
-        PlayerAPI.PlayerData localProfile = PlayerAPI.getLocalProfile(player.getUniqueId());
+    private static Map<String, Boolean> settings(SysteraPlugin plugin, Player player) {
+        PlayerAPI.PlayerData localProfile = plugin.getPlayerAPI().getLocalProfile(player.getUniqueId());
         if (localProfile == null) {
             I18n.sendMessage(player, "error.localprofile");
             return null;
@@ -80,17 +82,17 @@ public class SettingsCommand {
         return localProfile.settings;
     }
 
-    private static void set(Player player, String key, Boolean value) {
+    private static void set(SysteraPlugin plugin, Player player, String key, Boolean value) {
         if (key.equals("vanish")) {
             VanishManager.applyVanishInServer(player, value);
         }
 
-        PlayerAPI.PlayerData profile = PlayerAPI.getLocalProfile(player.getUniqueId());
+        PlayerAPI.PlayerData profile = plugin.getPlayerAPI().getLocalProfile(player.getUniqueId());
         if (profile == null) {
             I18n.sendMessage(player, "error.localprofile");
             return;
         }
-        SysteraPlugin.getInstance().playerAPI.setPlayerSettings(player.getUniqueId(), key, value).whenComplete(((empty, throwable) -> {
+        SysteraPlugin.getInstance().getPlayerAPI().setPlayerSettings(player.getUniqueId(), key, value).whenComplete(((empty, throwable) -> {
             if (throwable != null) {
                 I18n.sendMessage(player, "error.api", "Set Player Settings");
                 return;

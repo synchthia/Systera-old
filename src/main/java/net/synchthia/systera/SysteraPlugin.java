@@ -26,12 +26,20 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.concurrent.locks.StampedLock;
 import java.util.logging.Level;
 
 /**
  * @author Laica-Lunasys
  */
 public class SysteraPlugin extends JavaPlugin {
+    @Getter
+    private ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
+    @Getter
+    private Boolean started;
+
     @Getter
     private static SysteraPlugin instance;
 
@@ -44,12 +52,17 @@ public class SysteraPlugin extends JavaPlugin {
     public APIClient apiClient;
     private String apiServerAddress;
 
-    public PlayerAPI playerAPI;
-    public PermissionsAPI permissionsAPI;
-    public PunishAPI punishAPI;
+    @Getter
+    private PlayerAPI playerAPI;
 
     @Getter
-    private static PermissionsManager permissionsManager;
+    private PermissionsAPI permissionsAPI;
+
+    @Getter
+    private PunishAPI punishAPI;
+
+    @Getter
+    private PermissionsManager permissionsManager;
 
     @Getter
     private static ProtocolManager protocolManager;
@@ -58,16 +71,13 @@ public class SysteraPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        readWriteLock.writeLock().lock();
+        started = false;
         try {
             instance = this;
 
             this.configManager = new ConfigManager(this);
             this.configManager.load();
-
-            permissionsManager = new PermissionsManager(this);
-
-            protocolManager = ProtocolLibrary.getProtocolManager();
-            I18n.setI18nManager(new I18nManager(this));
 
             registerRedis();
 
@@ -75,18 +85,27 @@ public class SysteraPlugin extends JavaPlugin {
             registerEvents();
             registerCommands();
 
+            permissionsManager = new PermissionsManager(this);
+
+            protocolManager = ProtocolLibrary.getProtocolManager();
+            I18n.setI18nManager(new I18nManager(this));
+
             this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+            started = true;
             getLogger().info(this.getName() + "Enabled");
         } catch (Exception e) {
             getLogger().log(Level.SEVERE, "Exception threw while onEnable.", e);
             setEnabled(false);
             instance = null;
+        } finally {
+            readWriteLock.writeLock().unlock();
         }
     }
 
     @Override
     @SneakyThrows
     public void onDisable() {
+        started = false;
         apiClient.shutdown();
         redisClient.disconnect();
 
@@ -136,7 +155,7 @@ public class SysteraPlugin extends JavaPlugin {
 
         Bukkit.getOnlinePlayers().forEach(player -> {
             try {
-                playerAPI.fetchPlayerProfile(player.getUniqueId(), player.getName()).get(5, TimeUnit.SECONDS);
+                playerAPI.fetchPlayerProfileAsync(player.getUniqueId(), player.getName()).get(5, TimeUnit.SECONDS);
             } catch (Exception ex) {
                 getLogger().log(Level.WARNING, "Failed FetchPlayerProfile (AllPlayers)", ex);
             }

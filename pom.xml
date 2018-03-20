@@ -163,13 +163,16 @@
                                 <relocation>
                                     <pattern>redis.clients</pattern>
                                     <shadedPattern>net.synchthia.systera.libs.redis.clients</shadedPattern>
-
+                                </relocation>
+                                <relocation>
                                     <pattern>org.apache.commons</pattern>
                                     <shadedPattern>net.synchthia.systera.libs.apache.commons</shadedPattern>
-
+                                </relocation>
+                                <relocation>
                                     <pattern>io.netty</pattern>
                                     <shadedPattern>net.synchthia.systera.libs.netty</shadedPattern>
-
+                                </relocation>
+                                <relocation>
                                     <pattern>com.google.common</pattern>
                                     <shadedPattern>net.synchthia.systera.libs.guava</shadedPattern>
                                 </relocation>

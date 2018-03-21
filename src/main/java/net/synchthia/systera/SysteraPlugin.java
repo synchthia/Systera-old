@@ -36,8 +36,6 @@ import java.util.logging.Level;
  */
 public class SysteraPlugin extends JavaPlugin {
     @Getter
-    private ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
-    @Getter
     private Boolean started;
 
     @Getter
@@ -71,7 +69,6 @@ public class SysteraPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        readWriteLock.writeLock().lock();
         started = false;
         try {
             instance = this;
@@ -97,8 +94,6 @@ public class SysteraPlugin extends JavaPlugin {
             getLogger().log(Level.SEVERE, "Exception threw while onEnable.", e);
             setEnabled(false);
             instance = null;
-        } finally {
-            readWriteLock.writeLock().unlock();
         }
     }
 

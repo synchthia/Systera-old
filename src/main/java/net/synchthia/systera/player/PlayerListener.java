@@ -41,8 +41,6 @@ public class PlayerListener implements Listener {
             event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, "Server is Starting.");
             return;
         }
-        ReadWriteLock lock = plugin.getReadWriteLock();
-        lock.writeLock().lock();
         try {
             List<SysteraProtos.PunishEntry> punishList = plugin.getPunishAPI().lookupPlayer(event.getUniqueId(), SysteraProtos.PunishLevel.TEMPBAN).get(5, TimeUnit.SECONDS).getEntryList();
             if (punishList.size() != 0) {
@@ -58,17 +56,10 @@ public class PlayerListener implements Listener {
                         )
                 );
                 event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_BANNED, message);
-                return;
             }
-
-//            plugin.getPlayerAPI().initPlayerProfile(event.getUniqueId(), event.getName(), event.getAddress().getHostAddress(), event.getAddress().getHostName());
-//            plugin.getPlayerAPI().fetchPlayerProfile(event.getUniqueId(), event.getName());
-
         } catch (InterruptedException | ExecutionException | TimeoutException ex) {
             plugin.getLogger().log(Level.SEVERE, "Exception threw executing onPlayerPreLogin", ex);
             event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, ChatColor.RED + "Currently not Available");
-        } finally {
-            lock.writeLock().unlock();
         }
     }
 

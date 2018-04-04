@@ -166,7 +166,8 @@ public class SysteraPlugin extends JavaPlugin {
         pm.registerEvents(new GateListener(this), this);
         pm.registerEvents(new ChairListener(this), this);
 
-        if (System.getenv("SYSTERA_JUMPPAD_ENABLE").equals("true")) {
+        if (System.getenv("SYSTERA_JUMPPAD_ENABLE") != null &&
+                System.getenv("SYSTERA_JUMPPAD_ENABLE").equals("true")) {
             pm.registerEvents(new JumpPadListener(this), this);
         }
     }

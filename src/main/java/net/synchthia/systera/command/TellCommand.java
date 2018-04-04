@@ -48,7 +48,7 @@ public class TellCommand {
             return;
         }
 
-        if ((sender instanceof Player) && SysteraPlugin.getInstance().getPlayerAPI().getSetting(((Player) sender).getUniqueId(), "japanize")) {
+        if ((sender instanceof Player) && SysteraPlugin.getInstance().playerAPI.getSetting(((Player) sender).getUniqueId(), "japanize")) {
             JapanizeManager japanize = new JapanizeManager();
             String converted = japanize.convert(message);
             if (converted != null && !converted.isEmpty()) {

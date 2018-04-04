@@ -6,11 +6,12 @@ import com.sk89q.minecraft.util.commands.CommandException;
 import com.sk89q.minecraft.util.commands.CommandPermissions;
 import net.synchthia.systera.SysteraPlugin;
 import net.synchthia.systera.i18n.I18n;
-import net.synchthia.systera.util.Position;
-import net.synchthia.systera.util.WorldUtil;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import java.util.Optional;
 
 /**
  * @author Laica-Lunasys
@@ -26,10 +27,11 @@ public class SpawnCommand {
 
         Player player = (Player) sender;
 
-        player.teleport(WorldUtil.getLobbySpawn());
+        Optional<Location> loc = plugin.spawnManager.getSpawnLocation(false, player.getWorld());
+        loc.ifPresent(player::teleport);
     }
 
-    @Command(aliases = "setspawn", desc = "Set spawn")
+    @Command(aliases = "setspawn", flags = "s", desc = "Set spawn")
     @CommandPermissions("systera.command.setspawn")
     public static void setspawn(final CommandContext args, CommandSender sender, SysteraPlugin plugin) throws CommandException {
         if (!(sender instanceof Player)) {
@@ -37,8 +39,13 @@ public class SpawnCommand {
         }
 
         Player player = (Player) sender;
+        if (args.hasFlag('s')) {
+            plugin.spawnManager.setSpawnLocation(true, player.getLocation());
+            player.sendMessage(ChatColor.GREEN + "Set Spawn location! (Always Spawn when Login)");
+            return;
+        }
 
-        plugin.getConfigManager().getSettings().setSpawnPoint(new Position(player.getLocation()));
+        plugin.spawnManager.setSpawnLocation(false, player.getLocation());
         player.sendMessage(ChatColor.GREEN + "Set Spawn location!");
     }
 }

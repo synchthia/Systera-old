@@ -48,7 +48,7 @@ public class PermissionsAPI {
 
     public PermsList getPermissions(String group) {
         if (permsListMap.size() == 0) {
-            plugin.getPermissionsAPI().fetchGroups().join();
+            plugin.permissionsAPI.fetchGroups().join();
         }
 
         if (!permsListMap.containsKey(group)) {
@@ -59,7 +59,7 @@ public class PermissionsAPI {
 
     public String getPrefix(Player player) {
         String prefix = "&7";
-        ProtocolStringList groups = plugin.getPlayerAPI().getGroups(player.getUniqueId());
+        ProtocolStringList groups = plugin.playerAPI.getGroups(player.getUniqueId());
         if (groups.size() != 0) {
             String primaryGroup = groups.get(groups.size() - 1);
             prefix = permsListMap.containsKey(primaryGroup) ? permsListMap.get(primaryGroup).prefix : "&7";

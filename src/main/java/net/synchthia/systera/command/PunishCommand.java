@@ -67,7 +67,7 @@ public class PunishCommand {
 
     private static void punish(Boolean force, SysteraProtos.PunishLevel level, CommandSender sender, String toPlayerName, String reason, Long expire) {
         SysteraPlugin plugin = SysteraPlugin.getInstance();
-        plugin.getPunishAPI().punishPlayer(force, level, sender.getName(), toPlayerName, reason, expire).whenComplete((response, throwable) -> {
+        plugin.punishAPI.punishPlayer(force, level, sender.getName(), toPlayerName, reason, expire).whenComplete((response, throwable) -> {
             if (throwable != null) {
                 sender.sendMessage(ChatColor.RED + "Throwable detected @ Player Punishment");
                 plugin.getLogger().log(Level.SEVERE, "Throwable detected @ Player Punishment", throwable);

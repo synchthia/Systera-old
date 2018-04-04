@@ -6,11 +6,15 @@ import com.sk89q.bukkit.util.CommandsManagerRegistration;
 import com.sk89q.minecraft.util.commands.*;
 import lombok.Getter;
 import lombok.SneakyThrows;
+import net.synchthia.systera.chair.ChairListener;
 import net.synchthia.systera.chat.ChatListener;
 import net.synchthia.systera.command.*;
-import net.synchthia.systera.config.ConfigManager;
+import net.synchthia.systera.gate.GateListener;
+import net.synchthia.systera.gate.GateManager;
 import net.synchthia.systera.i18n.I18n;
 import net.synchthia.systera.i18n.I18nManager;
+import net.synchthia.systera.jumppad.JumpPadListener;
+import net.synchthia.systera.location.SpawnManager;
 import net.synchthia.systera.permissions.PermissionsAPI;
 import net.synchthia.systera.permissions.PermissionsManager;
 import net.synchthia.systera.player.PlayerAPI;
@@ -26,9 +30,6 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-import java.util.concurrent.locks.StampedLock;
 import java.util.logging.Level;
 
 /**
@@ -36,36 +37,32 @@ import java.util.logging.Level;
  */
 public class SysteraPlugin extends JavaPlugin {
     @Getter
-    private Boolean started;
-
-    @Getter
     private static SysteraPlugin instance;
 
+    @Getter
+    private Boolean started;
     private static RedisClient redisClient;
 
-    @Getter
-    private ConfigManager configManager;
+    private CommandsManager<CommandSender> commands;
 
-    @Getter
+    // API ===========================================
     public APIClient apiClient;
     private String apiServerAddress;
 
-    @Getter
-    private PlayerAPI playerAPI;
+    public PlayerAPI playerAPI;
+    public PermissionsAPI permissionsAPI;
+    public PermissionsManager permissionsManager;
 
-    @Getter
-    private PermissionsAPI permissionsAPI;
-
-    @Getter
-    private PunishAPI punishAPI;
-
-    @Getter
-    private PermissionsManager permissionsManager;
+    public PunishAPI punishAPI;
 
     @Getter
     private static ProtocolManager protocolManager;
+    // ================================================
 
-    private CommandsManager<CommandSender> commands;
+    // Modules ========================================
+    public GateManager gateManager;
+    public SpawnManager spawnManager;
+    // ================================================
 
     @Override
     public void onEnable() {
@@ -73,8 +70,12 @@ public class SysteraPlugin extends JavaPlugin {
         try {
             instance = this;
 
-            this.configManager = new ConfigManager(this);
-            this.configManager.load();
+            if (!getDataFolder().exists()) {
+                getDataFolder().mkdir();
+            }
+
+            spawnManager = new SpawnManager(this);
+            gateManager = new GateManager(this);
 
             registerRedis();
 
@@ -104,7 +105,8 @@ public class SysteraPlugin extends JavaPlugin {
         apiClient.shutdown();
         redisClient.disconnect();
 
-        this.configManager.save();
+        gateManager.save();
+        spawnManager.save();
         getLogger().info(this.getName() + "Disabled");
     }
 
@@ -161,6 +163,12 @@ public class SysteraPlugin extends JavaPlugin {
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new PlayerListener(this), this);
         pm.registerEvents(new ChatListener(this), this);
+        pm.registerEvents(new GateListener(this), this);
+        pm.registerEvents(new ChairListener(this), this);
+
+        if (System.getenv("SYSTERA_JUMPPAD_ENABLE").equals("true")) {
+            pm.registerEvents(new JumpPadListener(this), this);
+        }
     }
 
     private void registerCommands() {

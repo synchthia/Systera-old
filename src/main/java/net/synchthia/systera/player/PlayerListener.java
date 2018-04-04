@@ -8,6 +8,7 @@ import net.synchthia.systera.util.StringUtil;
 import net.synchthia.systera.world.TabManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -16,13 +17,13 @@ import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.spigotmc.event.player.PlayerSpawnLocationEvent;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.StampedLock;
 import java.util.logging.Level;
 
 /**
@@ -42,7 +43,7 @@ public class PlayerListener implements Listener {
             return;
         }
         try {
-            List<SysteraProtos.PunishEntry> punishList = plugin.getPunishAPI().lookupPlayer(event.getUniqueId(), SysteraProtos.PunishLevel.TEMPBAN).get(5, TimeUnit.SECONDS).getEntryList();
+            List<SysteraProtos.PunishEntry> punishList = plugin.punishAPI.lookupPlayer(event.getUniqueId(), SysteraProtos.PunishLevel.TEMPBAN).get(5, TimeUnit.SECONDS).getEntryList();
             if (punishList.size() != 0) {
                 SysteraProtos.PunishEntry entry = punishList.get(punishList.size() - 1);
                 String message = StringUtil.coloring(
@@ -68,19 +69,19 @@ public class PlayerListener implements Listener {
     public void onPlayerLogin(PlayerLoginEvent event) {
         Player player = event.getPlayer();
         try {
-            plugin.getPlayerAPI().initPlayerProfile(player.getUniqueId(), player.getName(), event.getAddress().getHostAddress(), event.getAddress().getHostName());
-            plugin.getPlayerAPI().fetchPlayerProfile(player.getUniqueId(), player.getName());
+            plugin.playerAPI.initPlayerProfile(player.getUniqueId(), player.getName(), event.getAddress().getHostAddress(), event.getAddress().getHostName());
+            plugin.playerAPI.fetchPlayerProfile(player.getUniqueId(), player.getName());
         } catch (InterruptedException | ExecutionException | TimeoutException ex) {
             plugin.getLogger().log(Level.SEVERE, "Exception threw executing onPlayerPreLogin", ex);
             event.disallow(PlayerLoginEvent.Result.KICK_OTHER, ChatColor.RED + "Currently not Available");
         }
 
         // Permission
-        ProtocolStringList groups = plugin.getPlayerAPI().getGroups(player.getUniqueId());
+        ProtocolStringList groups = plugin.playerAPI.getGroups(player.getUniqueId());
         if (groups == null) {
             plugin.getLogger().log(Level.WARNING, "GROUPS IS NULL");
         }
-        plugin.getPermissionsManager().applyPermission(player, groups);
+        plugin.permissionsManager.applyPermission(player, groups);
 
     }
 
@@ -91,7 +92,7 @@ public class PlayerListener implements Listener {
         // Vanish
         event.setJoinMessage(null);
         VanishManager.hideFoundVanishPlayer(player);
-        if (plugin.getPlayerAPI().getSetting(player.getUniqueId(), "vanish")) {
+        if (plugin.playerAPI.getSetting(player.getUniqueId(), "vanish")) {
             player.sendMessage(ChatColor.YELLOW + "You are now Vanish! be careful action on this server!!");
             VanishManager.applyVanishInServer(player, true);
         } else {
@@ -136,10 +137,17 @@ public class PlayerListener implements Listener {
         }));
 
         // Clear LocalProfile
-        plugin.getPlayerAPI().clearLocalProfile(player.getUniqueId());
+        plugin.playerAPI.clearLocalProfile(player.getUniqueId());
 
         // Permissions
-        plugin.getPermissionsManager().removePlayerAttachments(player);
+        plugin.permissionsManager.removePlayerAttachments(player);
+    }
+
+    @EventHandler
+    public void onPlayerSpawn(PlayerSpawnLocationEvent event) {
+        Player player = event.getPlayer();
+        Optional<Location> loc = plugin.spawnManager.getSpawnLocation(true, player.getWorld());
+        loc.ifPresent(event::setSpawnLocation);
     }
 
     private void sendJoinQuitMessage(String message) {

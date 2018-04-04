@@ -25,7 +25,7 @@ public class ListCommand {
 
         if (sender.hasPermission("systera.command.vanish")) {
             for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-                String nameString = plugin.getPermissionsAPI().getPrefix(onlinePlayer) + onlinePlayer.getName();
+                String nameString = plugin.permissionsAPI.getPrefix(onlinePlayer) + onlinePlayer.getName();
                 if (VanishManager.getVanishPlayerInServer().contains(onlinePlayer)) {
                     messages.append(StringUtil.coloring("&e&l[Vanish]" + nameString));
                 } else {
@@ -36,7 +36,7 @@ public class ListCommand {
             }
         } else {
             for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-                messages.append(StringUtil.coloring(plugin.getPermissionsAPI().getPrefix(onlinePlayer) + onlinePlayer.getName()));
+                messages.append(StringUtil.coloring(plugin.permissionsAPI.getPrefix(onlinePlayer) + onlinePlayer.getName()));
                 if (count < Bukkit.getOnlinePlayers().size() - 1) messages.append(ChatColor.WHITE + ", ");
                 count = count + 1;
             }

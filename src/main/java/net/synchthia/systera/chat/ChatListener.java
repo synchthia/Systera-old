@@ -20,7 +20,7 @@ public class ChatListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerChat(AsyncPlayerChatEvent event) {
-        String prefix = plugin.getPermissionsAPI().getPrefix(event.getPlayer());
+        String prefix = plugin.permissionsAPI.getPrefix(event.getPlayer());
         String playerName = event.getPlayer().getDisplayName();
 
         String leftFormat = "{prefix}§7{player}§a:§r "
@@ -30,7 +30,7 @@ public class ChatListener implements Listener {
 
         // is Enabled?
         String japanizeMsg = "";
-        if (plugin.getPlayerAPI().getSetting(event.getPlayer().getUniqueId(), "japanize")) {
+        if (plugin.playerAPI.getSetting(event.getPlayer().getUniqueId(), "japanize")) {
             JapanizeManager japanizeManager = new JapanizeManager();
             String converted = japanizeManager.convert(event.getMessage());
             if (converted != null && !converted.isEmpty()) {

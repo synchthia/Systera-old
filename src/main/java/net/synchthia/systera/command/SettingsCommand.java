@@ -28,7 +28,7 @@ public class SettingsCommand {
         }
 
         Player player = Bukkit.getPlayer(sender.getName());
-        PlayerAPI.PlayerData localProfile = plugin.getPlayerAPI().getLocalProfile(player.getUniqueId());
+        PlayerAPI.PlayerData localProfile = plugin.playerAPI.getLocalProfile(player.getUniqueId());
         if (localProfile == null) {
             I18n.sendMessage(sender, "error.localprofile");
             return;
@@ -70,7 +70,7 @@ public class SettingsCommand {
     }
 
     private static Map<String, Boolean> settings(SysteraPlugin plugin, Player player) {
-        PlayerAPI.PlayerData localProfile = plugin.getPlayerAPI().getLocalProfile(player.getUniqueId());
+        PlayerAPI.PlayerData localProfile = plugin.playerAPI.getLocalProfile(player.getUniqueId());
         if (localProfile == null) {
             I18n.sendMessage(player, "error.localprofile");
             return null;
@@ -87,12 +87,12 @@ public class SettingsCommand {
             VanishManager.applyVanishInServer(player, value);
         }
 
-        PlayerAPI.PlayerData profile = plugin.getPlayerAPI().getLocalProfile(player.getUniqueId());
+        PlayerAPI.PlayerData profile = plugin.playerAPI.getLocalProfile(player.getUniqueId());
         if (profile == null) {
             I18n.sendMessage(player, "error.localprofile");
             return;
         }
-        SysteraPlugin.getInstance().getPlayerAPI().setPlayerSettings(player.getUniqueId(), key, value).whenComplete(((empty, throwable) -> {
+        SysteraPlugin.getInstance().playerAPI.setPlayerSettings(player.getUniqueId(), key, value).whenComplete(((empty, throwable) -> {
             if (throwable != null) {
                 I18n.sendMessage(player, "error.api", "Set Player Settings");
                 return;

@@ -31,12 +31,12 @@ public class PermissionsManager {
         attachments.put(player.getUniqueId(), attachment);
 
         // Set Prefix
-        String coloredPrefix = plugin.getPermissionsAPI().getPrefix(player).replaceAll("&", "§");
+        String coloredPrefix = plugin.permissionsAPI.getPrefix(player).replaceAll("&", "§");
 
         player.setPlayerListName(coloredPrefix + player.getName());
 
         // Assign Message
-        plugin.getLogger().log(Level.INFO, player.getName() + " assigned to: " + plugin.getPlayerAPI().getGroups(player.getUniqueId()));
+        plugin.getLogger().log(Level.INFO, player.getName() + " assigned to: " + plugin.playerAPI.getGroups(player.getUniqueId()));
 
         // Set Permission
         //set(player, attachment, "default");
@@ -44,7 +44,7 @@ public class PermissionsManager {
     }
 
     private void set(Player player, PermissionAttachment attachment, String groupName) {
-        PermissionsAPI.PermsList permsList = plugin.getPermissionsAPI().getPermissions(groupName);
+        PermissionsAPI.PermsList permsList = plugin.permissionsAPI.getPermissions(groupName);
         if (permsList == null) {
             return;
         }

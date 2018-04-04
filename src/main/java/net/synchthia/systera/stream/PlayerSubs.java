@@ -23,7 +23,7 @@ public class PlayerSubs extends JedisPubSub {
         switch (stream.getType()) {
             case GROUPS:
                 UUID playerUUID = APIClient.toUUID(stream.getEntry().getPlayerUUID());
-                SysteraPlugin.getInstance().getPlayerAPI().setPlayerGroups(playerUUID, stream.getEntry().getGroupsList());
+                SysteraPlugin.getInstance().playerAPI.setPlayerGroups(playerUUID, stream.getEntry().getGroupsList());
                 PermissionsManager permsManager = new PermissionsManager(SysteraPlugin.getInstance());
                 SysteraPlugin.getInstance().getLogger().log(Level.INFO, "onNext > Dispatch > GROUPS Hooked.");
                 permsManager.applyPermission(Bukkit.getPlayer(playerUUID), stream.getEntry().getGroupsList());

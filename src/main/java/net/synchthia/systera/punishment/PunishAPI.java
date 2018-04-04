@@ -37,7 +37,7 @@ public class PunishAPI {
     }
 
     public CompletableFuture<SysteraProtos.GetPlayerPunishResponse> lookupPlayer(UUID playerUUID, PunishLevel filterLevel) {
-        return plugin.getApiClient().getPlayerPunishment(playerUUID, filterLevel, false).whenComplete((value, throwable) -> {
+        return plugin.apiClient.getPlayerPunishment(playerUUID, filterLevel, false).whenComplete((value, throwable) -> {
             if (throwable != null) {
                 SysteraPlugin.getInstance().getLogger().log(Level.WARNING, "Failed lookup player", throwable);
             }
@@ -70,7 +70,7 @@ public class PunishAPI {
         PlayerData from = buildPlayerData(fromPlayerUUID, fromPlayerName);
         PlayerData to = buildPlayerData(toPlayerUUID, toPlayerName);
 
-        return plugin.getApiClient().setPlayerPunishment(remote, force, from, to, punishLevel, reason, expire).whenComplete((value, throwable) -> {
+        return plugin.apiClient.setPlayerPunishment(remote, force, from, to, punishLevel, reason, expire).whenComplete((value, throwable) -> {
             if (throwable != null) {
                 SysteraPlugin.getInstance().getLogger().log(Level.WARNING, "Failed punish player", throwable);
             }

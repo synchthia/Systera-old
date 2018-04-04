@@ -21,7 +21,7 @@ public class APICommand {
     public static void api(final CommandContext args, CommandSender sender, SysteraPlugin plugin) throws CommandException {
         if (args.getString(0).equals("settings")) {
             sender.sendMessage("Get>>" + args.getString(1));
-            Boolean s = plugin.getPlayerAPI().getLocalProfile(Bukkit.getPlayer(sender.getName()).getUniqueId()).settings.get(args.getString(1));
+            Boolean s = plugin.playerAPI.getLocalProfile(Bukkit.getPlayer(sender.getName()).getUniqueId()).settings.get(args.getString(1));
             sender.sendMessage(String.format("%s: %s", args.getString(1), s));
             return;
         }
@@ -37,18 +37,18 @@ public class APICommand {
         }
 
         if (args.getString(0).equals("localprofile")) {
-            sender.sendMessage("Profiles: " + plugin.getPlayerAPI().localProfileSize());
+            sender.sendMessage("Profiles: " + plugin.playerAPI.localProfileSize());
             return;
         }
 
         if (args.getString(0).equals("clearlocalprofile")) {
             sender.sendMessage("Clear: " + sender.getName());
-            plugin.getPlayerAPI().clearLocalProfile(Bukkit.getPlayer(sender.getName()).getUniqueId());
+            plugin.playerAPI.clearLocalProfile(Bukkit.getPlayer(sender.getName()).getUniqueId());
             return;
         }
 
         if (args.getString(0).equals("debugprofile")) {
-            plugin.getPlayerAPI().debug(Bukkit.getPlayer(sender.getName()).getUniqueId());
+            plugin.playerAPI.debug(Bukkit.getPlayer(sender.getName()).getUniqueId());
             return;
         }
 
@@ -59,14 +59,14 @@ public class APICommand {
         }
 
         if (args.getString(0).equals("groups")) {
-            ProtocolStringList groups = plugin.getPlayerAPI().getLocalProfile(Bukkit.getPlayer(sender.getName()).getUniqueId()).groups;
+            ProtocolStringList groups = plugin.playerAPI.getLocalProfile(Bukkit.getPlayer(sender.getName()).getUniqueId()).groups;
             sender.sendMessage("You are assigned of: " + groups);
             return;
         }
 
         if (args.getString(0).equals("fetchperms")) {
             sender.sendMessage("FetchPerms...");
-            SysteraPlugin.getInstance().getPermissionsAPI().fetchGroups().whenComplete((r, t) -> {
+            SysteraPlugin.getInstance().permissionsAPI.fetchGroups().whenComplete((r, t) -> {
                 if (t != null) {
                     System.out.println("Error! @ fetch perms api cmd");
                     return;
@@ -77,11 +77,11 @@ public class APICommand {
 
         if (args.getString(0).equals("updateperms")) {
             sender.sendMessage("Apply Permission everyone...");
-            PermissionsManager manager = plugin.getPermissionsManager();
+            PermissionsManager manager = plugin.permissionsManager;
             //manager.paStats(Bukkit.getPlayer(sender.getName()));
             manager.removeAttachments();
 
-            //Bukkit.getOnlinePlayers().forEach((player -> manager.applyPermission(player, plugin.getPlayerAPI().getGroups(player.getUniqueId()))));
+            //Bukkit.getOnlinePlayers().forEach((player -> manager.applyPermission(player, plugin.playerAPI.getGroups(player.getUniqueId()))));
         }
     }
 }

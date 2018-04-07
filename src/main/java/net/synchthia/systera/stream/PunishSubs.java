@@ -4,7 +4,6 @@ import net.synchthia.api.systera.SysteraProtos;
 import net.synchthia.systera.APIClient;
 import net.synchthia.systera.SysteraPlugin;
 import net.synchthia.systera.punishment.PunishManager;
-import org.bukkit.Bukkit;
 import redis.clients.jedis.JedisPubSub;
 
 import java.util.logging.Level;

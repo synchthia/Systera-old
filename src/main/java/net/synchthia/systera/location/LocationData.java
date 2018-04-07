@@ -3,8 +3,6 @@ package net.synchthia.systera.location;
 import lombok.Data;
 import lombok.NonNull;
 
-import java.util.Optional;
-
 /**
  * @author Laica-Lunasys
  */

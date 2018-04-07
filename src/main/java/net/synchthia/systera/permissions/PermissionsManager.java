@@ -2,9 +2,7 @@ package net.synchthia.systera.permissions;
 
 import com.google.protobuf.ProtocolStringList;
 import net.synchthia.systera.SysteraPlugin;
-import net.synchthia.systera.player.PlayerAPI;
 import org.bukkit.Bukkit;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionAttachment;
 

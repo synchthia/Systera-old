@@ -5,7 +5,6 @@ import com.sk89q.minecraft.util.commands.CommandContext;
 import com.sk89q.minecraft.util.commands.CommandException;
 import com.sk89q.minecraft.util.commands.CommandPermissions;
 import net.synchthia.systera.SysteraPlugin;
-import net.synchthia.systera.permissions.PermissionsAPI;
 import net.synchthia.systera.player.VanishManager;
 import net.synchthia.systera.util.StringUtil;
 import org.bukkit.Bukkit;

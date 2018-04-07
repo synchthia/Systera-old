@@ -1,8 +1,6 @@
 package net.synchthia.systera.chat;
 
 import net.synchthia.systera.SysteraPlugin;
-import net.synchthia.systera.permissions.PermissionsAPI;
-import net.synchthia.systera.player.PlayerAPI;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;

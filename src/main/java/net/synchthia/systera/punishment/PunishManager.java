@@ -1,7 +1,6 @@
 package net.synchthia.systera.punishment;
 
 import net.synchthia.api.systera.SysteraProtos;
-import net.synchthia.systera.APIClient;
 import net.synchthia.systera.SysteraPlugin;
 import net.synchthia.systera.util.BungeeUtil;
 import net.synchthia.systera.util.DateUtil;

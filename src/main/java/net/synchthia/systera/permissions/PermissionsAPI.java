@@ -3,13 +3,11 @@ package net.synchthia.systera.permissions;
 import com.google.protobuf.ProtocolStringList;
 import net.synchthia.api.systera.SysteraProtos;
 import net.synchthia.systera.SysteraPlugin;
-import net.synchthia.systera.player.PlayerAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.logging.Level;
 

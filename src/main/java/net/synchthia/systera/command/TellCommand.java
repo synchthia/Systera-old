@@ -7,7 +7,6 @@ import com.sk89q.minecraft.util.commands.CommandPermissions;
 import net.synchthia.systera.SysteraPlugin;
 import net.synchthia.systera.chat.JapanizeManager;
 import net.synchthia.systera.i18n.I18n;
-import net.synchthia.systera.player.PlayerAPI;
 import net.synchthia.systera.player.VanishManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;

@@ -1,7 +1,6 @@
 package net.synchthia.systera.util;
 
 import net.synchthia.systera.SysteraPlugin;
-import org.bukkit.Bukkit;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarFlag;
 import org.bukkit.boss.BarStyle;
@@ -53,7 +52,7 @@ public class AnnounceUtil extends BukkitRunnable {
             return;
         }
 
-        int startColorCnt = checkColors(false, message);
+        int startColorCnt = checkColors(message);
 
         // Has Color Code
         String dispStart = message.substring(0, startColorCnt + 1); // [T]EST OR [&4T]EST OR [&4&cT]EST
@@ -63,7 +62,7 @@ public class AnnounceUtil extends BukkitRunnable {
         }
 
         if (message.substring(limit - 1, limit).startsWith("&")) {
-            int offset = checkColors(false, message.substring(limit - 1));
+            int offset = checkColors(message.substring(limit - 1));
             limit += offset;
             count += offset;
         }
@@ -76,7 +75,6 @@ public class AnnounceUtil extends BukkitRunnable {
         bossBar.setVisible(true);
         bossBar.addPlayer(player);
         bossBar.setTitle(StringUtil.coloring(colorCode + bossbarMsg));
-        Bukkit.getConsoleSender().sendMessage(StringUtil.coloring("[" + bossbarMsg + "]" + "(" + limit + ")"));
         message = dispEnd + dispStart;
 
         // Reset Limit
@@ -85,24 +83,13 @@ public class AnnounceUtil extends BukkitRunnable {
         count = count + 1;
     }
 
-    private int checkColors(boolean reverse, String str) {
-        if (reverse) { // END -> START
-            // str = &c&lTEST
-            int colors = 0;
-            int pos = str.length();
-            // [&]c&lTEST
-            while (str.substring((pos - colors) - 2, (pos - colors)).startsWith("&")) {
-                colors += 2;
-            }
-            return colors;
-        } else { // START -> END
-            // str = &c&lTEST
-            int colors = 0;
-            // [&]c&lTEST
-            while (str.substring(colors, colors + 1).equals("&")) {
-                colors += 2;
-            }
-            return colors;
+    private int checkColors(String str) {
+        // str = &c&lTEST
+        int colors = 0;
+        // [&]c&lTEST
+        while (str.substring(colors, colors + 1).equals("&")) {
+            colors += 2;
         }
+        return colors;
     }
 }

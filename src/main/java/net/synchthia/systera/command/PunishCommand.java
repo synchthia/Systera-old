@@ -79,11 +79,6 @@ public class PunishCommand {
                 return;
             }
 
-            if (!force && level.getNumber() < SysteraProtos.PunishLevel.TEMPBAN.getNumber() && response.getOffline()) {
-                I18n.sendMessage(sender, "error.player_offline", toPlayerName);
-                return;
-            }
-
             if (response.getDuplicate()) {
                 I18n.sendMessage(sender, "punishment.error_duplicate", toPlayerName);
                 return;
@@ -94,13 +89,12 @@ public class PunishCommand {
                 return;
             }
 
-            sender.sendMessage(StringUtil.coloring("&9&lPunish &7[" + level.toString() + "]&8≫ &e&lPunished &6&l" + toPlayerName + " &e&l: &a&l" + reason));
-
-            Player targetPlayer = Bukkit.getPlayer(toPlayerName);
-            if (targetPlayer != null) {
-                PunishManager punishManager = new PunishManager(plugin);
-                punishManager.action(targetPlayer.getUniqueId(), level, reason, expire);
+            if (!force && level.getNumber() < SysteraProtos.PunishLevel.TEMPBAN.getNumber() && response.getOffline()) {
+                I18n.sendMessage(sender, "error.player_offline", toPlayerName);
+                return;
             }
+
+            sender.sendMessage(StringUtil.coloring("&9&lPunish &7[" + level.toString() + "]&8≫ &e&lPunished &6&l" + toPlayerName + " &e&l: &a&l" + reason));
         });
     }
 }

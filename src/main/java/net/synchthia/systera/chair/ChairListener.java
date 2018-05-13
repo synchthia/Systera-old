@@ -33,7 +33,16 @@ public class ChairListener implements Listener {
         {
             add(Material.ACACIA_STAIRS);
             add(Material.BIRCH_WOOD_STAIRS);
+//            add(Material.BRICK_STAIRS);
+//            add(Material.COBBLESTONE_STAIRS);
+            add(Material.DARK_OAK_STAIRS);
             add(Material.JUNGLE_WOOD_STAIRS);
+//            add(Material.NETHER_BRICK_STAIRS);
+//            add(Material.PURPUR_STAIRS);
+//            add(Material.QUARTZ_STAIRS);
+//            add(Material.RED_SANDSTONE_STAIRS);
+//            add(Material.SANDSTONE_STAIRS);
+//            add(Material.SMOOTH_STAIRS);
             add(Material.SPRUCE_WOOD_STAIRS);
             add(Material.WOOD_STAIRS);
         }
@@ -45,7 +54,7 @@ public class ChairListener implements Listener {
         Location playerLoc = player.getLocation();
         Block block = event.getClickedBlock();
 
-        if (event.getAction() != Action.RIGHT_CLICK_AIR && event.getAction() != Action.RIGHT_CLICK_BLOCK) {
+        if (!event.getAction().equals(Action.RIGHT_CLICK_AIR) && !event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
             return;
         }
 
@@ -73,7 +82,7 @@ public class ChairListener implements Listener {
                 return;
             }
 
-            Optional<ChairData> first = chairs.values().stream().filter(v -> v.getArmorStand().getLocation() == loc).findFirst();
+            Optional<ChairData> first = chairs.values().stream().filter(v -> v.getArmorStand().getLocation().equals(loc)).findFirst();
             if (first.isPresent()) {
                 return;
             }
@@ -121,13 +130,13 @@ public class ChairListener implements Listener {
 
     @EventHandler
     public void onDismount(EntityDismountEvent event) {
-        if (event.getEntityType() == EntityType.PLAYER) {
+        if (event.getEntityType().equals(EntityType.PLAYER)) {
             Player player = Bukkit.getPlayer(event.getEntity().getUniqueId());
             if (chairs.containsKey(player)) {
                 ChairData chair = chairs.get(player);
                 chair.getArmorStand().remove();
 
-                plugin.getServer().getScheduler().runTaskLater(plugin, () ->
+                player.getServer().getScheduler().runTaskLater(plugin, () ->
                                 player.teleport(chair.getBeforeLocation()),
                         1L);
 
@@ -136,3 +145,4 @@ public class ChairListener implements Listener {
         }
     }
 }
+

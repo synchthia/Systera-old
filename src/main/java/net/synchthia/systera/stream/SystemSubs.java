@@ -22,8 +22,10 @@ public class SystemSubs extends JedisPubSub {
         assert stream != null;
         switch (stream.getType()) {
             case DISPATCH:
-                SysteraPlugin.getInstance().getLogger().log(Level.INFO, "Incoming Command: " + stream.getMsg());
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), stream.getMsg());
+                plugin.getServer().getScheduler().runTask(plugin, () -> {
+                    SysteraPlugin.getInstance().getLogger().log(Level.INFO, "Incoming Command: " + stream.getMsg());
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), stream.getMsg());
+                });
                 break;
             case ANNOUNCE:
                 for (Player onlinePlayer : Bukkit.getServer().getOnlinePlayers()) {

@@ -23,11 +23,11 @@ public class ReportSubs extends JedisPubSub {
             case REPORT:
                 SysteraProtos.ReportEntry entry = stream.getEntry();
                 String msg = String.format("&9&lReport &7[%s]&8≫ &6&l %s -> %s &e&l Reported: &a&l%s", entry.getServer(), entry.getFrom().getName(), entry.getTo().getName(), entry.getMessage());
-                Bukkit.getOnlinePlayers().forEach(player -> {
+                plugin.getServer().getScheduler().runTask(plugin, () -> Bukkit.getOnlinePlayers().forEach(player -> {
                     if (player.hasPermission("systera.report.receive")) {
                         player.sendMessage(StringUtil.coloring(msg));
                     }
-                });
+                }));
                 break;
         }
     }

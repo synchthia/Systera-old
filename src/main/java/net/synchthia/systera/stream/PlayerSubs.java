@@ -26,7 +26,9 @@ public class PlayerSubs extends JedisPubSub {
                 SysteraPlugin.getInstance().playerAPI.setPlayerGroups(playerUUID, stream.getEntry().getGroupsList());
                 PermissionsManager permsManager = new PermissionsManager(SysteraPlugin.getInstance());
                 SysteraPlugin.getInstance().getLogger().log(Level.INFO, "onNext > Dispatch > GROUPS Hooked.");
-                permsManager.applyPermission(Bukkit.getPlayer(playerUUID), stream.getEntry().getGroupsList());
+                plugin.getServer().getScheduler().runTask(plugin, () ->
+                        permsManager.applyPermission(Bukkit.getPlayer(playerUUID), stream.getEntry().getGroupsList())
+                );
                 break;
         }
     }

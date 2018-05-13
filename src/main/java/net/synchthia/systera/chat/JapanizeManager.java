@@ -18,10 +18,10 @@ import java.util.regex.Pattern;
  * @author Laica-Lunasys
  */
 public class JapanizeManager {
+    private static final Pattern pattern = Pattern.compile("[^\u0020-\u007E]|\u00a7|u00a74u00a75u00a73u00a74v");
 
     public String convert(String convertString) {
         Kana kana = new Kana();
-        Pattern pattern = Pattern.compile("[^\u0020-\u007E]|\u00a7|u00a74u00a75u00a73u00a74v");
         Matcher matcher = pattern.matcher(convertString);
         //URLっぽい文章は省く
         if (convertString.startsWith("http:") || convertString.startsWith("https:")) {
@@ -45,7 +45,7 @@ public class JapanizeManager {
 
         try {
             String encodeString = URLEncoder.encode(converted, "utf-8");
-            String apiURLString = "http://www.google.com/transliterate?langpair=ja-Hira|ja&text=" + encodeString;
+            String apiURLString = "https://www.google.com/transliterate?langpair=ja-Hira|ja&text=" + encodeString;
             URL apiURL = new URL(apiURLString);
             HttpURLConnection connection = (HttpURLConnection) apiURL.openConnection();
             connection.setConnectTimeout(1000);

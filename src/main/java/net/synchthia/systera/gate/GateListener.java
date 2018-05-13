@@ -114,11 +114,6 @@ public class GateListener implements Listener {
     }
 
     @EventHandler
-    public void onPlayerBucketEmpty(PlayerBucketEmptyEvent event) {
-        event.getPlayer().sendMessage(ChatColor.GRAY + ">> " + event.getBlockClicked().getLocation().toString());
-    }
-
-    @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
         GateManager gateManager = plugin.gateManager;
         if (event.getAction() != Action.RIGHT_CLICK_AIR && event.getAction() != Action.RIGHT_CLICK_BLOCK) {

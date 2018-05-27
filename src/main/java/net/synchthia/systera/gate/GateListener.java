@@ -55,19 +55,22 @@ public class GateListener implements Listener {
 
         // A3
         Location a3 = new Location(world, attended.getX(), attended.getY() + 3, attended.getZ());
-        if (world.getBlockAt(a3).getType() != Material.AIR) return;
+        if (!world.getBlockAt(a3).getType().equals(Material.AIR) &&
+                !world.getBlockAt(a3).getType().equals(Material.WATER) &&
+                !world.getBlockAt(a3).getType().equals(Material.STATIONARY_WATER)) return;
 
         // A2
         Location a2 = new Location(world, attended.getX(), attended.getY() + 2, attended.getZ());
-        if (world.getBlockAt(a2).getType() != Material.AIR) return;
-
+        if (!world.getBlockAt(a2).getType().equals(Material.AIR) &&
+                !world.getBlockAt(a2).getType().equals(Material.WATER) &&
+                !world.getBlockAt(a2).getType().equals(Material.STATIONARY_WATER)) return;
         // A1
         Location a1 = new Location(world, attended.getX(), attended.getY() + 1, attended.getZ());
-        if (world.getBlockAt(a1).getType() != Material.GLOWSTONE) return;
+        if (!world.getBlockAt(a1).getType().equals(Material.GLOWSTONE)) return;
 
         // A0
         Location a0 = attended.getLocation();
-        if (world.getBlockAt(a0).getType() != Material.IRON_BLOCK) return;
+        if (!world.getBlockAt(a0).getType().equals(Material.IRON_BLOCK)) return;
 
         // Check Sign
         if (name.isEmpty() || destination.isEmpty()) {
@@ -101,10 +104,10 @@ public class GateListener implements Listener {
         Location loc = block.getLocation();
 
         // Is Liquid?
-        if (block.getType() != Material.WATER &&
-                block.getType() != Material.STATIONARY_WATER &&
-                block.getType() != Material.LAVA &&
-                block.getType() != Material.STATIONARY_LAVA) {
+        if (!block.getType().equals(Material.WATER) &&
+                !block.getType().equals(Material.STATIONARY_WATER) &&
+                !block.getType().equals(Material.LAVA) &&
+                !block.getType().equals(Material.STATIONARY_LAVA)) {
             return;
         }
 
@@ -116,7 +119,7 @@ public class GateListener implements Listener {
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
         GateManager gateManager = plugin.gateManager;
-        if (event.getAction() != Action.RIGHT_CLICK_AIR && event.getAction() != Action.RIGHT_CLICK_BLOCK) {
+        if (!event.getAction().equals(Action.RIGHT_CLICK_AIR) && !event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
             return;
         }
 
@@ -178,7 +181,7 @@ public class GateListener implements Listener {
         }
 
         GateData gate;
-        if (block.getType() == Material.WALL_SIGN) {
+        if (block.getType().equals(Material.WALL_SIGN)) {
             Optional<GateData> opt = gateManager.inSign(block);
             if (!opt.isPresent()) {
                 return;

@@ -18,3 +18,10 @@ deploy:
   stage: deploy
   script:
   - "curl -X POST -H \"PRIVATE-TOKEN: ${STARTAIL_AGENT_KEY}\" 'https://gitlab.com/api/v4/projects/startail%2Fmcserver/pipeline?ref=master'"
+
+deploy-maven:
+  stage: deploy
+  script:
+  - if [ ! -e $HOME/.m2/ ]; then mkdir -p $HOME/.m2/; fi
+  - echo -e ${CI_MVN_SETTINGS} > $HOME/.m2/settings.xml
+  - mvn clean deploy

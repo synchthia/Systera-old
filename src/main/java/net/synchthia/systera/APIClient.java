@@ -1,12 +1,12 @@
 package net.synchthia.systera;
 
 import com.google.protobuf.util.JsonFormat;
-import io.grpc.ManagedChannel;
-import io.grpc.internal.DnsNameResolverProvider;
-import io.grpc.netty.NettyChannelBuilder;
-import io.grpc.stub.StreamObserver;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import net.synchthia.api.systera.libs.grpc.ManagedChannel;
+import net.synchthia.api.systera.libs.grpc.internal.DnsNameResolverProvider;
+import net.synchthia.api.systera.libs.grpc.netty.NettyChannelBuilder;
+import net.synchthia.api.systera.libs.grpc.stub.StreamObserver;
 import net.synchthia.systera.util.DateUtil;
 import net.synchthia.api.systera.SysteraGrpc;
 import net.synchthia.api.systera.SysteraProtos;

@@ -7,9 +7,9 @@ import io.grpc.netty.NettyChannelBuilder;
 import io.grpc.stub.StreamObserver;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import net.synchthia.systera.util.DateUtil;
 import net.synchthia.api.systera.SysteraGrpc;
 import net.synchthia.api.systera.SysteraProtos;
-import net.synchthia.systera.util.DateUtil;
 
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
@@ -26,7 +26,7 @@ public class APIClient {
     private final SysteraGrpc.SysteraBlockingStub blockingStub;
 
     public APIClient(@NonNull String target) {
-        channel = NettyChannelBuilder.forTarget(target).usePlaintext(true).nameResolverFactory(new DnsNameResolverProvider()).build();
+        channel = NettyChannelBuilder.forTarget(target).usePlaintext().nameResolverFactory(new DnsNameResolverProvider()).build();
         stub = SysteraGrpc.newStub(channel);
         blockingStub = SysteraGrpc.newBlockingStub(channel);
     }

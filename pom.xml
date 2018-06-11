@@ -27,6 +27,11 @@
         </repository>
 
         <repository>
+            <id>synchthia-repo</id>
+            <url>https://repo.synchthia.net/repository/startail/</url>
+        </repository>
+
+        <repository>
             <id>extension.ws-repo</id>
             <url>https://repo.extension.ws/content/repositories/public/</url>
         </repository>
@@ -37,6 +42,17 @@
             <url>http://repo.dmulloy2.net/content/groups/public/</url>
         </repository>
     </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>synchthia-repo</id>
+            <url>https://repo.synchthia.net/repository/startail-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>synchthia-repo</id>
+            <url>https://repo.synchthia.net/repository/startail-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <dependencies>
         <!-- Redis -->
@@ -50,19 +66,10 @@
 
         <!-- gRPC -->
         <dependency>
-            <groupId>io.grpc</groupId>
-            <artifactId>grpc-netty</artifactId>
-            <version>1.4.0</version>
-        </dependency>
-        <dependency>
-            <groupId>io.grpc</groupId>
-            <artifactId>grpc-protobuf</artifactId>
-            <version>1.4.0</version>
-        </dependency>
-        <dependency>
-            <groupId>io.grpc</groupId>
-            <artifactId>grpc-stub</artifactId>
-            <version>1.4.0</version>
+            <groupId>net.synchthia.api</groupId>
+            <artifactId>systera</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
@@ -162,19 +169,11 @@
                             <relocations>
                                 <relocation>
                                     <pattern>redis.clients</pattern>
-                                    <shadedPattern>net.synchthia.systera.libs.redis.clients</shadedPattern>
-                                </relocation>
-                                <relocation>
-                                    <pattern>org.apache.commons</pattern>
-                                    <shadedPattern>net.synchthia.systera.libs.apache.commons</shadedPattern>
-                                </relocation>
-                                <relocation>
-                                    <pattern>io.netty</pattern>
-                                    <shadedPattern>net.synchthia.systera.libs.netty</shadedPattern>
+                                    <shadedPattern>net.synchthia.libs.redis.clients</shadedPattern>
                                 </relocation>
                                 <relocation>
                                     <pattern>com.google.common</pattern>
-                                    <shadedPattern>net.synchthia.systera.libs.guava</shadedPattern>
+                                    <shadedPattern>net.synchthia.libs.guava</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>

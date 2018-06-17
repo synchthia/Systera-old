@@ -36,6 +36,11 @@ public class PermissionsManager {
         // Assign Message
         plugin.getLogger().log(Level.INFO, player.getName() + " assigned to: " + plugin.playerAPI.getGroups(player.getUniqueId()));
 
+        // deop Player
+        if (player.isOp()) {
+            player.setOp(false);
+        }
+
         // Set Permission
         //set(player, attachment, "default");
         groups.forEach(group -> set(player, attachment, group));
@@ -54,6 +59,9 @@ public class PermissionsManager {
                 } else {
                     attachment.setPermission(perms, true);
                 }
+                if (perms.equals("systera.op")) {
+                    player.setOp(true);
+                }
             });
         }
 
@@ -63,6 +71,9 @@ public class PermissionsManager {
                     attachment.setPermission(perms.replaceAll("^-", ""), false);
                 } else {
                     attachment.setPermission(perms, true);
+                }
+                if (perms.equals("systera.op")) {
+                    player.setOp(true);
                 }
             });
         }

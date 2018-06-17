@@ -167,6 +167,10 @@
                         <configuration>
                             <relocations>
                                 <relocation>
+                                    <pattern>net.synchthia.api.systera</pattern>
+                                    <shadedPattern>net.synchthia.systera.api</shadedPattern>
+                                </relocation>
+                                <relocation>
                                     <pattern>redis.clients</pattern>
                                     <shadedPattern>net.synchthia.systera.libs.redis.clients</shadedPattern>
                                 </relocation>

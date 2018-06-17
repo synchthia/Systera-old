@@ -69,7 +69,6 @@
             <groupId>net.synchthia.api</groupId>
             <artifactId>systera</artifactId>
             <version>1.0</version>
-            <scope>compile</scope>
         </dependency>
 
         <dependency>
@@ -169,11 +168,11 @@
                             <relocations>
                                 <relocation>
                                     <pattern>redis.clients</pattern>
-                                    <shadedPattern>net.synchthia.libs.redis.clients</shadedPattern>
+                                    <shadedPattern>net.synchthia.systera.libs.redis.clients</shadedPattern>
                                 </relocation>
                                 <relocation>
                                     <pattern>com.google.common</pattern>
-                                    <shadedPattern>net.synchthia.libs.guava</shadedPattern>
+                                    <shadedPattern>net.synchthia.systera.libs.guava</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>

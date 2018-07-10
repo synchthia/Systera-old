@@ -72,12 +72,6 @@
         </dependency>
 
         <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-            <version>2.9.7</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
             <version>1.12.2-R0.1-SNAPSHOT</version>
@@ -101,6 +95,12 @@
             <groupId>com.sk89q</groupId>
             <artifactId>command-framework-bukkit</artifactId>
             <version>1.9-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.9.7</version>
         </dependency>
 
         <dependency>
@@ -166,10 +166,10 @@
                         </goals>
                         <configuration>
                             <relocations>
-                                <relocation>
-                                    <pattern>net.synchthia.api.systera</pattern>
-                                    <shadedPattern>net.synchthia.systera.api</shadedPattern>
-                                </relocation>
+                                <!--<relocation>-->
+                                    <!--<pattern>net.synchthia.api.systera</pattern>-->
+                                    <!--<shadedPattern>net.synchthia.systera.api</shadedPattern>-->
+                                <!--</relocation>-->
                                 <relocation>
                                     <pattern>redis.clients</pattern>
                                     <shadedPattern>net.synchthia.systera.libs.redis.clients</shadedPattern>

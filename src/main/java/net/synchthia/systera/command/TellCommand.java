@@ -1,14 +1,17 @@
 package net.synchthia.systera.command;
 
-import com.sk89q.minecraft.util.commands.Command;
-import com.sk89q.minecraft.util.commands.CommandContext;
-import com.sk89q.minecraft.util.commands.CommandException;
-import com.sk89q.minecraft.util.commands.CommandPermissions;
+import co.aikar.commands.BaseCommand;
+import co.aikar.commands.annotation.CommandAlias;
+import co.aikar.commands.annotation.CommandCompletion;
+import co.aikar.commands.annotation.CommandPermission;
+import co.aikar.commands.annotation.Description;
+import lombok.RequiredArgsConstructor;
 import net.synchthia.systera.SysteraPlugin;
 import net.synchthia.systera.chat.JapanizeManager;
 import net.synchthia.systera.i18n.I18n;
 import net.synchthia.systera.player.VanishManager;
 import org.bukkit.Bukkit;
+import org.bukkit.command.CommandException;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.metadata.FixedMetadataValue;
@@ -16,18 +19,23 @@ import org.bukkit.metadata.FixedMetadataValue;
 /**
  * @author Laica-Lunasys
  */
-public class TellCommand {
+@RequiredArgsConstructor
+public class TellCommand extends BaseCommand {
+    private final SysteraPlugin plugin;
 
-    @Command(aliases = {"tell", "msg", "message", "pm", "privatemessage", "w", "whisper"}, desc = "Tell Command", min = 2, usage = "<player> <message>")
-    @CommandPermissions("systera.command.tell")
-    public static void tell(final CommandContext args, CommandSender sender, SysteraPlugin plugin) throws CommandException {
-        Player target = Bukkit.getPlayer(args.getString(0));
-        sendTellMsg(sender, target, args.getJoinedStrings(1));
+    @CommandAlias("tell|msg|message|pm|privatemessage|w|whisper")
+    @CommandPermission("systera.command.tell")
+    @CommandCompletion("@players")
+    @Description("Tell Command")
+    public void onTell(CommandSender sender, String player, String message) {
+        Player target = Bukkit.getPlayer(player);
+        sendTellMsg(sender, target, message);
     }
 
-    @Command(aliases = {"reply", "r"}, desc = "Reply Command", min = 1, usage = "<message>")
-    @CommandPermissions("systera.command.tell")
-    public static void reply(final CommandContext args, CommandSender sender, SysteraPlugin plugin) throws CommandException {
+    @CommandAlias("reply|r")
+    @CommandPermission("systera.command.tell")
+    @Description("Reply Command")
+    public void onReply(CommandSender sender, String message) {
         if (!(sender instanceof Player)) {
             throw new CommandException(I18n.getString(sender, "error.invalid_sender"));
         }
@@ -38,7 +46,7 @@ public class TellCommand {
         }
 
         Player target = ((Player) ((Player) sender).getMetadata("reply").get(0).value());
-        sendTellMsg(sender, target, args.getJoinedStrings(0));
+        sendTellMsg(sender, target, message);
     }
 
     private static void sendTellMsg(CommandSender sender, Player target, String message) {

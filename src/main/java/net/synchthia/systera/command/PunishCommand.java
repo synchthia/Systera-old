@@ -1,68 +1,68 @@
 package net.synchthia.systera.command;
 
-import com.sk89q.minecraft.util.commands.Command;
-import com.sk89q.minecraft.util.commands.CommandContext;
-import com.sk89q.minecraft.util.commands.CommandException;
-import com.sk89q.minecraft.util.commands.CommandPermissions;
+import co.aikar.commands.BaseCommand;
+import co.aikar.commands.annotation.*;
+import lombok.RequiredArgsConstructor;
 import net.synchthia.api.systera.SysteraProtos;
 import net.synchthia.systera.SysteraPlugin;
 import net.synchthia.systera.i18n.I18n;
-import net.synchthia.systera.punishment.PunishManager;
 import net.synchthia.systera.util.DateUtil;
 import net.synchthia.systera.util.StringUtil;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 import java.util.logging.Level;
 
 /**
  * @author Laica-Lunasys
  */
-public class PunishCommand {
-    @Command(aliases = "warn", desc = "Warning Command", min = 2, usage = "<player> <reason>")
-    @CommandPermissions("systera.command.punishment")
-    public static void warn(final CommandContext args, CommandSender sender, SysteraPlugin plugin) throws CommandException {
-        String toPlayerName = args.getString(0);
-        String reason = args.getJoinedStrings(1);
+@RequiredArgsConstructor
+public class PunishCommand extends BaseCommand {
+    private final SysteraPlugin plugin;
 
-        punish(false, SysteraProtos.PunishLevel.WARN, sender, toPlayerName, reason, 0L);
+    @CommandAlias("warn")
+    @CommandPermission("systera.command.punishment")
+    @CommandCompletion("@players @punish_reason")
+    @Description("Warning Command")
+    public void onWarn(CommandSender sender, String player, String reason) {
+        punish(false, SysteraProtos.PunishLevel.WARN, sender, player, reason, 0L);
     }
 
-    @Command(aliases = "kick", desc = "Kick Command", min = 2, usage = "<player> <reason>")
-    @CommandPermissions("systera.command.punishment")
-    public static void kick(final CommandContext args, CommandSender sender, SysteraPlugin plugin) throws CommandException {
-        String toPlayerName = args.getString(0);
-        String reason = args.getJoinedStrings(1);
-
-        punish(false, SysteraProtos.PunishLevel.KICK, sender, toPlayerName, reason, 0L);
+    @CommandAlias("kick")
+    @CommandPermission("systera.command.punishment")
+    @CommandCompletion("@players @punish_reason")
+    @Description("Kick Command")
+    public void onKick(CommandSender sender, String player, String reason) {
+        punish(false, SysteraProtos.PunishLevel.KICK, sender, player, reason, 0L);
     }
 
-    @Command(aliases = {"tempban", "tban", "punish"}, flags = "t:t", desc = "Temporary BAN Command", min = 2, usage = "<player> <reason>")
-    @CommandPermissions("systera.command.punishment")
-    public static void tempBan(final CommandContext args, CommandSender sender, SysteraPlugin plugin) throws CommandException {
-        String toPlayerName = args.getString(0);
-
-        String expireDate = args.hasFlag('t') ? args.getFlag('t') : "7d";
-        String reason = args.getJoinedStrings(1);
+    //    @Command(aliases = {"tempban", "tban", "punish"}, flags = "t:t", desc = "Temporary BAN Command", min = 2, usage = "<player> <reason>")
+    @CommandAlias("tempban|tban|punish")
+    @CommandPermission("systera.command.punishment")
+    @CommandCompletion("@players @punish_reason")
+    public void onTempBan(CommandSender sender, String player, String reason) {
+//        String expireDate = args.hasFlag('t') ? args.getFlag('t') : "7d";
+        String expireDate = "7d";
 
         try {
             Long expire = DateUtil.getEpochMilliTime() + DateUtil.parseDateString(expireDate);
-            punish(false, SysteraProtos.PunishLevel.TEMPBAN, sender, toPlayerName, reason, expire);
+            punish(false, SysteraProtos.PunishLevel.TEMPBAN, sender, player, reason, expire);
         } catch (IllegalArgumentException e) {
             sender.sendMessage(ChatColor.RED + "Invalid Expire Date!");
         }
     }
 
-    @Command(aliases = {"permban", "pban", "ppunish"}, flags = "f", desc = "Permanently BAN Command", min = 2, usage = "<player> <reason>")
-    @CommandPermissions("systera.command.punishment")
-    public static void permBan(final CommandContext args, CommandSender sender, SysteraPlugin plugin) throws CommandException {
-        Boolean force = args.hasFlag('f');
-        String toPlayerName = args.getString(0);
-        String reason = args.getJoinedStrings(1);
+    //    @Command(aliases = {"permban", "pban", "ppunish"}, flags = "f", desc = "Permanently BAN Command", min = 2, usage = "<player> <reason>")
+    @CommandAlias("permban|pban|ppunish")
+    @CommandPermission("systera.command.punishment")
+    @CommandCompletion("@players @punish_reason")
+    public void onPermBan(CommandSender sender, String player, @Optional String force, String reason) {
+        Boolean isForce = false;
+        if (force != null && force.equals("-f")) {
+            isForce = true;
+        }
 
-        punish(force, SysteraProtos.PunishLevel.PERMBAN, sender, toPlayerName, reason, 0L);
+        punish(isForce, SysteraProtos.PunishLevel.PERMBAN, sender, player, reason, 0L);
     }
 
     private static void punish(Boolean force, SysteraProtos.PunishLevel level, CommandSender sender, String toPlayerName, String reason, Long expire) {

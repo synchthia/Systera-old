@@ -1,10 +1,11 @@
 package net.synchthia.systera.command;
 
-
-import com.sk89q.minecraft.util.commands.Command;
-import com.sk89q.minecraft.util.commands.CommandContext;
-import com.sk89q.minecraft.util.commands.CommandException;
-import com.sk89q.minecraft.util.commands.CommandPermissions;
+import co.aikar.commands.BaseCommand;
+import co.aikar.commands.annotation.CommandAlias;
+import co.aikar.commands.annotation.CommandPermission;
+import co.aikar.commands.annotation.Description;
+import co.aikar.commands.annotation.Optional;
+import lombok.RequiredArgsConstructor;
 import net.synchthia.systera.SysteraPlugin;
 import net.synchthia.systera.util.StringUtil;
 import org.bukkit.Bukkit;
@@ -14,12 +15,15 @@ import org.bukkit.command.CommandSender;
 /**
  * @author Laica-Lunasys
  */
-public class SysteraCommand {
+@RequiredArgsConstructor
+public class SysteraCommand extends BaseCommand {
+    private final SysteraPlugin plugin;
 
-    @Command(aliases = "systera", desc = "Systera Command")
-    @CommandPermissions("systera.command.systera")
-    public static void systera(final CommandContext args, CommandSender sender, SysteraPlugin plugin) throws CommandException {
-        if (args.argsLength() == 1 && args.getString(0).equals("reload")) {
+    @CommandAlias("systera")
+    @CommandPermission("systera.command.systera")
+    @Description("Systera Command")
+    public void onSystera(CommandSender sender, @Optional String args) {
+        if (args != null && args.startsWith("reload")) {
             Bukkit.getPluginManager().disablePlugin(plugin);
             Bukkit.getPluginManager().enablePlugin(plugin);
             sender.sendMessage(ChatColor.GREEN + "Plugin Reloaded.");

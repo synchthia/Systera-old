@@ -1,9 +1,9 @@
 package net.synchthia.systera;
 
+import co.aikar.commands.BukkitCommandManager;
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
-import com.sk89q.bukkit.util.CommandsManagerRegistration;
-import com.sk89q.minecraft.util.commands.*;
+import com.google.common.collect.ImmutableList;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import net.synchthia.systera.chair.ChairListener;
@@ -22,10 +22,8 @@ import net.synchthia.systera.player.PlayerListener;
 import net.synchthia.systera.punishment.PunishAPI;
 import net.synchthia.systera.stream.RedisClient;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -41,9 +39,10 @@ public class SysteraPlugin extends JavaPlugin {
 
     @Getter
     private Boolean started;
-    private static RedisClient redisClient;
 
-    private CommandsManager<CommandSender> commands;
+    public BukkitCommandManager cmdManager;
+
+    private static RedisClient redisClient;
 
     // API ===========================================
     public APIClient apiClient;
@@ -173,45 +172,42 @@ public class SysteraPlugin extends JavaPlugin {
     }
 
     private void registerCommands() {
-        this.commands = new CommandsManager<CommandSender>() {
-            @Override
-            public boolean hasPermission(CommandSender sender, String perm) {
-                return sender instanceof ConsoleCommandSender || sender.hasPermission(perm);
-            }
-        };
-        CommandsManagerRegistration cmdRegister = new CommandsManagerRegistration(this, this.commands);
-        cmdRegister.register(SysteraCommand.class);
-        cmdRegister.register(DispatchCommand.class);
-        cmdRegister.register(AnnounceCommand.class);
-        cmdRegister.register(SpawnCommand.class);
-        cmdRegister.register(APICommand.class);
-        cmdRegister.register(SettingsCommand.class);
-        cmdRegister.register(PunishCommand.class);
-        cmdRegister.register(ReportCommand.class);
-        cmdRegister.register(ListCommand.class);
-        cmdRegister.register(TellCommand.class);
-    }
+        cmdManager = new BukkitCommandManager(this);
 
-    @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-        try {
-            this.commands.execute(cmd.getName(), args, sender, sender, this);
-        } catch (CommandPermissionsException e) {
-            I18n.sendMessage(sender, "error.permission");
-        } catch (MissingNestedCommandException e) {
-            sender.sendMessage(ChatColor.RED + "Usage: " + e.getUsage().replace("{cmd}", cmd.getName()));
-        } catch (CommandUsageException e) {
-            sender.sendMessage(ChatColor.RED + "Usage: " + e.getUsage());
-        } catch (WrappedCommandException e) {
-            if (e.getCause() instanceof NumberFormatException) {
-                I18n.sendMessage(sender, "error.invalid_option");
-            } else {
-                sender.sendMessage(ChatColor.RED + "Unknown Error Occurred.");
-                e.printStackTrace();
+        cmdManager.getCommandCompletions().registerCompletion("punish_reason", c -> {
+            return ImmutableList.of(
+                    "Chat Spam (チャットスパム)",
+                    "Advertise (広告)",
+                    "Glitch (バグや不具合の意図的な不正利用)",
+                    "Obscenity / NSFW Content (不適切なコンテンツ) ",
+                    "Griefing (他のユーザーへの迷惑行為)",
+                    "Violent Language (不適切な発言)",
+                    "Watch your language (不適切な発言)",
+                    "Hacking - Fly",
+                    "Hacking - Nuke",
+                    "Hacking - FastRun",
+                    "Hacking - FastEat"
+            );
+        });
+
+        cmdManager.getCommandCompletions().registerAsyncCompletion("player_settings", c -> {
+            CommandSender sender = c.getSender();
+            if (sender instanceof Player) {
+                Player player = (Player) sender;
+                return ImmutableList.copyOf(playerAPI.getLocalProfile(player.getUniqueId()).settings.keySet());
             }
-        } catch (CommandException e) {
-            sender.sendMessage(ChatColor.RED + e.getMessage());
-        }
-        return true;
+            return ImmutableList.of();
+        });
+
+        cmdManager.registerCommand(new SysteraCommand(this));
+        cmdManager.registerCommand(new DispatchCommand(this));
+        cmdManager.registerCommand(new AnnounceCommand(this));
+        cmdManager.registerCommand(new SpawnCommand(this));
+        cmdManager.registerCommand(new APICommand(this));
+        cmdManager.registerCommand(new SettingsCommand(this));
+        cmdManager.registerCommand(new PunishCommand(this));
+        cmdManager.registerCommand(new ReportCommand(this));
+        cmdManager.registerCommand(new ListCommand(this));
+        cmdManager.registerCommand(new TellCommand(this));
     }
 }

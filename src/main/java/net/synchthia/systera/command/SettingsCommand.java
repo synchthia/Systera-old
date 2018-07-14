@@ -1,8 +1,8 @@
 package net.synchthia.systera.command;
 
-import com.sk89q.minecraft.util.commands.Command;
-import com.sk89q.minecraft.util.commands.CommandContext;
-import com.sk89q.minecraft.util.commands.CommandException;
+import co.aikar.commands.BaseCommand;
+import co.aikar.commands.annotation.*;
+import lombok.RequiredArgsConstructor;
 import net.synchthia.systera.SysteraPlugin;
 import net.synchthia.systera.i18n.I18n;
 import net.synchthia.systera.player.PlayerAPI;
@@ -10,6 +10,7 @@ import net.synchthia.systera.player.VanishManager;
 import net.synchthia.systera.util.MessageUtil;
 import net.synchthia.systera.util.StringUtil;
 import org.bukkit.Bukkit;
+import org.bukkit.command.CommandException;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -18,11 +19,16 @@ import java.util.Map;
 /**
  * @author Laica-Lunasys
  */
-public class SettingsCommand {
+@RequiredArgsConstructor
+public class SettingsCommand extends BaseCommand {
+    private final SysteraPlugin plugin;
 
-    @Command(aliases = {"settings", "setting", "set"}, desc = "Show Player Settings", usage = "<setting> <on/off>")
-    // Unnecessary? -> @CommandPermissions("systera.command.settings")
-    public static void settings(final CommandContext args, CommandSender sender, SysteraPlugin plugin) throws CommandException {
+    //    @Command(aliases = {"settings", "setting", "set"}, desc = "Show Player Settings", usage = "<setting> <on/off>")
+    @CommandAlias("settings|setting|set")
+    @CommandPermission("systera.command.settings")
+    @CommandCompletion("@player_settings on|off")
+    @Description("Show / Set player settings")
+    public void onSettings(CommandSender sender, @Optional String setting, @Optional String mode) {
         if (!(sender instanceof Player)) {
             throw new CommandException(I18n.getString(sender, "error.invalid_sender"));
         }
@@ -35,7 +41,7 @@ public class SettingsCommand {
         }
 
         // /settings
-        if (args.argsLength() == 0) {
+        if (setting == null) {
             sender.sendMessage("§8§m[§b§lSettings§8§m]-----------------------------------");
             sender.sendMessage("§eUsage: /settings <setting> <on/off>");
             Map<String, Boolean> settings = settings(plugin, player);
@@ -47,26 +53,24 @@ public class SettingsCommand {
         }
 
         // /settings hoge
-        if (args.argsLength() == 1) {
-            if (!localProfile.settings.containsKey(args.getString(0))) {
-                I18n.sendMessage(sender, "settings.notfound", args.getString(0));
+        if (mode == null) {
+            if (!localProfile.settings.containsKey(setting)) {
+                I18n.sendMessage(sender, "settings.notfound", setting);
                 return;
             }
-            Boolean value = settings(plugin, player).get(args.getString(0));
-            sender.sendMessage(MessageUtil.settingMsg(args.getString(0), value));
+            Boolean value = settings(plugin, player).get(setting);
+            sender.sendMessage(MessageUtil.settingMsg(setting, value));
             return;
         }
 
         // /settings hoge true(false)
-        if (args.argsLength() == 2) {
-            if (!localProfile.settings.containsKey(args.getString(0))) {
-                I18n.sendMessage(sender, "settings.notfound", args.getString(0));
-                return;
-            }
-            Boolean getBoolean = StringUtil.stringSwitch(args.getString(1));
-            sender.sendMessage(MessageUtil.settingMsg(args.getString(0), getBoolean));
-            set(plugin, player, args.getString(0), getBoolean);
+        if (!localProfile.settings.containsKey(setting)) {
+            I18n.sendMessage(sender, "settings.notfound", setting);
+            return;
         }
+        Boolean getBoolean = StringUtil.stringSwitch(mode);
+        sender.sendMessage(MessageUtil.settingMsg(setting, getBoolean));
+        set(plugin, player, setting, getBoolean);
     }
 
     private static Map<String, Boolean> settings(SysteraPlugin plugin, Player player) {

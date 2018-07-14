@@ -1,9 +1,10 @@
 package net.synchthia.systera.command;
 
-import com.sk89q.minecraft.util.commands.Command;
-import com.sk89q.minecraft.util.commands.CommandContext;
-import com.sk89q.minecraft.util.commands.CommandException;
-import com.sk89q.minecraft.util.commands.CommandPermissions;
+import co.aikar.commands.BaseCommand;
+import co.aikar.commands.annotation.CommandAlias;
+import co.aikar.commands.annotation.CommandPermission;
+import co.aikar.commands.annotation.Description;
+import lombok.RequiredArgsConstructor;
 import net.synchthia.systera.SysteraPlugin;
 import net.synchthia.systera.player.VanishManager;
 import net.synchthia.systera.util.StringUtil;
@@ -15,10 +16,14 @@ import org.bukkit.entity.Player;
 /**
  * @author Laica-Lunasys
  */
-public class ListCommand {
-    @Command(aliases = {"list", "who"}, desc = "List online players")
-    @CommandPermissions("systera.command.list")
-    public static void list(final CommandContext args, CommandSender sender, SysteraPlugin plugin) throws CommandException {
+@RequiredArgsConstructor
+public class ListCommand extends BaseCommand {
+    private final SysteraPlugin plugin;
+
+    @CommandAlias("list|who")
+    @CommandPermission("systera.command.list")
+    @Description("List online players")
+    public void onList(CommandSender sender) {
         StringBuilder messages = new StringBuilder();
         Integer count = 0;
 

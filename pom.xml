@@ -165,10 +165,6 @@
                             <dependencyReducedPomLocation>${project.build.directory}/dependency-reduced-pom.xml
                             </dependencyReducedPomLocation>
                             <relocations>
-                                <!--<relocation>-->
-                                <!--<pattern>net.synchthia.api.systera</pattern>-->
-                                <!--<shadedPattern>net.synchthia.systera.api</shadedPattern>-->
-                                <!--</relocation>-->
                                 <relocation>
                                     <pattern>co.aikar.commands</pattern>
                                     <shadedPattern>net.synchthia.systera.libs.acf</shadedPattern>
@@ -176,6 +172,10 @@
                                 <relocation>
                                     <pattern>redis.clients</pattern>
                                     <shadedPattern>net.synchthia.systera.libs.redis.clients</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.apache.commons</pattern>
+                                    <shadedPattern>net.synchthia.systera.libs.apache.commons</shadedPattern>
                                 </relocation>
                                 <relocation>
                                     <pattern>com.google.common</pattern>

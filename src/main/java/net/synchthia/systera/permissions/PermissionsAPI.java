@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
 /**
@@ -20,9 +21,16 @@ public class PermissionsAPI {
 
     public PermissionsAPI(SysteraPlugin plugin) {
         this.plugin = plugin;
+
+        try {
+            fetchGroups().get(5, TimeUnit.SECONDS);
+        } catch (Exception ex) {
+            plugin.getLogger().log(Level.WARNING, "Failed during FetchData", ex);
+        }
     }
 
     public class PermsList {
+        public String name;
         public String prefix;
         public ProtocolStringList globalPerms;
         public ProtocolStringList serverPerms;
@@ -31,17 +39,24 @@ public class PermissionsAPI {
     public CompletableFuture<SysteraProtos.FetchGroupsResponse> fetchGroups() {
         return plugin.apiClient.fetchGroups(Bukkit.getServer().getServerName()).whenComplete((response, throwable) -> {
             permsListMap.clear();
-
-            response.getGroupsList().forEach(groups -> {
-                PermsList permsList = new PermsList();
-
-                permsList.prefix = groups.getGroupPrefix();
-                permsList.globalPerms = groups.getGlobalPermsList();
-                permsList.serverPerms = groups.getServerPermsList();
-                permsListMap.put(groups.getGroupName(), permsList);
-                plugin.getLogger().log(Level.INFO, "Detected Group: " + groups.getGroupName());
-            });
+            response.getGroupsList().forEach(groups -> updateGroup(groups));
         });
+    }
+
+    public void updateGroup(SysteraProtos.GroupEntry groups) {
+        PermsList permsList = new PermsList();
+
+        permsList.name = groups.getGroupName();
+        permsList.prefix = groups.getGroupPrefix();
+        permsList.globalPerms = groups.getGlobalPermsList();
+        permsList.serverPerms = groups.getServerPermsList();
+
+        if (permsListMap.containsKey(groups.getGroupName())) {
+            permsListMap.remove(groups.getGroupName());
+        }
+
+        permsListMap.put(groups.getGroupName(), permsList);
+        plugin.getLogger().log(Level.INFO, "Detected Group: " + groups.getGroupName());
     }
 
     public PermsList getPermissions(String group) {

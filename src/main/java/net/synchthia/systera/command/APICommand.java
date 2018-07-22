@@ -1,14 +1,15 @@
 package net.synchthia.systera.command;
 
 import co.aikar.commands.BaseCommand;
-import co.aikar.commands.annotation.*;
+import co.aikar.commands.annotation.CommandAlias;
+import co.aikar.commands.annotation.CommandPermission;
+import co.aikar.commands.annotation.Subcommand;
 import com.google.protobuf.ProtocolStringList;
 import lombok.RequiredArgsConstructor;
 import net.synchthia.systera.SysteraPlugin;
 import net.synchthia.systera.permissions.PermissionsManager;
 import net.synchthia.systera.player.VanishManager;
 import org.bukkit.Bukkit;
-import org.bukkit.command.CommandException;
 import org.bukkit.command.CommandSender;
 
 /**

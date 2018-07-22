@@ -143,12 +143,6 @@ public class SysteraPlugin extends JavaPlugin {
         permissionsAPI = new PermissionsAPI(this);
         punishAPI = new PunishAPI(this);
 
-        try {
-            permissionsAPI.fetchGroups().get(5, TimeUnit.SECONDS);
-        } catch (Exception ex) {
-            getLogger().log(Level.WARNING, "Failed during FetchData", ex);
-        }
-
         Bukkit.getOnlinePlayers().forEach(player -> {
             try {
                 playerAPI.fetchPlayerProfileAsync(player.getUniqueId(), player.getName()).get(5, TimeUnit.SECONDS);

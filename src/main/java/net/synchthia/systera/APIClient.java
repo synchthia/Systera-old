@@ -7,9 +7,9 @@ import io.grpc.netty.NettyChannelBuilder;
 import io.grpc.stub.StreamObserver;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import net.synchthia.systera.util.DateUtil;
 import net.synchthia.api.systera.SysteraGrpc;
 import net.synchthia.api.systera.SysteraProtos;
+import net.synchthia.systera.util.DateUtil;
 
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
@@ -42,9 +42,9 @@ public class APIClient {
         }
     }
 
-    public static SysteraProtos.PlayerEntryStream playerEntryStreamFromJson(String jsonText) {
+    public static SysteraProtos.PlayerStream playerStreamFromJson(String jsonText) {
         try {
-            SysteraProtos.PlayerEntryStream.Builder builder = SysteraProtos.PlayerEntryStream.newBuilder();
+            SysteraProtos.PlayerStream.Builder builder = SysteraProtos.PlayerStream.newBuilder();
             JsonFormat.parser().ignoringUnknownFields().merge(jsonText, builder);
             return builder.build();
         } catch (Exception e) {
@@ -52,9 +52,9 @@ public class APIClient {
         }
     }
 
-    public static SysteraProtos.PunishEntryStream punishEntryStreamFromJson(String jsonText) {
+    public static SysteraProtos.PunishmentStream punishmentStreamFromJson(String jsonText) {
         try {
-            SysteraProtos.PunishEntryStream.Builder builder = SysteraProtos.PunishEntryStream.newBuilder();
+            SysteraProtos.PunishmentStream.Builder builder = SysteraProtos.PunishmentStream.newBuilder();
             JsonFormat.parser().ignoringUnknownFields().merge(jsonText, builder);
             return builder.build();
         } catch (Exception e) {
@@ -62,9 +62,9 @@ public class APIClient {
         }
     }
 
-    public static SysteraProtos.ReportEntryStream reportEntryStreamFromJson(String jsonText) {
+    public static SysteraProtos.GroupStream groupStreamFromJson(String jsonText) {
         try {
-            SysteraProtos.ReportEntryStream.Builder builder = SysteraProtos.ReportEntryStream.newBuilder();
+            SysteraProtos.GroupStream.Builder builder = SysteraProtos.GroupStream.newBuilder();
             JsonFormat.parser().ignoringUnknownFields().merge(jsonText, builder);
             return builder.build();
         } catch (Exception e) {

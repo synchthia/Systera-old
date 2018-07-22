@@ -18,7 +18,7 @@ public class PlayerSubs extends JedisPubSub {
 
     @Override
     public void onPMessage(String pattern, String channel, String message) {
-        SysteraProtos.PlayerEntryStream stream = APIClient.playerEntryStreamFromJson(message);
+        SysteraProtos.PlayerStream stream = APIClient.playerStreamFromJson(message);
         assert stream != null;
         switch (stream.getType()) {
             case GROUPS:

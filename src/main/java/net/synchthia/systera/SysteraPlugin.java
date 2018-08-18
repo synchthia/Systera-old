@@ -125,7 +125,7 @@ public class SysteraPlugin extends JavaPlugin {
         }
 
         getLogger().log(Level.INFO, "Redis Address: " + redisAddress);
-        redisClient = new RedisClient(Bukkit.getServer().getServerName(), hostname, port);
+        redisClient = new RedisClient(Bukkit.getServer().getServerId(), hostname, port);
     }
 
     private void registerAPI() {

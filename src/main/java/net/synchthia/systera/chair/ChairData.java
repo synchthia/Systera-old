@@ -12,5 +12,6 @@ import org.bukkit.entity.ArmorStand;
 public class ChairData {
     @NonNull
     private ArmorStand armorStand;
+    private final Location chairLocation;
     private final Location beforeLocation;
 }

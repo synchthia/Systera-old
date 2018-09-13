@@ -28,7 +28,7 @@ public class ChairListener implements Listener {
         this.plugin = plugin;
     }
 
-    private Map<Player, ChairData> chairs = new HashMap<>();
+    private static Map<Player, ChairData> chairs = new HashMap<>();
     private final List<Material> chairsBlock = new ArrayList<Material>() {
         {
             add(Material.ACACIA_STAIRS);
@@ -82,7 +82,9 @@ public class ChairListener implements Listener {
                 return;
             }
 
-            Optional<ChairData> first = chairs.values().stream().filter(v -> v.getArmorStand().getLocation().equals(loc)).findFirst();
+            Optional<ChairData> first = chairs.values().stream().filter(
+                    v -> v.getChairLocation().equals(loc)
+            ).findFirst();
             if (first.isPresent()) {
                 return;
             }
@@ -113,7 +115,7 @@ public class ChairListener implements Listener {
             armorStand.setMarker(true);
             armorStand.addPassenger(player);
 
-            chairs.put(player, new ChairData(armorStand, playerLoc));
+            chairs.put(player, new ChairData(armorStand, block.getLocation(), playerLoc));
         }
     }
 

@@ -60,7 +60,7 @@ public class PlayerListener implements Listener {
             }
         } catch (InterruptedException | ExecutionException | TimeoutException ex) {
             plugin.getLogger().log(Level.SEVERE, "Exception threw executing onPlayerPreLogin", ex);
-            event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, ChatColor.RED + "Currently not Available");
+            event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, ChatColor.RED + "Currently not Available: " + ChatColor.GRAY + "[LOOKUP_ERROR]");
         }
     }
 
@@ -73,7 +73,7 @@ public class PlayerListener implements Listener {
             plugin.playerAPI.fetchPlayerProfile(player.getUniqueId(), player.getName());
         } catch (InterruptedException | ExecutionException | TimeoutException ex) {
             plugin.getLogger().log(Level.SEVERE, "Exception threw executing onPlayerPreLogin", ex);
-            event.disallow(PlayerLoginEvent.Result.KICK_OTHER, ChatColor.RED + "Currently not Available");
+            event.disallow(PlayerLoginEvent.Result.KICK_OTHER, ChatColor.RED + "Currently not Available: " + ChatColor.GRAY + "[PROFILE_FETCH_ERROR]");
         }
 
         // Permission
@@ -82,7 +82,6 @@ public class PlayerListener implements Listener {
             plugin.getLogger().log(Level.WARNING, "GROUPS IS NULL");
         }
         plugin.permissionsManager.applyPermission(player, groups);
-
     }
 
     @EventHandler

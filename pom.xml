@@ -17,6 +17,7 @@
         <bukkit.plugin.name>Systera</bukkit.plugin.name>
         <bukkit.plugin.main>net.synchthia.systera.SysteraPlugin</bukkit.plugin.main>
         <bukkit.plugin.authors>Synchthia Crew</bukkit.plugin.authors>
+        <bukkit.plugin.api-version>1.13</bukkit.plugin.api-version>
     </properties>
 
     <repositories>
@@ -74,7 +75,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.12.2-R0.1-SNAPSHOT</version>
+            <version>1.13.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 

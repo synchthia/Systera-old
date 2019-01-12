@@ -57,14 +57,12 @@ public class GateListener implements Listener {
         // A3
         Location a3 = new Location(world, attended.getX(), attended.getY() + 3, attended.getZ());
         if (!world.getBlockAt(a3).getType().equals(Material.AIR) &&
-                !world.getBlockAt(a3).getType().equals(Material.WATER) &&
-                !world.getBlockAt(a3).getType().equals(Material.STATIONARY_WATER)) return;
+                !world.getBlockAt(a3).getType().equals(Material.WATER)) return;
 
         // A2
         Location a2 = new Location(world, attended.getX(), attended.getY() + 2, attended.getZ());
         if (!world.getBlockAt(a2).getType().equals(Material.AIR) &&
-                !world.getBlockAt(a2).getType().equals(Material.WATER) &&
-                !world.getBlockAt(a2).getType().equals(Material.STATIONARY_WATER)) return;
+                !world.getBlockAt(a2).getType().equals(Material.WATER)) return;
         // A1
         Location a1 = new Location(world, attended.getX(), attended.getY() + 1, attended.getZ());
         if (!world.getBlockAt(a1).getType().equals(Material.GLOWSTONE)) return;
@@ -90,7 +88,7 @@ public class GateListener implements Listener {
 
         boolean result = plugin.gateManager.add(data);
         if (result) {
-            fillGate(data, Material.STATIONARY_WATER);
+            fillGate(data, Material.WATER);
             player.sendMessage(String.format(ChatColor.GREEN + "Gate Created! %s -> %s", data.getName(), data.getDestination()));
         } else {
             player.sendMessage(ChatColor.RED + "Already Exist");
@@ -106,9 +104,8 @@ public class GateListener implements Listener {
 
         // Is Liquid?
         if (!block.getType().equals(Material.WATER) &&
-                !block.getType().equals(Material.STATIONARY_WATER) &&
-                !block.getType().equals(Material.LAVA) &&
-                !block.getType().equals(Material.STATIONARY_LAVA)) {
+                !block.getType().equals(Material.WATER) &&
+                !block.getType().equals(Material.LAVA)) {
             return;
         }
 

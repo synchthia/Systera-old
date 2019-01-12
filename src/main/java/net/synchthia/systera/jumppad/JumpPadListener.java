@@ -27,8 +27,7 @@ public class JumpPadListener implements Listener {
     private final List<Material> baseBlock = new ArrayList<Material>() {
         {
             add(Material.SLIME_BLOCK);
-            add(Material.REDSTONE_LAMP_OFF);
-            add(Material.REDSTONE_LAMP_ON);
+            add(Material.REDSTONE_LAMP);
         }
     };
 
@@ -44,16 +43,21 @@ public class JumpPadListener implements Listener {
         }
 
         switch (event.getTo().getBlock().getType()) {
-            case GOLD_PLATE:
+            case LIGHT_WEIGHTED_PRESSURE_PLATE:
                 shoot(event.getPlayer(), 1, 2);
                 break;
-            case IRON_PLATE:
+            case HEAVY_WEIGHTED_PRESSURE_PLATE:
                 shoot(event.getPlayer(), 1, 1.5);
                 break;
-            case STONE_PLATE:
+            case STONE_PRESSURE_PLATE:
                 shoot(event.getPlayer(), 0.5, 1);
                 break;
-            case WOOD_PLATE:
+            case OAK_PRESSURE_PLATE:
+            case DARK_OAK_PRESSURE_PLATE:
+            case BIRCH_PRESSURE_PLATE:
+            case SPRUCE_PRESSURE_PLATE:
+            case JUNGLE_PRESSURE_PLATE:
+            case ACACIA_PRESSURE_PLATE:
                 shoot(event.getPlayer(), 0.5, 0.5);
                 break;
         }

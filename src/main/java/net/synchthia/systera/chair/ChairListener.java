@@ -28,23 +28,23 @@ public class ChairListener implements Listener {
         this.plugin = plugin;
     }
 
-    private static Map<Player, ChairData> chairs = new HashMap<>();
+    private Map<Player, ChairData> chairs = new HashMap<>();
     private final List<Material> chairsBlock = new ArrayList<Material>() {
         {
             add(Material.ACACIA_STAIRS);
-            add(Material.BIRCH_WOOD_STAIRS);
+            add(Material.BIRCH_STAIRS);
 //            add(Material.BRICK_STAIRS);
 //            add(Material.COBBLESTONE_STAIRS);
             add(Material.DARK_OAK_STAIRS);
-            add(Material.JUNGLE_WOOD_STAIRS);
+            add(Material.JUNGLE_STAIRS);
 //            add(Material.NETHER_BRICK_STAIRS);
 //            add(Material.PURPUR_STAIRS);
 //            add(Material.QUARTZ_STAIRS);
 //            add(Material.RED_SANDSTONE_STAIRS);
 //            add(Material.SANDSTONE_STAIRS);
 //            add(Material.SMOOTH_STAIRS);
-            add(Material.SPRUCE_WOOD_STAIRS);
-            add(Material.WOOD_STAIRS);
+            add(Material.SPRUCE_STAIRS);
+            add(Material.OAK_STAIRS);
         }
     };
 

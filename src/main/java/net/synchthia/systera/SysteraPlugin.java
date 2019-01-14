@@ -195,6 +195,7 @@ public class SysteraPlugin extends JavaPlugin {
 
         cmdManager.registerCommand(new SysteraCommand(this));
         cmdManager.registerCommand(new DispatchCommand(this));
+        cmdManager.registerCommand(new RunasCommand(this));
         cmdManager.registerCommand(new AnnounceCommand(this));
         cmdManager.registerCommand(new SpawnCommand(this));
         cmdManager.registerCommand(new APICommand(this));

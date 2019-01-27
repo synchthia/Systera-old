@@ -109,7 +109,6 @@ public class GateManager {
     }
 
     public Optional<GateData> aroundGate(@NonNull Location loc) {
-        System.out.println("[Debug] Gates: " + gates.size());
         return findGates().stream()
                 .filter(v -> {
                             if (!loc.getWorld().getUID().toString().equals(v.getWorldID().toString())) {

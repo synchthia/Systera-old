@@ -12,7 +12,6 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPhysicsEvent;
 import org.bukkit.event.block.SignChangeEvent;
-import org.bukkit.event.player.PlayerBucketEmptyEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.material.Sign;
@@ -102,14 +101,7 @@ public class GateListener implements Listener {
         Block block = event.getBlock();
         Location loc = block.getLocation();
 
-        // Is Liquid?
-        if (!block.getType().equals(Material.WATER) &&
-                !block.getType().equals(Material.WATER) &&
-                !block.getType().equals(Material.LAVA)) {
-            return;
-        }
-
-        if (gateManager.inGate(loc).isPresent()) {
+        if (gateManager.aroundGate(loc).isPresent()) {
             event.setCancelled(true);
         }
     }

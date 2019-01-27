@@ -17,10 +17,9 @@ import java.util.logging.Level;
  * @author Laica-Lunasys
  */
 public class GateManager {
+    private static Gson gson = new Gson();
     private final JavaPlugin plugin;
     private final File file;
-    private static Gson gson = new Gson();
-
     private Map<String, GateData> gates = new HashMap<>();
 
     public GateManager(JavaPlugin plugin) {
@@ -107,6 +106,32 @@ public class GateManager {
                 .filter(v -> loc.getBlockY() >= v.getGateRange().getMin()[1] && loc.getBlockY() <= v.getGateRange().getMax()[1])
                 .filter(v -> loc.getBlockZ() >= v.getGateRange().getMin()[2] && loc.getBlockZ() <= v.getGateRange().getMax()[2])
                 .findFirst();
+    }
+
+    public Optional<GateData> aroundGate(@NonNull Location loc) {
+        System.out.println("[Debug] Gates: " + gates.size());
+        return findGates().stream()
+                .filter(v -> {
+                            if (!loc.getWorld().getUID().toString().equals(v.getWorldID().toString())) {
+                                return false;
+                            }
+
+                            if (loc.getBlockX() >= v.getGateRange().getMin()[0] - 1 && loc.getBlockX() <= v.getGateRange().getMax()[0] + 1 &&
+                                    loc.getBlockY() >= v.getGateRange().getMin()[1] && loc.getBlockY() <= v.getGateRange().getMax()[1] &&
+                                    loc.getBlockZ() >= v.getGateRange().getMin()[2] && loc.getBlockZ() <= v.getGateRange().getMax()[2]
+                            ) {
+                                return true;
+                            } else if (loc.getBlockX() >= v.getGateRange().getMin()[0] && loc.getBlockX() <= v.getGateRange().getMax()[0] &&
+                                    loc.getBlockY() >= v.getGateRange().getMin()[1] - 1 && loc.getBlockY() <= v.getGateRange().getMax()[1] + 1 &&
+                                    loc.getBlockZ() >= v.getGateRange().getMin()[2] && loc.getBlockZ() <= v.getGateRange().getMax()[2]
+                            ) {
+                                return true;
+                            } else
+                                return loc.getBlockX() >= v.getGateRange().getMin()[0] && loc.getBlockX() <= v.getGateRange().getMax()[0] &&
+                                        loc.getBlockY() >= v.getGateRange().getMin()[1] && loc.getBlockY() <= v.getGateRange().getMax()[1] &&
+                                        loc.getBlockZ() >= v.getGateRange().getMin()[2] - 1 && loc.getBlockZ() <= v.getGateRange().getMax()[2] + 1;
+                        }
+                ).findAny();
     }
 
     public Optional<GateData> inSign(@NonNull Block block) {

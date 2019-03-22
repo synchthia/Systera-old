@@ -1,6 +1,6 @@
 package net.synchthia.systera.util;
 
-import org.bukkit.Bukkit;
+import net.synchthia.systera.SysteraPlugin;
 
 /**
  * @author Laica-Lunasys

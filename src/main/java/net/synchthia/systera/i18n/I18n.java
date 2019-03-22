@@ -30,7 +30,7 @@ public final class I18n {
     }
 
     public static String getLanguage(@NonNull CommandSender sender) {
-        return sender instanceof Player ? ((Player) sender).spigot().getLocale() : null;
+        return sender instanceof Player ? ((Player) sender).getLocale() : null;
     }
 
     public static String getString(@NonNull CommandSender sender, @NonNull String key, Object... extra) {

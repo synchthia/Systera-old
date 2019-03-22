@@ -99,7 +99,7 @@ public class PlayerListener implements Listener {
         }
 
         // Current Server
-        plugin.apiClient.setPlayerServer(player.getUniqueId(), player.getServer().getServerId()).whenComplete(((empty, throwable) -> {
+        plugin.apiClient.setPlayerServer(player.getUniqueId(), SysteraPlugin.getServerId()).whenComplete(((empty, throwable) -> {
             if (throwable != null) {
                 throwable.printStackTrace();
             }
@@ -129,7 +129,7 @@ public class PlayerListener implements Listener {
         }
 
         // Current Server
-        plugin.apiClient.quitServer(player.getUniqueId(), player.getServer().getServerName()).whenComplete(((empty, throwable) -> {
+        plugin.apiClient.quitServer(player.getUniqueId(), SysteraPlugin.getServerName()).whenComplete(((empty, throwable) -> {
             if (throwable != null) {
                 throwable.printStackTrace();
             }

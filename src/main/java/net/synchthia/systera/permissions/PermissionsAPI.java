@@ -37,7 +37,7 @@ public class PermissionsAPI {
     }
 
     public CompletableFuture<SysteraProtos.FetchGroupsResponse> fetchGroups() {
-        return plugin.apiClient.fetchGroups(Bukkit.getServer().getServerName()).whenComplete((response, throwable) -> {
+        return plugin.apiClient.fetchGroups(SysteraPlugin.getServerName()).whenComplete((response, throwable) -> {
             permsListMap.clear();
             response.getGroupsList().forEach(groups -> updateGroup(groups));
         });

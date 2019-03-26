@@ -111,6 +111,13 @@ public class PlayerListener implements Listener {
         // TabList
         TabManager tabManager = new TabManager();
         tabManager.setHeaderFooter(player);
+
+        // Whitelist Notification
+        if (player.hasPermission("minecraft.command.whitelist")) {
+            if (plugin.getServer().hasWhitelist()) {
+                player.sendMessage(ChatColor.GREEN + "* Whitelist is currently enabled");
+            }
+        }
     }
 
     @EventHandler

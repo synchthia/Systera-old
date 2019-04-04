@@ -67,14 +67,14 @@ public class ChairListener implements Listener {
         }
 
         if (chairsBlock.contains(block.getType())) {
-            event.setCancelled(true);
-
             Location loc = block.getLocation();
             Stairs stairs = (Stairs) block.getState().getData();
 
             // Is Top?
             if (stairs.isInverted()) {
                 return;
+            } else {
+                event.setCancelled(true);
             }
 
             // Already Sitting?

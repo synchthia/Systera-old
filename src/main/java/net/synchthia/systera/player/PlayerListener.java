@@ -68,6 +68,11 @@ public class PlayerListener implements Listener {
     @EventHandler
     public void onPlayerLogin(PlayerLoginEvent event) {
         Player player = event.getPlayer();
+
+        if (!event.getResult().equals(PlayerLoginEvent.Result.ALLOWED)) {
+            return;
+        }
+
         try {
             plugin.playerAPI.initPlayerProfile(player.getUniqueId(), player.getName(), event.getAddress().getHostAddress(), event.getAddress().getHostName());
             plugin.playerAPI.fetchPlayerProfile(player.getUniqueId(), player.getName());

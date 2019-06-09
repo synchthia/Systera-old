@@ -5,6 +5,4 @@ build:
       code: |-
         if [ ! -e "$HOME/.m2/" ]; then mkdir -p $HOME/.m2/; fi
         echo -e ${CI_MVN_SETTINGS} > $HOME/.m2/settings.xml
-    - wercker/maven:
-      goals: clean package deploy
-      cache_repo: true
+        mvn clean package deploy

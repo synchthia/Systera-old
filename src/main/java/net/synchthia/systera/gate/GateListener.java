@@ -5,6 +5,7 @@ import net.synchthia.systera.util.BlockUtil;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
+import org.bukkit.block.data.type.WallSign;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,6 +17,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.material.Sign;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -27,6 +30,17 @@ public class GateListener implements Listener {
     public GateListener(SysteraPlugin plugin) {
         this.plugin = plugin;
     }
+
+    private final List<Material> wallSigns = new ArrayList<Material>() {
+        {
+            add(Material.ACACIA_WALL_SIGN);
+            add(Material.BIRCH_WALL_SIGN);
+            add(Material.DARK_OAK_WALL_SIGN);
+            add(Material.JUNGLE_WALL_SIGN);
+            add(Material.OAK_WALL_SIGN);
+            add(Material.SPRUCE_WALL_SIGN);
+        }
+    };
 
     @EventHandler
     public void onCreateSign(SignChangeEvent event) {
@@ -42,8 +56,7 @@ public class GateListener implements Listener {
         World world = event.getBlock().getWorld();
 
         // Sign Location / Child Block
-        Sign sign = (Sign) event.getBlock().getState().getData();
-        Block attended = event.getBlock().getRelative(sign.getAttachedFace());
+        Block attended = event.getBlock().getRelative(((WallSign) event.getBlock().getBlockData()).getFacing().getOppositeFace());
 
         // Check Layout
         // (G=Glow Stone, X=IRON Block, o=AIR, s=WallSign, p=portal(AIR))
@@ -145,7 +158,7 @@ public class GateListener implements Listener {
         }
 
         GateData gate;
-        if (block.getType().equals(Material.WALL_SIGN)) {
+        if (wallSigns.contains(block.getType())) {
             Optional<GateData> opt = gateManager.inSign(block);
             if (!opt.isPresent()) {
                 return;
@@ -196,10 +209,10 @@ public class GateListener implements Listener {
         GateData.Range destPortal = dest.getPortalRange();
 
         Location orgSignLoc = new Location(Bukkit.getWorld(origin.getWorldID()), origin.getSignX(), origin.getSignY(), origin.getSignZ());
-        BlockFace orgFace = ((Sign) orgSignLoc.getBlock().getState().getData()).getFacing();
+        BlockFace orgFace = ((WallSign) orgSignLoc.getBlock().getBlockData()).getFacing();
 
         Location destSignLoc = new Location(Bukkit.getWorld(dest.getWorldID()), dest.getSignX(), dest.getSignY(), dest.getSignZ());
-        BlockFace destFace = ((Sign) destSignLoc.getBlock().getState().getData()).getFacing();
+        BlockFace destFace = ((WallSign) destSignLoc.getBlock().getBlockData()).getFacing();
 
 
         Location target = new Location(

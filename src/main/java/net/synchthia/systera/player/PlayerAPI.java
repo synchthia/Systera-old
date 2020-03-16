@@ -1,11 +1,13 @@
 package net.synchthia.systera.player;
 
 import com.google.protobuf.ProtocolStringList;
+import io.grpc.Status;
 import net.synchthia.api.systera.SysteraProtos;
 import net.synchthia.systera.SysteraPlugin;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -17,8 +19,8 @@ import java.util.logging.Level;
  * @author Laica-Lunasys
  */
 public class PlayerAPI {
-    private Map<UUID, PlayerData> localPlayerProfile = new HashMap<>();
     private final SysteraPlugin plugin;
+    private Map<UUID, PlayerData> localPlayerProfile = new HashMap<>();
 
     public PlayerAPI(SysteraPlugin plugin) {
         this.plugin = plugin;
@@ -62,7 +64,9 @@ public class PlayerAPI {
     public CompletableFuture<SysteraProtos.FetchPlayerProfileResponse> fetchPlayerProfileAsync(UUID playerUUID, String playerName) {
         return plugin.apiClient.fetchPlayerProfile(playerUUID).whenComplete((response, throwable) -> {
             if (throwable != null) {
-                plugin.getLogger().log(Level.WARNING, "Failed Fetch Player Profile: Exception threw", throwable);
+                if (!Objects.equals(Status.fromThrowable(throwable).getDescription(), "not found")) {
+                    plugin.getLogger().log(Level.WARNING, "Failed Fetch Player Profile: Exception threw", throwable);
+                }
                 return;
             }
 
@@ -96,11 +100,13 @@ public class PlayerAPI {
     }
 
     public CompletableFuture<SysteraProtos.FetchPlayerProfileResponse> fetchPlayerProfileByName(String playerName) {
-        return plugin.apiClient.fetchPlayerProfileByName(playerName).whenComplete(((response, throwable) -> {
+        return plugin.apiClient.fetchPlayerProfileByName(playerName).whenComplete((response, throwable) -> {
             if (throwable != null) {
-                plugin.getLogger().log(Level.WARNING, "Failed Fetch Player Profile by Name: Exception threw", throwable);
+                if (!Objects.equals(Status.fromThrowable(throwable).getDescription(), "not found")) {
+                    plugin.getLogger().log(Level.WARNING, "Failed Fetch Player Profile by Name: Exception threw", throwable);
+                }
             }
-        }));
+        });
     }
 
     public ProtocolStringList getGroups(UUID playerUUID) {

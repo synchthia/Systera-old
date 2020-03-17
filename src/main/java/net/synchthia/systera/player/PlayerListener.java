@@ -69,7 +69,7 @@ public class PlayerListener implements Listener {
     public void onPlayerLogin(PlayerLoginEvent event) {
         Player player = event.getPlayer();
 
-        if (!event.getResult().equals(PlayerLoginEvent.Result.ALLOWED)) {
+        if (!event.getResult().equals(PlayerLoginEvent.Result.ALLOWED) && !event.getResult().equals(PlayerLoginEvent.Result.KICK_WHITELIST)) {
             return;
         }
 

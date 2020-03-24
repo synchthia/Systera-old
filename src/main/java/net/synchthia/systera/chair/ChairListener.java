@@ -5,6 +5,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.block.data.Bisected;
+import org.bukkit.block.data.type.Stairs;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -13,7 +15,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.material.Stairs;
 import org.spigotmc.event.entity.EntityDismountEvent;
 
 import java.util.*;
@@ -23,12 +24,6 @@ import java.util.*;
  */
 public class ChairListener implements Listener {
     private final SysteraPlugin plugin;
-
-    public ChairListener(SysteraPlugin plugin) {
-        this.plugin = plugin;
-    }
-
-    private Map<Player, ChairData> chairs = new HashMap<>();
     private final List<Material> chairsBlock = new ArrayList<Material>() {
         {
             add(Material.ACACIA_STAIRS);
@@ -47,6 +42,10 @@ public class ChairListener implements Listener {
             add(Material.OAK_STAIRS);
         }
     };
+    private Map<Player, ChairData> chairs = new HashMap<>();
+    public ChairListener(SysteraPlugin plugin) {
+        this.plugin = plugin;
+    }
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
@@ -66,12 +65,16 @@ public class ChairListener implements Listener {
             return;
         }
 
+        if (block == null) {
+            return;
+        }
+
         if (chairsBlock.contains(block.getType())) {
             Location loc = block.getLocation();
-            Stairs stairs = (Stairs) block.getState().getData();
+            Stairs stairs = (Stairs) block.getState().getBlockData();
 
             // Is Top?
-            if (stairs.isInverted()) {
+            if (stairs.getHalf().equals(Bisected.Half.TOP)) {
                 return;
             } else {
                 event.setCancelled(true);

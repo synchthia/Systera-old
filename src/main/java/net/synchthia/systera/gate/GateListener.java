@@ -56,6 +56,10 @@ public class GateListener implements Listener {
         World world = event.getBlock().getWorld();
 
         // Sign Location / Child Block
+        if (!wallSigns.contains(event.getBlock().getBlockData().getMaterial())) {
+            return;
+        }
+
         Block attended = event.getBlock().getRelative(((WallSign) event.getBlock().getBlockData()).getFacing().getOppositeFace());
 
         // Check Layout
